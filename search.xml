@@ -21,7 +21,128 @@
   <entry>
     <title>Python之函数</title>
     <url>/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人的细胞数量，约有37兆2千亿个。细胞们在你的身体的世界中，无休无眠地在工作着。趁热打铁，二话不多说开始进入函数之旅叭。其中，函数的参数及返回值是重点。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数就是对实现某一特定功能的代码的封装。这样做的好处是：函数能提高应用的模块性和代码的重复利用率。</p>
+<p>打个简单的比喻，我们进店买喜茶、海底捞的时候，需要排队、点单、等待、买单等待繁琐的过程，但是通过食用市面上出售的瓶装喜茶、桶装海底捞，就能省去这些步骤，而后者就是封装。</p>
+<p>举个栗子!就拿我们平常看到的验证码来说，这就是一个封装函数。直接调用函数名就可以生成n位随机数嗷（点击下边左箭头可展开代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import random</span><br><span class="line">def validate_code(n):</span><br><span class="line">    s= &#x27;qwertyuiopasdfghjklzxcvbnm1234567890&#x27; #验证码通常是26个英文字母加上10个数字组成</span><br><span class="line">    code = &#x27;&#x27;</span><br><span class="line">    for i in range(n):</span><br><span class="line">        r=random.choice(s)</span><br><span class="line">        code += r</span><br><span class="line">    print(&#x27;验证码是：&#123;&#125;&#x27;.format(code))</span><br><span class="line">validate_code(4)</span><br><span class="line">validate_code(5)</span><br><span class="line">validate_code(6)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如图</p>
+<p><img src="/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/1.png" alt="随机验证码"></p>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def 函数名([输入参数])：</span><br><span class="line">	函数体</span><br><span class="line">	[return xxx]</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1、英文字符以及冒号别遗忘（我经常忘冒号低级错误！</p>
+<p>2、函数名要见名知意</p>
+<p>3、参数之间用逗号隔开</p>
+<p>4、函数体是实现函数功能的代码段，要tab缩进</p>
+<p>5、return返回值，有时可以不写，下文介绍</p>
+<h1 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h1><p>调用函数也就是执行函数。即把刚才定义的函数当成是一个工具，那么调用函数就相当于使用该工具。即函数名是调用函数的名称。很好理解，暂不赘述。</p>
+<h1 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h1><h2 id="默认值参数"><a href="#默认值参数" class="headerlink" title="默认值参数"></a>默认值参数</h2><p>默认值是指在定义的时候就给定值，暂不赘述</p>
+<h2 id="形式参数"><a href="#形式参数" class="headerlink" title="形式参数"></a>形式参数</h2><p>在定义函数时，函数名后面括号中的参数就是形式参数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c): #abd是在函数定义括号内，为形参</span><br><span class="line">	print(&#x27;a=&#x27;,a)</span><br><span class="line">	print(&#x27;b=&#x27;,b)</span><br><span class="line">	print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30)</span><br></pre></td></tr></table></figure>
+
+<h2 id="位置实参"><a href="#位置实参" class="headerlink" title="位置实参"></a>位置实参</h2><p>指的是必须按照正确的顺序将实际参数传到函数中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c): #abd是在函数定义括号内，为形参</span><br><span class="line">	print(&#x27;a=&#x27;,a)</span><br><span class="line">	print(&#x27;b=&#x27;,b)</span><br><span class="line">	print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30) # 依次将10赋给a，20赋给b，30赋给c。调用函数时传入的实参的数量和位置都必须和定义函数时保持一致。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">a= 10</span><br><span class="line">b= 20</span><br><span class="line">c= 30</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键字实参"><a href="#关键字实参" class="headerlink" title="关键字实参"></a>关键字实参</h2><p>能在调用的时候更加明确参数值是给谁的，因此不再需要与形参的位置完全一致，只要将参数名写正确即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c):</span><br><span class="line">    print(&#x27;a=&#x27;,a)</span><br><span class="line">    print(&#x27;b=&#x27;,b)</span><br><span class="line">    print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30)</span><br><span class="line">fun1(a=100,c=2000,b=3000)#与位置形参相比，位置可以不用一一对应</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">a= 100</span><br><span class="line">b= 3000</span><br><span class="line">c= 2000</span><br></pre></td></tr></table></figure>
+
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>指在定义或者调用的时候不能明确参数的个数，此时如何定义才可以使参数个数更加灵活呢？–答案是，我们可以用<code>*args</code>或者<code>**kargs</code>，那..什么时候用 <code>*args</code>什么时候用<code>**kargs</code>呢？</p>
+<h3 id="第一种情况"><a href="#第一种情况" class="headerlink" title="第一种情况"></a>第一种情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(*args):</span><br><span class="line">    print(args)</span><br><span class="line">fun1(10)</span><br><span class="line">fun1(10,20,30)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为元组</span><br><span class="line">(10,)</span><br><span class="line">(10, 20, 30)</span><br></pre></td></tr></table></figure>
+
+<p>因此，无法事先确定传递的位置形参的个数时，用<code>*args</code>定义个数可变的位置形参</p>
+<h3 id="第二种情况"><a href="#第二种情况" class="headerlink" title="第二种情况"></a>第二种情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun2(**kargs):</span><br><span class="line">    print(kargs)</span><br><span class="line">fun2(a=10)</span><br><span class="line">fun2(a=10,b=20,c=30)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输出结果为字典</span><br><span class="line">&#123;&#x27;a&#x27;: 10&#125; </span><br><span class="line">&#123;&#x27;a&#x27;: 10, &#x27;b&#x27;: 20, &#x27;c&#x27;: 30&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此，无法事先确定传递的关键字实参的个数时，使用<code>**kargs</code>定义个数可变的关键字形参</p>
+<h1 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h1><p>return 语句指定应该返回的值，该返回值可以是任意类型</p>
+<p>需要注意的是，return 语句在同一函数中可以出现多次，但只要有一个得到执行，就会直接结束函数的执行。</p>
+<h3 id="没有返回值的情况"><a href="#没有返回值的情况" class="headerlink" title="没有返回值的情况"></a>没有返回值的情况</h3><p>只是完成一个操作，函数体内可没有return语句。调用会返回None</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun():         </span><br><span class="line">    print(&#x27;hello&#x27;)</span><br><span class="line">    #return         #return可以省略不写</span><br><span class="line">fun()               #调用fun()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输出结果为</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+
+<h3 id="有返回值的情况"><a href="#有返回值的情况" class="headerlink" title="有返回值的情况"></a>有返回值的情况</h3><p>函数的最后会有一个返回值return，将函数执行的结果返出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun3():</span><br><span class="line">    return&#x27;hello&#x27;,&#x27;world&#x27;</span><br><span class="line">print(fun3())              #返回值是两个，要用到return</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果是元组</span><br><span class="line">(&#x27;hello&#x27;, &#x27;world&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h1><h3 id="数字相关"><a href="#数字相关" class="headerlink" title="数字相关"></a><strong>数字相关</strong></h3><blockquote>
+<p>bool() 将给定的数据类型转换成bool值。如果不给值，返回False</p>
+<p>int () 将给定的数据转换成int值。如果不给值，返回0</p>
+<p>float () 将给定的数据转换小数</p>
+<p>complex () 创建一个复数，第一个参数为实部，第二个参数为虚部。或者第一个参数直接用字符串来描述复数</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number = &#x27;100&#x27;</span><br><span class="line">print(int(number)) # 100</span><br><span class="line">print(float(number)) # 100.0</span><br><span class="line">print(bool(10))   # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a><strong>进制转换</strong></h3><blockquote>
+<p>bin() 将给的参数转换成二进制</p>
+<p>otc() 将给定的参数转换成八进制</p>
+<p>hex() 将给定的参数转换成十六进制</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number=25</span><br><span class="line">print(bin(number))  # 0b11001</span><br><span class="line">print(oct(number))  # 0o31</span><br><span class="line">print(hex(number))  # 0x19</span><br></pre></td></tr></table></figure>
+
+<h3 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a><strong>数字运算</strong></h3><blockquote>
+<p>abs() 返回绝对值</p>
+<p>divmode() 返回商的余数</p>
+<p>round () 四舍五入</p>
+<p>pow(a,b) 求a 的b 次幂,如果有三个参数.则求完次幂后对第三个数取余</p>
+<p>sum() 求和</p>
+<p>min() 求最小值</p>
+<p>max() 求最大值</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number = -10.58</span><br><span class="line">print(abs(number)) # 10.58</span><br><span class="line">print(round(number)) # -11</span><br><span class="line">print(max(number,-9)) # -9</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表和元组"><a href="#列表和元组" class="headerlink" title="列表和元组"></a><strong>列表和元组</strong></h3><blockquote>
+<p>list() 将一个可迭代对象转换成列表</p>
+<p>tuple() 将一个可迭代对象转成元组</p>
+<p>reversed() 将一个序列翻转, 返回翻转序列的迭代器</p>
+<p>slice() 列表的切片，格式是(初:末 :step :)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = &#x27;hello&#x27;</span><br><span class="line">print(list(s)) # [&#x27;h&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lst = &quot;hello! I am Running&quot;</span><br><span class="line">s = slice(1, 10, 3)</span><br><span class="line">print(lst[s])     # eoI</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字符串相关"><a href="#字符串相关" class="headerlink" title="字符串相关"></a><strong>字符串相关</strong></h3><blockquote>
+<p>str () 将数据转换成字符串</p>
+<p>format() 与具体数据相关,用于计算各种小数.精算等</p>
+<p>memoryview() 查看bytes的内存中的情况</p>
+<p>ord() 输入字符找带字符编码的位置</p>
+<p>chr() 输入位置数字找对应的字符</p>
+<p>ascii() 是sdcll码中的返回值 不是就返回\u..</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 找到对应字符的编码位置</span><br><span class="line">print(ord(&#x27;s&#x27;)) # 115</span><br><span class="line">print(ord(&#x27;苏&#x27;))  #33487</span><br><span class="line"># 找到对应编码位置的字符*</span><br><span class="line">print(chr(115))  #s</span><br><span class="line">print(chr(38597)) #雅,诶嘿嘿一不小心暴露真名</span><br><span class="line"># 在sacll码中就返回这个值. 如果不是就返回\u..*</span><br><span class="line">print(ascii(&#x27;a&#x27;)) *# &#x27;a&#x27;*</span><br><span class="line">print(ascii(&#x27;苏&#x27;))  *# &#x27;\u82cf&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据集合"><a href="#数据集合" class="headerlink" title="数据集合"></a><strong>数据集合</strong></h3><blockquote>
+<p>dict() 创建一个字典</p>
+<p>set() 创建一个集合</p>
+<p>frozenset() 创建一个冻结的集合.冻结的集合不能进行添加和删除操作</p>
+</blockquote>
+<h3 id="其他相关"><a href="#其他相关" class="headerlink" title="其他相关"></a><strong>其他相关</strong></h3><blockquote>
+<p>len() 返回一个对象中的元素的个数</p>
+<p>sorted() 对可迭代对象进行排序</p>
+<p>enumerate() 获取集合的枚举对象</p>
+<p>all() 可迭代对象中全部是True.结果才是True</p>
+<p>any() 可迭代对象中有一个是True,结果就是Ture</p>
+<p>zip() 函数用于将可迭代的对象最为参数.将对象中对应的元素打包成一个个元组</p>
+<p>eval() 执行字符串类型的代码,并返回最终的结果</p>
+</blockquote>
+<h3 id="内存相关"><a href="#内存相关" class="headerlink" title="内存相关"></a><strong>内存相关</strong></h3><blockquote>
+<p>hash() 获取到对像的哈希值(int str bool tuple)</p>
+<p>id () 获取到对象的内存地址</p>
+</blockquote>
+<p>以上内置函数算是比较常用的，其他就不一一列举啦</p>
+]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
