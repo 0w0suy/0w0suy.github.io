@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>hexo根目录中_config.yml配置解释 | Suy's Blog</title><meta name="keywords" content="hexo"><meta name="author" content="0w0suy"><meta name="copyright" content="0w0suy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言在学习发博客的时候，经常会出现报错，而这些报错通常会让我们修改根目录中_config.yml某些配置，然而我也是不知所以然就”照本宣改”,甚至会想当然的改掉了原来一些配置，导致hexo d运行报错。因此，通过这篇blog对config的配置进行解释说明。 配置123&#96;#Hexo Configuration&#96;&#96;##Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo根目录中_config.yml配置解释">
+<meta property="og:url" content="https://0w0suy.github.io/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/index.html">
+<meta property="og:site_name" content="Suy&#39;s Blog">
+<meta property="og:description" content="前言在学习发博客的时候，经常会出现报错，而这些报错通常会让我们修改根目录中_config.yml某些配置，然而我也是不知所以然就”照本宣改”,甚至会想当然的改掉了原来一些配置，导致hexo d运行报错。因此，通过这篇blog对config的配置进行解释说明。 配置123&#96;#Hexo Configuration&#96;&#96;##Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-07-17T08:35:10.000Z">
+<meta property="article:modified_time" content="2021-07-21T03:39:15.894Z">
+<meta property="article:author" content="0w0suy">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0w0suy.github.io/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: 0w0suy","link":"Link: ","source":"Source: Suy's Blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hexo根目录中_config.yml配置解释',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2021-07-21 11:39:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Suy's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Suy's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">hexo根目录中_config.yml配置解释</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-07-17T08:35:10.000Z" title="Created 2021-07-17 16:35:10">2021-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-07-21T03:39:15.894Z" title="Updated 2021-07-21 11:39:15">2021-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="hexo根目录中_config.yml配置解释"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在学习发博客的时候，经常会出现报错，而这些报错通常会让我们修改根目录中_config.yml某些配置，然而我也是不知所以然就”照本宣改”,甚至会想当然的改掉了原来一些配置，导致hexo d运行报错。因此，通过这篇blog对config的配置进行解释说明。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`#Hexo Configuration`</span><br><span class="line">`##Docs: https://hexo.io/docs/configuration.html`</span><br><span class="line">`##Source: https://github.com/hexojs/hexo/`</span><br></pre></td></tr></table></figure>
+
+<p>第二、三行表示hexo文档的相关文档，Docs指的是hexo的文档，Source指的是hexo的Github源码。</p>
+<h1 id="网站Site"><a href="#网站Site" class="headerlink" title="网站Site"></a>网站Site</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#site</span><br><span class="line">title: Hexo</span><br><span class="line">subtitle: &#x27;&#x27;</span><br><span class="line">description: &#x27;&#x27;</span><br><span class="line">author: John Doe</span><br><span class="line">language: en</span><br><span class="line">timezone: &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>title</strong>: 网站的名字，会写在hexo g命令生成后的public文件夹下的index.html文件的title标签里。</p>
+<p><img src="https://www.freesion.com/images/403/03f9794fe0d3b46630a8885e90f29913.png" alt="index.html文件中"></p>
+<p>我们也可以在默认的主题的首页左下角找到</p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/q.png" alt="首页底下title"></p>
+<p><strong>subtitle</strong>：网站的副标题，生成的时候默认为空，我们可以试着给他赋个值看它会出现在哪。</p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/f.png" alt="hexoTest"></p>
+<p>在这个默认的主题里，它写在背景图中间，也就是hexo的正下方。</p>
+<p><strong>author</strong>：顾名思义就是作者，这个也只是署个名而已<br><strong>language</strong>：这里就写了网站使用的语言，en表示英文<br><strong>timezone</strong>：网站对应的时区，一般情况下不用去刻意配置，会默认使用电脑的时区，但如果发布到其他地方的服务器，可能会使用当地服务器的时区，此时如果有需要用到本电脑的时区就要手动设置时区了，一般中国的时区可以设置为Asia/Shanghai</p>
+<h1 id="网址URL"><a href="#网址URL" class="headerlink" title="网址URL"></a>网址URL</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line">##如果你的网站位于子目录中，请将网址url设置为&#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line">url: https://0w0suy.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+
+<p><strong>url</strong>：网站的网址<br><strong>root</strong>：网站的根目录<br><strong>permalink</strong>：文章的永久链接格式</p>
+<p>比如我的这篇blog，它的链接格式就是year/:month/:day/:title/</p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/a.png"></p>
+<p>并且在D:\blog\blog\public\2021\07这里面，也是按照日期进行归类的</p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/b.png"></p>
+<p><strong>permalink_defaults</strong>：为permalink中各项的默认值</p>
+<h1 id="目录Directory"><a href="#目录Directory" class="headerlink" title="目录Directory"></a>目录Directory</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">source_dir: source</span><br><span class="line">public_dir: public</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br></pre></td></tr></table></figure>
+
+<p><strong>source_dir</strong>：存放hexo文章的文件夹，我们写的md文件都放在这个配置对应的文件夹下，默认值是source<br><strong>public_dir</strong>：存放hexo g生成的文件，执行hexo g后根目录就会出现这个文件夹，默认值是public<br><strong>tag_dir</strong>：按标签存放文章的目录，默认值是tags，如果我们给文章添加标签，使用hexo g时public文件夹下就会多出一个tags文件夹（根据我们的配置文件夹名不同）比如到目前为止（2021.7.17)我的tag分为四类</p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/c.png" alt="tag_dir"></p>
+<p><strong>archive_dir</strong>：归档文件夹，存放归档文件，默认值为archives<br><strong>category_dir</strong>：分类文件夹，按分类存放的文件，和上面的tags一样，只要在文章中的Font-matter添加了categories就会在使用hexo g构造时出现相应的文件夹，在D:\blog\blog\public\categories中</p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/d.png" alt="categories"></p>
+<p><strong>code_dir</strong>：Include code 文件夹，source_dir 下的子目录，默认值为downloads/code<br><strong>i18n_dir</strong>：国际化（i18n）文件夹，默认值:lang<br><strong>skip_render</strong>：跳过指定文件的渲染，匹配到的文件将会被不做改动复制到public文件夹下，如果路径对应的是我们的文章，那会直接忽略掉该文章，我们这样设置来忽略掉hello-world.md文件</p>
+<h1 id="文章Writing"><a href="#文章Writing" class="headerlink" title="文章Writing"></a>文章Writing</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">new_post_name: :title.md # File name of new posts</span><br><span class="line">default_layout: post</span><br><span class="line">titlecase: false # Transform title into titlecase</span><br><span class="line">external_link:</span><br><span class="line">  enable: true # Open external links in new tab</span><br><span class="line">  field: site # Apply to the whole site</span><br><span class="line">  exclude: &#x27;&#x27;</span><br><span class="line">filename_case: 0</span><br><span class="line">render_drafts: false</span><br><span class="line">post_asset_folder: true</span><br><span class="line">relative_link: false</span><br><span class="line">future: true</span><br><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: true</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace:</span><br></pre></td></tr></table></figure>
+
+<p><strong>new_post_name</strong>：新文章的默认名称，我们是使用hexo new来构造文章的，生成的文章名就是通过这里配置的，也就是标题.md，生成的md文件可以在D:\blog\blog\source_posts中找到<br><strong>default_layout</strong>：预设布局，hexo new可以创建三种文件，post/帖子，draft/草稿，page/页面，这里设置默认值在使用hexo new就可以直接创建对应默认类型的文章，设置了post就等同于说在命令行执行hexo new <name>和执行hexo new post <name>是一样的，也可以设置为draft和page。所以我们在hexo new 的时候是默认生成post文件，而非draft和page<br><strong>titlecase</strong>：把标题转换为 titlecase，但因为为FALSE，所以不转化<br><strong>external_link</strong></name></name></p>
+<ul>
+<li>enable：是否在新标签中打开链接，为TRUE</li>
+<li>fileds：external_link.enable的配置对当前网站（site）生效或仅对文章（post）生效，默认为site</li>
+<li>exclude：需要排除的域名</li>
+</ul>
+<p><strong>filename_case</strong>：把文件名称转换为小写(1)或者大写(2)，默认不转换(0)</p>
+<p><strong>render_drafts</strong>：是否渲染草稿文件，默认为false不渲染<br><strong>post_asset_folder</strong>：是否启动资源文件夹，对于我们的网站，如果我们的文章里面有图片，我们可以在source文件夹下建立一个统一的images文件夹来存放图片，但是如果有的文章有很多的资源文件如图片，我们可以通过设置该配置为true，这样在source文件夹下创建文件的同时也会创建一个同名文件夹来存放相应的资源，比如我设置为true，然后执行hexo new “hexo根目录中_config.yml配置解释”，对应的，在D:\blog\blog\source_posts中会生成一个匹配的文件夹，专门存放图片<img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/e.png"></p>
+<p><img src="/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/g.png" alt="图片文件夹"></p>
+<p><strong>relative_link</strong>：是否把链接改为与根目录的相对地址，默认为false<br><strong>future</strong>：是否显示当前时间之后的文章，默认为true，如果设置为false的话，我们设置的日期如果是未来的日期的话，就不会显示<br><strong>highlight</strong>：代码块的设置</p>
+<ul>
+<li>enable：开启代码高亮，默认为true</li>
+<li>auto_detect：如果未指定语言，就自动检测，默认为false</li>
+<li>line_number：显示代码的行数，默认为true</li>
+<li>tab_replace：用n个空格来代表tab键，如果值为空，则不会代替tab键</li>
+</ul>
+<h1 id="主页设置Home-page-setting"><a href="#主页设置Home-page-setting" class="headerlink" title="主页设置Home page setting"></a>主页设置Home page setting</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> # path: Root path for your blogs index page. (default = &#x27;&#x27;)</span><br><span class="line"># per_page: Posts displayed per page. (0 = disable pagination)</span><br><span class="line"># order_by: Posts order. (Order by date descending by default)</span><br><span class="line">index_generator:</span><br><span class="line">  path: &#x27;&#x27;</span><br><span class="line">  per_page: 10</span><br><span class="line">  order_by: -date</span><br></pre></td></tr></table></figure>
+
+<p><strong>index_generator</strong>：主页相关的设置</p>
+<ul>
+<li>path：主页对应的路径，默认为 ‘ ‘，即域名根目录就是主页的路径</li>
+<li>per_page：每页显示的帖子数，默认为10</li>
+<li>order_by：帖子的排序，默认为-date，即按日期倒序排</li>
+</ul>
+<h1 id="分类和标签Category-amp-Tag"><a href="#分类和标签Category-amp-Tag" class="headerlink" title="分类和标签Category&amp;Tag"></a>分类和标签Category&amp;Tag</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">default_category: uncategorized </span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br></pre></td></tr></table></figure>
+
+<p><code>default_category: uncategorized</code> 默认分类<br><code>category_map:</code>分类别名<br><code>tag_map:</code>标签别名</p>
+<h1 id="日期、时间格式Date-Time-format"><a href="#日期、时间格式Date-Time-format" class="headerlink" title="日期、时间格式Date/Time format"></a>日期、时间格式Date/Time format</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Hexo uses Moment.js to parse and display date</span><br><span class="line">## You can customize the date format as defined in</span><br><span class="line">## http://momentjs.com/docs/#/displaying/format/</span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br></pre></td></tr></table></figure>
+
+<p><strong>date_format</strong>：日期格式，默认为YYYY-MM-DD，即年月日<br><strong>time_format</strong>：时间格式，默认为HH:mm:ss，即时分秒</p>
+<h1 id="分页Pagination"><a href="#分页Pagination" class="headerlink" title="分页Pagination"></a>分页Pagination</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## Set per_page to 0 to disable pagination</span><br><span class="line">per_page: 10</span><br><span class="line">pagination_dir: page</span><br></pre></td></tr></table></figure>
+
+<p><strong>per_page</strong>：分页时每页的文章数，如果为0则不分页，默认为10<br><strong>pagination_dir</strong>分页的目录，默认为page，对应于public文件夹下的archives文件夹下的page文件夹，如果只有一页是不会生成这个文件夹的</p>
+<h1 id="主题Extensions"><a href="#主题Extensions" class="headerlink" title="主题Extensions"></a>主题Extensions</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: landscape</span><br></pre></td></tr></table></figure>
+
+<p>theme: landscape <em># 当前使用的主题名</em></p>
+<h1 id="部署Deployment"><a href="#部署Deployment" class="headerlink" title="部署Deployment"></a>部署Deployment</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/0w0suy/0w0suy.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>repo:  <em># 库地址</em>  </p>
+<p>branch:  <em># 分支名称</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">0w0suy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://0w0suy.github.io/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/">https://0w0suy.github.io/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Python实例1--文本进度条</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Mysql服务器的基本配置及访问办法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/07/07/github＋hexo懒人搭建博客完整教程/" title="github＋hexo懒人搭建博客完整教程"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">github＋hexo懒人搭建博客完整教程</div></div></a></div><div><a href="/2021/07/07/关于blog常见报错及解决方法/" title="关于blog常见报错及解决方法"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">关于blog常见报错及解决方法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%AB%99Site"><span class="toc-number">3.</span> <span class="toc-text">网站Site</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E5%9D%80URL"><span class="toc-number">4.</span> <span class="toc-text">网址URL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95Directory"><span class="toc-number">5.</span> <span class="toc-text">目录Directory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0Writing"><span class="toc-number">6.</span> <span class="toc-text">文章Writing</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E9%A1%B5%E8%AE%BE%E7%BD%AEHome-page-setting"><span class="toc-number">7.</span> <span class="toc-text">主页设置Home page setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BECategory-amp-Tag"><span class="toc-number">8.</span> <span class="toc-text">分类和标签Category&amp;Tag</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E3%80%81%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8FDate-Time-format"><span class="toc-number">9.</span> <span class="toc-text">日期、时间格式Date&#x2F;Time format</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%B5Pagination"><span class="toc-number">10.</span> <span class="toc-text">分页Pagination</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98Extensions"><span class="toc-number">11.</span> <span class="toc-text">主题Extensions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2Deployment"><span class="toc-number">12.</span> <span class="toc-text">部署Deployment</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 0w0suy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,  welcome  to  my  <a  target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
