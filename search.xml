@@ -3,19 +3,67 @@
   <entry>
     <title>Hello World</title>
     <url>/2021/07/06/Hello%20World/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is my very first post！</p>
+<p>I want to take you to know a bunch of budding cells~<br>There are about 37,200 billion cells in the human body that work 24 hours a day, 365 days a year. “You work it at work, you sleep it’s still working, you get hurt it takes protective measures, every breath you take, every movement, every eyelash wink, it’s all about them … How do they work? Do you really understand?</p>
+<h1 id="Budding-cells"><a href="#Budding-cells" class="headerlink" title="Budding cells"></a>Budding cells</h1><p><strong>首先出场的是我们的女一号氧气快递员，路痴职场新手红细胞妹子</strong></p>
+<p>The first to appear is our female No. 1 oxygen courier, Lu crazy workplace novice red blood cell sister</p>
+<p>红细胞无细胞核，呈两面凹的圆饼状，内有一种红色含铁的蛋白质。寿命在120天左右，她的工作就是将氧气搬运到身体的各个角落，并将二氧化碳送回肺部。动画中红细胞这个职场新手萌妹子比较容易迷路。她静脉瓣膜、淋巴血管、脾脏、肾脏都走了一遍，就是没找到肺部。最后竟然碰上了肺炎链球菌，差点没命。还好，男主角及时出现，英雄救美</p>
+<img src="/2021/07/06/Hello%20World/v2-b9c64bb834f000f86f4921f8977eb408_r.jpg" alt="v2-b9c64bb834f000f86f4921f8977eb408_r" style="zoom:67%;">
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<img src="/2021/07/06/Hello%20World/v2-061dd824834577342027a519827ee801_r.jpg" alt="v2-061dd824834577342027a519827ee801_r" style="zoom:80%;">
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p><strong>接下来是我们的男一号，外冷内热的白细胞。</strong></p>
+<p>Next up is our male number one, the outer cold inner hot white blood cells. </p>
+<p>白细胞是免疫细胞，具有免疫功能，当我们身体被细菌感染了，它们会奋起反击，主要通过吞噬和产生抗体等方式，抵御和消灭入侵到体内的病原微生物。白细胞分为中性粒细胞、嗜酸性细胞、嗜碱性粒细胞、单核细胞、淋巴细胞。它们的画风一般只在“癫狂地杀敌”和“冷漠地巡逻”中切换，动画中白细胞1146号，就是白细胞中的中性粒细胞。</p>
+<img src="/2021/07/06/Hello%20World/v2-9f28879f88734acdc3a0c719cee323b3_r.jpg" alt="v2-9f28879f88734acdc3a0c719cee323b3_r" style="zoom:50%;">
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+
+
+<img src="/2021/07/06/Hello%20World/v2-aced7fa9a9bbe7ee69b50e390d6bd053_r.jpg" alt="v2-aced7fa9a9bbe7ee69b50e390d6bd053_r" style="zoom: 50%;">
+
+<p><strong>动画中最撩人的凝血小妖精血小板</strong></p>
+<p>The most sedulous clotting goblin platelet in the animation</p>
+<p>血小板，同红细胞、白细胞并称为三大血细胞，主要功能是促进止血和加速凝血，以及维护毛细血管壁的完整。动画中的血小板，是一群超级萌的小朋友！集体行动，擅长修修补补。如果我们身体擦伤，除了白血球会去和入侵的细菌格斗外，可爱的血小板也会迅速集合，一起奔往我们的伤口，帮助我们形成血栓，防止外界更多的细菌入侵。</p>
+<p>有的网友看了后表示，以后<strong>伤口的疤再也不舍得揭了，原来他们都是可爱的血小板…..</strong></p>
+<p>最喜欢血小板啦(≧∇≦)ﾉ</p>
+<img src="/2021/07/06/Hello%20World/830836@1611676991@2.png" alt="830836@1611676991@2">
+
+ 
+
+<img src="/2021/07/06/Hello%20World/v2-db7847026aac4b8be0c8d49cb98c1e9a_r.jpg" alt="v2-db7847026aac4b8be0c8d49cb98c1e9a_r" style="zoom: 33%;">
+
+<img src="/2021/07/06/Hello%20World/v2-d04b4c5f75c860c27b08bbeec1e04b7f_r.jpg" style="zoom: 33%;">
+
+<p><strong>擅于伪装的美丽猎人巨噬细胞</strong></p>
+<p>Beautiful hunters who are good at camouflage macrophages</p>
+<p>巨噬细胞主要作用是清除体内衰老损伤或凋亡的细胞，以及免疫复合物和病原体等抗原性异物，捕获并吞噬细菌等异物，动画中造型是穿着女仆装持有强大武器的美丽的大姐姐，外表甜美，关键时刻，扛起大刀，比谁都能打。巨噬细胞不只是单打独斗，人体是一个系统，这里也讲团队合作。巨噬细胞发现病毒后，还会通知给树突状细胞, 然后树突状细胞会通知各个器官，让杀手T细胞立刻赶来支援。</p>
+<p>(♥∀♥)</p>
+<img src="/2021/07/06/Hello%20World/v2-74014d306bae737f20b81d260051da20_b.jpg" alt="v2-74014d306bae737f20b81d260051da20_b" style="zoom:80%;">
+
+
+
+<p><strong>邮差小哥树突状细胞</strong></p>
+<p>Postman’s little brother dendritic cells</p>
+<p>树突状细胞是机体功能最强的专职抗原递呈细胞，它能高效地摄取、加工处理和递呈抗原。因其成熟时伸出许多树突样伪足样突起而得名。动画里树突状细胞是个邮差小哥，很明显它的功能就是传递信息，主要负责收集、递呈入侵细菌和遭受感染的细菌信息，并与其它细胞相互作用，启动适当的免疫反应。</p>
+<p><strong>强悍特警杀伤性T细胞</strong></p>
+<p>Strong special police kill T-cells</p>
+<p>如果白细胞是普通警察，杀手T细胞就是“特警”，病毒太难缠，他们就出手了。它们直接听命于辅助T细胞指挥官，可以反复杀伤病毒异物，而本身不受损伤。</p>
+<img src="/2021/07/06/Hello%20World/u=4105967497,2266309614&fm=26&fmt=auto&gp=0.webp" alt="u=4105967497,2266309614&fm=26&fmt=auto&gp=0" style="zoom:80%;">
+
+<p><strong>记忆T细胞</strong></p>
+<p>Memory T cells</p>
+<p>这位手中的小本本，就知道它的功能是做记录的，对于每次的反攻，他都要记录下来，以备下次再用，记忆T细胞会在下一次抗原入侵时再次将记忆中的杀毒方法再次调动出来，再次破坏靶细胞即受病菌或病毒感染的细胞，释放出靶细胞中的抗原，在再次免疫应答中起重要作用。</p>
+<p><strong>除了这些守护我们身体的正面角色，反面角色有哪些？当然是各种细菌病毒了。</strong></p>
+<p>重点说说<strong>“肺炎链球菌”</strong></p>
+<p>肺炎链球菌是引起肺炎等呼吸器官疾病的病原细菌，是有荚膜包裹的毒性极强的细菌。会侵入肺细胞并且破坏红血球，也是最坏能够破坏脑部的病原体，不仅可以导致儿童肺炎，而且还是引发脑膜炎、中耳炎等疾病。</p>
+<img src="/2021/07/06/Hello%20World/u=4038337496,290975762&fm=26&fmt=auto&gp=0.webp" alt="u=4038337496,290975762&fm=26&fmt=auto&gp=0" style="zoom:80%;">
+
+<p>每当肺炎链球菌入侵肺部后，对于身体内的免疫细胞来说，无异于一场灾难。我们身体的红细胞受到大量的损伤，白血球、T细胞浴血奋战，拼死将细菌消灭，而对人类而言，不过打了一个喷嚏，没想到吧，你一个喷嚏体内的动静竟有那么大。</p>
+<p>此外还有金黄色葡萄球菌、酿脓链球菌、流感病毒……这些邪恶的反派，虽然说是反派，但是也萌蠢萌蠢得让人恨不起来……</p>
+<p>最后，《工作细胞》送给努力工作的你，你身体内的细胞们为了这个身体的正常运行都这么拼命，你作为这具身体的主人更该为自己，为工作细胞们负责。养成好的生活习惯，减少身体里这群可爱细胞们的工作量。</p>
+<p>Finally, “Working Cells” to hard-working you, the cells in your body for the normal operation of the body are so desperate, you as the owner of this body more for themselves, for the work of the cells responsible. Develop good habits and reduce the workload of these cute cells in your body.</p>
 ]]></content>
   </entry>
   <entry>
