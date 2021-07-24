@@ -440,7 +440,7 @@
 
 <p>发现结尾是”\x01\x00\x01”,猜测e=10001</p>
 <p>再看看解码后的长度为162,我们找到偏移表,发现模数的偏移位置是159，长度是3,加起来正好162~那么说明这段字符串就是指数和模数加密过后的结果。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1100338/201808/1100338-20180806131502065-588726357.png" alt="img"></p>
+<p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/Snipaste_2021-07-24_21-45-30.png" alt="Snipaste_2021-07-24_21-45-30"></p>
 <h2 id="解e和n"><a href="#解e和n" class="headerlink" title="解e和n"></a>解e和n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def str2key(s):</span><br><span class="line">    # 对字符串解码</span><br><span class="line">    b_str = base64.b64decode(s)</span><br><span class="line"></span><br><span class="line">    if len(b_str) &lt; 162:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    hex_str = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    # 按位转换成16进制</span><br><span class="line">    for x in b_str:</span><br><span class="line">        h = hex(ord(x))[2:]</span><br><span class="line">        h = h.rjust(2, &#x27;0&#x27;)</span><br><span class="line">        hex_str += h</span><br><span class="line"></span><br><span class="line">    # 找到模数和指数的开头结束位置</span><br><span class="line">    m_start = 29 * 2</span><br><span class="line">    e_start = 159 * 2</span><br><span class="line">    m_len = 128 * 2</span><br><span class="line">    e_len = 3 * 2</span><br><span class="line"></span><br><span class="line">    modulus = hex_str[m_start:m_start + m_len]</span><br><span class="line">    exponent = hex_str[e_start:e_start + e_len]</span><br><span class="line"></span><br><span class="line">    return modulus,exponent</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line"></span><br><span class="line">    pubkey = &quot;MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMJjauXD2OQ/+5erCQKPGqxsC/bNPXDr</span><br><span class="line">yigb/+l/vjDdAgMBAAE=&quot;</span><br><span class="line">    key = str2key(pubkey)</span><br><span class="line">    print key</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
@@ -476,7 +476,7 @@
 
 <h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">privatekey = rsa.PrivateKey(N,e,d,p,q)</span><br><span class="line">s = open(&quot;flag.enc&quot;,&quot;rb&quot;)</span><br><span class="line">print rsa.decrypt(s.read().privatekey).decode()</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://images2018.cnblogs.com/blog/1100338/201808/1100338-20180806152543257-1180092424.png" alt="结果"></p>
+<p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/o.png" alt="o"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>给出的文件不一定直接给出数字，有时候需要先解码（像这题），提取关键字眼，间接求数字。</p>
 <p>有时Python比虚拟机操作繁琐。</p>
 <p>一些编码的类型要识别出来（比如base64，hex）</p>
