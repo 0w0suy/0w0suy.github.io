@@ -67,84 +67,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Mysql服务器的基本配置及访问办法</title>
-    <url>/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>存在即合理，从两个问题开始引入mysql</p>
-<p>1、“这是什么？”</p>
-<p>2、“为什么要有这个？”</p>
-<h2 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h2><p>数据库，是用来存储数据的。数据库由表组成，表由列组成。这个表就像Excel一样，它适合存放一些文字信息。比如，id、密码、电话号码、地址等等，但是它不适合存放单个大体量的文件对象，比如，电影、照片。</p>
-<p>简单的举个栗子，比如说QQ中的数据库，会存放users的网名、密码、QQ号、个性签名等数据，但是qq空间的动态里的视频、音乐、图片可能就不会放在数据库里。</p>
-<h2 id="MySQL是什么？"><a href="#MySQL是什么？" class="headerlink" title="MySQL是什么？"></a><strong>MySQL是什么？</strong></h2><p>MySQL是一种数据库软件。数据库和MySQL的关系，就像是聊天软件与QQ、微信的关系。世界上有各种各样的数据库，比如Oracle、MySQL、SQL Server等等，一般互联网公司都会用MySQL，因为它是免费、使用范围最广。</p>
-<p>MySQL已经成为当前网络中使用最多的数据库之一，特别是在Web应用上，它占据了中小型应用的绝对优势。这一切都源于它的小巧易用、安全有效、开放式许可和多平台，更主要的是它与三大Web语言之一——PHP的完美结合。</p>
-<h2 id="SQL是什么？"><a href="#SQL是什么？" class="headerlink" title="SQL是什么？"></a><strong>SQL是什么</strong>？</h2><p>SQL是一种编程语言，就像Java、C++、Python。它是用来操纵数据库的一种语言。只需要上百个英文单词，SQL就能对数据进行让人眼花缭乱的操作。</p>
-<h2 id="为什么要有数据库？"><a href="#为什么要有数据库？" class="headerlink" title="为什么要有数据库？"></a>为什么要有数据库？</h2><p>数据库可以让很多人同时地进行访问、更改数据。而excel不能供一个大型系统使用，它的性能不够好。（想象一下数亿人同时操控一个Excel文件，啊，那真是不能想象，一定卡顿爆）</p>
-<hr>
-<p>总的来说，数据库是一种数据存储系统，其中最具代表性的是mysql，我们使用sql语言对它进行操纵。</p>
-<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><p>用户系统：Windows操作系统</p>
-<p>工具：MySQL5.5软件</p>
-<h1 id="数据库安全实验"><a href="#数据库安全实验" class="headerlink" title="数据库安全实验"></a>数据库安全实验</h1><p>1、安装MySQL</p>
-<p>在MySQL官网上点download，进入MySQL Community server下载想要下载的版本，直接下载installer，不要下载zip压缩包（我下载的是5.5.29，截止到2021.07.19，最新版本是8.0.25，越稳定越好，随便下个5.5.29的）</p>
-<p>几个非默认的页面需要注意一下（并非一直点next）</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A41.png" alt="勾选server machine"></p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step2.png" alt="勾选manual，并选择utf8"></p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step3.png" alt="勾选include bin directory in windows path"></p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step4.png" alt="等待四个自动勾选后安装完成"></p>
-<p>2、MySQL密码为安装时所设，键入后回车，界面如下。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/a.png"></p>
-<p>3、运行下图命令，查看User表。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/b.png"></p>
-<p>4、运行update命令，将MySQL数据库root用户的口令改成123456。其中最后一句命令flush privileges的意思是强制刷新内存授权表，否则用的还是缓冲中的口令，这时非法用户还可以用root用户及空口令登录，直到重启MySQL服务器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set password = password(&#x27;123456&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/c.png"></p>
-<p>5、运行delete命令，删除空用户。Host字段为localhost的匿名用户拥有所有的权限，就是说本地用户用空的用户名和空的口令登录MySQL数据库服务器可以得到最高的权限，所以匿名用户必须删除。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where user=&#x27;&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/d.png"></p>
-<p>6、Desc User</p>
-<p>User表是授权表中最重要的一个，运行下图命令，列出可以连接服务器的用户及其加密口令，并且它指定它们有哪种全局（超级用户）权限。在User表启用的任何权限均是全局权限，并适用于所有数据库。所以我们不能给任何用户访问MySQL. User表的权限。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc user;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/e.png"></p>
-<p>7、Desc DB</p>
-<p>运行下图命令，查看DB表，列出所有数据库，而用户有权限访问它们。在这里指定的权限适用于一个数据库中的所有表。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">desc db;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/f.png"></p>
-<p>8、Desc Host</p>
-<p>Host表如下图所示，与DB表结合使用在一个较好层次上控制特定主机对数据库的访问权限，这可能比单独使用DB好些。这个表不受GRANT和REVOKE语句的影响。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc host;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/g.png"></p>
-<p>9、设置用户权限</p>
-<p>如下图命令用于在本地增加一个具有所有权限的test 用户(超级用户)，密码是test。ON子句中的*.*意味着“所有数据库、所有表”。with grant option表示它具有grant权限。用grant语句创建权限是不需要再手工刷新授权表的，因为它已经自动刷新了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to test@localhost identified by &#x27;test&#x27; with grant option;</span><br><span class="line">select User,Password from user;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/h.png"></p>
-<p>查看运行结果，如下图。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/i.png"></p>
-<p>10、删除用户的权限，并删除用户</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">revoke all on *.* from test@localhost;</span><br><span class="line">delete from user where user=&#x27;test&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<p>删除用户权限。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/j.png"></p>
-<p>删除用户test。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/k.png"></p>
-<p>到这就OK啦</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python之函数</title>
     <url>/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人的细胞数量，约有37兆2千亿个。细胞们在你的身体的世界中，无休无眠地在工作着。趁热打铁，二话不多说开始进入函数之旅叭。其中，函数的参数及返回值是重点。</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人的细胞数量，约有37兆2千亿个。细胞们在你的身体的世界中，无休无眠地在工作着。趁热打铁，二话不多说开始进入函数之旅叭。其中，函数的参数及返回值是重点。</p>
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数就是对实现某一特定功能的代码的封装。这样做的好处是：函数能提高应用的模块性和代码的重复利用率。</p>
 <p>打个简单的比喻，我们进店买喜茶、海底捞的时候，需要排队、点单、等待、买单等待繁琐的过程，但是通过食用市面上出售的瓶装喜茶、桶装海底捞，就能省去这些步骤，而后者就是封装。</p>
 <p>举个栗子!就拿我们平常看到的验证码来说，这就是一个封装函数。直接调用函数名就可以生成n位随机数嗷（</p>
@@ -274,9 +199,84 @@
       </tags>
   </entry>
   <entry>
+    <title>Mysql服务器的基本配置及访问办法</title>
+    <url>/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>存在即合理，从两个问题开始引入mysql</p>
+<p>1、“这是什么？”</p>
+<p>2、“为什么要有这个？”</p>
+<h2 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h2><p>数据库，是用来存储数据的。数据库由表组成，表由列组成。这个表就像Excel一样，它适合存放一些文字信息。比如，id、密码、电话号码、地址等等，但是它不适合存放单个大体量的文件对象，比如，电影、照片。</p>
+<p>简单的举个栗子，比如说QQ中的数据库，会存放users的网名、密码、QQ号、个性签名等数据，但是qq空间的动态里的视频、音乐、图片可能就不会放在数据库里。</p>
+<h2 id="MySQL是什么？"><a href="#MySQL是什么？" class="headerlink" title="MySQL是什么？"></a><strong>MySQL是什么？</strong></h2><p>MySQL是一种数据库软件。数据库和MySQL的关系，就像是聊天软件与QQ、微信的关系。世界上有各种各样的数据库，比如Oracle、MySQL、SQL Server等等，一般互联网公司都会用MySQL，因为它是免费、使用范围最广。</p>
+<p>MySQL已经成为当前网络中使用最多的数据库之一，特别是在Web应用上，它占据了中小型应用的绝对优势。这一切都源于它的小巧易用、安全有效、开放式许可和多平台，更主要的是它与三大Web语言之一——PHP的完美结合。</p>
+<h2 id="SQL是什么？"><a href="#SQL是什么？" class="headerlink" title="SQL是什么？"></a><strong>SQL是什么</strong>？</h2><p>SQL是一种编程语言，就像Java、C++、Python。它是用来操纵数据库的一种语言。只需要上百个英文单词，SQL就能对数据进行让人眼花缭乱的操作。</p>
+<h2 id="为什么要有数据库？"><a href="#为什么要有数据库？" class="headerlink" title="为什么要有数据库？"></a>为什么要有数据库？</h2><p>数据库可以让很多人同时地进行访问、更改数据。而excel不能供一个大型系统使用，它的性能不够好。（想象一下数亿人同时操控一个Excel文件，啊，那真是不能想象，一定卡顿爆）</p>
+<hr>
+<p>总的来说，数据库是一种数据存储系统，其中最具代表性的是mysql，我们使用sql语言对它进行操纵。</p>
+<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><p>用户系统：Windows操作系统</p>
+<p>工具：MySQL5.5软件</p>
+<h1 id="数据库安全实验"><a href="#数据库安全实验" class="headerlink" title="数据库安全实验"></a>数据库安全实验</h1><p>1、安装MySQL</p>
+<p>在MySQL官网上点download，进入MySQL Community server下载想要下载的版本，直接下载installer，不要下载zip压缩包（我下载的是5.5.29，截止到2021.07.19，最新版本是8.0.25，越稳定越好，随便下个5.5.29的）</p>
+<p>几个非默认的页面需要注意一下（并非一直点next）</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A41.png" alt="勾选server machine"></p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step2.png" alt="勾选manual，并选择utf8"></p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step3.png" alt="勾选include bin directory in windows path"></p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step4.png" alt="等待四个自动勾选后安装完成"></p>
+<p>2、MySQL密码为安装时所设，键入后回车，界面如下。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/a.png"></p>
+<p>3、运行下图命令，查看User表。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/b.png"></p>
+<p>4、运行update命令，将MySQL数据库root用户的口令改成123456。其中最后一句命令flush privileges的意思是强制刷新内存授权表，否则用的还是缓冲中的口令，这时非法用户还可以用root用户及空口令登录，直到重启MySQL服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set password = password(&#x27;123456&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/c.png"></p>
+<p>5、运行delete命令，删除空用户。Host字段为localhost的匿名用户拥有所有的权限，就是说本地用户用空的用户名和空的口令登录MySQL数据库服务器可以得到最高的权限，所以匿名用户必须删除。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where user=&#x27;&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/d.png"></p>
+<p>6、Desc User</p>
+<p>User表是授权表中最重要的一个，运行下图命令，列出可以连接服务器的用户及其加密口令，并且它指定它们有哪种全局（超级用户）权限。在User表启用的任何权限均是全局权限，并适用于所有数据库。所以我们不能给任何用户访问MySQL. User表的权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc user;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/e.png"></p>
+<p>7、Desc DB</p>
+<p>运行下图命令，查看DB表，列出所有数据库，而用户有权限访问它们。在这里指定的权限适用于一个数据库中的所有表。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">desc db;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/f.png"></p>
+<p>8、Desc Host</p>
+<p>Host表如下图所示，与DB表结合使用在一个较好层次上控制特定主机对数据库的访问权限，这可能比单独使用DB好些。这个表不受GRANT和REVOKE语句的影响。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc host;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/g.png"></p>
+<p>9、设置用户权限</p>
+<p>如下图命令用于在本地增加一个具有所有权限的test 用户(超级用户)，密码是test。ON子句中的*.*意味着“所有数据库、所有表”。with grant option表示它具有grant权限。用grant语句创建权限是不需要再手工刷新授权表的，因为它已经自动刷新了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to test@localhost identified by &#x27;test&#x27; with grant option;</span><br><span class="line">select User,Password from user;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/h.png"></p>
+<p>查看运行结果，如下图。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/i.png"></p>
+<p>10、删除用户的权限，并删除用户</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">revoke all on *.* from test@localhost;</span><br><span class="line">delete from user where user=&#x27;test&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>删除用户权限。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/j.png"></p>
+<p>删除用户test。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/k.png"></p>
+<p>到这就OK啦</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python实例1--文本进度条</title>
     <url>/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="文本进度条的分析"><a href="#文本进度条的分析" class="headerlink" title="文本进度条的分析"></a>文本进度条的分析</h1><p>1、采用字符串方式打印可以动态变化的文本进度条</p>
+    <content><![CDATA[<h1 id="文本进度条的分析"><a href="#文本进度条的分析" class="headerlink" title="文本进度条的分析"></a>文本进度条的分析</h1><p>1、采用字符串方式打印可以动态变化的文本进度条</p>
 <p>2、进度条需要能在一行中逐渐变化</p>
 <p>3、采用sleep（）模拟一个持续的进度</p>
 <h1 id="文本进度条框架"><a href="#文本进度条框架" class="headerlink" title="文本进度条框架"></a>文本进度条框架</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 10</span><br><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*i</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
@@ -366,306 +366,9 @@
       </tags>
   </entry>
   <entry>
-    <title>RSA公钥文件解密的分析</title>
-    <url>/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天，手一抽打开了这个网站并注册登录</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/0.png" alt="0" style="zoom: 50%;">
-
-<p>（一个早上看奥运会碌碌无为</p>
-<p>我想就顺便试试水吧）</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/1.png" alt="1" style="zoom: 80%;">
-
-<p>先做的是easy_RSA,已经把d算出来了，可是提交显示不对..仔细看了题目的要求后..说：flag格式为cyberpeace{小写的你解出的答案}。我以为这是把答案转化成cyberpeace格式…上网搜索“在线cyberpeace转化”未果，才知道原来答案要带上这一串英文啊..</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/2.png" alt="2" style="zoom:80%;">
-
-<p>然后，我又手一抽，点到了下一题..然鹅计时已经开始</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/5.png" alt="5">
-
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/7.png" alt="7">
-
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/6.png" alt="6">
-
-<p>啊？都是乱码，没有n,e,c咋解呢这</p>
-<p>于是乎，复制了BEGIN PRIVATE KEY到浏览器搜索，顺其自然地开始了我对rsa公钥文件解密的study（</p>
-<h1 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h1><h2 id="提n，e"><a href="#提n，e" class="headerlink" title="提n，e"></a>提n，e</h2><p>这时候我们有如下的publickey.pem文件：</p>
-<blockquote>
-<p>—–BEGIN PUBLIC KEY—–<br>MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMJjauXD2OQ/+5erCQKPGqxsC/bNPXDr<br>yigb/+l/vjDdAgMBAAE=<br>—–END PUBLIC KEY—–</p>
-</blockquote>
-<p>现在我们需要做的就是从这段字符串中提出n和e</p>
-<h3 id="pem后缀"><a href="#pem后缀" class="headerlink" title="pem后缀"></a>pem后缀</h3><p>OpenSSL 使用 PEM 文件格式存储证书和密钥。PEM 实质上是 Base64 编码的二进制内容，再加上开始和结束行，如证书文件的：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-----BEGIN CERTIFICATE-----`</span><br><span class="line"></span><br><span class="line">`-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
-
-<p>在这些标记外面可以有额外的信息，如编码内容的文字表示。文件是 ASCII 的，可以用任何文本编辑程序打开它们。</p>
-<p>简单来讲，<strong>pem文件这种格式就是用于ASCII(Base64)编码的各种X.509 v3 证书。</strong>所以我们用base64解码</p>
-<h3 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h3><p>从一个表格中了解base64的发展</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>缺点</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>二进制</td>
-<td>长</td>
-<td>简单，0和1</td>
-</tr>
-<tr>
-<td>Hex（16进制</td>
-<td>不好表示文本</td>
-<td></td>
-</tr>
-<tr>
-<td>ASCLL码</td>
-<td>只能表示英文</td>
-<td>包含字符多</td>
-</tr>
-<tr>
-<td>UTF-8</td>
-<td>乱码</td>
-<td>兼容各种语言</td>
-</tr>
-<tr>
-<td>Base-64</td>
-<td></td>
-<td>国际化</td>
-</tr>
-</tbody></table>
-<p>用base64解码：</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/乱码.png" alt="乱码" style="zoom:80%;">
-
-<p>解出来是一段乱码，旁边有个可以以15进制显示的选项，我们试一下</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/16进制.png" alt="16进制">
-
-<p>发现结尾是”\x01\x00\x01”,猜测e=10001</p>
-<p>再看看解码后的长度为162,我们找到偏移表,发现模数的偏移位置是159，长度是3,加起来正好162~那么说明这段字符串就是指数和模数加密过后的结果。</p>
-<p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/Snipaste_2021-07-24_21-45-30.png" alt="Snipaste_2021-07-24_21-45-30"></p>
-<h2 id="解e和n"><a href="#解e和n" class="headerlink" title="解e和n"></a>解e和n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def str2key(s):</span><br><span class="line">    # 对字符串解码</span><br><span class="line">    b_str = base64.b64decode(s)</span><br><span class="line"></span><br><span class="line">    if len(b_str) &lt; 162:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    hex_str = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    # 按位转换成16进制</span><br><span class="line">    for x in b_str:</span><br><span class="line">        h = hex(ord(x))[2:]</span><br><span class="line">        h = h.rjust(2, &#x27;0&#x27;)</span><br><span class="line">        hex_str += h</span><br><span class="line"></span><br><span class="line">    # 找到模数和指数的开头结束位置</span><br><span class="line">    m_start = 29 * 2</span><br><span class="line">    e_start = 159 * 2</span><br><span class="line">    m_len = 128 * 2</span><br><span class="line">    e_len = 3 * 2</span><br><span class="line"></span><br><span class="line">    modulus = hex_str[m_start:m_start + m_len]</span><br><span class="line">    exponent = hex_str[e_start:e_start + e_len]</span><br><span class="line"></span><br><span class="line">    return modulus,exponent</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line"></span><br><span class="line">    pubkey = &quot;MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMJjauXD2OQ/+5erCQKPGqxsC/bNPXDr</span><br><span class="line">yigb/+l/vjDdAgMBAAE=&quot;</span><br><span class="line">    key = str2key(pubkey)</span><br><span class="line">    print key</span><br></pre></td></tr></table></figure>
-
-<p>结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(&#x27;C2636AE5C3D8E43FFB97AB09028F1AAC6C0BF6CD3D70EBCA281BFFE97FBE30DD&#x27;, &#x27;010001&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>这个即为我们求出来模数N和指数e</p>
-<p>网上说可以用虚拟机Kali Linux直接用命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl rsa -pubin -text -modulus -in warmup -in pubkey.pem</span><br></pre></td></tr></table></figure>
-
-<p>试了下，确实很方便</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/屏幕截图 2021-07-24 210147.png" alt="屏幕截图 2021-07-24 210147">
-
-<p>我们把n=C2636AE5C3D8E43FFB97AB09028F1AAC6C0BF6CD3D70EBCA281BFFE97FBE30DD，e=10001（十六进制）在线转化十进制</p>
-<p><a href="https://tool.lu/hexconvert/">进制转换 - 在线工具 (tool.lu)</a></p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/进制转化.png" alt="进制转化" style="zoom:80%;">
-
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/n.png" alt="n" style="zoom:80%;">
-
-<p>所以<code>e=65537``n=87924348264132406875276140514499937145050893665602592992418171647042491658461</code></p>
-<p>得到n，e后就是常规的做题啦</p>
-<h2 id="分解n得pq"><a href="#分解n得pq" class="headerlink" title="分解n得pq"></a>分解n得pq</h2><p>解码网址上篇也有用到<a href="http://www.factordb.com/">http://www.factordb.com/</a></p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/搜狗截图20210724204727.png" alt="搜狗截图20210724204727">
-
-<blockquote>
-<p><em>p = 275127860351348928173285174381581152299</em></p>
-<p>q = 319576316814478949870590164193048041239</p>
-</blockquote>
-<h2 id="求d"><a href="#求d" class="headerlink" title="求d"></a>求d</h2><p>走个Python执行结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2 </span><br><span class="line">p= gmpy2.mpz(275127860351348928173285174381581152299) </span><br><span class="line">q= gmpy2.mpz(319576316814478949870590164193048041239)</span><br><span class="line">e= gmpy2.mpz(65537)</span><br><span class="line">phi_n= (p-1)*(q-1) </span><br><span class="line">d = gmpy2.invert(e,phi_n) </span><br><span class="line">print(&quot;d is:\n%s&quot;%d)</span><br></pre></td></tr></table></figure>
-
-<p>结果d=10866948760844599168252082612378495977388271279679231539839049698621994994673</p>
-<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/d.png" alt="d">
-
-<h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">privatekey = rsa.PrivateKey(N,e,d,p,q)</span><br><span class="line">s = open(&quot;flag.enc&quot;,&quot;rb&quot;)</span><br><span class="line">print rsa.decrypt(s.read().privatekey).decode()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/o.png" alt="o"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>给出的文件不一定直接给出数字，有时候需要先解码（像这题），提取关键字眼，间接求数字。</p>
-<p>有时Python比虚拟机操作繁琐。</p>
-<p>一些编码的类型要识别出来（比如base64，hex）</p>
-<p>能直接利用网站在线求解的不需要写Python</p>
-]]></content>
-      <categories>
-        <category>实例</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RSA密码的深入浅出</title>
-    <url>/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>昨天看到这样一句话</p>
-<p><strong>“密码本质上就是拉开了时间复杂度的差距。”</strong></p>
-<p>初次看到，茫然不知，我想，密码跟时间复杂度究竟有何联系？何为复杂度？这复杂程度的参照物又是什么？怀揣着疑问，我在知乎、CSDN上阅读几篇大佬对密码学的认识与理解。阅读归阅读，还是得靠吸收与总结，那现在就开始我对密码学cryptography中RSA的深入浅出吧！（密码学的背景发展史等，网上千篇一律，暂不赘述</p>
-<hr>
-<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>先说说开头提到的这句哈把“密码本质上就是拉开了时间复杂度的差距。”我们知道，计算机的计算运行速度很快，四位数乘四位数的计算，人需要一分钟左右，而计算机秒出结果。然而，计算机的计算能力是有限的，就算是超级计算机“天问二号”，<strong>计算速度也有上限</strong></p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/image-20210723093418874.png"></p>
-<p>所以对于计算机来说，我们需要利用时间复杂度来衡量一个程序的算法有多耗时。按照初中学过的知识，我们知道底数大于1的指数呈“爆炸式增长”，也从古代国王在64个格子放米的例子中可以看出，当放到第28格的时候，需要米已经超过1亿，放到第64格的时候，大约要放92亿粒！（有人计算过，大约是2814亿吨重）从这个例子我们就可以看到，时间复杂度直接影响了程序完成的速度。当计算机计算指数函数10的n次方时，可能就需要好几十年</p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/image-20210723094340430.png"></p>
-<p>从而可知，在密码学中，很多时候<strong>密码不是不可以破解的，只不过破解密码需要大量的时间</strong>。</p>
-<p>比如在RSA中最关键的一步，是Alice生成两个指数p和q，计算它们乘积n=p*q，然后告诉Bob这个n的值，他就需要把n质因数分解为p和q，对于这种单项函数来说，逆着运算（即分解质因数)的时间复杂度是指数级，比顺着运算（乘积n）的运算时间来得要长。</p>
-<p>假如Alice的这个p和q足够大，等Bob分解完n，恐怕就过去了好几十年。</p>
-<p><strong>因此，密码的本质上就是拉开了时间复杂度的差距，使得解密密码的时间复杂度高于加密的时间复杂度，以达成保密的目的。</strong></p>
-<hr>
-<h1 id="一些数论"><a href="#一些数论" class="headerlink" title="一些数论"></a>一些数论</h1><p>来，先来膜拜一下伟大的数学家–欧拉</p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/1.png" alt="欧拉"></p>
-<p>被称为“对世界数学的发展作出创造性工作的人士”，他值得！</p>
-<p>下述的一些数论知识在初高中就有学习过，简单提一哈~</p>
-<h2 id="欧拉函数–φ（n）"><a href="#欧拉函数–φ（n）" class="headerlink" title="欧拉函数–φ（n）"></a>欧拉函数–φ（n）</h2><p><strong>φ（n）：在[0,n)中与n互质的正整数的个数</strong></p>
-<p>eg：n=23，在[0,23)中，与21互质的正整数有：1、 2、  4 、5 、8、 10、 11 、13、 16 、17、 19、 20这12个数，因此φ（23）=12</p>
-<p><strong>φ（n）=（p-1）（q-1）</strong></p>
-<p>eg：23=7*3，φ（23）=（7-1）（3-1）=12</p>
-<h2 id="同余式"><a href="#同余式" class="headerlink" title="同余式"></a>同余式</h2><p>我们学过余数，同余式就是另外一种写法罢了，下面以一个表格做出比较</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>余式</th>
-<th>同余式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>eg1</td>
-<td>23÷7=3…2</td>
-<td>23≡2（mod7）</td>
-</tr>
-<tr>
-<td>eg2</td>
-<td>50÷8=6…2</td>
-<td>50≡2（mod8）</td>
-</tr>
-<tr>
-<td>通式</td>
-<td>a÷m=k…b</td>
-<td>a≡b（mod m）</td>
-</tr>
-</tbody></table>
-<p>之前学习同余式可能忽略了几个性质，网上找了一下基本性质，直接放图</p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/Snipaste_2021-07-23_10-28-39.png" alt="Snipaste_2021-07-23_10-28-39"></p>
-<h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><p><strong>若a与n互质，则a^φ（n）^≡1（mod n）</strong></p>
-<h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><p><strong>如果ab ≡ 1（mod m），则称a和b为关于m互为乘法逆元</strong></p>
-<p>已知a求b的方法：因为ab <strong>≡</strong> 1（mod m），所以不妨设ab+mk=1，其中a和m为已知数。可以利用<strong>扩展欧几里得算法</strong>，计算出来一个乘法逆元b。</p>
-<h1 id="RSA简介"><a href="#RSA简介" class="headerlink" title="RSA简介"></a>RSA简介</h1><p>前面铺垫了这么这么多，终于开始进入咱们的正题–RSA的深入浅出</p>
-<p>先对rsa密钥体制做个介绍</p>
-<p>1、选择两个大的互质参数p，q，计算出模数<code>n=p*q</code></p>
-<p>2、计算欧拉函数<code>φ（n）=（p-1)(q-1)</code>。选择一个e（1&lt;e&lt;φ（n)),要求e和φ（n）互质，即<code>gcd(e,φ（n）)=1</code></p>
-<p>3、计算e的模反数d。计算方法为<code>e*d≡1（mod φ（n））</code>【模反元素：如果存在两个正整数e和φ（n）互质，那么一定存在一个整数d，使得ed-1被φ（n）整除，即ed=kφ（n）+1.这是，d就是e的模反元素。欧拉公式可以证明模反元素必然存在。两个整数a，b，它们除以整数φ（n）所得余数相等，即a≡1(modφ（n）)，b≡1（modφ（n）），根据相乘的性质ab≡1（modφ（n）），所以a和b互为逆元</p>
-<p>4、对明文m加密。密文<code>c=pow（m，e，n）</code>，等同于c=m^e^（mod n）</p>
-<p>5、对密文c解密。明文<code>m=pow（c，d，n）</code>，等同于m=c^d^（mod n）</p>
-<h1 id="RSA安全性分析"><a href="#RSA安全性分析" class="headerlink" title="RSA安全性分析"></a>RSA安全性分析</h1><p>值得一提的是，虽然公钥（n，e）是直接公开的，但是只有Alice知道密钥（n，d），可以计算m=c^d^（mod n），<strong>除了Alice，没有任何人可以知道φ(n)，所以没有人可以求出e关于φ(n)的乘法逆元d。也就是说d的值从头到尾只有Alice自己知道，不可能泄露。</strong>假如Alice把本地的私钥弄丢了，那，谁也解不开密码，这就是非对称密码rsa与对称密码的本质区别</p>
-<h1 id="常用的攻击方法"><a href="#常用的攻击方法" class="headerlink" title="常用的攻击方法"></a>常用的攻击方法</h1><h2 id="直接分解模数"><a href="#直接分解模数" class="headerlink" title="直接分解模数"></a>直接分解模数</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>直接分解数模n是最直接的攻击放方法，也是最困难的办法。破解RSA最直接（暴力）的方法就是分解整数n，然后计算欧拉函数φ(n)=(p-1) * (q-1),再通过d * e ≡ 1 mod φ(N)，即可计算出 d，然后就可以使用私钥(N, d)通过m = pow(c,d,N)解密明文。</p>
-<p>如果<code>n</code>小于256bit，可以使用本地工具进行暴力分解，例如windwods平台的<code>RSATool</code>，可以在数分钟之内完成256bit的<code>n</code>的分解。<br>如果<code>n</code>大于768bit，可以尝试利用在线网站<a href="http://factordb.com,/">http://factordb.com，</a> 这一类在线网站的原理是储存了部分<code>n</code>分解成功的的值。</p>
-<h3 id="CTF原题"><a href="#CTF原题" class="headerlink" title="CTF原题"></a>CTF原题</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;920139713,19&#125;</span><br><span class="line"></span><br><span class="line">704796792</span><br><span class="line">752211152</span><br><span class="line">274704164</span><br><span class="line">18414022</span><br><span class="line">368270835</span><br><span class="line">483295235</span><br><span class="line">263072905</span><br><span class="line">459788476</span><br><span class="line">483295235</span><br><span class="line">459788476</span><br><span class="line">663551792</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">428313374</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">425392137</span><br><span class="line">704796792</span><br><span class="line">458265677</span><br><span class="line">341524652</span><br><span class="line">483295235</span><br><span class="line">534149509</span><br><span class="line">425392137</span><br><span class="line">428313374</span><br><span class="line">425392137</span><br><span class="line">341524652</span><br><span class="line">458265677</span><br><span class="line">263072905</span><br><span class="line">483295235</span><br><span class="line">828509797</span><br><span class="line">341524652</span><br><span class="line">425392137</span><br><span class="line">475206804</span><br><span class="line">428313374</span><br><span class="line">483295235</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">306220148</span><br></pre></td></tr></table></figure>
-
-<p>分解n可以通过在线网站<a href="http://www.factordb.com/index.php%E3%80%82">http://www.factordb.com/index.php。</a></p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/Snipaste_2021-07-23_11-42-13.png" alt="Snipaste_2021-07-23_11-42-13"></p>
-<p>p=18443,q=49891,e=19,c=这一大串数字密文</p>
-<p>因此可以通过d * e ≡ 1 mod φ(n)，计算出 d</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">p = gmpy2.mpz(18443)     #初始化大整数</span><br><span class="line">q = gmpy2.mpz(49891)</span><br><span class="line">e = gmpy2.mpz(19)</span><br><span class="line">phi_n = (p-1)*(q-1)</span><br><span class="line">d = gmpy2.invert(e,phi_n)    #invert（e， φ(n)）返回d使得e*d == 1 mod φ(n)，如果不存在d，则返回0</span><br><span class="line">print(&quot;p=%s,q=%s,e=%s&quot;%(p,q,e))</span><br><span class="line">print(&quot;d is:\n%s&quot;%d)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">p=18443,q=49891,e=19 </span><br><span class="line">d is: </span><br><span class="line">96849619</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/2.png"></p>
-<p>到目前为止，有了d就可以求出明文m</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#求明文</span><br><span class="line">import gmpy2</span><br><span class="line">n = 920139713</span><br><span class="line">d = 96849619</span><br><span class="line">c = &quot;&quot;&quot;</span><br><span class="line">704796792</span><br><span class="line">752211152</span><br><span class="line">274704164</span><br><span class="line">18414022</span><br><span class="line">368270835</span><br><span class="line">483295235</span><br><span class="line">263072905</span><br><span class="line">459788476</span><br><span class="line">483295235</span><br><span class="line">459788476</span><br><span class="line">663551792</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">428313374</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">425392137</span><br><span class="line">704796792</span><br><span class="line">458265677</span><br><span class="line">341524652</span><br><span class="line">483295235</span><br><span class="line">534149509</span><br><span class="line">425392137</span><br><span class="line">428313374</span><br><span class="line">425392137</span><br><span class="line">341524652</span><br><span class="line">458265677</span><br><span class="line">263072905</span><br><span class="line">483295235</span><br><span class="line">828509797</span><br><span class="line">341524652</span><br><span class="line">425392137</span><br><span class="line">475206804</span><br><span class="line">428313374</span><br><span class="line">483295235</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">306220148</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">result = &quot;&quot;</span><br><span class="line">c_list = c.split()</span><br><span class="line">#print(c_list)</span><br><span class="line">for i in c_list:</span><br><span class="line">    result += chr(pow(int(i),d,n))</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/3.png" alt="解密结果"></p>
-<h2 id="对rsa的公共模数攻击"><a href="#对rsa的公共模数攻击" class="headerlink" title="对rsa的公共模数攻击"></a>对rsa的公共模数攻击</h2><p>使用相同的模数n，取不同的e1、e2，用不同的私钥d1、d2加密同一份明文消息，得到不同的密文c1、c2</p>
-<h3 id="基本原理-1"><a href="#基本原理-1" class="headerlink" title="基本原理"></a>基本原理</h3><p>假如采用两个或者两个以上的公钥(n，e)来加密同一条信息，可以得到下面的结论：</p>
-<blockquote>
-<p>c1 = pow(m, e1, n)<br>c2 = pow(m, e2, n)</p>
-</blockquote>
-<p>分别拿对应的私钥来加密，可以得到相同的明文m</p>
-<blockquote>
-<p>m = pow(c1, d1, n)<br>m = pow(c2, d2, n)</p>
-</blockquote>
-<p>假设攻击者已知n,e1,e2,c1,c2，即可以得到明文m，因为e1和e2互质，所以使用欧几里得算法（用于计算两个整数a,b的最大公约数）可以找到能够满足以下条件的x，y：</p>
-<blockquote>
-<p>pow(x,e1)+pow(y,e2)=1</p>
-</blockquote>
-<p>假设x为负数，需再使用欧几里得算法来计算</p>
-<blockquote>
-<p>pow(c1,-1)</p>
-</blockquote>
-<p>则可以得到</p>
-<blockquote>
-<p>pow(pow(c1,-1),-x) * pow(c2,y) = p mod(n)</p>
-</blockquote>
-<p>如果p&lt;n，则p可以被计算出来。</p>
-<h2 id="rsa小指数e攻击"><a href="#rsa小指数e攻击" class="headerlink" title="rsa小指数e攻击"></a>rsa小指数e攻击</h2><p>如果RSA系统的公钥e选取较小的值，比如e=3，就容易受到攻击。</p>
-<p>有三个分别使用不同的模数n1,n2,n3，但是都选取e=3，加密同一个明文可以得到：</p>
-<blockquote>
-<p>c1 = pow(m,3,n1)<br>c2 = pow(m,3,n2)<br>c3 = pow(m,3,n3)</p>
-</blockquote>
-<p>一般情况下，n1,n2,n3互素，否则会比较容易求出公因子，从而安全性大幅度的减低。</p>
-<h2 id="ras选择密文攻击"><a href="#ras选择密文攻击" class="headerlink" title="ras选择密文攻击"></a>ras选择密文攻击</h2><p>在此种攻击模型中，攻击者需要掌握的内容包括：加密算法、截获的部分密文、自己选择的密文消息以及相应的被解密的明文。</p>
-<h2 id="利用公约数"><a href="#利用公约数" class="headerlink" title="利用公约数"></a>利用公约数</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h3><p>如果两次加密的<code>n1</code>和<code>n2</code>具有相同的素因子，可以利用<code>欧几里德算法</code>直接分解<code>n1</code>和<code>n2</code>，通过<code>欧几里德算法</code>计算出两个<code>n</code>的最大公约数<code>p</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def gcd(a, b):</span><br><span class="line">	if a &lt; b:</span><br><span class="line">    	a, b = b, a</span><br><span class="line">	while b != 0:</span><br><span class="line">    	temp = a % b</span><br><span class="line">     	a = b</span><br><span class="line">     	b = temp</span><br><span class="line">def gcd_digui(a, b):</span><br><span class="line">	if b != 0:</span><br><span class="line">   		return a</span><br><span class="line">	return gcd(b,a%b)</span><br><span class="line">p = gcd(n1,n2)</span><br></pre></td></tr></table></figure>
-
-<h3 id="识别"><a href="#识别" class="headerlink" title="识别"></a>识别</h3><p>识别此类题目，通常会发现题目给了若干个n，均不相同，并且都是2048bit，4096bit级别，无法正面硬杠，并且明文都没什么联系，e也一般取65537。</p>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><blockquote>
-<p>n1=9051013965404084482870087864821455535159008696042953021965631089095795348830954383127323853272528967729311045179605407693592665683311660581204886571146327720288455874927281128121117323579691204792399913106627543274457036172455814805715668293705603675386878220947722186914112990452722174363713630297685159669328951520891938403452797650685849523658191947411429068829734053745180460758604283051344339641429819373112365211739216160420494167071996438506850526168389386850499796102003625404245645796271690310748804327<br>n2=13225948396179603816062046418717214792668512413625091569997524364243995991961018894150059207824093837420451375240550310050209398964506318518991620142575926623780411532257230701985821629425722030608722035570690474171259238153947095310303522831971664666067542649034461621725656234869005501293423975184701929729170077280251436216167293058560030089006140224375425679571181787206982712477261432579537981278055755344573767076951793312062480275004564657590263719816033564139497109942073701755011873153205366238585665743</p>
-</blockquote>
-<p>我们用欧几里得算法计算出n1n2的最大公约数p:</p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/4.png" alt="代码"></p>
-<blockquote>
-<p>p=1564859779720039565508870182569324208117555667917997801104862601098933699462849007879184203051278194180664616470669559575370868384820368930104560074538872199213236203822337186927275879139590248731148622362880471439310489228147093224418374555428793546002109</p>
-</blockquote>
-<p>在求出</p>
-<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/5.png" alt="计算结果"></p>
-<blockquote>
-<p>q1=5783913729972247946253435353096326443704028481940849421114868598345923360618656121534285508526073359609714402851036717793499213802965059543550823534771936528992718924827788759885479930993068821959532735506613731118802093419664455101954524961474681210142720</p>
-<p>q2=8451842502173444137736814762941916058188287492225312470701776645749560167356046185751987142378046260660654109657367986531032438683223878564614629060680414105738103196373377352503582154146395466843322435064918174001568589071204760456484430101336520922543227</p>
-</blockquote>
-<p>有了p、q、n、e，再用常规的方法求出d</p>
-<blockquote>
-<p>d is:<br>765380157716548443425596742911266886410191216178112356262846713847378783683172254263632491551899451289816619131919308216828436088806741843938280790265785398475478529787399443730855951368875915938248660455496573500895189591415557910142785245074081094025796970799530756594690014890734289131423703767389303315127407756913225666969130239449802975261679436688682166951981930860230211054980705709388431034038355036001994657320535672433358165972446575669374989675751263007447610176671622049636459417182325418702702105</p>
-</blockquote>
-<p>感叹一下，数字真的好大！</p>
-<h2 id="Coppersmith定理攻击"><a href="#Coppersmith定理攻击" class="headerlink" title="Coppersmith定理攻击"></a>Coppersmith定理攻击</h2><p>在一个e阶的mod n多项式f(x)中，如果有一个根小于<code>n^frac&#123;1&#125;&#123;e&#125;</code> ，就可以运用一个O(log n)的算法求出这些根。</p>
-<p>这个定理可以应用于RSA算法。如果e = 3并且在明文当中只有三分之二的bite是已知的，这种算法可以求出明文中所有的bite</p>
-<hr>
-<p>工具之在线分解大素数：<a href="http://factordb.com/">http://factordb.com</a></p>
-<p>CTF-RSA-tool: <a href="https://github.com/D001UM3/CTF-RSA-tool">https://github.com/D001UM3/CTF-RSA-tool</a></p>
-<p>参考文章：<a href="https://blog.csdn.net/huanghelouzi/article/details/82943615">https://blog.csdn.net/huanghelouzi/article/details/82943615</a></p>
-<p>安装gmpy2：<a href="https://blog.51cto.com/u_12332766/2116615">https://blog.51cto.com/u_12332766/2116615</a></p>
-<p>sagemath:<a href="http://www.sagemath.org/">http://www.sagemath.org/</a>  (我还没装，暂时没用上)</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github＋hexo懒人搭建博客完整教程</title>
-    <url>/2021/07/07/github%EF%BC%8Bhexo%E6%87%92%E4%BA%BA%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a><strong>一、准备</strong></h1><h2 id="1-1环境搭建"><a href="#1-1环境搭建" class="headerlink" title="1.1环境搭建"></a>1.1环境搭建</h2><p>搭建博客首先是准备环境的搭建，这就像我们体内的细胞依赖于内环境而存活，内环境为细胞的生活提供的必要的水环境以及其它物质交换的通道。我们搭建的环境也是如此。<br>先安装 Node.js 和 Git，因为Hexo 基于 Node.js。<br>附上下载的官网链接<br>Node.js：<a href="https://nodejs.org/zh-cn">https://nodejs.org/zh-cn</a><br>Git：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。<br>安装完成后，Win+R 输入 cmd 并打开（或者左下角点查找），依次输入 node -v、npm -v 和 git –version（注意空格） 并回车，出校如下图表示成功。</p>
-<h2 id="1-2注意事项"><a href="#1-2注意事项" class="headerlink" title="1.2注意事项"></a>1.2注意事项</h2><p>敲代码的时候，将输入法换成英文输入。<br>统一使用 Git Bash 进行操作。<br>注意空格。</p>
-<hr>
-<h1 id="二、连接-Github"><a href="#二、连接-Github" class="headerlink" title="二、连接 Github"></a><strong>二、连接 Github</strong></h1><p>使用邮箱注册 GitHub 账户，选择免费账户（Free），并完成邮件验证。<br>在桌面的页面，在空白处右键鼠标点【Git Bash Here】开始运行，设置用户名和邮箱。（注意：用户名是自己的github账户名，邮箱是绑定的邮箱）<br>‘’’<br>git config –global user.name “GitHub 用户名”<br>git config –global user.email “GitHub 邮箱”<br>‘’’<br>创建 SSH 密匙<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。<br>添加密匙：<br>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。<br>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。<br>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。<br>验证连接：<br>打开 Git Bash，输入 ssh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;</a> 出现 “Are you sure……”，输入 yes 回车确认。<br>显示 “Hi xxx! You’ve successfully……” 即连接成功。</p>
-<hr>
-<h1 id="三、创建-Github-Pages-仓库"><a href="#三、创建-Github-Pages-仓库" class="headerlink" title="三、创建 Github Pages 仓库"></a><strong>三、创建 Github Pages 仓库</strong></h1><p>GitHub 主页右上角加号 -&gt; New repository：<br>Repository name 中输入 用户名.github.io<br>勾选 “Initialize this repository with a README”<br>Description 选填<br>填好后点击 Create repository 创建。<br>创建后默认自动启用 HTTPS，博客地址为：https://用户名.github.io</p>
-<hr>
-<h1 id="四、本地安装-Hexo-博客程序"><a href="#四、本地安装-Hexo-博客程序" class="headerlink" title="四、本地安装 Hexo 博客程序"></a><strong>四、本地安装 Hexo 博客程序</strong></h1><p>新建一个文件夹用来存放 Hexo 的程序文件，如 Hexo-Blog。打开该文件夹，右键 -&gt; Git Bash Here。</p>
-<h2 id="4-1-安装-Hexo"><a href="#4-1-安装-Hexo" class="headerlink" title="4.1. 安装 Hexo"></a>4.1. 安装 Hexo</h2><p>使用 npm 一键安装 Hexo 博客程序：<br>npm install -g hexo-cli<br>稍等一会后，会出现如下图的代码</p>
-<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2. Hexo 初始化和本地预览"></a>4.2. Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：<br>hexo init      # 初始化<br>npm install    # 安装组件<br>完成后依次输入下面命令，启动本地服务器进行预览：<br>hexo g   # 生成页面<br>hexo s   # 启动预览<br>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！</p>
-<hr>
-<h1 id="五、部署-Hexo-到-GitHub-Pages"><a href="#五、部署-Hexo-到-GitHub-Pages" class="headerlink" title="五、部署 Hexo 到 GitHub Pages"></a><strong>五、部署 Hexo 到 GitHub Pages</strong></h1><p>本地博客测试成功后，就是上传到 GitHub 进行部署，使其能够在网络上访问。<br>首先安装 hexo-deployer-git：<br>npm install hexo-deployer-git –save<br>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：<br>‘’’<br>deploy:<br>  type: git<br>  repository: <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#109;">&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#109;</a>:用户名/用户名.github.io.git<br>  branch: master<br>‘’’<br>完成后运行 hexo d 将网站上传部署到 GitHub Pages。<br>完成！这时访问我们的 GitHub 域名 https://用户名.github.io 就可以看到 Hexo 网站了。</p>
-<hr>
-<h1 id="六、绑定域名（可选）"><a href="#六、绑定域名（可选）" class="headerlink" title="六、绑定域名（可选）"></a><strong>六、绑定域名（可选）</strong></h1><h2 id="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"><a href="#因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。" class="headerlink" title="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"></a>因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。</h2><h1 id="七、开始使用"><a href="#七、开始使用" class="headerlink" title="七、开始使用"></a><strong>七、开始使用</strong></h1><p>详情见下一篇博客<br>7.1. 发布文章<br>7.2. 网站设置<br>7.3. 更换主题<br>7.4. 常用代码</p>
-<hr>
-<h1 id="八、常见问题"><a href="#八、常见问题" class="headerlink" title="八、常见问题"></a><strong>八、常见问题</strong></h1><h2 id="详情见下一篇博客"><a href="#详情见下一篇博客" class="headerlink" title="详情见下一篇博客"></a>详情见下一篇博客</h2>]]></content>
-      <categories>
-        <category>使用教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo根目录中_config.yml配置解释</title>
     <url>/2021/07/17/hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD-config-yml%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在学习发博客的时候，经常会出现报错，而这些报错通常会让我们修改根目录中_config.yml某些配置，然而我也是不知所以然就”照本宣改”,甚至会想当然的改掉了原来一些配置，导致hexo d运行报错。因此，通过这篇blog对config的配置进行解释说明。</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在学习发博客的时候，经常会出现报错，而这些报错通常会让我们修改根目录中_config.yml某些配置，然而我也是不知所以然就”照本宣改”,甚至会想当然的改掉了原来一些配置，导致hexo d运行报错。因此，通过这篇blog对config的配置进行解释说明。</p>
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`#Hexo Configuration`</span><br><span class="line">`##Docs: https://hexo.io/docs/configuration.html`</span><br><span class="line">`##Source: https://github.com/hexojs/hexo/`</span><br></pre></td></tr></table></figure>
 
 <p>第二、三行表示hexo文档的相关文档，Docs指的是hexo的文档，Source指的是hexo的Github源码。</p>
@@ -745,9 +448,58 @@
       </tags>
   </entry>
   <entry>
+    <title>github＋hexo懒人搭建博客完整教程</title>
+    <url>/2021/07/07/github%EF%BC%8Bhexo%E6%87%92%E4%BA%BA%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a><strong>一、准备</strong></h1><h2 id="1-1环境搭建"><a href="#1-1环境搭建" class="headerlink" title="1.1环境搭建"></a>1.1环境搭建</h2><p>搭建博客首先是准备环境的搭建，这就像我们体内的细胞依赖于内环境而存活，内环境为细胞的生活提供的必要的水环境以及其它物质交换的通道。我们搭建的环境也是如此。<br>先安装 Node.js 和 Git，因为Hexo 基于 Node.js。<br>附上下载的官网链接<br>Node.js：<a href="https://nodejs.org/zh-cn">https://nodejs.org/zh-cn</a><br>Git：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。<br>安装完成后，Win+R 输入 cmd 并打开（或者左下角点查找），依次输入 node -v、npm -v 和 git –version（注意空格） 并回车，出校如下图表示成功。</p>
+<h2 id="1-2注意事项"><a href="#1-2注意事项" class="headerlink" title="1.2注意事项"></a>1.2注意事项</h2><p>敲代码的时候，将输入法换成英文输入。<br>统一使用 Git Bash 进行操作。<br>注意空格。</p>
+<hr>
+<h1 id="二、连接-Github"><a href="#二、连接-Github" class="headerlink" title="二、连接 Github"></a><strong>二、连接 Github</strong></h1><p>使用邮箱注册 GitHub 账户，选择免费账户（Free），并完成邮件验证。<br>在桌面的页面，在空白处右键鼠标点【Git Bash Here】开始运行，设置用户名和邮箱。（注意：用户名是自己的github账户名，邮箱是绑定的邮箱）<br>‘’’<br>git config –global user.name “GitHub 用户名”<br>git config –global user.email “GitHub 邮箱”<br>‘’’<br>创建 SSH 密匙<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。<br>添加密匙：<br>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。<br>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。<br>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。<br>验证连接：<br>打开 Git Bash，输入 ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;</a> 出现 “Are you sure……”，输入 yes 回车确认。<br>显示 “Hi xxx! You’ve successfully……” 即连接成功。</p>
+<hr>
+<h1 id="三、创建-Github-Pages-仓库"><a href="#三、创建-Github-Pages-仓库" class="headerlink" title="三、创建 Github Pages 仓库"></a><strong>三、创建 Github Pages 仓库</strong></h1><p>GitHub 主页右上角加号 -&gt; New repository：<br>Repository name 中输入 用户名.github.io<br>勾选 “Initialize this repository with a README”<br>Description 选填<br>填好后点击 Create repository 创建。<br>创建后默认自动启用 HTTPS，博客地址为：https://用户名.github.io</p>
+<hr>
+<h1 id="四、本地安装-Hexo-博客程序"><a href="#四、本地安装-Hexo-博客程序" class="headerlink" title="四、本地安装 Hexo 博客程序"></a><strong>四、本地安装 Hexo 博客程序</strong></h1><p>新建一个文件夹用来存放 Hexo 的程序文件，如 Hexo-Blog。打开该文件夹，右键 -&gt; Git Bash Here。</p>
+<h2 id="4-1-安装-Hexo"><a href="#4-1-安装-Hexo" class="headerlink" title="4.1. 安装 Hexo"></a>4.1. 安装 Hexo</h2><p>使用 npm 一键安装 Hexo 博客程序：<br>npm install -g hexo-cli<br>稍等一会后，会出现如下图的代码</p>
+<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2. Hexo 初始化和本地预览"></a>4.2. Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：<br>hexo init      # 初始化<br>npm install    # 安装组件<br>完成后依次输入下面命令，启动本地服务器进行预览：<br>hexo g   # 生成页面<br>hexo s   # 启动预览<br>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！</p>
+<hr>
+<h1 id="五、部署-Hexo-到-GitHub-Pages"><a href="#五、部署-Hexo-到-GitHub-Pages" class="headerlink" title="五、部署 Hexo 到 GitHub Pages"></a><strong>五、部署 Hexo 到 GitHub Pages</strong></h1><p>本地博客测试成功后，就是上传到 GitHub 进行部署，使其能够在网络上访问。<br>首先安装 hexo-deployer-git：<br>npm install hexo-deployer-git –save<br>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：<br>‘’’<br>deploy:<br>  type: git<br>  repository: <a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:用户名/用户名.github.io.git<br>  branch: master<br>‘’’<br>完成后运行 hexo d 将网站上传部署到 GitHub Pages。<br>完成！这时访问我们的 GitHub 域名 https://用户名.github.io 就可以看到 Hexo 网站了。</p>
+<hr>
+<h1 id="六、绑定域名（可选）"><a href="#六、绑定域名（可选）" class="headerlink" title="六、绑定域名（可选）"></a><strong>六、绑定域名（可选）</strong></h1><h2 id="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"><a href="#因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。" class="headerlink" title="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"></a>因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。</h2><h1 id="七、开始使用"><a href="#七、开始使用" class="headerlink" title="七、开始使用"></a><strong>七、开始使用</strong></h1><p>详情见下一篇博客<br>7.1. 发布文章<br>7.2. 网站设置<br>7.3. 更换主题<br>7.4. 常用代码</p>
+<hr>
+<h1 id="八、常见问题"><a href="#八、常见问题" class="headerlink" title="八、常见问题"></a><strong>八、常见问题</strong></h1><h2 id="详情见下一篇博客"><a href="#详情见下一篇博客" class="headerlink" title="详情见下一篇博客"></a>详情见下一篇博客</h2>]]></content>
+      <categories>
+        <category>使用教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于blog常见报错及解决方法</title>
+    <url>/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在发blog的时候，经常会遇到一些重复性的报错问题，这些报错感觉都很眼熟，好像每天都会遇到（笑哭）。第一次看不懂报错，直接复制粘贴甩给百度翻译，但是就算翻译成中文人也还是懵逼的。比如这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/a.png" alt="a"></p>
+<p>又或是这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/b.png" alt="b"></p>
+<p>或许是那样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/c.png" alt="c"></p>
+<p>等等等等…</p>
+<p>第二次第三次又遇到一样的情况，索性就整理出来吧。（持续更新）</p>
+<h1 id="hexo-d报错解决："><a href="#hexo-d报错解决：" class="headerlink" title="hexo d报错解决："></a>hexo d报错解决：</h1><h4 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054 错误解决"></a>OpenSSL SSL_read: Connection was reset, errno 10054 错误解决</h4><p>首先，造成这个错误很有可能是网络不稳定，连接超时导致的，<br> 如果再次尝试后依然报错，可以执行下面的命令</p>
+<p>在D:\blog\blog中打开Git-Bash命令页面，执行git命令脚本：修改设置，解除ssl验证</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时，再执行hexo d即可解决</p>
+<h1 id="hexo-s-报错解决"><a href="#hexo-s-报错解决" class="headerlink" title="hexo s 报错解决"></a>hexo s 报错解决</h1><h4 id="node-15260-Warning"><a href="#node-15260-Warning" class="headerlink" title="(node:15260) Warning"></a>(node:15260) Warning</h4><p><img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/d.png" alt="d"></p>
+<p>很简单 不用管它 （警告而已warning,我也不知道为什么还能运行qwq)</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown的基础语法</title>
     <url>/2021/07/14/markdown%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><p>写过博客的都知道Markdown语法的重要性，否则就会像我一样，在 hexo d 后出现warn警告。这篇博客将轻松搞定Markdown语法~</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><p>写过博客的都知道Markdown语法的重要性，否则就会像我一样，在 hexo d 后出现warn警告。这篇博客将轻松搞定Markdown语法~</p>
 <h1 id="一、快捷键"><a href="#一、快捷键" class="headerlink" title="一、快捷键"></a><strong>一、快捷键</strong></h1><table>
 <thead>
 <tr>
@@ -920,26 +672,397 @@
       </tags>
   </entry>
   <entry>
-    <title>关于blog常见报错及解决方法</title>
-    <url>/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在发blog的时候，经常会遇到一些重复性的报错问题，这些报错感觉都很眼熟，好像每天都会遇到（笑哭）。第一次看不懂报错，直接复制粘贴甩给百度翻译，但是就算翻译成中文人也还是懵逼的。比如这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/a.png" alt="a"></p>
-<p>又或是这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/b.png" alt="b"></p>
-<p>或许是那样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/c.png" alt="c"></p>
-<p>等等等等…</p>
-<p>第二次第三次又遇到一样的情况，索性就整理出来吧。（持续更新）</p>
-<h1 id="hexo-d报错解决："><a href="#hexo-d报错解决：" class="headerlink" title="hexo d报错解决："></a>hexo d报错解决：</h1><h4 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054 错误解决"></a>OpenSSL SSL_read: Connection was reset, errno 10054 错误解决</h4><p>首先，造成这个错误很有可能是网络不稳定，连接超时导致的，<br> 如果再次尝试后依然报错，可以执行下面的命令</p>
-<p>在D:\blog\blog中打开Git-Bash命令页面，执行git命令脚本：修改设置，解除ssl验证</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+    <title>RSA密码的深入浅出</title>
+    <url>/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/</url>
+    <content><![CDATA[<p>昨天看到这样一句话</p>
+<p><strong>“密码本质上就是拉开了时间复杂度的差距。”</strong></p>
+<p>初次看到，茫然不知，我想，密码跟时间复杂度究竟有何联系？何为复杂度？这复杂程度的参照物又是什么？怀揣着疑问，我在知乎、CSDN上阅读几篇大佬对密码学的认识与理解。阅读归阅读，还是得靠吸收与总结，那现在就开始我对密码学cryptography中RSA的深入浅出吧！（密码学的背景发展史等，网上千篇一律，暂不赘述</p>
+<hr>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>先说说开头提到的这句哈把“密码本质上就是拉开了时间复杂度的差距。”我们知道，计算机的计算运行速度很快，四位数乘四位数的计算，人需要一分钟左右，而计算机秒出结果。然而，计算机的计算能力是有限的，就算是超级计算机“天问二号”，<strong>计算速度也有上限</strong></p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/image-20210723093418874.png"></p>
+<p>所以对于计算机来说，我们需要利用时间复杂度来衡量一个程序的算法有多耗时。按照初中学过的知识，我们知道底数大于1的指数呈“爆炸式增长”，也从古代国王在64个格子放米的例子中可以看出，当放到第28格的时候，需要米已经超过1亿，放到第64格的时候，大约要放92亿粒！（有人计算过，大约是2814亿吨重）从这个例子我们就可以看到，时间复杂度直接影响了程序完成的速度。当计算机计算指数函数10的n次方时，可能就需要好几十年</p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/image-20210723094340430.png"></p>
+<p>从而可知，在密码学中，很多时候<strong>密码不是不可以破解的，只不过破解密码需要大量的时间</strong>。</p>
+<p>比如在RSA中最关键的一步，是Alice生成两个指数p和q，计算它们乘积n=p*q，然后告诉Bob这个n的值，他就需要把n质因数分解为p和q，对于这种单项函数来说，逆着运算（即分解质因数)的时间复杂度是指数级，比顺着运算（乘积n）的运算时间来得要长。</p>
+<p>假如Alice的这个p和q足够大，等Bob分解完n，恐怕就过去了好几十年。</p>
+<p><strong>因此，密码的本质上就是拉开了时间复杂度的差距，使得解密密码的时间复杂度高于加密的时间复杂度，以达成保密的目的。</strong></p>
+<hr>
+<h1 id="一些数论"><a href="#一些数论" class="headerlink" title="一些数论"></a>一些数论</h1><p>来，先来膜拜一下伟大的数学家–欧拉</p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/1.png" alt="欧拉"></p>
+<p>被称为“对世界数学的发展作出创造性工作的人士”，他值得！</p>
+<p>下述的一些数论知识在初高中就有学习过，简单提一哈~</p>
+<h2 id="欧拉函数–φ（n）"><a href="#欧拉函数–φ（n）" class="headerlink" title="欧拉函数–φ（n）"></a>欧拉函数–φ（n）</h2><p><strong>φ（n）：在[0,n)中与n互质的正整数的个数</strong></p>
+<p>eg：n=23，在[0,23)中，与21互质的正整数有：1、 2、  4 、5 、8、 10、 11 、13、 16 、17、 19、 20这12个数，因此φ（23）=12</p>
+<p><strong>φ（n）=（p-1）（q-1）</strong></p>
+<p>eg：23=7*3，φ（23）=（7-1）（3-1）=12</p>
+<h2 id="同余式"><a href="#同余式" class="headerlink" title="同余式"></a>同余式</h2><p>我们学过余数，同余式就是另外一种写法罢了，下面以一个表格做出比较</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>余式</th>
+<th>同余式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eg1</td>
+<td>23÷7=3…2</td>
+<td>23≡2（mod7）</td>
+</tr>
+<tr>
+<td>eg2</td>
+<td>50÷8=6…2</td>
+<td>50≡2（mod8）</td>
+</tr>
+<tr>
+<td>通式</td>
+<td>a÷m=k…b</td>
+<td>a≡b（mod m）</td>
+</tr>
+</tbody></table>
+<p>之前学习同余式可能忽略了几个性质，网上找了一下基本性质，直接放图</p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/Snipaste_2021-07-23_10-28-39.png" alt="Snipaste_2021-07-23_10-28-39"></p>
+<h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><p><strong>若a与n互质，则a^φ（n）^≡1（mod n）</strong></p>
+<h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><p><strong>如果ab ≡ 1（mod m），则称a和b为关于m互为乘法逆元</strong></p>
+<p>已知a求b的方法：因为ab <strong>≡</strong> 1（mod m），所以不妨设ab+mk=1，其中a和m为已知数。可以利用<strong>扩展欧几里得算法</strong>，计算出来一个乘法逆元b。</p>
+<h1 id="RSA简介"><a href="#RSA简介" class="headerlink" title="RSA简介"></a>RSA简介</h1><p>前面铺垫了这么这么多，终于开始进入咱们的正题–RSA的深入浅出</p>
+<p>先对rsa密钥体制做个介绍</p>
+<p>1、选择两个大的互质参数p，q，计算出模数<code>n=p*q</code></p>
+<p>2、计算欧拉函数<code>φ（n）=（p-1)(q-1)</code>。选择一个e（1&lt;e&lt;φ（n)),要求e和φ（n）互质，即<code>gcd(e,φ（n）)=1</code></p>
+<p>3、计算e的模反数d。计算方法为<code>e*d≡1（mod φ（n））</code>【模反元素：如果存在两个正整数e和φ（n）互质，那么一定存在一个整数d，使得ed-1被φ（n）整除，即ed=kφ（n）+1.这是，d就是e的模反元素。欧拉公式可以证明模反元素必然存在。两个整数a，b，它们除以整数φ（n）所得余数相等，即a≡1(modφ（n）)，b≡1（modφ（n）），根据相乘的性质ab≡1（modφ（n）），所以a和b互为逆元</p>
+<p>4、对明文m加密。密文<code>c=pow（m，e，n）</code>，等同于c=m^e^（mod n）</p>
+<p>5、对密文c解密。明文<code>m=pow（c，d，n）</code>，等同于m=c^d^（mod n）</p>
+<h1 id="RSA安全性分析"><a href="#RSA安全性分析" class="headerlink" title="RSA安全性分析"></a>RSA安全性分析</h1><p>值得一提的是，虽然公钥（n，e）是直接公开的，但是只有Alice知道密钥（n，d），可以计算m=c^d^（mod n），<strong>除了Alice，没有任何人可以知道φ(n)，所以没有人可以求出e关于φ(n)的乘法逆元d。也就是说d的值从头到尾只有Alice自己知道，不可能泄露。</strong>假如Alice把本地的私钥弄丢了，那，谁也解不开密码，这就是非对称密码rsa与对称密码的本质区别</p>
+<h1 id="常用的攻击方法"><a href="#常用的攻击方法" class="headerlink" title="常用的攻击方法"></a>常用的攻击方法</h1><h2 id="直接分解模数"><a href="#直接分解模数" class="headerlink" title="直接分解模数"></a>直接分解模数</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>直接分解数模n是最直接的攻击放方法，也是最困难的办法。破解RSA最直接（暴力）的方法就是分解整数n，然后计算欧拉函数φ(n)=(p-1) * (q-1),再通过d * e ≡ 1 mod φ(N)，即可计算出 d，然后就可以使用私钥(N, d)通过m = pow(c,d,N)解密明文。</p>
+<p>如果<code>n</code>小于256bit，可以使用本地工具进行暴力分解，例如windwods平台的<code>RSATool</code>，可以在数分钟之内完成256bit的<code>n</code>的分解。<br>如果<code>n</code>大于768bit，可以尝试利用在线网站<a href="http://factordb.com,/">http://factordb.com，</a> 这一类在线网站的原理是储存了部分<code>n</code>分解成功的的值。</p>
+<h3 id="CTF原题"><a href="#CTF原题" class="headerlink" title="CTF原题"></a>CTF原题</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;920139713,19&#125;</span><br><span class="line"></span><br><span class="line">704796792</span><br><span class="line">752211152</span><br><span class="line">274704164</span><br><span class="line">18414022</span><br><span class="line">368270835</span><br><span class="line">483295235</span><br><span class="line">263072905</span><br><span class="line">459788476</span><br><span class="line">483295235</span><br><span class="line">459788476</span><br><span class="line">663551792</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">428313374</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">425392137</span><br><span class="line">704796792</span><br><span class="line">458265677</span><br><span class="line">341524652</span><br><span class="line">483295235</span><br><span class="line">534149509</span><br><span class="line">425392137</span><br><span class="line">428313374</span><br><span class="line">425392137</span><br><span class="line">341524652</span><br><span class="line">458265677</span><br><span class="line">263072905</span><br><span class="line">483295235</span><br><span class="line">828509797</span><br><span class="line">341524652</span><br><span class="line">425392137</span><br><span class="line">475206804</span><br><span class="line">428313374</span><br><span class="line">483295235</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">306220148</span><br></pre></td></tr></table></figure>
 
-<p>此时，再执行hexo d即可解决</p>
-<h1 id="hexo-s-报错解决"><a href="#hexo-s-报错解决" class="headerlink" title="hexo s 报错解决"></a>hexo s 报错解决</h1><h4 id="node-15260-Warning"><a href="#node-15260-Warning" class="headerlink" title="(node:15260) Warning"></a>(node:15260) Warning</h4><p><img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/d.png" alt="d"></p>
-<p>很简单 不用管它 （警告而已warning,我也不知道为什么还能运行qwq)</p>
+<p>分解n可以通过在线网站<a href="http://www.factordb.com/index.php%E3%80%82">http://www.factordb.com/index.php。</a></p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/Snipaste_2021-07-23_11-42-13.png" alt="Snipaste_2021-07-23_11-42-13"></p>
+<p>p=18443,q=49891,e=19,c=这一大串数字密文</p>
+<p>因此可以通过d * e ≡ 1 mod φ(n)，计算出 d</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">p = gmpy2.mpz(18443)     #初始化大整数</span><br><span class="line">q = gmpy2.mpz(49891)</span><br><span class="line">e = gmpy2.mpz(19)</span><br><span class="line">phi_n = (p-1)*(q-1)</span><br><span class="line">d = gmpy2.invert(e,phi_n)    #invert（e， φ(n)）返回d使得e*d == 1 mod φ(n)，如果不存在d，则返回0</span><br><span class="line">print(&quot;p=%s,q=%s,e=%s&quot;%(p,q,e))</span><br><span class="line">print(&quot;d is:\n%s&quot;%d)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">p=18443,q=49891,e=19 </span><br><span class="line">d is: </span><br><span class="line">96849619</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/2.png"></p>
+<p>到目前为止，有了d就可以求出明文m</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#求明文</span><br><span class="line">import gmpy2</span><br><span class="line">n = 920139713</span><br><span class="line">d = 96849619</span><br><span class="line">c = &quot;&quot;&quot;</span><br><span class="line">704796792</span><br><span class="line">752211152</span><br><span class="line">274704164</span><br><span class="line">18414022</span><br><span class="line">368270835</span><br><span class="line">483295235</span><br><span class="line">263072905</span><br><span class="line">459788476</span><br><span class="line">483295235</span><br><span class="line">459788476</span><br><span class="line">663551792</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">428313374</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">425392137</span><br><span class="line">704796792</span><br><span class="line">458265677</span><br><span class="line">341524652</span><br><span class="line">483295235</span><br><span class="line">534149509</span><br><span class="line">425392137</span><br><span class="line">428313374</span><br><span class="line">425392137</span><br><span class="line">341524652</span><br><span class="line">458265677</span><br><span class="line">263072905</span><br><span class="line">483295235</span><br><span class="line">828509797</span><br><span class="line">341524652</span><br><span class="line">425392137</span><br><span class="line">475206804</span><br><span class="line">428313374</span><br><span class="line">483295235</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">306220148</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">result = &quot;&quot;</span><br><span class="line">c_list = c.split()</span><br><span class="line">#print(c_list)</span><br><span class="line">for i in c_list:</span><br><span class="line">    result += chr(pow(int(i),d,n))</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/3.png" alt="解密结果"></p>
+<h2 id="对rsa的公共模数攻击"><a href="#对rsa的公共模数攻击" class="headerlink" title="对rsa的公共模数攻击"></a>对rsa的公共模数攻击</h2><p>使用相同的模数n，取不同的e1、e2，用不同的私钥d1、d2加密同一份明文消息，得到不同的密文c1、c2</p>
+<h3 id="基本原理-1"><a href="#基本原理-1" class="headerlink" title="基本原理"></a>基本原理</h3><p>假如采用两个或者两个以上的公钥(n，e)来加密同一条信息，可以得到下面的结论：</p>
+<blockquote>
+<p>c1 = pow(m, e1, n)<br>c2 = pow(m, e2, n)</p>
+</blockquote>
+<p>分别拿对应的私钥来加密，可以得到相同的明文m</p>
+<blockquote>
+<p>m = pow(c1, d1, n)<br>m = pow(c2, d2, n)</p>
+</blockquote>
+<p>假设攻击者已知n,e1,e2,c1,c2，即可以得到明文m，因为e1和e2互质，所以使用欧几里得算法（用于计算两个整数a,b的最大公约数）可以找到能够满足以下条件的x，y：</p>
+<blockquote>
+<p>pow(x,e1)+pow(y,e2)=1</p>
+</blockquote>
+<p>假设x为负数，需再使用欧几里得算法来计算</p>
+<blockquote>
+<p>pow(c1,-1)</p>
+</blockquote>
+<p>则可以得到</p>
+<blockquote>
+<p>pow(pow(c1,-1),-x) * pow(c2,y) = p mod(n)</p>
+</blockquote>
+<p>如果p&lt;n，则p可以被计算出来。</p>
+<h2 id="rsa小指数e攻击"><a href="#rsa小指数e攻击" class="headerlink" title="rsa小指数e攻击"></a>rsa小指数e攻击</h2><p>如果RSA系统的公钥e选取较小的值，比如e=3，就容易受到攻击。</p>
+<p>有三个分别使用不同的模数n1,n2,n3，但是都选取e=3，加密同一个明文可以得到：</p>
+<blockquote>
+<p>c1 = pow(m,3,n1)<br>c2 = pow(m,3,n2)<br>c3 = pow(m,3,n3)</p>
+</blockquote>
+<p>一般情况下，n1,n2,n3互素，否则会比较容易求出公因子，从而安全性大幅度的减低。</p>
+<h2 id="ras选择密文攻击"><a href="#ras选择密文攻击" class="headerlink" title="ras选择密文攻击"></a>ras选择密文攻击</h2><p>在此种攻击模型中，攻击者需要掌握的内容包括：加密算法、截获的部分密文、自己选择的密文消息以及相应的被解密的明文。</p>
+<h2 id="利用公约数"><a href="#利用公约数" class="headerlink" title="利用公约数"></a>利用公约数</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h3><p>如果两次加密的<code>n1</code>和<code>n2</code>具有相同的素因子，可以利用<code>欧几里德算法</code>直接分解<code>n1</code>和<code>n2</code>，通过<code>欧几里德算法</code>计算出两个<code>n</code>的最大公约数<code>p</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def gcd(a, b):</span><br><span class="line">	if a &lt; b:</span><br><span class="line">    	a, b = b, a</span><br><span class="line">	while b != 0:</span><br><span class="line">    	temp = a % b</span><br><span class="line">     	a = b</span><br><span class="line">     	b = temp</span><br><span class="line">def gcd_digui(a, b):</span><br><span class="line">	if b != 0:</span><br><span class="line">   		return a</span><br><span class="line">	return gcd(b,a%b)</span><br><span class="line">p = gcd(n1,n2)</span><br></pre></td></tr></table></figure>
+
+<h3 id="识别"><a href="#识别" class="headerlink" title="识别"></a>识别</h3><p>识别此类题目，通常会发现题目给了若干个n，均不相同，并且都是2048bit，4096bit级别，无法正面硬杠，并且明文都没什么联系，e也一般取65537。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><blockquote>
+<p>n1=9051013965404084482870087864821455535159008696042953021965631089095795348830954383127323853272528967729311045179605407693592665683311660581204886571146327720288455874927281128121117323579691204792399913106627543274457036172455814805715668293705603675386878220947722186914112990452722174363713630297685159669328951520891938403452797650685849523658191947411429068829734053745180460758604283051344339641429819373112365211739216160420494167071996438506850526168389386850499796102003625404245645796271690310748804327<br>n2=13225948396179603816062046418717214792668512413625091569997524364243995991961018894150059207824093837420451375240550310050209398964506318518991620142575926623780411532257230701985821629425722030608722035570690474171259238153947095310303522831971664666067542649034461621725656234869005501293423975184701929729170077280251436216167293058560030089006140224375425679571181787206982712477261432579537981278055755344573767076951793312062480275004564657590263719816033564139497109942073701755011873153205366238585665743</p>
+</blockquote>
+<p>我们用欧几里得算法计算出n1n2的最大公约数p:</p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/4.png" alt="代码"></p>
+<blockquote>
+<p>p=1564859779720039565508870182569324208117555667917997801104862601098933699462849007879184203051278194180664616470669559575370868384820368930104560074538872199213236203822337186927275879139590248731148622362880471439310489228147093224418374555428793546002109</p>
+</blockquote>
+<p>在求出</p>
+<p><img src="/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/5.png" alt="计算结果"></p>
+<blockquote>
+<p>q1=5783913729972247946253435353096326443704028481940849421114868598345923360618656121534285508526073359609714402851036717793499213802965059543550823534771936528992718924827788759885479930993068821959532735506613731118802093419664455101954524961474681210142720</p>
+<p>q2=8451842502173444137736814762941916058188287492225312470701776645749560167356046185751987142378046260660654109657367986531032438683223878564614629060680414105738103196373377352503582154146395466843322435064918174001568589071204760456484430101336520922543227</p>
+</blockquote>
+<p>有了p、q、n、e，再用常规的方法求出d</p>
+<blockquote>
+<p>d is:<br>765380157716548443425596742911266886410191216178112356262846713847378783683172254263632491551899451289816619131919308216828436088806741843938280790265785398475478529787399443730855951368875915938248660455496573500895189591415557910142785245074081094025796970799530756594690014890734289131423703767389303315127407756913225666969130239449802975261679436688682166951981930860230211054980705709388431034038355036001994657320535672433358165972446575669374989675751263007447610176671622049636459417182325418702702105</p>
+</blockquote>
+<p>感叹一下，数字真的好大！</p>
+<h2 id="Coppersmith定理攻击"><a href="#Coppersmith定理攻击" class="headerlink" title="Coppersmith定理攻击"></a>Coppersmith定理攻击</h2><p>在一个e阶的mod n多项式f(x)中，如果有一个根小于<code>n^frac&#123;1&#125;&#123;e&#125;</code> ，就可以运用一个O(log n)的算法求出这些根。</p>
+<p>这个定理可以应用于RSA算法。如果e = 3并且在明文当中只有三分之二的bite是已知的，这种算法可以求出明文中所有的bite</p>
+<hr>
+<p>工具之在线分解大素数：<a href="http://factordb.com/">http://factordb.com</a></p>
+<p>CTF-RSA-tool: <a href="https://github.com/D001UM3/CTF-RSA-tool">https://github.com/D001UM3/CTF-RSA-tool</a></p>
+<p>参考文章：<a href="https://blog.csdn.net/huanghelouzi/article/details/82943615">https://blog.csdn.net/huanghelouzi/article/details/82943615</a></p>
+<p>安装gmpy2：<a href="https://blog.51cto.com/u_12332766/2116615">https://blog.51cto.com/u_12332766/2116615</a></p>
+<p>sagemath:<a href="http://www.sagemath.org/">http://www.sagemath.org/</a>  (我还没装，暂时没用上)</p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RSA公钥文件解密的分析</title>
+    <url>/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天，手一抽打开了这个网站并注册登录</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/0.png" alt="0" style="zoom: 50%;">
+
+<p>（一个早上看奥运会碌碌无为</p>
+<p>我想就顺便试试水吧）</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/1.png" alt="1" style="zoom: 80%;">
+
+<p>先做的是easy_RSA,已经把d算出来了，可是提交显示不对..仔细看了题目的要求后..说：flag格式为cyberpeace{小写的你解出的答案}。我以为这是把答案转化成cyberpeace格式…上网搜索“在线cyberpeace转化”未果，才知道原来答案要带上这一串英文啊..</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/2.png" alt="2" style="zoom:80%;">
+
+<p>然后，我又手一抽，点到了下一题..然鹅计时已经开始</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/5.png" alt="5">
+
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/7.png" alt="7">
+
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/6.png" alt="6">
+
+<p>啊？都是乱码，没有n,e,c咋解呢这</p>
+<p>于是乎，复制了BEGIN PRIVATE KEY到浏览器搜索，顺其自然地开始了我对rsa公钥文件解密的study（</p>
+<h1 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h1><h2 id="提n，e"><a href="#提n，e" class="headerlink" title="提n，e"></a>提n，e</h2><p>这时候我们有如下的publickey.pem文件：</p>
+<blockquote>
+<p>—–BEGIN PUBLIC KEY—–<br>MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMJjauXD2OQ/+5erCQKPGqxsC/bNPXDr<br>yigb/+l/vjDdAgMBAAE=<br>—–END PUBLIC KEY—–</p>
+</blockquote>
+<p>现在我们需要做的就是从这段字符串中提出n和e</p>
+<h3 id="pem后缀"><a href="#pem后缀" class="headerlink" title="pem后缀"></a>pem后缀</h3><p>OpenSSL 使用 PEM 文件格式存储证书和密钥。PEM 实质上是 Base64 编码的二进制内容，再加上开始和结束行，如证书文件的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-----BEGIN CERTIFICATE-----`</span><br><span class="line"></span><br><span class="line">`-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
+
+<p>在这些标记外面可以有额外的信息，如编码内容的文字表示。文件是 ASCII 的，可以用任何文本编辑程序打开它们。</p>
+<p>简单来讲，<strong>pem文件这种格式就是用于ASCII(Base64)编码的各种X.509 v3 证书。</strong>所以我们用base64解码</p>
+<h3 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h3><p>从一个表格中了解base64的发展</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>缺点</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>二进制</td>
+<td>长</td>
+<td>简单，0和1</td>
+</tr>
+<tr>
+<td>Hex（16进制</td>
+<td>不好表示文本</td>
+<td></td>
+</tr>
+<tr>
+<td>ASCLL码</td>
+<td>只能表示英文</td>
+<td>包含字符多</td>
+</tr>
+<tr>
+<td>UTF-8</td>
+<td>乱码</td>
+<td>兼容各种语言</td>
+</tr>
+<tr>
+<td>Base-64</td>
+<td></td>
+<td>国际化</td>
+</tr>
+</tbody></table>
+<p>用base64解码：</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/乱码.png" alt="乱码" style="zoom:80%;">
+
+<p>解出来是一段乱码，旁边有个可以以15进制显示的选项，我们试一下</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/16进制.png" alt="16进制">
+
+<p>发现结尾是”\x01\x00\x01”,猜测e=10001</p>
+<p>再看看解码后的长度为162,我们找到偏移表,发现模数的偏移位置是159，长度是3,加起来正好162~那么说明这段字符串就是指数和模数加密过后的结果。</p>
+<p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/Snipaste_2021-07-24_21-45-30.png" alt="Snipaste_2021-07-24_21-45-30"></p>
+<h2 id="解e和n"><a href="#解e和n" class="headerlink" title="解e和n"></a>解e和n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def str2key(s):</span><br><span class="line">    # 对字符串解码</span><br><span class="line">    b_str = base64.b64decode(s)</span><br><span class="line"></span><br><span class="line">    if len(b_str) &lt; 162:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    hex_str = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    # 按位转换成16进制</span><br><span class="line">    for x in b_str:</span><br><span class="line">        h = hex(ord(x))[2:]</span><br><span class="line">        h = h.rjust(2, &#x27;0&#x27;)</span><br><span class="line">        hex_str += h</span><br><span class="line"></span><br><span class="line">    # 找到模数和指数的开头结束位置</span><br><span class="line">    m_start = 29 * 2</span><br><span class="line">    e_start = 159 * 2</span><br><span class="line">    m_len = 128 * 2</span><br><span class="line">    e_len = 3 * 2</span><br><span class="line"></span><br><span class="line">    modulus = hex_str[m_start:m_start + m_len]</span><br><span class="line">    exponent = hex_str[e_start:e_start + e_len]</span><br><span class="line"></span><br><span class="line">    return modulus,exponent</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line"></span><br><span class="line">    pubkey = &quot;MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMJjauXD2OQ/+5erCQKPGqxsC/bNPXDr</span><br><span class="line">yigb/+l/vjDdAgMBAAE=&quot;</span><br><span class="line">    key = str2key(pubkey)</span><br><span class="line">    print key</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(&#x27;C2636AE5C3D8E43FFB97AB09028F1AAC6C0BF6CD3D70EBCA281BFFE97FBE30DD&#x27;, &#x27;010001&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>这个即为我们求出来模数N和指数e</p>
+<p>网上说可以用虚拟机Kali Linux直接用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl rsa -pubin -text -modulus -in warmup -in pubkey.pem</span><br></pre></td></tr></table></figure>
+
+<p>试了下，确实很方便</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/屏幕截图 2021-07-24 210147.png" alt="屏幕截图 2021-07-24 210147">
+
+<p>我们把n=C2636AE5C3D8E43FFB97AB09028F1AAC6C0BF6CD3D70EBCA281BFFE97FBE30DD，e=10001（十六进制）在线转化十进制</p>
+<p><a href="https://tool.lu/hexconvert/">进制转换 - 在线工具 (tool.lu)</a></p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/进制转化.png" alt="进制转化" style="zoom:80%;">
+
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/n.png" alt="n" style="zoom:80%;">
+
+<p>所以<code>e=65537``n=87924348264132406875276140514499937145050893665602592992418171647042491658461</code></p>
+<p>得到n，e后就是常规的做题啦</p>
+<h2 id="分解n得pq"><a href="#分解n得pq" class="headerlink" title="分解n得pq"></a>分解n得pq</h2><p>解码网址上篇也有用到<a href="http://www.factordb.com/">http://www.factordb.com/</a></p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/搜狗截图20210724204727.png" alt="搜狗截图20210724204727">
+
+<blockquote>
+<p><em>p = 275127860351348928173285174381581152299</em></p>
+<p>q = 319576316814478949870590164193048041239</p>
+</blockquote>
+<h2 id="求d"><a href="#求d" class="headerlink" title="求d"></a>求d</h2><p>走个Python执行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2 </span><br><span class="line">p= gmpy2.mpz(275127860351348928173285174381581152299) </span><br><span class="line">q= gmpy2.mpz(319576316814478949870590164193048041239)</span><br><span class="line">e= gmpy2.mpz(65537)</span><br><span class="line">phi_n= (p-1)*(q-1) </span><br><span class="line">d = gmpy2.invert(e,phi_n) </span><br><span class="line">print(&quot;d is:\n%s&quot;%d)</span><br></pre></td></tr></table></figure>
+
+<p>结果d=10866948760844599168252082612378495977388271279679231539839049698621994994673</p>
+<img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/d.png" alt="d">
+
+<h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">privatekey = rsa.PrivateKey(N,e,d,p,q)</span><br><span class="line">s = open(&quot;flag.enc&quot;,&quot;rb&quot;)</span><br><span class="line">print rsa.decrypt(s.read().privatekey).decode()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/o.png" alt="o"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>给出的文件不一定直接给出数字，有时候需要先解码（像这题），提取关键字眼，间接求数字。</p>
+<p>有时Python比虚拟机操作繁琐。</p>
+<p>一些编码的类型要识别出来（比如base64，hex）</p>
+<p>能直接利用网站在线求解的不需要写Python</p>
+]]></content>
+      <categories>
+        <category>实例</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编码入门总结</title>
+    <url>/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>编码–隐匿在计算机背后的语言。在计算机眼里读到的所有文字都是由0和1组成的字符串，为了能让汉字正常显示在屏幕上，我们需要做以下两件事情：</p>
+<blockquote>
+<p>1、给所有的汉字一个独一无二的数字编号，做一个数字编号到汉字的mapping关系（即字符集）<br>2、把这个数字编号能用0和1表示出来</p>
+</blockquote>
+<p>第2件事情并不是直接把数字编号用二进制表示出来那么简单，<strong>还要处理多个字连在一起的时候如何做分隔的问题</strong>。第2件事情通常解决方案要么就是规定好每个字长度（例如所有文字都是2bytes，不够的前面用0补齐），要么就是在用0和1表示的时候，不仅需要表示出数字编码，还要暗示给计算机接下来多少个连续byte构成一个字。</p>
+<h1 id="进入编码"><a href="#进入编码" class="headerlink" title="进入编码"></a>进入编码</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>编码是信息从一种形式或格式转换为另一种形式的过程。解码，是编码的逆过程。</p>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>这是几种常见的中文编码之间的兼容性（子集=同时存在也不冲突=不会出现乱<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/0A1236F3.png" alt="0A1236F3" style="zoom: 50%;"></p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_18-04-57.png" alt="Snipaste_2021-07-25_18-04-57" style="zoom:80%;">
+
+<p>从中我们可以看到ASCLL的兼容性是最好的，而UTF-8与它部分没有交集，这也是平常会出现乱码的原因。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="ASCLL编码"><a href="#ASCLL编码" class="headerlink" title="ASCLL编码"></a>ASCLL编码</h3><p>ASCII编码每个字母或符号占1byte（8bits），并且8bits的最高位是0。通常所说的标准ASCII只有前128个值！（2^7=128)</p>
+<h4 id="ASCLL非打印控制字符"><a href="#ASCLL非打印控制字符" class="headerlink" title="ASCLL非打印控制字符"></a>ASCLL非打印控制字符</h4><p>ASCII表上的数字0–31分配给了控制字符，用于控制像打印机等一些外围设备。例如，12代表换页/新页功能。此命令指示打印机跳到下一页的开头。</p>
+<h4 id="ASCLL打印字符"><a href="#ASCLL打印字符" class="headerlink" title="ASCLL打印字符"></a>ASCLL打印字符</h4><p>数字 32–126 分配给了能在键盘上找到的字符，当您查看或打印文档时就会出现。</p>
+<h4 id="扩展ASCLL打印字符"><a href="#扩展ASCLL打印字符" class="headerlink" title="扩展ASCLL打印字符"></a>扩展ASCLL打印字符</h4><p>扩展的ASCII字符满足了对更多字符的需求。扩展的ASCII包含ASCII中已有的128个字符（数字0–32显示在下图中），又增加了128个字符，总共是256个。</p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_18-18-13.png" alt="Snipaste_2021-07-25_18-18-13" style="zoom:80%;">
+
+<h3 id="GB系列编码"><a href="#GB系列编码" class="headerlink" title="GB系列编码"></a>GB系列编码</h3><p>GB全称GuoBiao国标，GBK全称GuoBiaoKuozhan国标扩展。GB18030编码兼容GBK，GBK兼容GB2312。</p>
+<h4 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h4><p>最早一版的中文编码，<strong>每个字占据2bytes</strong>。由于要和ASCII兼容，那这2bytes最高位不可以为0了（否则和ASCII会有冲突）。在GB2312中收录了6763个汉字以及682个特殊符号，已经囊括了生活中最常用的所有汉字。</p>
+<p>GB2312编码表有个值得注意的点，这个表中也有一些数字和字母，与ASCII里面的字母非常像。例如A3B2对应的是数字2，但是ASCII里面50（十进制）对应的也是数字2。他们的区别就是输入法中所说的“半角”和“全角”。全角的数字2占两个字节。</p>
+<p>通常，我们在打字或编程中都使用半角，即ASCII来编写数字或英文字母。</p>
+<h4 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h4><p>由于GB2312只有6763个汉字，我汉语博大精深，只有6763个字怎么够？于是GBK中在保证不和GB2312、ASCII冲突（即兼容GB2312和ASCII）的前提下，也用每个字占据2bytes的方式又编码了许多汉字。经过GBK编码后，可以表示的汉字达到了20902个，另有984个汉语标点符号、部首等。值得注意的是这20902个汉字还包含了繁体字</p>
+<h4 id="GB18030"><a href="#GB18030" class="headerlink" title="GB18030"></a>GB18030</h4><p>然而，GBK的两万多字也已经无法满足我们的需求了，还有更多可能你自己从来没见过的汉字需要编码。</p>
+<p>这时候显然只用2bytes表示一个字已经不够用了（2bytes最多只有65536种组合，然而为了和ASCII兼容，最高位不能为0就已经直接淘汰了一半的组合，只剩下3万多种组合无法满足全部汉字要求）。因此GB18030多出来的汉字使用4bytes编码。当然，为了兼容GBK，这个四字节的前两位显然不能与GBK冲突</p>
+<hr>
+<p>值得一提，实际中GB18030很少提到，通常GBK见得比较多，这是因为如果你去看一下GB18030里面所编码的文字，你会发现自己一个字也不认识……</p>
+<h3 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a><strong>Unicode编码</strong></h3><p>Unicode是一种字符集标准，最常见的unicode字符编码是UTF-8</p>
+<p>UTF-8与前面说的GB系列编码不兼容，所以如果一个文件中即有UTF-8编码的文字，又有GB18030编码的文字，那绝对会有乱码。</p>
+<p>Unicode赋予了全世界所有文字和符号一个独一无二的数字编号，UTF-8所做的事情就是把这个数字编号表示出来（要处理多个字连在一起的时候如何做分隔的问题</p>
+<p><strong>UTF-8解决字符间分隔的方式是数二进制中最高位连续1的个数来决定这个字是几字节编码。</strong>0开头的属于单字节，和ASCII码重合，做到了兼容。</p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_18-32-57.png" alt="Snipaste_2021-07-25_18-32-57" style="zoom:80%;">
+
+<p>上表中标注X的位置才是真正用来表示Unicode数值的。</p>
+<p>对于中文汉字来说，所有常用汉字的Unicode值都可以用3字节的UTF8表示出来，而GBK编码的汉字基本是2字节（GB18030虽4字节但是日常没人会写那些字）。这也就导致了，如果把GBK编码的中文文本另存为UTF8编码，体积会大50%左右。这也是UTF8的一点小瑕疵，存储同样的汉字，体积比GBK要大50%。</p>
+<p>不过在“可表示世界上所有文字”这一巨大优势面前，UTF8的这点小瑕疵可以忽略了，所以日常开发中最常使用UTF8。</p>
+<h3 id="base家族"><a href="#base家族" class="headerlink" title="base家族"></a>base家族</h3><h4 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h4><p>特点：a-z A-Z 0-9 + / ==补位</p>
+<p>用途：编码邮件内容、网页图片</p>
+<p>原理：Base64将输入字符串按字节切分，取得每个字节对应的二进制值（若不足8比特则高位补0），然后将这些二进制数值串联起来，再按照<strong>6比特一组进行切分</strong>（因为2^6=64），最后一组若不足6比特则末尾补0。将每组二进制值转换成十进制，然后在表格中找到对应的符号并串联起来就是Base64编码结果。</p>
+<p>由于二进制数据是按照8比特一组进行传输，因此Base64按照6比特一组切分的二进制数据必须是24比特的倍数（6和8的最小公倍数）。24比特就是3个字节，若原字节序列数据长度不是3的倍数时且剩下1个输入数据，则在编码结果后加2个=；若剩下2个输入数据，则在编码结果后加1个=。</p>
+<p><a href="https://www.qqxiuzi.cn/bianma/base64.htm">Base64编码转换工具，Base64加密解密 (qqxiuzi.cn)</a></p>
+<h4 id="base32"><a href="#base32" class="headerlink" title="base32"></a>base32</h4><p>特点：A-Z 2-7 ==补位,不区分大小写，避免了1，8,0与I,B,O的混淆</p>
+<p>用途：一些对大小写不敏感的文件系统</p>
+<p>原理：Base32将任意字符串按照字节进行切分，并将每个字节对应的二进制值（不足8比特高位补0）串联起来，按照<strong>5比特一组进行切分</strong>，并将每组二进制值转换成十进制来对应32个可打印字符中的一个。</p>
+<p>由于数据的二进制传输是按照8比特一组进行（即一个字节），因此Base32按5比特切分的二进制数据必须是40比特的倍数（5和8的最小公倍数）。例如输入单字节字符“%”，它对应的二进制值是“100101”，前面补两个0变成“00100101”（二进制值不足8比特的都要在高位加0直到8比特），从左侧开始按照5比特切分成两组：“00100”和“101”，后一组不足5比特，则在末尾填充0直到5比特，变成“00100”和“10100”，这两组二进制数分别转换成十进制数，通过上述表格即可找到其对应的可打印字符“E”和“U”，但是这里只用到两组共10比特，还差30比特达到40比特，按照5比特一组还需6组，则在末尾填充6个“=”。</p>
+<p><a href="https://www.qqxiuzi.cn/bianma/base.php">Base32编码解码，Base32在线转换工具 - 千千秀字 (qqxiuzi.cn)</a></p>
+<h4 id="base16"><a href="#base16" class="headerlink" title="base16"></a>base16</h4><p>特点：非常接近hex(base16是大写，然后hex是小写，其余不变）</p>
+<p>原理：Base16先获取输入字符串每个字节的二进制值（不足8比特在高位补0），然后将其串联进来，再按照4比特一组进行切分，将每组二进制数分别转换成十进制，在下述表格中找到对应的编码串接起来就是Base16编码。可以看到8比特数据<strong>按照4比特切分刚好是两组</strong>，<strong>所以Base16不可能用到填充符号“=”。</strong></p>
+<p>Base16编码后的数据量是原数据的两倍：1000比特数据需要250个字符（即 250*8=2000 比特）。换句话说：Base16使用两个ASCII字符去编码原数据中的一个字节数据。</p>
+<p><a href="https://www.qqxiuzi.cn/bianma/base.php?type=16">Base16编码解码，Base16在线转换工具 - 千千秀字 (qqxiuzi.cn)</a></p>
+<h3 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h3><p>特点：用0-9，A-F表示这16种情况。（十六进制</p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_21-08-46.png" alt="Snipaste_2021-07-25_21-08-46" style="zoom:80%;">
+
+<p>原理：编码时，将8位二进制码重新分组成两个4位的字节（8位=1字节，其中一个字节的低4位是原字节的高4位，另一个字节的低4位是原字节的低4位，其他都补0，然后输出这两个字节对应十六进制数字作为编码。</p>
+<p>结果：Hex编码后的长度是源数据的2倍</p>
+<blockquote>
+<p>ASCII码：  A (65)</p>
+<p> 二进制码：0100_0001 </p>
+<p>重新分组：0000_0100 0000_0001 </p>
+<p>十六进制：             4                 1 </p>
+<p>Hex编码：41</p>
+</blockquote>
+<h3 id="HTML编码"><a href="#HTML编码" class="headerlink" title="HTML编码"></a>HTML编码</h3><p>特点：以&amp;开头，以；结尾</p>
+<p>用途：在HTML文件中，是HTML编写过程中使用特殊的编码字符来进行网页页面的正确显示，是网页上面的一种编码格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：&amp;</span><br><span class="line">编码后：&amp;amp;</span><br></pre></td></tr></table></figure>
+
+<h3 id="urlencode"><a href="#urlencode" class="headerlink" title="urlencode"></a>urlencode</h3><p>特点：有%（又叫百分号编码</p>
+<p>用途：构造反序列化对象、sql注入绕过、文件包含绕过</p>
+<p><a href="http://ctf.ssleye.com/url.html">CTF在线工具-在线URL编码|URL解码 (ssleye.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：欢迎来到我的博客</span><br><span class="line">编码后：%E6%AC%A2%E9%A5%AE%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2</span><br></pre></td></tr></table></figure>
+
+<h3 id="morsecode"><a href="#morsecode" class="headerlink" title="morsecode"></a>morsecode</h3><p>特点：由.和-组成的代码，中间以空格或者/间隔</p>
+<p><a href="http://ctf.ssleye.com/morse.html">CTF在线工具-在线莫尔斯电码编码|在线莫尔斯电码解码|莫尔斯电码算法|Morse (ssleye.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：欢迎来到我的博客</span><br><span class="line">编码后：--.-.--..-...-. -...------..---. --..---.--..-.- -.-..-...--.... --...-....-...- ---.--.-....-.. -.-..--.-.--.-. -.--.---.-...-.</span><br></pre></td></tr></table></figure>
+
+<p>摩尔斯电码字母和数字对应表：</p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_21-58-37.png" alt="Snipaste_2021-07-25_21-58-37" style="zoom:80%;">
+
+<h3 id="jsfuck"><a href="#jsfuck" class="headerlink" title="jsfuck"></a>jsfuck</h3><p>特点：仅含有+[]!()</p>
+<p>用途：书写JavaScript代码</p>
+<p><a href="https://www.cnblogs.com/yhr001/p/13513267.html">http://codertab.com/JsUnFuck</a></p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_19-51-47.png" alt="Snipaste_2021-07-25_19-51-47" style="zoom:80%;">
+
+<h3 id="shellcode编码"><a href="#shellcode编码" class="headerlink" title="shellcode编码"></a>shellcode编码</h3><h3 id="Quoted-printable编码"><a href="#Quoted-printable编码" class="headerlink" title="Quoted-printable编码"></a>Quoted-printable编码</h3><p>特点：任何一个8位的字节值可编码为3个字符–一个等号”=”后跟随两个十六进制数字(0–9或A–F)表示该字节的数值。</p>
+<p>Quoted-printable 可译为“可打印字符引用编码”、“使用可打印字符的编码”，我们收邮件，查看信件原始信息，经常会看到这种类型的编码！它是<strong>多用途互联网邮件扩展</strong>（MIME) 一种实现方式。其中MIME是一个互联网标准，它扩展了电子邮件标准，致力于使其能够支持非ASCII字符、二进制格式附件等多种格式的邮件消息。目前http协议中，很多采用MIME框架！quoted-printable 就是说用一些可打印常用字符，表示一个字节（8位）中所有非打印字符方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：欢迎来到我的博客</span><br><span class="line">编码后：=E6=AC=A2=E8=BF=8E=E6=9D=A5=E5=88=B0=E6=88=91=E7=9A=84=E5=8D=9A=E5=AE=A2</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.mxcz.net/tools/QuotedPrintable.aspx">网络管理员在线工具 - Quoted-Printable (mxcz.net)</a></p>
+<h3 id="XXencode编码"><a href="#XXencode编码" class="headerlink" title="XXencode编码"></a>XXencode编码</h3><p>特点：64个字符，跟base64打印字符相比，就是UUencode多一个“-” 字符，少一个”/” 字符。</p>
+<p>原理：XXencode将输入文本以每三个字节为单位进行编码。如果最后剩下的资料少于三个字节，不够的部份用零补齐。这三个字节共有24个Bit，以6bit为单位分为4个组，每个组以十进制来表示所出现的数值只会落在0到63之间。以所对应值的位置字符代替。它所选择的可打印字符是：+-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz，一共64个字符。</p>
+<p><a href="http://web.chacuo.net/charsetxxencode">在线XXencode编码|在线XXencode解码|XX编码|XX解码|XXencode编码原理介绍–查错网 (chacuo.net)</a></p>
+<h3 id="uuencode"><a href="#uuencode" class="headerlink" title="uuencode"></a>uuencode</h3><p>特点：不含小写字母</p>
+<p>UUencode是一种二进制到文字的编码，最早在unix 邮件系统中使用，全称：Unix-to-Unix encoding</p>
+<p>原理：UUencode将输入文本以每3个字节为单位进行编码，如果最后剩下的资料少于三个字节，不够的部份用零补齐。三个字节共有24个Bit，以<strong>6-bit为单位</strong>分为4个组，每个组以十进制来表示所出现的字节的数值。这个数值只会落在0到63之间。然后将每个数加上32，所产生的结果刚好落在ASCII字符集中可打印字符（32-空白…95-底线）的范围之中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：欢迎来到我的博客</span><br><span class="line">编码后：9YJRBZ:6NYIVEY8BPYHB1YYJ$Y8V:Y:ZB&quot;@  </span><br></pre></td></tr></table></figure>
+
+<h3 id="Escape-Unescape"><a href="#Escape-Unescape" class="headerlink" title="Escape/Unescape"></a>Escape/Unescape</h3><p>特点：%u</p>
+<p>原理：Escape/Unescape加密解码/编码解码,又叫%u编码，采用UTF-16BE模式。 Escape编码/加密,就是字符对应UTF-16，16进制表示方式前面加%u。Unescape解码/解密，就是去掉”%u”后，将16进制字符还原后，由utf-16转码到自己目标字符。</p>
+<h3 id="中文电码"><a href="#中文电码" class="headerlink" title="中文电码"></a>中文电码</h3><p>特点:四个字符为一组</p>
+<p><a href="http://code.mcdvisa.com/">中文电码查询 Chinese Commercial Code - 标准电报码免费在线查询|姓名电码|美国签证电码 (mcdvisa.com)</a></p>
+<img src="/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/Snipaste_2021-07-25_19-55-07.png" alt="Snipaste_2021-07-25_19-55-07" style="zoom:80%;">
+
+<h3 id="新月佛论禅"><a href="#新月佛论禅" class="headerlink" title="新月佛论禅"></a>新月佛论禅</h3><p>特点：新佛曰</p>
+<p><a href="http://hi.pcmoe.net/buddha.html">新约佛论禅/佛曰加密 - PcMoe!</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：欢迎来到我的博客</span><br><span class="line">编码后：新佛曰：諳諸隸僧降吽諸陀諳摩隸諳僧缽諳薩諳嚤降斯波諳兜眾哆諳嘇嘚隸嘇羅諳伏哆兜嚴所諳喼若諳陀夷兜諳宣菩諳隸嘇嚴諳吽嘇心須諳祗喃諳羅嚴塞諳如如囑囑諳</span><br></pre></td></tr></table></figure>
+
+<h3 id="生僻字"><a href="#生僻字" class="headerlink" title="生僻字"></a>生僻字</h3><p>特点：生僻看不懂</p>
+<p><a href="https://www.qqxiuzi.cn/zh/pinyin/">汉字拼音在线转换，输入汉字查看拼音（小写、大写、首字母大写；标注声调，多音字识别） (qqxiuzi.cn)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：淛匶襫黼瀬鎶</span><br><span class="line">编码后：这就是flag</span><br></pre></td></tr></table></figure>
+
+<h3 id="社会主义核心价值观编码"><a href="#社会主义核心价值观编码" class="headerlink" title="社会主义核心价值观编码"></a>社会主义核心价值观编码</h3><p>特点：爱过主义文明和谐等24字</p>
+<p><a href="https://atool.vip/corevalue/">社会主义核心价值观编码器 · 在线工具 - VIP (atool.vip)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编码前：欢迎你</span><br><span class="line">编码后：诚信自由公正友善自由诚信文明友善自由文明友善爱国爱国友善平等诚信平等爱国诚信自由诚信自由自由诚信民主友善法治友善自由富强</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
       </tags>
   </entry>
 </search>
