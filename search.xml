@@ -500,7 +500,7 @@
 <p>结果d=10866948760844599168252082612378495977388271279679231539839049698621994994673</p>
 <img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/d.png" alt="d">
 
-<h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">privatekey = rsa.PrivateKey(N,e,d,p,q)</span><br><span class="line">s = open(&quot;flag.enc&quot;,&quot;rb&quot;)</span><br><span class="line">print rsa.decrypt(s.read().privatekey).decode()</span><br></pre></td></tr></table></figure>
+<h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import rsa</span><br><span class="line"> </span><br><span class="line">e=65537</span><br><span class="line">n=87924348264132406875276140514499937145050893665602592992418171647042491658461</span><br><span class="line">p=275127860351348928173285174381581152299</span><br><span class="line">q=319576316814478949870590164193048041239</span><br><span class="line">d=10866948760844599168252082612378495977388271279679231539839049698621994994673</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key=rsa.PrivateKey(n,e,int(d),p,q)</span><br><span class="line"> </span><br><span class="line">with open(r&quot;C:\Users\Lenovo\Desktop\0eaf8d6c-3fe5-4549-9e81-94ac42535e7b\flag.enc&quot;,&quot;rb&quot;)as f:</span><br><span class="line">    f=f.read()</span><br><span class="line">    print(rsa.decrypt(f,key))</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/07/24/RSA%E5%85%AC%E9%92%A5%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86%E7%9A%84%E5%88%86%E6%9E%90/o.png" alt="o"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>给出的文件不一定直接给出数字，有时候需要先解码（像这题），提取关键字眼，间接求数字。</p>
@@ -1273,6 +1273,210 @@
 <p>按照上述原则，将明文 <code>TH EQ UI CK BR OW NF OX JU MP SO VE RT HE LA ZY DO GX</code> 加以转换得到 <code>KU ND LH GT LF WU ES PW LH SI/J NP CG CR AG BU VZ QA I/JV</code></p>
 <p>将得到的字母改为大写并五个一组列好，得到密文 <code>KUNDL HGTLF WUESP WLHSI NPCGC RAGBU VZQAI V</code></p>
 <p><a href="http://www.practicalcryptography.com/ciphers/classical-era/playfair/">Practical Cryptography</a></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>消息认证与数字签名</title>
+    <url>/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数字签名验证实验"><a href="#数字签名验证实验" class="headerlink" title="数字签名验证实验"></a>数字签名验证实验</h1><h1 id="单向哈希函数与mac"><a href="#单向哈希函数与mac" class="headerlink" title="单向哈希函数与mac"></a>单向哈希函数与mac</h1><h1 id="powershell调用DLL实现RSA签名"><a href="#powershell调用DLL实现RSA签名" class="headerlink" title="powershell调用DLL实现RSA签名"></a>powershell调用DLL实现RSA签名</h1>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈希函数算法实现原理和应用</title>
+    <url>/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>hash，一般翻译做“散列”，也有直接音译为”哈希”</p>
+<p>就是把任意长度的输入通过散列算法，变换成固定长度的输出，该输出就是散列值。</p>
+<p>MD5和SHA1可以说是目前应用最广泛的Hash算法，而它们都是以MD4为基础设计的。</p>
+</blockquote>
+<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><h1 id="MD5暴力破解"><a href="#MD5暴力破解" class="headerlink" title="MD5暴力破解"></a>MD5暴力破解</h1><h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见密码学攻击手法和实现</title>
+    <url>/2021/08/03/%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>现代密码之对称算法</title>
+    <url>/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>现代密码学的任务不仅仅只限于传统密码学的“保密通信”，而是含义更广的“信息安全”，其中包括“保密通信”、“数据加密”、“数字签名”等重要的功能。现代密码学已成为信息时代无处不在不可或缺的信息安全卫士。</p>
+<p>现代密码学的安全性主要由密钥的设计和使用决定。</p>
+<blockquote>
+<p>按技术特征，现代密码学分为三类：</p>
+<p>对称算法、非对称算法、摘要算法</p>
+</blockquote>
+<p>今天主要讲讲对称算法0w0</p>
+<p><strong>对称算法</strong></p>
+<p>又称传统密码算法、秘密密钥算法或单密钥算法。加密与解密密钥一样的密码算法。该算法又分为序列密码（流密码）算法、分组密码算法</p>
+<h2 id="序列密码算法"><a href="#序列密码算法" class="headerlink" title="序列密码算法"></a>序列密码算法</h2><p>序列密码也称为流密码，它是对称密码算法的一种。序列密码具有实现简单、便于硬件实施、加解密处理速度快、没有或只有有限的错误传播等特点。</p>
+<p>在实际应用中，特别是专用或机密机构中保持着优势，典型的应用领域包括无线通信、外交通信。</p>
+<p>1949年Shannon证明了只有一次一密的密码体制是绝对安全的，这给序列密码技术的研究以强大的支持，序列密码方案的发展是模仿一次一密系统的尝试。那神马是一次一密呢？</p>
+<p>1、密钥和加密的消息等长</p>
+<p>2、密钥由真正随机符号组成</p>
+<p>3、密钥只用一次，永不对其他消息复用</p>
+<p>这就像在一天的24小时之内，把每个时间点看成一个密钥，每一个密钥一一对应一个时间点，永不复用。</p>
+<h3 id="RC4加密"><a href="#RC4加密" class="headerlink" title="RC4加密"></a>RC4加密</h3><h4 id="RC4原理"><a href="#RC4原理" class="headerlink" title="RC4原理"></a>RC4原理</h4><blockquote>
+<p>1、密钥流：RC4算法关键是依据明文和密钥生成相应的密钥流，密钥流的长度和明文的长度是相同的。假如明文有333字节，那么密钥流也要有333字节。当然，加密生成的密文也是333字节。</p>
+<p>2、状态向量S：长度为256，S[0],S[1]…..S[255]。每一个单元都是一个字节，算法执行的不论什么时候。S都包含0-255的8比特数的排列组合，仅仅只是值的位置发生了变换。</p>
+<p>3、暂时向量T：长度为256，每一个单元也是一个字节。假如密钥的长度是256，就直接把密钥的值赋给T，否则，轮转地将密钥的每一个字节赋给T</p>
+<p>4、密钥K：长度为1-256字节。密钥≠密钥流！二者长度没有必然关系，通常密钥的长度为16字节</p>
+</blockquote>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730224154.png" alt="搜狗截图20210730224154" style="zoom:80%;">
+
+
+
+<h4 id="柯克霍夫原则Kerckhoffs"><a href="#柯克霍夫原则Kerckhoffs" class="headerlink" title="柯克霍夫原则Kerckhoffs"></a>柯克霍夫原则Kerckhoffs</h4><p>提出：即使密码系统的任何细节已为人悉知，只要密钥（key）未泄漏，它也应是安全的。</p>
+<p>Kerckhoffs准则认为，一个密码系统的安全性不是取决于其算法对于攻击者来说是否保密，而是建立在它所选择的密钥对于攻击者来说是否保密。</p>
+<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><p>–<strong>使用CrypTool对字符串进行RC4加解密操作</strong></p>
+<p>step1：待加密明文</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/Snipaste_2021-07-30_23-03-00.png" alt="Snipaste_2021-07-30_23-03-00" style="zoom:80%;">
+
+<p>step2：选择RC4加密</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230527.png" alt="搜狗截图20210730230527" style="zoom:80%;">
+
+<p>step3：选择8bits密钥长度，并点encrypt显示密文</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230610.png" alt="搜狗截图20210730230610" style="zoom:80%;">
+
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230746.png" alt="搜狗截图20210730230746" style="zoom:80%;">
+
+<p>step4：试试24bits密钥长度加密后的密文</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/image-20210730230930203.png" alt="image-20210730230930203" style="zoom:80%;">
+
+<hr>
+<p><strong>–对8bits密钥长度进行穷举攻击</strong></p>
+<p> 安全研究人员称，现在世界上近三分之一的HTTPS加密连接可被破解，并且效率极高。这种针对RC4加密的破解技术，同样也可以用来破解WiFi数据包。</p>
+<p>研究人员很早前就发现可以利用RC4中的统计偏差，导致可对加密信息中的一些伪随机字节能进行猜测，8bits密钥长度加密的密文，几乎可以秒破解，而24bits的密钥长度可能需要几分钟，这就是之前文章所说的“时间复杂度”</p>
+<p>step1：按RC4分解</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/1.png" alt="1"></p>
+<p>step2:8bits长度密钥加密密文</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/2.png" alt="2"></p>
+<p>step3：秒破解穷举结果</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/3.png" alt="3"></p>
+<hr>
+<h2 id="分组密码算法"><a href="#分组密码算法" class="headerlink" title="分组密码算法"></a>分组密码算法</h2><p>把明文分成了确定长度的数据块（字节块），用同一密钥和算法加密每一明文块后得到等长的密文块，然后把密文块按顺序组合起来得到密文。反之也可以得到明文。</p>
+<h3 id="IDEA加密算法"><a href="#IDEA加密算法" class="headerlink" title="IDEA加密算法"></a>IDEA加密算法</h3><p>IDEA是International Data Encryption Algorithm的缩写，即国际数据加密算法，广泛的应用在安全电子邮件PGP中。 </p>
+<blockquote>
+<p>IDEA加密算法是一个<strong>分组长度为64位</strong>的分组密码算法，**密钥长度为128位,**同一个算法即可用于加密，也可用于解密。发展IDEA也是因为感到DES具有密钥太短等缺点。IDEA的密钥为128位，这么长的密钥在今后若干年内应该是安全的。这是基于“相异代数群上的混合运算”设计思想，算法运用硬件与软件实现都很容易，而且比DES算法在实现上快的多。IDEA自问世以来，已经经历了大量的详细审查，对密码分析具有很强的抵抗能力，在多种商业产品中被使用。</p>
+</blockquote>
+<p><strong>IDEA加密算法的原理</strong></p>
+<blockquote>
+<p> 64-位数据分组被分成4个16-位子分组：xl，X2，x3，x4。</p>
+<p>这4个子分组成为算法的第一轮的输入，总共有8轮。</p>
+<p>在每一轮中，这4个子分组相列相异或，相加，相乘，且与6个16-位子密钥相异或，相加，相乘。</p>
+<p>在轮与轮间，第二和第二个子分组交换。最后在输出变换中4个子分组与4个子密钥进行运算。</p>
+</blockquote>
+<p>以下表述中的相加，指的是：（a + b) mod p，其结果是a+b算术和除以p的余数。例如对于下列表述中的“（2)X2和第二个子密钥相加”就是指用X2与第二个子密钥的和除以2^16(即65536)后的余数。</p>
+<p>以下表述中的相乘，指的是：（a × b) mod p，其结果是 a × b算术乘法除以p的余数。例如对于下列表述中的“（1)X1和第一个子密钥相乘。”就是指用X1和第一个子密钥相乘后的积除于(2^16+1)(即65537)后的余数。</p>
+<p>异或指的是不进位加法。</p>
+<blockquote>
+<p>   (1)X1和第一个子密钥相乘。</p>
+<p>   (2)X2和第二个子密钥相加。</p>
+<p>   (3)X3和第三个子密钥相加。</p>
+<p>   (4)X4和第四个子密钥相乘。</p>
+<p>   (5)将第（1)步和第（3)步的结果相异或。·</p>
+<p>   (6)将第（2)步和第（4)步的结果相异或。</p>
+<p>   (7)将第（5)步的结果与第五个子密钥相乘。</p>
+<p>   (8)将第（6)步和第（7)步的结果相加。</p>
+<p>   (9)将第（8)步的结果与第六个子密钥相乘。</p>
+<p>   (10)将第（7)步和第（9)步的结果相加。</p>
+<p>   (11)将第（1)步和第（9)步的结果相异或。</p>
+<p>   (12)将第（3)步和第（9)步的结果相异或。</p>
+<p>   (13)将第（2)步和第（10)步的结果相异或。</p>
+<p>   (14)将第（4)步和第（10)步的结果相异或。</p>
+</blockquote>
+<p> 每一轮的输出是第（11)、（12)、（13)和（14) 步的结果形成的4个子分组。将中间两个分组分组交换（最后一轮除外）后，即为下一轮的输入。</p>
+<p> 经过8轮运算之后，有一个最终的输出变换：</p>
+<blockquote>
+<p>  (1) X1和第一个子密钥相乘。</p>
+<p>   (2) X2和第二个子密钥相加。</p>
+<p>   (3) X3和第三个子密钥相加。</p>
+<p>   (4) X4和第四个子密钥相乘。</p>
+</blockquote>
+<p> 最后，这4个子分组重新连接到一起产生密文。</p>
+<h3 id="DES对称加密算法"><a href="#DES对称加密算法" class="headerlink" title="DES对称加密算法"></a>DES对称加密算法</h3><p> DES全称为Data Encryption Standard，即数据加密标准，是一种使用密钥加密的块算法</p>
+<p> DES算法就是一个把64位的明文输入块变为64位密文输出块的算法,它所使用的密钥也是64位（其实只使用到了56位，其余8位为奇偶校验位</p>
+<blockquote>
+<p>DES算法的入口参数有三个：Key、Data、Mode。</p>
+<p>Key（密钥）：为7个字节共56位，是DES算法的工作密钥（若说密钥为64位，其指的也是56位的秘钥加上8位奇偶校验位，奇偶校验位为第8,16,24,32,40,48,56,64位）</p>
+<p>Data（数据）：为8个字节64位，是要被加密或被解密的数据</p>
+<p>Mode（模式）： 为DES的工作方式,有两种:加密或解密。</p>
+</blockquote>
+<h4 id="DES加密过程"><a href="#DES加密过程" class="headerlink" title="DES加密过程"></a>DES加密过程</h4><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/4.png" alt="DES算法的流程图"></p>
+<h5 id="IP置换（初始置换）"><a href="#IP置换（初始置换）" class="headerlink" title="IP置换（初始置换）"></a>IP置换（初始置换）</h5><p> 初始置换的原理其实很简单，根据一个初始置换表，对照表中的数值，将明文数据相应位置的数据移动到该数据所在的位置即可</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/6.png"></p>
+<p>现在假设我们按照以下顺序置换</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/7.png"></p>
+<p>先置换a，在原来1的位置，在置换b，在原来2的位置，以此类推，直到按照上表的顺序全部置换完毕</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/8.png"></p>
+<p> 至此我们便得到了初始置换之后的数据Data=“5XPHzrjb7ZRJBtld91TLDvnf=3VNFxph4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">L0 = “5XPHzrjb7ZRJBtld91TLDvnf=3VNFxph”</span><br><span class="line">R0 = “4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</span><br></pre></td></tr></table></figure>
+
+<h5 id="函数f运算"><a href="#函数f运算" class="headerlink" title="函数f运算"></a>函数f运算</h5><p>我们上面说到的16轮完全相同的运算，指的是运算所使用的函数或者说算法是一样的，但是参数L、R以及K是不相同的，而这是什么相同的运算呢？看下图↓</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/5.png" alt="函数f流程图"></p>
+<p> 从上图我们可以知道，函数f主要对数据的右半部分R进行了操作。下面对这个运算进行一定解释说明</p>
+<h6 id="扩展置换E"><a href="#扩展置换E" class="headerlink" title="扩展置换E"></a>扩展置换E</h6><p>扩展置换的作用对象是我们在初始置换后，将数据拆分为两部分（L,R）中的右半部分R。扩展置换表如下：</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/9.png"></p>
+<p>中间的4*8组是数据R（32位），左右两列黑色的是扩展时添加的数据。黑32是上一列最后一位蓝32的数据，黑4是上一列最后一位蓝4的数据，以此类推</p>
+<p>我们得到上面的  <code>R0=“4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</code></p>
+<p>分组后扩展：</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/10.png"></p>
+<p>之后得到48位的R0 <code>“g4WOGYGYqia6a6YQI(i)AI(i)Askc8c80SKCKCume+e+2UMEMEwog4”</code></p>
+<h6 id="子密钥K的生成"><a href="#子密钥K的生成" class="headerlink" title="子密钥K的生成"></a>子密钥K的生成</h6><p>子秘钥K的生成过程中，又有两次置换，称为压缩置换1和压缩置换2</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/a.png"></p>
+<p>而循环左移的位数按照下表进行</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/b.png"></p>
+<h6 id="S盒替换"><a href="#S盒替换" class="headerlink" title="S盒替换"></a>S盒替换</h6><p>在扩展置换E结束之后，进行K1与R0的异或运算后得到的48位数据压缩为32位数据，S盒一共有8个，每一个都是一个4行16列的数组</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/%E4%BB%8E%E3%80%81.png"></p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/c.png">我们前面扩展置换后得到的R0是48位的数据，我们的S盒有8个，那么我们就需要将得到的R0平均分为8组，每组对应一个S盒。</p>
+<p>每一组的数据长度为6位，假设第一组的二进制数据为：“100110”</p>
+<p>那么，我们取第一位与最后一位，组成行数：“10”=2</p>
+<p>取中间四位，组成列数：“0011”=3</p>
+<p>那么，在对应的S1盒中，取2行3列的数据（第3行第4列）：8</p>
+<p>转换为2进制：“1000”</p>
+<p> 那么就将这个得到的4位二进制数据，代替原来第一组的6位数据，这样一来，等8个S盒全部代替完毕，我们就得到32位的数据。</p>
+<h6 id="P盒置换"><a href="#P盒置换" class="headerlink" title="P盒置换"></a>P盒置换</h6><p> S盒置换完成之后，要进行的就是P盒置换了，输入32位的数据，得到32位的输出，置换表如下：</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/d.png"></p>
+<p>至此我们便得到了f(R0,K1),只要再与L0进行异或运算，就得到了第一轮运算最终的R1，然后再将R0的值赋给L1，就完成了第一轮的运算，得到了L1,R1。</p>
+<h6 id="末置换"><a href="#末置换" class="headerlink" title="末置换"></a>末置换</h6><p>经过16次的运算，我们在函数f的最后，会得到L16、R16</p>
+<p>然后将L16与R16合并，但是与之前的步骤中的合并不同，此次合并需要先交换二者的位置，也就是应该是R16L16</p>
+<p>合并之后我们就得到了长度为64位的数据，在用这64位数据进行末置换，最终得到的数据就是加密后的数据。</p>
+<p><a href="https://the-x.cn/cryptography/Des.aspx">传送门DES加解密</a></p>
+<h3 id="AES加密算法"><a href="#AES加密算法" class="headerlink" title="AES加密算法"></a>AES加密算法</h3><p>高级加密标准（Advanced Encryption Standard ），采用的一种区块加密标准。这个标准用来替代原先的DES。</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/11.png"></p>
+<p>AES的加密过程是在一个4×4的字节矩阵上运作，其初值就是一个明文区块（矩阵中一个元素大小就是明文区块中的一个Byte）。加密时，各轮AES加密循环（除最后一轮外）均包含4个步骤：</p>
+<blockquote>
+<p>1、 字节替代（SubBytes）—透过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。</p>
+<p>2、行移位（ShiftRows）—将矩阵中的每个横列进行循环式移位。</p>
+<p>3、列混淆（MixColumns）—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey取代。</p>
+<p>4、轮密钥加（AddRoundKey）—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。</p>
+</blockquote>
+<p>AES的解密过程分别为对应的逆操作。由于每一步操作都是可逆的，按照相反的顺序进行解密即可恢复明文。加解密中每轮的密钥分别由初始密钥扩展得到。算法中16字节的明文、密文和轮密钥都以一个4x4的矩阵表示。</p>
+<p>下面从网上找了几张图来直观说明</p>
+<h6 id="字节代替"><a href="#字节代替" class="headerlink" title="字节代替"></a>字节代替</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/12.png"></p>
+<h6 id="行移位"><a href="#行移位" class="headerlink" title="行移位"></a>行移位</h6><p>在AES中（区块大小128位），第一行维持不变，第二行里的每个字节都向左循环移动一格，第三行里的每个字节都向左循环移动二格，第四行里的每个字节都向左循环移动三格。经过行移位之后，矩阵中每一竖列，都是由输入矩阵中的每个不同列中的元素组成。</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/13.png"></p>
+<h6 id="列混淆"><a href="#列混淆" class="headerlink" title="列混淆"></a>列混淆</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/14.png"></p>
+<h6 id="轮密相加"><a href="#轮密相加" class="headerlink" title="轮密相加"></a>轮密相加</h6><p>密钥将会与原矩阵合并。在每次的加密循环中，都会由主密钥产生一把回合密钥</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/15.png"></p>
+<h6 id="密钥扩展"><a href="#密钥扩展" class="headerlink" title="密钥扩展"></a>密钥扩展</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/16.png"></p>
+<hr>
 ]]></content>
       <categories>
         <category>学习笔记</category>
