@@ -1298,9 +1298,61 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>hash，一般翻译做“散列”，也有直接音译为”哈希”</p>
 <p>就是把任意长度的输入通过散列算法，变换成固定长度的输出，该输出就是散列值。</p>
+<p>MD（Message Digest )，为计算机安全领域广泛使用的一种散列函数，用以提供消息的<strong>完整性保护</strong>。目前广泛使用的是第五版，因此也被称为MD5。</p>
 <p>MD5和SHA1可以说是目前应用最广泛的Hash算法，而它们都是以MD4为基础设计的。</p>
+<p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
 </blockquote>
-<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><h1 id="MD5暴力破解"><a href="#MD5暴力破解" class="headerlink" title="MD5暴力破解"></a>MD5暴力破解</h1><h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1>]]></content>
+<p>举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现（两个MD5值不相同）。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。</p>
+<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><p>在线网站<a href="https://www.sojson.com/encrypt_md5.html">MD5在线加密/解密/破解—MD5在线 (sojson.com)</a></p>
+<p>明文是2021加密后</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/1.png" alt="加密"></p>
+<p>选取任意一组密文 进行解密</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/2.png"></p>
+<p>但是稍微复杂一点的字母就解不出来了唉</p>
+<h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1><h2 id="MD5算法的原理"><a href="#MD5算法的原理" class="headerlink" title="MD5算法的原理"></a>MD5算法的原理</h2><p>对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</p>
+<p>首先是对信息进行填充，<strong>使其位长对512求余的结果=448</strong></p>
+<p>因此，原来信息的位长应该为<code>N*512+448</code></p>
+<p>填充的方法：在原信息后补一个1和许多0，直到满足条件</p>
+<p>填充完毕后，在这个结果后面加一个以64位二进制表示的填充前的信息长度</p>
+<p>因此，现在的消息位长=N*512+448+64=(N+1)*512，这样的长度刚好是512的整数倍</p>
+<p>流程图如下：</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210801081452.png"></p>
+<p>表示第i个分组，每次的运算都由前一轮的128位结果值和第i块512bit值进行运算。初始的128位值为初始链接变量，这些参数用于第一轮的运算，他们分别为：<code>A=0x01234567</code>，<code>B=0x89ABCDEF</code>，<code>C=0xFEDCBA98</code>，<code>D=0x76543210</code>。</p>
+<hr>
+<p>每一分组的算法流程如下：</p>
+<p>第一分组需要将上面四个链接变量复制到另外四个变量中：</p>
+<p>A到a，B到b，C到c，D到d。</p>
+<p>从第二分组开始的变量为上一分组的运算结果。</p>
+<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行<strong>16次</strong>操作。每次操作对a、b、c和d中的<strong>其中三个作一次非线性函数</strong>运算，然后将所得结果<strong>加上第四个</strong>变量，文本的一个子分组和一个常数。再将所得结果<strong>向左环移</strong>一个不定的数，并<strong>加上</strong>a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
+<p>以一下是每次操作中用到的四个非线性函数（每轮一个）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">F(X,Y,Z) =(X&amp;Y)|((~X)&amp;Z)</span><br><span class="line">G(X,Y,Z) =(X&amp;Z)|(Y&amp;(~Z))</span><br><span class="line">H(X,Y,Z) =X^Y^Z</span><br><span class="line">I(X,Y,Z)=Y^(X|(~Z))</span><br><span class="line">#（&amp;；是与，|是或，~是非，^是异或）</span><br></pre></td></tr></table></figure>
+
+<p>这四个函数的说明：如果X、Y和Z的对应位是独立和均匀的，那么结果的每一位也应是独立和均匀的。</p>
+<p>F是一个逐位运算的函数。即，如果X，那么Y，否则Z。函数H是逐位奇偶操作符。</p>
+<p>假设Mj表示消息的第j个子分组（从0到15），常数ti是4294967296*abs(sin(i)）的整数部分，i取值从1到64，单位是弧度。（4294967296等于2的32次方）</p>
+<p>FF(a,b,c,d,Mj,s,ti）表示 a = b + ((a + F(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>GG(a,b,c,d,Mj,s,ti）表示 a = b + ((a + G(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>HH(a,b,c,d,Mj,s,ti）表示 a = b + ((a + H(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>Ⅱ（a,b,c,d,Mj,s,ti）表示 a = b + ((a + I(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>这四轮（64步）是：</p>
+<p>第一轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FF(a,b,c,d,M0,7,0xd76aa478）</span><br><span class="line">FF(d,a,b,c,M1,12,0xe8c7b756）</span><br><span class="line">FF(c,d,a,b,M2,17,0x242070db)</span><br><span class="line">FF(b,c,d,a,M3,22,0xc1bdceee)</span><br><span class="line">FF(a,b,c,d,M4,7,0xf57c0faf)</span><br><span class="line">FF(d,a,b,c,M5,12,0x4787c62a)</span><br><span class="line">FF(c,d,a,b,M6,17,0xa8304613）</span><br><span class="line">FF(b,c,d,a,M7,22,0xfd469501）</span><br><span class="line">FF(a,b,c,d,M8,7,0x698098d8）</span><br><span class="line">FF(d,a,b,c,M9,12,0x8b44f7af)</span><br><span class="line">FF(c,d,a,b,M10,17,0xffff5bb1）</span><br><span class="line">FF(b,c,d,a,M11,22,0x895cd7be)</span><br><span class="line">FF(a,b,c,d,M12,7,0x6b901122）</span><br><span class="line">FF(d,a,b,c,M13,12,0xfd987193）</span><br><span class="line">FF(c,d,a,b,M14,17,0xa679438e)</span><br><span class="line">FF(b,c,d,a,M15,22,0x49b40821）</span><br></pre></td></tr></table></figure>
+
+<p>第二轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GG(a,b,c,d,M1,5,0xf61e2562）</span><br><span class="line">GG(d,a,b,c,M6,9,0xc040b340）</span><br><span class="line">GG(c,d,a,b,M11,14,0x265e5a51）</span><br><span class="line">GG(b,c,d,a,M0,20,0xe9b6c7aa)</span><br><span class="line">GG(a,b,c,d,M5,5,0xd62f105d)</span><br><span class="line">GG(d,a,b,c,M10,9,0x02441453）</span><br><span class="line">GG(c,d,a,b,M15,14,0xd8a1e681）</span><br><span class="line">GG(b,c,d,a,M4,20,0xe7d3fbc8）</span><br><span class="line">GG(a,b,c,d,M9,5,0x21e1cde6）</span><br><span class="line">GG(d,a,b,c,M14,9,0xc33707d6）</span><br><span class="line">GG(c,d,a,b,M3,14,0xf4d50d87）</span><br><span class="line">GG(b,c,d,a,M8,20,0x455a14ed)</span><br><span class="line">GG(a,b,c,d,M13,5,0xa9e3e905）</span><br><span class="line">GG(d,a,b,c,M2,9,0xfcefa3f8）</span><br><span class="line">GG(c,d,a,b,M7,14,0x676f02d9）</span><br><span class="line">GG(b,c,d,a,M12,20,0x8d2a4c8a)</span><br></pre></td></tr></table></figure>
+
+<p>第三轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HH(a,b,c,d,M5,4,0xfffa3942）</span><br><span class="line">HH(d,a,b,c,M8,11,0x8771f681）</span><br><span class="line">HH(c,d,a,b,M11,16,0x6d9d6122）</span><br><span class="line">HH(b,c,d,a,M14,23,0xfde5380c)</span><br><span class="line">HH(a,b,c,d,M1,4,0xa4beea44）</span><br><span class="line">HH(d,a,b,c,M4,11,0x4bdecfa9）</span><br><span class="line">HH(c,d,a,b,M7,16,0xf6bb4b60）</span><br><span class="line">HH(b,c,d,a,M10,23,0xbebfbc70）</span><br><span class="line">HH(a,b,c,d,M13,4,0x289b7ec6）</span><br><span class="line">HH(d,a,b,c,M0,11,0xeaa127fa)</span><br><span class="line">HH(c,d,a,b,M3,16,0xd4ef3085）</span><br><span class="line">HH(b,c,d,a,M6,23,0x04881d05）</span><br><span class="line">HH(a,b,c,d,M9,4,0xd9d4d039）</span><br><span class="line">HH(d,a,b,c,M12,11,0xe6db99e5）</span><br><span class="line">HH(c,d,a,b,M15,16,0x1fa27cf8）</span><br><span class="line">HH(b,c,d,a,M2,23,0xc4ac5665）</span><br></pre></td></tr></table></figure>
+
+<p>第四轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ⅱ（a,b,c,d,M0,6,0xf4292244）</span><br><span class="line">Ⅱ（d,a,b,c,M7,10,0x432aff97）</span><br><span class="line">Ⅱ（c,d,a,b,M14,15,0xab9423a7）</span><br><span class="line">Ⅱ（b,c,d,a,M5,21,0xfc93a039）</span><br><span class="line">Ⅱ（a,b,c,d,M12,6,0x655b59c3）</span><br><span class="line">Ⅱ（d,a,b,c,M3,10,0x8f0ccc92）</span><br><span class="line">Ⅱ（c,d,a,b,M10,15,0xffeff47d)</span><br><span class="line">Ⅱ（b,c,d,a,M1,21,0x85845dd1）</span><br><span class="line">Ⅱ（a,b,c,d,M8,6,0x6fa87e4f)</span><br><span class="line">Ⅱ（d,a,b,c,M15,10,0xfe2ce6e0)</span><br><span class="line">Ⅱ（c,d,a,b,M6,15,0xa3014314）</span><br><span class="line">Ⅱ（b,c,d,a,M13,21,0x4e0811a1）</span><br><span class="line">Ⅱ（a,b,c,d,M4,6,0xf7537e82）</span><br><span class="line">Ⅱ（d,a,b,c,M11,10,0xbd3af235）</span><br><span class="line">Ⅱ（c,d,a,b,M2,15,0x2ad7d2bb)</span><br><span class="line">Ⅱ（b,c,d,a,M9,21,0xeb86d391）</span><br></pre></td></tr></table></figure>
+
+<p>所有这些完成之后，将A、B、C、D分别加上a、b、c、d。然后用下一分组数据继续运行算法，最后的输出是A、B、C和D的级联。</p>
+<p>当你按照我上面所说的方法实现MD5算法以后，你可以用以下几个信息对你做出来的程序作一个简单的测试，看看程序有没有错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MD5 (&quot;&quot;) = d41d8cd98f00b204e9800998ecf8427e</span><br><span class="line">MD5 (&quot;a&quot;) = 0cc175b9c0f1b6a831c399e269772661</span><br><span class="line">MD5 (&quot;abc&quot;) = 900150983cd24fb0d6963f7d28e17f72</span><br><span class="line">MD5 (&quot;message digest&quot;) =f96b697d7cb7938d525a2f31aaf161d0</span><br><span class="line">MD5 (&quot;abcdefghijklmnopqrstuvwxyz&quot;) </span><br><span class="line">= c3fcd3d76192e4007dfb496cca67e13b</span><br><span class="line">MD5 (&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;)</span><br><span class="line">=f29939a25efabaef3b87e2cbfe641315</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
