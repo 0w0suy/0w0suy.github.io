@@ -1284,7 +1284,95 @@
   <entry>
     <title>消息认证与数字签名</title>
     <url>/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数字签名验证实验"><a href="#数字签名验证实验" class="headerlink" title="数字签名验证实验"></a>数字签名验证实验</h1><h1 id="单向哈希函数与mac"><a href="#单向哈希函数与mac" class="headerlink" title="单向哈希函数与mac"></a>单向哈希函数与mac</h1><h1 id="powershell调用DLL实现RSA签名"><a href="#powershell调用DLL实现RSA签名" class="headerlink" title="powershell调用DLL实现RSA签名"></a>powershell调用DLL实现RSA签名</h1>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数字签名验证实验"><a href="#数字签名验证实验" class="headerlink" title="数字签名验证实验"></a>数字签名验证实验</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>数字签名，又称公钥数字签名、电子签章，是一种类似写在纸上的普通的物理签名，但是使用了公钥加密领域的技术实现，用于鉴别数字信息的方法。一套数字签名通常定义两种互补的运算，一个用于签名，一个用于验证。简单地说，所谓数字签名就是附加在原来数据上一些数据或者对原来数据做一些密码变换。这种数据或变换允许数据单元的接收者用以确认数据单元的来源和数据单元的完整性并保护数据，防止被人(例如接收者)进行伪造。</p>
+<hr>
+<p>基于公钥密码体制和私钥密码体制都可以获得数字签名，主要是基于公钥密码体制的数字签名。包括普通数字签名和特殊数字签名。</p>
+<p>普通数字签名算法：RSA、ElGamal、Fiat-Shamir、Guillou-Quisquarter、Schnorr、Ong-Schnorr-Shamir数字签名算法、Des/DSA、椭圆曲线数字签名算法、有限自动机数字签名算法</p>
+<p>特殊数字签名：盲签名、代理签名、群签名、不可否认签名、公平盲签名、门限签名、具有消息恢复功能的签名</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>保证信息传输的完整性、发送者的身份认证、防止交易中的抵赖发生</p>
+<p>解释：数字签名技术是将摘要信息用发送者的私钥加密，与原文一起传送给接收者。接收者只有用发送者的公钥才能解密被加密的摘要信息，然后用HASH函数对收到的原文产生一个摘要信息，与解密的摘要信息对比。如果相同，则说明收到的信息是完整的，在传输过程中没有被修改，否则说明信息被修改过，因此数字签名能够验证信息的完整性。</p>
+<h2 id="数字签名的过程"><a href="#数字签名的过程" class="headerlink" title="数字签名的过程"></a>数字签名的过程</h2><blockquote>
+<ol>
+<li><p>利用一定的算法(如MD5)，将要签名的报文作为一个散列函数的输入，产生一个定长的安全散列码，即消息摘要；</p>
+</li>
+<li><p>使用发送方的私有密钥对这个消息摘要进行加密，形成签名；</p>
+</li>
+<li><p>将报文和签名传送出去；</p>
+</li>
+<li><p>接收方接收报文，并根据报文产生一个消息摘要，同时使用发方的公开密钥对签名进行解密；</p>
+</li>
+<li><p>如果接收方计算得出的消息摘要，和它解密后的签名互相匹配，那么签名就是有效的；</p>
+</li>
+<li><p>因为只有发送方知道私有密钥，并对签名进行了加密，因此只有发方才能产生有效的签名。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="对文件做签名验证"><a href="#对文件做签名验证" class="headerlink" title="对文件做签名验证"></a>对文件做签名验证</h2><p>在实验机里打开cmd控制台，进入sigcheck程序目录，输入sigcheck，点击回车，会出现使用说明</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/1.png"></p>
+<p>以存在的calc为例，把calc所在路径复制到cmd</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/2.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck C:\windows\system32\calc.exe</span><br></pre></td></tr></table></figure>
+
+<p>如下图，会出现，signed，即被签名</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/3.png"></p>
+<p>现在我们试试另外一个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck helloworld.exe</span><br></pre></td></tr></table></figure>
+
+<p>很显然，unsigned，这是没有被签名的文件</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/4.png"></p>
+<h2 id="批量验证文件签名"><a href="#批量验证文件签名" class="headerlink" title="批量验证文件签名"></a>批量验证文件签名</h2><p>从上面实验我们可以看到一个一个试文件很繁琐麻烦，很多情况下，我们需要找出某个目录里所有未经过数字签名的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck -e C:\windows\System32 &gt;abc.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/5.png"></p>
+<p>执行后可以查看abc.txt文件，发现都是经过数字签名后的</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/6.png"></p>
+<h1 id="单向哈希函数与mac"><a href="#单向哈希函数与mac" class="headerlink" title="单向哈希函数与mac"></a>单向哈希函数与mac</h1><p>我们现在虚拟机上的终端运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim 1.txt</span><br></pre></td></tr></table></figure>
+
+<p>创建一个文件，本人不知道vim的命令语法，于是上万能的百度，现在例举用到的操作</p>
+<p>插入模式（按<code>i</code>键进入） 左下角显示–INSERT–</p>
+<p>命令模式（按<code>ESC</code>键退出）</p>
+<p>输入<code>：wq</code></p>
+<blockquote>
+<p>:w 保存文件但不退出vi<br>:w file 将修改另外保存到file中，不退出vi<br>:w! 强制保存，不推出vi<br>:wq 保存文件并退出vi<br>:wq! 强制保存文件，并退出vi<br>:q 不保存文件，退出vi<br>:q! 不保存文件，强制退出vi<br>:e! 放弃所有修改，从上次保存文件开始再编辑命令历史</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -md5 1.txt</span><br></pre></td></tr></table></figure>
+
+<p>顾名思义，dgst就是消息摘要，这里我们用md5加密</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/8.png"></p>
+<p>我们试试sha1加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/9.png" alt="9"></p>
+<p><code>-hmac</code>指的是加盐加密，我们分别用abcd,abcde,abcdef来加盐，可以看到一个字母的添加带来翻天覆地变化，但是长度都是固定的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 -hmac”abcd”  1.txt</span><br><span class="line">openssl dgst -sha1 -hmac”abcde”  1.txt</span><br><span class="line">openssl dgst -sha1 -hmac”abcdef”  1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/10.png"></p>
+<p>现在我们再创建两个txt，分别用MD5进行加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -md5  2.txt</span><br><span class="line">openssl dgst -md5  2.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/12.png"></p>
+<p>我们可以看到数字一样但是位置不一样的文件，它的MD5是完全不一样的，且没有任何规律</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat 2.txt</span><br><span class="line">cat 3.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/11.png"></p>
+<h1 id="powershell调用DLL实现RSA签名"><a href="#powershell调用DLL实现RSA签名" class="headerlink" title="powershell调用DLL实现RSA签名"></a>powershell调用DLL实现RSA签名</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><h3 id="powershell简介"><a href="#powershell简介" class="headerlink" title="powershell简介"></a>powershell简介</h3><p>PowerShell是运行在windows机器上实现系统和应用程序自动化管理的命令行脚本环境，是cmd.exe命令行提示符的加强版。它有很好的可读性和易用性。</p>
+<h3 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h3><p> DLL(Dynamic Link Library)文件为动态链接库文件，又称“应用程序拓展”，是软件文件类型。在Windows中，许多应用程序并不是一个完整的可执行文件，它们被分割成一些相对独立的动态链接库，即DLL文件，放置于系统中。</p>
+<h3 id="RSA签名验证机制"><a href="#RSA签名验证机制" class="headerlink" title="RSA签名验证机制"></a>RSA签名验证机制</h3><p>RSA的签名验证用于通信数据防篡改，如图</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/13.png"></p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public void RSAKey(out string xmlKeys, out string xmlPublicKey)  //生成RSA密钥对</span><br><span class="line"></span><br><span class="line">  public void GetHash(string strSource, ref string strHashData) // 获取hash摘要</span><br><span class="line"></span><br><span class="line">  public void SignatureFormatter(string strKeyPrivate, string strHashbyteSignature, ref string strEncryptedSignatureData) //RSA签名</span><br><span class="line"></span><br><span class="line">  public bool SignatureDeformatter(string strKeyPublic, string strHashbyteDeformatter, string strDeformatterData) // RSA验签</span><br></pre></td></tr></table></figure>
+
+<p>在Powershell中调用操作系统的RSA类库</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/14.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RSACryption.ps1</span><br></pre></td></tr></table></figure>
+
+<p>从中获取明文hash摘要</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/15.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CheckSigned.ps1</span><br></pre></td></tr></table></figure>
+
+<p>签名验证结果返回True，如图所示，表明签名验证结果是正确的。</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/Snipaste_2021-08-02_22-58-44.png"></p>
+]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
