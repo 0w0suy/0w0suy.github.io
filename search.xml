@@ -1,138 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Python之函数</title>
-    <url>/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人的细胞数量，约有37兆2千亿个。细胞们在你的身体的世界中，无休无眠地在工作着。趁热打铁，二话不多说开始进入函数之旅叭。其中，函数的参数及返回值是重点。</p>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数就是对实现某一特定功能的代码的封装。这样做的好处是：函数能提高应用的模块性和代码的重复利用率。</p>
-<p>打个简单的比喻，我们进店买喜茶、海底捞的时候，需要排队、点单、等待、买单等待繁琐的过程，但是通过食用市面上出售的瓶装喜茶、桶装海底捞，就能省去这些步骤，而后者就是封装。</p>
-<p>举个栗子!就拿我们平常看到的验证码来说，这就是一个封装函数。直接调用函数名就可以生成n位随机数嗷（</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import random</span><br><span class="line">def validate_code(n):</span><br><span class="line">    s= &#x27;qwertyuiopasdfghjklzxcvbnm1234567890&#x27; #验证码通常是26个英文字母加上10个数字组成</span><br><span class="line">    code = &#x27;&#x27;</span><br><span class="line">    for i in range(n):</span><br><span class="line">        r=random.choice(s)</span><br><span class="line">        code += r</span><br><span class="line">    print(&#x27;验证码是：&#123;&#125;&#x27;.format(code))</span><br><span class="line">validate_code(4)</span><br><span class="line">validate_code(5)</span><br><span class="line">validate_code(6)</span><br></pre></td></tr></table></figure>
-
-<p>输出结果如图</p>
-<p><img src="/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/1.png" alt="随机验证码"></p>
-<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def 函数名([输入参数])：</span><br><span class="line">	函数体</span><br><span class="line">	[return xxx]</span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<p>1、英文字符以及冒号别遗忘（我经常忘冒号低级错误！</p>
-<p>2、函数名要见名知意</p>
-<p>3、参数之间用逗号隔开</p>
-<p>4、函数体是实现函数功能的代码段，要tab缩进</p>
-<p>5、return返回值，有时可以不写，下文介绍</p>
-<h1 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h1><p>调用函数也就是执行函数。即把刚才定义的函数当成是一个工具，那么调用函数就相当于使用该工具。即函数名是调用函数的名称。很好理解，暂不赘述。</p>
-<h1 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h1><h2 id="默认值参数"><a href="#默认值参数" class="headerlink" title="默认值参数"></a>默认值参数</h2><p>默认值是指在定义的时候就给定值，暂不赘述</p>
-<h2 id="形式参数"><a href="#形式参数" class="headerlink" title="形式参数"></a>形式参数</h2><p>在定义函数时，函数名后面括号中的参数就是形式参数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c): #abd是在函数定义括号内，为形参</span><br><span class="line">	print(&#x27;a=&#x27;,a)</span><br><span class="line">	print(&#x27;b=&#x27;,b)</span><br><span class="line">	print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30)</span><br></pre></td></tr></table></figure>
-
-<h2 id="位置实参"><a href="#位置实参" class="headerlink" title="位置实参"></a>位置实参</h2><p>指的是必须按照正确的顺序将实际参数传到函数中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c): #abd是在函数定义括号内，为形参</span><br><span class="line">	print(&#x27;a=&#x27;,a)</span><br><span class="line">	print(&#x27;b=&#x27;,b)</span><br><span class="line">	print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30) # 依次将10赋给a，20赋给b，30赋给c。调用函数时传入的实参的数量和位置都必须和定义函数时保持一致。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">a= 10</span><br><span class="line">b= 20</span><br><span class="line">c= 30</span><br></pre></td></tr></table></figure>
-
-<h2 id="关键字实参"><a href="#关键字实参" class="headerlink" title="关键字实参"></a>关键字实参</h2><p>能在调用的时候更加明确参数值是给谁的，因此不再需要与形参的位置完全一致，只要将参数名写正确即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c):</span><br><span class="line">    print(&#x27;a=&#x27;,a)</span><br><span class="line">    print(&#x27;b=&#x27;,b)</span><br><span class="line">    print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30)</span><br><span class="line">fun1(a=100,c=2000,b=3000)#与位置形参相比，位置可以不用一一对应</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">a= 100</span><br><span class="line">b= 3000</span><br><span class="line">c= 2000</span><br></pre></td></tr></table></figure>
-
-<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>指在定义或者调用的时候不能明确参数的个数，此时如何定义才可以使参数个数更加灵活呢？–答案是，我们可以用<code>*args</code>或者<code>**kargs</code>，那..什么时候用 <code>*args</code>什么时候用<code>**kargs</code>呢？</p>
-<h3 id="第一种情况"><a href="#第一种情况" class="headerlink" title="第一种情况"></a>第一种情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(*args):</span><br><span class="line">    print(args)</span><br><span class="line">fun1(10)</span><br><span class="line">fun1(10,20,30)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为元组</span><br><span class="line">(10,)</span><br><span class="line">(10, 20, 30)</span><br></pre></td></tr></table></figure>
-
-<p>因此，无法事先确定传递的位置形参的个数时，用<code>*args</code>定义个数可变的位置形参</p>
-<h3 id="第二种情况"><a href="#第二种情况" class="headerlink" title="第二种情况"></a>第二种情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun2(**kargs):</span><br><span class="line">    print(kargs)</span><br><span class="line">fun2(a=10)</span><br><span class="line">fun2(a=10,b=20,c=30)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输出结果为字典</span><br><span class="line">&#123;&#x27;a&#x27;: 10&#125; </span><br><span class="line">&#123;&#x27;a&#x27;: 10, &#x27;b&#x27;: 20, &#x27;c&#x27;: 30&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因此，无法事先确定传递的关键字实参的个数时，使用<code>**kargs</code>定义个数可变的关键字形参</p>
-<h1 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h1><p>return 语句指定应该返回的值，该返回值可以是任意类型</p>
-<p>需要注意的是，return 语句在同一函数中可以出现多次，但只要有一个得到执行，就会直接结束函数的执行。</p>
-<h3 id="没有返回值的情况"><a href="#没有返回值的情况" class="headerlink" title="没有返回值的情况"></a>没有返回值的情况</h3><p>只是完成一个操作，函数体内可没有return语句。调用会返回None</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun():         </span><br><span class="line">    print(&#x27;hello&#x27;)</span><br><span class="line">    #return         #return可以省略不写</span><br><span class="line">fun()               #调用fun()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输出结果为</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-
-<h3 id="有返回值的情况"><a href="#有返回值的情况" class="headerlink" title="有返回值的情况"></a>有返回值的情况</h3><p>函数的最后会有一个返回值return，将函数执行的结果返出。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun3():</span><br><span class="line">    return&#x27;hello&#x27;,&#x27;world&#x27;</span><br><span class="line">print(fun3())              #返回值是两个，要用到return</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果是元组</span><br><span class="line">(&#x27;hello&#x27;, &#x27;world&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h1><h3 id="数字相关"><a href="#数字相关" class="headerlink" title="数字相关"></a><strong>数字相关</strong></h3><blockquote>
-<p>bool() 将给定的数据类型转换成bool值。如果不给值，返回False</p>
-<p>int () 将给定的数据转换成int值。如果不给值，返回0</p>
-<p>float () 将给定的数据转换小数</p>
-<p>complex () 创建一个复数，第一个参数为实部，第二个参数为虚部。或者第一个参数直接用字符串来描述复数</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number = &#x27;100&#x27;</span><br><span class="line">print(int(number)) # 100</span><br><span class="line">print(float(number)) # 100.0</span><br><span class="line">print(bool(10))   # True</span><br></pre></td></tr></table></figure>
-
-<h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a><strong>进制转换</strong></h3><blockquote>
-<p>bin() 将给的参数转换成二进制</p>
-<p>otc() 将给定的参数转换成八进制</p>
-<p>hex() 将给定的参数转换成十六进制</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number=25</span><br><span class="line">print(bin(number))  # 0b11001</span><br><span class="line">print(oct(number))  # 0o31</span><br><span class="line">print(hex(number))  # 0x19</span><br></pre></td></tr></table></figure>
-
-<h3 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a><strong>数字运算</strong></h3><blockquote>
-<p>abs() 返回绝对值</p>
-<p>divmode() 返回商的余数</p>
-<p>round () 四舍五入</p>
-<p>pow(a,b) 求a 的b 次幂,如果有三个参数.则求完次幂后对第三个数取余</p>
-<p>sum() 求和</p>
-<p>min() 求最小值</p>
-<p>max() 求最大值</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number = -10.58</span><br><span class="line">print(abs(number)) # 10.58</span><br><span class="line">print(round(number)) # -11</span><br><span class="line">print(max(number,-9)) # -9</span><br></pre></td></tr></table></figure>
-
-<h3 id="列表和元组"><a href="#列表和元组" class="headerlink" title="列表和元组"></a><strong>列表和元组</strong></h3><blockquote>
-<p>list() 将一个可迭代对象转换成列表</p>
-<p>tuple() 将一个可迭代对象转成元组</p>
-<p>reversed() 将一个序列翻转, 返回翻转序列的迭代器</p>
-<p>slice() 列表的切片，格式是(初:末 :step :)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = &#x27;hello&#x27;</span><br><span class="line">print(list(s)) # [&#x27;h&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lst = &quot;hello! I am Running&quot;</span><br><span class="line">s = slice(1, 10, 3)</span><br><span class="line">print(lst[s])     # eoI</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="字符串相关"><a href="#字符串相关" class="headerlink" title="字符串相关"></a><strong>字符串相关</strong></h3><blockquote>
-<p>str () 将数据转换成字符串</p>
-<p>format() 与具体数据相关,用于计算各种小数.精算等</p>
-<p>memoryview() 查看bytes的内存中的情况</p>
-<p>ord() 输入字符找带字符编码的位置</p>
-<p>chr() 输入位置数字找对应的字符</p>
-<p>ascii() 是sdcll码中的返回值 不是就返回\u..</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 找到对应字符的编码位置</span><br><span class="line">print(ord(&#x27;s&#x27;)) # 115</span><br><span class="line">print(ord(&#x27;苏&#x27;))  #33487</span><br><span class="line"># 找到对应编码位置的字符*</span><br><span class="line">print(chr(115))  #s</span><br><span class="line">print(chr(38597)) #雅,诶嘿嘿一不小心暴露真名</span><br><span class="line"># 在sacll码中就返回这个值. 如果不是就返回\u..*</span><br><span class="line">print(ascii(&#x27;a&#x27;)) *# &#x27;a&#x27;*</span><br><span class="line">print(ascii(&#x27;苏&#x27;))  *# &#x27;\u82cf&#x27;</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据集合"><a href="#数据集合" class="headerlink" title="数据集合"></a><strong>数据集合</strong></h3><blockquote>
-<p>dict() 创建一个字典</p>
-<p>set() 创建一个集合</p>
-<p>frozenset() 创建一个冻结的集合.冻结的集合不能进行添加和删除操作</p>
-</blockquote>
-<h3 id="其他相关"><a href="#其他相关" class="headerlink" title="其他相关"></a><strong>其他相关</strong></h3><blockquote>
-<p>len() 返回一个对象中的元素的个数</p>
-<p>sorted() 对可迭代对象进行排序</p>
-<p>enumerate() 获取集合的枚举对象</p>
-<p>all() 可迭代对象中全部是True.结果才是True</p>
-<p>any() 可迭代对象中有一个是True,结果就是Ture</p>
-<p>zip() 函数用于将可迭代的对象最为参数.将对象中对应的元素打包成一个个元组</p>
-<p>eval() 执行字符串类型的代码,并返回最终的结果</p>
-</blockquote>
-<h3 id="内存相关"><a href="#内存相关" class="headerlink" title="内存相关"></a><strong>内存相关</strong></h3><blockquote>
-<p>hash() 获取到对像的哈希值(int str bool tuple)</p>
-<p>id () 获取到对象的内存地址</p>
-</blockquote>
-<p>以上内置函数算是比较常用的，其他就不一一列举啦</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/07/06/Hello%20World/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is my very first post！</p>
@@ -274,121 +142,135 @@
       </tags>
   </entry>
   <entry>
-    <title>Python实例1--文本进度条</title>
-    <url>/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="文本进度条的分析"><a href="#文本进度条的分析" class="headerlink" title="文本进度条的分析"></a>文本进度条的分析</h1><p>1、采用字符串方式打印可以动态变化的文本进度条</p>
-<p>2、进度条需要能在一行中逐渐变化</p>
-<p>3、采用sleep（）模拟一个持续的进度</p>
-<h1 id="文本进度条框架"><a href="#文本进度条框架" class="headerlink" title="文本进度条框架"></a>文本进度条框架</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 10</span><br><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*i</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
+    <title>Python之函数</title>
+    <url>/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人的细胞数量，约有37兆2千亿个。细胞们在你的身体的世界中，无休无眠地在工作着。趁热打铁，二话不多说开始进入函数之旅叭。其中，函数的参数及返回值是重点。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数就是对实现某一特定功能的代码的封装。这样做的好处是：函数能提高应用的模块性和代码的重复利用率。</p>
+<p>打个简单的比喻，我们进店买喜茶、海底捞的时候，需要排队、点单、等待、买单等待繁琐的过程，但是通过食用市面上出售的瓶装喜茶、桶装海底捞，就能省去这些步骤，而后者就是封装。</p>
+<p>举个栗子!就拿我们平常看到的验证码来说，这就是一个封装函数。直接调用函数名就可以生成n位随机数嗷（</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import random</span><br><span class="line">def validate_code(n):</span><br><span class="line">    s= &#x27;qwertyuiopasdfghjklzxcvbnm1234567890&#x27; #验证码通常是26个英文字母加上10个数字组成</span><br><span class="line">    code = &#x27;&#x27;</span><br><span class="line">    for i in range(n):</span><br><span class="line">        r=random.choice(s)</span><br><span class="line">        code += r</span><br><span class="line">    print(&#x27;验证码是：&#123;&#125;&#x27;.format(code))</span><br><span class="line">validate_code(4)</span><br><span class="line">validate_code(5)</span><br><span class="line">validate_code(6)</span><br></pre></td></tr></table></figure>
 
-<p>执行结果如下图</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/a.png" alt="运行结果"></p>
-<p>我们可以看到这个文本进度条包括百分比，”开始阅读”及”阅读完毕”的字眼，以及剩余阅读部分的进度条格式。</p>
-<h2 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
+<p>输出结果如图</p>
+<p><img src="/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/1.png" alt="随机验证码"></p>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def 函数名([输入参数])：</span><br><span class="line">	函数体</span><br><span class="line">	[return xxx]</span><br></pre></td></tr></table></figure>
 
-<p>我们先引入一个time库，整体用sleep函数，来生成一个持续不断的时间。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line"></span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>1、英文字符以及冒号别遗忘（我经常忘冒号低级错误！</p>
+<p>2、函数名要见名知意</p>
+<p>3、参数之间用逗号隔开</p>
+<p>4、函数体是实现函数功能的代码段，要tab缩进</p>
+<p>5、return返回值，有时可以不写，下文介绍</p>
+<h1 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h1><p>调用函数也就是执行函数。即把刚才定义的函数当成是一个工具，那么调用函数就相当于使用该工具。即函数名是调用函数的名称。很好理解，暂不赘述。</p>
+<h1 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h1><h2 id="默认值参数"><a href="#默认值参数" class="headerlink" title="默认值参数"></a>默认值参数</h2><p>默认值是指在定义的时候就给定值，暂不赘述</p>
+<h2 id="形式参数"><a href="#形式参数" class="headerlink" title="形式参数"></a>形式参数</h2><p>在定义函数时，函数名后面括号中的参数就是形式参数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c): #abd是在函数定义括号内，为形参</span><br><span class="line">	print(&#x27;a=&#x27;,a)</span><br><span class="line">	print(&#x27;b=&#x27;,b)</span><br><span class="line">	print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30)</span><br></pre></td></tr></table></figure>
 
-<p>我们打印了开始阅读和阅读完毕的字眼，为了使看起来更加美观，引入了减号”-“，字体居中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scale = 10</span><br></pre></td></tr></table></figure>
+<h2 id="位置实参"><a href="#位置实参" class="headerlink" title="位置实参"></a>位置实参</h2><p>指的是必须按照正确的顺序将实际参数传到函数中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c): #abd是在函数定义括号内，为形参</span><br><span class="line">	print(&#x27;a=&#x27;,a)</span><br><span class="line">	print(&#x27;b=&#x27;,b)</span><br><span class="line">	print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30) # 依次将10赋给a，20赋给b，30赋给c。调用函数时传入的实参的数量和位置都必须和定义函数时保持一致。</span><br></pre></td></tr></table></figure>
 
-<p>scale指的是文本进度条的大概宽度</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(scale+1):</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">a= 10</span><br><span class="line">b= 20</span><br><span class="line">c= 30</span><br></pre></td></tr></table></figure>
 
-<p>for循环，for i in range 这样的表达方式，表示遍历range（） 对象。之所以称为遍历循环，是因为for语句的循环执行次数是根据遍历结构中元素的个数确定的。遍历循环可以简单的理解为从遍历结构中逐一提取元素，放入循环变量中，对于每个所提取的元素执行一次循环体语句，当遍历结构中所有的元素都被访问遍了，遍历循环就正常结束。</p>
-<p>放到进度条中，可以理解为，每经过一个循环，计算机完成一个任务，打印一个进度条，计算机再完成一个任务，再打印一个进度条。直到进度条百分百，即完成了任务，打印出“阅读完毕”。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = &#x27;*&#x27;*i</span><br></pre></td></tr></table></figure>
+<h2 id="关键字实参"><a href="#关键字实参" class="headerlink" title="关键字实参"></a>关键字实参</h2><p>能在调用的时候更加明确参数值是给谁的，因此不再需要与形参的位置完全一致，只要将参数名写正确即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(a,b,c):</span><br><span class="line">    print(&#x27;a=&#x27;,a)</span><br><span class="line">    print(&#x27;b=&#x27;,b)</span><br><span class="line">    print(&#x27;c=&#x27;,c)</span><br><span class="line">fun1(10,20,30)</span><br><span class="line">fun1(a=100,c=2000,b=3000)#与位置形参相比，位置可以不用一一对应</span><br></pre></td></tr></table></figure>
 
-<p>定义a，字符*与循环变量i的乘积</p>
-<p>(在字符串中学过，字符串与整数的乘积表示字符串被复制的次数)  </p>
-<p>因此，a表示星号*被复制的次数，而星号指当前的百分比所表达的信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b = &#x27;.&#x27;*(scale - i)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为</span><br><span class="line">a= 100</span><br><span class="line">b= 3000</span><br><span class="line">c= 2000</span><br></pre></td></tr></table></figure>
 
-<p>  定义b，用.表示，与当前剩余的进度条的笔记之间的乘积。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = (i/scale)*100</span><br></pre></td></tr></table></figure>
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>指在定义或者调用的时候不能明确参数的个数，此时如何定义才可以使参数个数更加灵活呢？–答案是，我们可以用<code>*args</code>或者<code>**kargs</code>，那..什么时候用 <code>*args</code>什么时候用<code>**kargs</code>呢？</p>
+<h3 id="第一种情况"><a href="#第一种情况" class="headerlink" title="第一种情况"></a>第一种情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun1(*args):</span><br><span class="line">    print(args)</span><br><span class="line">fun1(10)</span><br><span class="line">fun1(10,20,30)</span><br></pre></td></tr></table></figure>
 
-<p>   c指的是我们输出与当前进度条和进度相关的百分比</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果为元组</span><br><span class="line">(10,)</span><br><span class="line">(10, 20, 30)</span><br></pre></td></tr></table></figure>
 
-<p>前面我们学过，百分比%和括号{}，可以表示占位符。用三个占位符表示三个槽。<code>&#123;:^3.0f&#125;%</code>表示某%，<code>[&#123;&#125;-&gt;&#123;&#125;]</code>前者占位符表示星号*，即已阅读进度条，后者占位符表示点.，即剩余进度条。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+<p>因此，无法事先确定传递的位置形参的个数时，用<code>*args</code>定义个数可变的位置形参</p>
+<h3 id="第二种情况"><a href="#第二种情况" class="headerlink" title="第二种情况"></a>第二种情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun2(**kargs):</span><br><span class="line">    print(kargs)</span><br><span class="line">fun2(a=10)</span><br><span class="line">fun2(a=10,b=20,c=30)</span><br></pre></td></tr></table></figure>
 
-<p>表示将程序短暂的停顿1秒</p>
-<h1 id="单行动态刷新"><a href="#单行动态刷新" class="headerlink" title="单行动态刷新"></a>单行动态刷新</h1><h2 id="刷新的本质"><a href="#刷新的本质" class="headerlink" title="刷新的本质"></a>刷新的本质</h2><p>刷新的本质是用后打印的字符覆盖之前的字符。</p>
-<p>比如说，截止到2021年7月16日9点19分，国内疫情实时大数据报告有9007979480人在浏览这个网页，当我刷新一次截止到2021年7月16日9点20分，这个数据变成了9007982317，用后面的数据覆盖了原来数据的位置，之前的数据被替换，对用户来说，这就是刷新效果。</p>
-<p>这就需要我们的程序，在输出某一个 字符的字符串的时候，不能够换行到下一行。因为一旦换行到下一行，之前的数据就不能被后来的所覆盖。因为print函数执行完后会进行到下一行，所以我们要让print不能换行。并且要让光标退回到之前的位置，实现覆盖。</p>
-<p>总而言之，刷新要做到两点:</p>
-<p>1.不能换行</p>
-<p>2.要能退回</p>
-<p>代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">for i in range(101):</span><br><span class="line">    print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输出结果为字典</span><br><span class="line">&#123;&#x27;a&#x27;: 10&#125; </span><br><span class="line">&#123;&#x27;a&#x27;: 10, &#x27;b&#x27;: 20, &#x27;c&#x27;: 30&#125;</span><br></pre></td></tr></table></figure>
 
-<p>执行结果如下图</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/b.png" alt="单行刷新运行结果"></p>
-<h2 id="分析代码-1"><a href="#分析代码-1" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
+<p>因此，无法事先确定传递的关键字实参的个数时，使用<code>**kargs</code>定义个数可变的关键字形参</p>
+<h1 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h1><p>return 语句指定应该返回的值，该返回值可以是任意类型</p>
+<p>需要注意的是，return 语句在同一函数中可以出现多次，但只要有一个得到执行，就会直接结束函数的执行。</p>
+<h3 id="没有返回值的情况"><a href="#没有返回值的情况" class="headerlink" title="没有返回值的情况"></a>没有返回值的情况</h3><p>只是完成一个操作，函数体内可没有return语句。调用会返回None</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun():         </span><br><span class="line">    print(&#x27;hello&#x27;)</span><br><span class="line">    #return         #return可以省略不写</span><br><span class="line">fun()               #调用fun()</span><br></pre></td></tr></table></figure>
 
-<p>还是使用time库的sleep函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`for i in range(101):`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输出结果为</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
 
-<p>构造101次的循环过程。因为为了输入文本进度条，从0%到100</p>
-<p>%，划分为101次。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="有返回值的情况"><a href="#有返回值的情况" class="headerlink" title="有返回值的情况"></a>有返回值的情况</h3><p>函数的最后会有一个返回值return，将函数执行的结果返出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def fun3():</span><br><span class="line">    return&#x27;hello&#x27;,&#x27;world&#x27;</span><br><span class="line">print(fun3())              #返回值是两个，要用到return</span><br></pre></td></tr></table></figure>
 
-<p> 在format后面增加了<code>,end=&quot;&quot;</code>，这是print函数的一个参数，end后字符串为空字符，表示print完不会增加新的内容，光标还是停留在最后一个字符上。<code>\r&#123;:3&#125;%</code>表示在打印输出字符串之前，将光标退回到当前行的行首。</p>
-<p>简单来说，在每次输出前，把光标放到行首，覆盖原来的数据，在输出后也不换行，下一次循环再输出的时候，再把光标放到行首，覆盖上次的数据后，再输出，又不换行。这样就构成了一种单行刷新的效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#输出结果是元组</span><br><span class="line">(&#x27;hello&#x27;, &#x27;world&#x27;)</span><br></pre></td></tr></table></figure>
 
-<p>表示将程序短暂的停顿1秒</p>
-<h2 id="分析结果"><a href="#分析结果" class="headerlink" title="分析结果"></a>分析结果</h2><p>我们看到的是从0%到100%的结果，但实际上是一个一个覆盖刷新的效果。因为IDLE本身是一个编写式的开发环境，它并不是程序运行的主要环境。</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/c.png" alt="如图，一个一个输出"></p>
-<h1 id="进度条的改进完善"><a href="#进度条的改进完善" class="headerlink" title="进度条的改进完善"></a>进度条的改进完善</h1><h2 id="运用知识"><a href="#运用知识" class="headerlink" title="运用知识"></a>运用知识</h2><p>1、字符串处理</p>
-<p>2、数字处理</p>
-<p>3、时间库的使用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 50</span><br><span class="line">print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</span><br><span class="line">start = time.perf_counter()</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*1</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    dur = time.perf_counter() - start</span><br><span class="line">    print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;\n&quot;+&quot;阅读完毕&quot;.center(scale//2,&quot;-&quot;))</span><br></pre></td></tr></table></figure>
+<h1 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h1><h3 id="数字相关"><a href="#数字相关" class="headerlink" title="数字相关"></a><strong>数字相关</strong></h3><blockquote>
+<p>bool() 将给定的数据类型转换成bool值。如果不给值，返回False</p>
+<p>int () 将给定的数据转换成int值。如果不给值，返回0</p>
+<p>float () 将给定的数据转换小数</p>
+<p>complex () 创建一个复数，第一个参数为实部，第二个参数为虚部。或者第一个参数直接用字符串来描述复数</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number = &#x27;100&#x27;</span><br><span class="line">print(int(number)) # 100</span><br><span class="line">print(float(number)) # 100.0</span><br><span class="line">print(bool(10))   # True</span><br></pre></td></tr></table></figure>
 
-<p>运行结果如下图</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/d.png" alt="完善后得！"></p>
-<p>区别：</p>
-<p><code>print(&quot;-----开始阅读------&quot;)</code></p>
-<p><code>print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</code></p>
-<p>刚开始我们为了让结果看起来更美观，用减号-来分隔，但如果页面布局或大小变化，这样显得不太智能。现在我们使用字符串处理中的<code>.center</code>方法，将一个-字符填充在执行开始或者执行结束的两侧，通过填充的方式，自动实现减号构成的分隔线条。</p>
-<p>并且我们还增加了计时效果<code>start = time.perf_counter()</code>，确定了一个开始时间，而<code> dur = time.perf_counter() - start</code>表示每次循环所消耗的时间。</p>
-<p><code>print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</code>中的<code>\n    </code>，表示文本的刷新效果，实现光标向行首移动。<code>end=&quot;&quot;</code>表示每次输出后不换行。</p>
-<h1 id="进度条的举一反三"><a href="#进度条的举一反三" class="headerlink" title="进度条的举一反三"></a>进度条的举一反三</h1><h2 id="计算问题扩展"><a href="#计算问题扩展" class="headerlink" title="计算问题扩展"></a>计算问题扩展</h2><p>文本进度条程序使用了perf_counter()计时，计时方法适合各类需要统计时间的计算问题。</p>
-<p>在上文我们可以看到在每次打印进度条后，会加上一个时间，即相隔循环打印时间。这样我们就可以用perf_counter()来比较不同算法时间、统计部分程序运行时间。</p>
-<h2 id="进度条应用扩展"><a href="#进度条应用扩展" class="headerlink" title="进度条应用扩展"></a>进度条应用扩展</h2><p>不仅可以应用于文本进度条，也可以在大型加载的程序中增加进度条，因为进度条是人机交互的桥梁，通过进度条我们可以直观的看到计算机运行的进度，可以给我们带来对程序更好的理解。</p>
+<h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a><strong>进制转换</strong></h3><blockquote>
+<p>bin() 将给的参数转换成二进制</p>
+<p>otc() 将给定的参数转换成八进制</p>
+<p>hex() 将给定的参数转换成十六进制</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number=25</span><br><span class="line">print(bin(number))  # 0b11001</span><br><span class="line">print(oct(number))  # 0o31</span><br><span class="line">print(hex(number))  # 0x19</span><br></pre></td></tr></table></figure>
+
+<h3 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a><strong>数字运算</strong></h3><blockquote>
+<p>abs() 返回绝对值</p>
+<p>divmode() 返回商的余数</p>
+<p>round () 四舍五入</p>
+<p>pow(a,b) 求a 的b 次幂,如果有三个参数.则求完次幂后对第三个数取余</p>
+<p>sum() 求和</p>
+<p>min() 求最小值</p>
+<p>max() 求最大值</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">number = -10.58</span><br><span class="line">print(abs(number)) # 10.58</span><br><span class="line">print(round(number)) # -11</span><br><span class="line">print(max(number,-9)) # -9</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表和元组"><a href="#列表和元组" class="headerlink" title="列表和元组"></a><strong>列表和元组</strong></h3><blockquote>
+<p>list() 将一个可迭代对象转换成列表</p>
+<p>tuple() 将一个可迭代对象转成元组</p>
+<p>reversed() 将一个序列翻转, 返回翻转序列的迭代器</p>
+<p>slice() 列表的切片，格式是(初:末 :step :)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = &#x27;hello&#x27;</span><br><span class="line">print(list(s)) # [&#x27;h&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lst = &quot;hello! I am Running&quot;</span><br><span class="line">s = slice(1, 10, 3)</span><br><span class="line">print(lst[s])     # eoI</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字符串相关"><a href="#字符串相关" class="headerlink" title="字符串相关"></a><strong>字符串相关</strong></h3><blockquote>
+<p>str () 将数据转换成字符串</p>
+<p>format() 与具体数据相关,用于计算各种小数.精算等</p>
+<p>memoryview() 查看bytes的内存中的情况</p>
+<p>ord() 输入字符找带字符编码的位置</p>
+<p>chr() 输入位置数字找对应的字符</p>
+<p>ascii() 是sdcll码中的返回值 不是就返回\u..</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 找到对应字符的编码位置</span><br><span class="line">print(ord(&#x27;s&#x27;)) # 115</span><br><span class="line">print(ord(&#x27;苏&#x27;))  #33487</span><br><span class="line"># 找到对应编码位置的字符*</span><br><span class="line">print(chr(115))  #s</span><br><span class="line">print(chr(38597)) #雅,诶嘿嘿一不小心暴露真名</span><br><span class="line"># 在sacll码中就返回这个值. 如果不是就返回\u..*</span><br><span class="line">print(ascii(&#x27;a&#x27;)) *# &#x27;a&#x27;*</span><br><span class="line">print(ascii(&#x27;苏&#x27;))  *# &#x27;\u82cf&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据集合"><a href="#数据集合" class="headerlink" title="数据集合"></a><strong>数据集合</strong></h3><blockquote>
+<p>dict() 创建一个字典</p>
+<p>set() 创建一个集合</p>
+<p>frozenset() 创建一个冻结的集合.冻结的集合不能进行添加和删除操作</p>
+</blockquote>
+<h3 id="其他相关"><a href="#其他相关" class="headerlink" title="其他相关"></a><strong>其他相关</strong></h3><blockquote>
+<p>len() 返回一个对象中的元素的个数</p>
+<p>sorted() 对可迭代对象进行排序</p>
+<p>enumerate() 获取集合的枚举对象</p>
+<p>all() 可迭代对象中全部是True.结果才是True</p>
+<p>any() 可迭代对象中有一个是True,结果就是Ture</p>
+<p>zip() 函数用于将可迭代的对象最为参数.将对象中对应的元素打包成一个个元组</p>
+<p>eval() 执行字符串类型的代码,并返回最终的结果</p>
+</blockquote>
+<h3 id="内存相关"><a href="#内存相关" class="headerlink" title="内存相关"></a><strong>内存相关</strong></h3><blockquote>
+<p>hash() 获取到对像的哈希值(int str bool tuple)</p>
+<p>id () 获取到对象的内存地址</p>
+</blockquote>
+<p>以上内置函数算是比较常用的，其他就不一一列举啦</p>
 ]]></content>
       <categories>
-        <category>实例</category>
+        <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github＋hexo懒人搭建博客完整教程</title>
-    <url>/2021/07/07/github%EF%BC%8Bhexo%E6%87%92%E4%BA%BA%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a><strong>一、准备</strong></h1><h2 id="1-1环境搭建"><a href="#1-1环境搭建" class="headerlink" title="1.1环境搭建"></a>1.1环境搭建</h2><p>搭建博客首先是准备环境的搭建，这就像我们体内的细胞依赖于内环境而存活，内环境为细胞的生活提供的必要的水环境以及其它物质交换的通道。我们搭建的环境也是如此。<br>先安装 Node.js 和 Git，因为Hexo 基于 Node.js。<br>附上下载的官网链接<br>Node.js：<a href="https://nodejs.org/zh-cn">https://nodejs.org/zh-cn</a><br>Git：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。<br>安装完成后，Win+R 输入 cmd 并打开（或者左下角点查找），依次输入 node -v、npm -v 和 git –version（注意空格） 并回车，出校如下图表示成功。</p>
-<h2 id="1-2注意事项"><a href="#1-2注意事项" class="headerlink" title="1.2注意事项"></a>1.2注意事项</h2><p>敲代码的时候，将输入法换成英文输入。<br>统一使用 Git Bash 进行操作。<br>注意空格。</p>
-<hr>
-<h1 id="二、连接-Github"><a href="#二、连接-Github" class="headerlink" title="二、连接 Github"></a><strong>二、连接 Github</strong></h1><p>使用邮箱注册 GitHub 账户，选择免费账户（Free），并完成邮件验证。<br>在桌面的页面，在空白处右键鼠标点【Git Bash Here】开始运行，设置用户名和邮箱。（注意：用户名是自己的github账户名，邮箱是绑定的邮箱）<br>‘’’<br>git config –global user.name “GitHub 用户名”<br>git config –global user.email “GitHub 邮箱”<br>‘’’<br>创建 SSH 密匙<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。<br>添加密匙：<br>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。<br>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。<br>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。<br>验证连接：<br>打开 Git Bash，输入 ssh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#109;</a> 出现 “Are you sure……”，输入 yes 回车确认。<br>显示 “Hi xxx! You’ve successfully……” 即连接成功。</p>
-<hr>
-<h1 id="三、创建-Github-Pages-仓库"><a href="#三、创建-Github-Pages-仓库" class="headerlink" title="三、创建 Github Pages 仓库"></a><strong>三、创建 Github Pages 仓库</strong></h1><p>GitHub 主页右上角加号 -&gt; New repository：<br>Repository name 中输入 用户名.github.io<br>勾选 “Initialize this repository with a README”<br>Description 选填<br>填好后点击 Create repository 创建。<br>创建后默认自动启用 HTTPS，博客地址为：https://用户名.github.io</p>
-<hr>
-<h1 id="四、本地安装-Hexo-博客程序"><a href="#四、本地安装-Hexo-博客程序" class="headerlink" title="四、本地安装 Hexo 博客程序"></a><strong>四、本地安装 Hexo 博客程序</strong></h1><p>新建一个文件夹用来存放 Hexo 的程序文件，如 Hexo-Blog。打开该文件夹，右键 -&gt; Git Bash Here。</p>
-<h2 id="4-1-安装-Hexo"><a href="#4-1-安装-Hexo" class="headerlink" title="4.1. 安装 Hexo"></a>4.1. 安装 Hexo</h2><p>使用 npm 一键安装 Hexo 博客程序：<br>npm install -g hexo-cli<br>稍等一会后，会出现如下图的代码</p>
-<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2. Hexo 初始化和本地预览"></a>4.2. Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：<br>hexo init      # 初始化<br>npm install    # 安装组件<br>完成后依次输入下面命令，启动本地服务器进行预览：<br>hexo g   # 生成页面<br>hexo s   # 启动预览<br>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！</p>
-<hr>
-<h1 id="五、部署-Hexo-到-GitHub-Pages"><a href="#五、部署-Hexo-到-GitHub-Pages" class="headerlink" title="五、部署 Hexo 到 GitHub Pages"></a><strong>五、部署 Hexo 到 GitHub Pages</strong></h1><p>本地博客测试成功后，就是上传到 GitHub 进行部署，使其能够在网络上访问。<br>首先安装 hexo-deployer-git：<br>npm install hexo-deployer-git –save<br>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：<br>‘’’<br>deploy:<br>  type: git<br>  repository: <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;</a>:用户名/用户名.github.io.git<br>  branch: master<br>‘’’<br>完成后运行 hexo d 将网站上传部署到 GitHub Pages。<br>完成！这时访问我们的 GitHub 域名 https://用户名.github.io 就可以看到 Hexo 网站了。</p>
-<hr>
-<h1 id="六、绑定域名（可选）"><a href="#六、绑定域名（可选）" class="headerlink" title="六、绑定域名（可选）"></a><strong>六、绑定域名（可选）</strong></h1><h2 id="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"><a href="#因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。" class="headerlink" title="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"></a>因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。</h2><h1 id="七、开始使用"><a href="#七、开始使用" class="headerlink" title="七、开始使用"></a><strong>七、开始使用</strong></h1><p>详情见下一篇博客<br>7.1. 发布文章<br>7.2. 网站设置<br>7.3. 更换主题<br>7.4. 常用代码</p>
-<hr>
-<h1 id="八、常见问题"><a href="#八、常见问题" class="headerlink" title="八、常见问题"></a><strong>八、常见问题</strong></h1><h2 id="详情见下一篇博客"><a href="#详情见下一篇博客" class="headerlink" title="详情见下一篇博客"></a>详情见下一篇博客</h2>]]></content>
-      <categories>
-        <category>使用教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -513,6 +395,98 @@
       </categories>
       <tags>
         <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python实例1--文本进度条</title>
+    <url>/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="文本进度条的分析"><a href="#文本进度条的分析" class="headerlink" title="文本进度条的分析"></a>文本进度条的分析</h1><p>1、采用字符串方式打印可以动态变化的文本进度条</p>
+<p>2、进度条需要能在一行中逐渐变化</p>
+<p>3、采用sleep（）模拟一个持续的进度</p>
+<h1 id="文本进度条框架"><a href="#文本进度条框架" class="headerlink" title="文本进度条框架"></a>文本进度条框架</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 10</span><br><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*i</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下图</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/a.png" alt="运行结果"></p>
+<p>我们可以看到这个文本进度条包括百分比，”开始阅读”及”阅读完毕”的字眼，以及剩余阅读部分的进度条格式。</p>
+<h2 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
+
+<p>我们先引入一个time库，整体用sleep函数，来生成一个持续不断的时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line"></span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>我们打印了开始阅读和阅读完毕的字眼，为了使看起来更加美观，引入了减号”-“，字体居中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scale = 10</span><br></pre></td></tr></table></figure>
+
+<p>scale指的是文本进度条的大概宽度</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(scale+1):</span><br></pre></td></tr></table></figure>
+
+<p>for循环，for i in range 这样的表达方式，表示遍历range（） 对象。之所以称为遍历循环，是因为for语句的循环执行次数是根据遍历结构中元素的个数确定的。遍历循环可以简单的理解为从遍历结构中逐一提取元素，放入循环变量中，对于每个所提取的元素执行一次循环体语句，当遍历结构中所有的元素都被访问遍了，遍历循环就正常结束。</p>
+<p>放到进度条中，可以理解为，每经过一个循环，计算机完成一个任务，打印一个进度条，计算机再完成一个任务，再打印一个进度条。直到进度条百分百，即完成了任务，打印出“阅读完毕”。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = &#x27;*&#x27;*i</span><br></pre></td></tr></table></figure>
+
+<p>定义a，字符*与循环变量i的乘积</p>
+<p>(在字符串中学过，字符串与整数的乘积表示字符串被复制的次数)  </p>
+<p>因此，a表示星号*被复制的次数，而星号指当前的百分比所表达的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b = &#x27;.&#x27;*(scale - i)</span><br></pre></td></tr></table></figure>
+
+<p>  定义b，用.表示，与当前剩余的进度条的笔记之间的乘积。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = (i/scale)*100</span><br></pre></td></tr></table></figure>
+
+<p>   c指的是我们输出与当前进度条和进度相关的百分比</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br></pre></td></tr></table></figure>
+
+<p>前面我们学过，百分比%和括号{}，可以表示占位符。用三个占位符表示三个槽。<code>&#123;:^3.0f&#125;%</code>表示某%，<code>[&#123;&#125;-&gt;&#123;&#125;]</code>前者占位符表示星号*，即已阅读进度条，后者占位符表示点.，即剩余进度条。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+
+<p>表示将程序短暂的停顿1秒</p>
+<h1 id="单行动态刷新"><a href="#单行动态刷新" class="headerlink" title="单行动态刷新"></a>单行动态刷新</h1><h2 id="刷新的本质"><a href="#刷新的本质" class="headerlink" title="刷新的本质"></a>刷新的本质</h2><p>刷新的本质是用后打印的字符覆盖之前的字符。</p>
+<p>比如说，截止到2021年7月16日9点19分，国内疫情实时大数据报告有9007979480人在浏览这个网页，当我刷新一次截止到2021年7月16日9点20分，这个数据变成了9007982317，用后面的数据覆盖了原来数据的位置，之前的数据被替换，对用户来说，这就是刷新效果。</p>
+<p>这就需要我们的程序，在输出某一个 字符的字符串的时候，不能够换行到下一行。因为一旦换行到下一行，之前的数据就不能被后来的所覆盖。因为print函数执行完后会进行到下一行，所以我们要让print不能换行。并且要让光标退回到之前的位置，实现覆盖。</p>
+<p>总而言之，刷新要做到两点:</p>
+<p>1.不能换行</p>
+<p>2.要能退回</p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">for i in range(101):</span><br><span class="line">    print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下图</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/b.png" alt="单行刷新运行结果"></p>
+<h2 id="分析代码-1"><a href="#分析代码-1" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
+
+<p>还是使用time库的sleep函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`for i in range(101):`</span><br></pre></td></tr></table></figure>
+
+<p>构造101次的循环过程。因为为了输入文本进度条，从0%到100</p>
+<p>%，划分为101次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p> 在format后面增加了<code>,end=&quot;&quot;</code>，这是print函数的一个参数，end后字符串为空字符，表示print完不会增加新的内容，光标还是停留在最后一个字符上。<code>\r&#123;:3&#125;%</code>表示在打印输出字符串之前，将光标退回到当前行的行首。</p>
+<p>简单来说，在每次输出前，把光标放到行首，覆盖原来的数据，在输出后也不换行，下一次循环再输出的时候，再把光标放到行首，覆盖上次的数据后，再输出，又不换行。这样就构成了一种单行刷新的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+
+<p>表示将程序短暂的停顿1秒</p>
+<h2 id="分析结果"><a href="#分析结果" class="headerlink" title="分析结果"></a>分析结果</h2><p>我们看到的是从0%到100%的结果，但实际上是一个一个覆盖刷新的效果。因为IDLE本身是一个编写式的开发环境，它并不是程序运行的主要环境。</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/c.png" alt="如图，一个一个输出"></p>
+<h1 id="进度条的改进完善"><a href="#进度条的改进完善" class="headerlink" title="进度条的改进完善"></a>进度条的改进完善</h1><h2 id="运用知识"><a href="#运用知识" class="headerlink" title="运用知识"></a>运用知识</h2><p>1、字符串处理</p>
+<p>2、数字处理</p>
+<p>3、时间库的使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 50</span><br><span class="line">print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</span><br><span class="line">start = time.perf_counter()</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*1</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    dur = time.perf_counter() - start</span><br><span class="line">    print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;\n&quot;+&quot;阅读完毕&quot;.center(scale//2,&quot;-&quot;))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下图</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/d.png" alt="完善后得！"></p>
+<p>区别：</p>
+<p><code>print(&quot;-----开始阅读------&quot;)</code></p>
+<p><code>print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</code></p>
+<p>刚开始我们为了让结果看起来更美观，用减号-来分隔，但如果页面布局或大小变化，这样显得不太智能。现在我们使用字符串处理中的<code>.center</code>方法，将一个-字符填充在执行开始或者执行结束的两侧，通过填充的方式，自动实现减号构成的分隔线条。</p>
+<p>并且我们还增加了计时效果<code>start = time.perf_counter()</code>，确定了一个开始时间，而<code> dur = time.perf_counter() - start</code>表示每次循环所消耗的时间。</p>
+<p><code>print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</code>中的<code>\n    </code>，表示文本的刷新效果，实现光标向行首移动。<code>end=&quot;&quot;</code>表示每次输出后不换行。</p>
+<h1 id="进度条的举一反三"><a href="#进度条的举一反三" class="headerlink" title="进度条的举一反三"></a>进度条的举一反三</h1><h2 id="计算问题扩展"><a href="#计算问题扩展" class="headerlink" title="计算问题扩展"></a>计算问题扩展</h2><p>文本进度条程序使用了perf_counter()计时，计时方法适合各类需要统计时间的计算问题。</p>
+<p>在上文我们可以看到在每次打印进度条后，会加上一个时间，即相隔循环打印时间。这样我们就可以用perf_counter()来比较不同算法时间、统计部分程序运行时间。</p>
+<h2 id="进度条应用扩展"><a href="#进度条应用扩展" class="headerlink" title="进度条应用扩展"></a>进度条应用扩展</h2><p>不仅可以应用于文本进度条，也可以在大型加载的程序中增加进度条，因为进度条是人机交互的桥梁，通过进度条我们可以直观的看到计算机运行的进度，可以给我们带来对程序更好的理解。</p>
+]]></content>
+      <categories>
+        <category>实例</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -660,6 +634,32 @@
       </categories>
       <tags>
         <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github＋hexo懒人搭建博客完整教程</title>
+    <url>/2021/07/07/github%EF%BC%8Bhexo%E6%87%92%E4%BA%BA%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a><strong>一、准备</strong></h1><h2 id="1-1环境搭建"><a href="#1-1环境搭建" class="headerlink" title="1.1环境搭建"></a>1.1环境搭建</h2><p>搭建博客首先是准备环境的搭建，这就像我们体内的细胞依赖于内环境而存活，内环境为细胞的生活提供的必要的水环境以及其它物质交换的通道。我们搭建的环境也是如此。<br>先安装 Node.js 和 Git，因为Hexo 基于 Node.js。<br>附上下载的官网链接<br>Node.js：<a href="https://nodejs.org/zh-cn">https://nodejs.org/zh-cn</a><br>Git：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。<br>安装完成后，Win+R 输入 cmd 并打开（或者左下角点查找），依次输入 node -v、npm -v 和 git –version（注意空格） 并回车，出校如下图表示成功。</p>
+<h2 id="1-2注意事项"><a href="#1-2注意事项" class="headerlink" title="1.2注意事项"></a>1.2注意事项</h2><p>敲代码的时候，将输入法换成英文输入。<br>统一使用 Git Bash 进行操作。<br>注意空格。</p>
+<hr>
+<h1 id="二、连接-Github"><a href="#二、连接-Github" class="headerlink" title="二、连接 Github"></a><strong>二、连接 Github</strong></h1><p>使用邮箱注册 GitHub 账户，选择免费账户（Free），并完成邮件验证。<br>在桌面的页面，在空白处右键鼠标点【Git Bash Here】开始运行，设置用户名和邮箱。（注意：用户名是自己的github账户名，邮箱是绑定的邮箱）<br>‘’’<br>git config –global user.name “GitHub 用户名”<br>git config –global user.email “GitHub 邮箱”<br>‘’’<br>创建 SSH 密匙<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。<br>添加密匙：<br>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。<br>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。<br>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。<br>验证连接：<br>打开 Git Bash，输入 ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;</a> 出现 “Are you sure……”，输入 yes 回车确认。<br>显示 “Hi xxx! You’ve successfully……” 即连接成功。</p>
+<hr>
+<h1 id="三、创建-Github-Pages-仓库"><a href="#三、创建-Github-Pages-仓库" class="headerlink" title="三、创建 Github Pages 仓库"></a><strong>三、创建 Github Pages 仓库</strong></h1><p>GitHub 主页右上角加号 -&gt; New repository：<br>Repository name 中输入 用户名.github.io<br>勾选 “Initialize this repository with a README”<br>Description 选填<br>填好后点击 Create repository 创建。<br>创建后默认自动启用 HTTPS，博客地址为：https://用户名.github.io</p>
+<hr>
+<h1 id="四、本地安装-Hexo-博客程序"><a href="#四、本地安装-Hexo-博客程序" class="headerlink" title="四、本地安装 Hexo 博客程序"></a><strong>四、本地安装 Hexo 博客程序</strong></h1><p>新建一个文件夹用来存放 Hexo 的程序文件，如 Hexo-Blog。打开该文件夹，右键 -&gt; Git Bash Here。</p>
+<h2 id="4-1-安装-Hexo"><a href="#4-1-安装-Hexo" class="headerlink" title="4.1. 安装 Hexo"></a>4.1. 安装 Hexo</h2><p>使用 npm 一键安装 Hexo 博客程序：<br>npm install -g hexo-cli<br>稍等一会后，会出现如下图的代码</p>
+<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2. Hexo 初始化和本地预览"></a>4.2. Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：<br>hexo init      # 初始化<br>npm install    # 安装组件<br>完成后依次输入下面命令，启动本地服务器进行预览：<br>hexo g   # 生成页面<br>hexo s   # 启动预览<br>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！</p>
+<hr>
+<h1 id="五、部署-Hexo-到-GitHub-Pages"><a href="#五、部署-Hexo-到-GitHub-Pages" class="headerlink" title="五、部署 Hexo 到 GitHub Pages"></a><strong>五、部署 Hexo 到 GitHub Pages</strong></h1><p>本地博客测试成功后，就是上传到 GitHub 进行部署，使其能够在网络上访问。<br>首先安装 hexo-deployer-git：<br>npm install hexo-deployer-git –save<br>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：<br>‘’’<br>deploy:<br>  type: git<br>  repository: <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#109;">&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#109;</a>:用户名/用户名.github.io.git<br>  branch: master<br>‘’’<br>完成后运行 hexo d 将网站上传部署到 GitHub Pages。<br>完成！这时访问我们的 GitHub 域名 https://用户名.github.io 就可以看到 Hexo 网站了。</p>
+<hr>
+<h1 id="六、绑定域名（可选）"><a href="#六、绑定域名（可选）" class="headerlink" title="六、绑定域名（可选）"></a><strong>六、绑定域名（可选）</strong></h1><h2 id="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"><a href="#因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。" class="headerlink" title="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"></a>因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。</h2><h1 id="七、开始使用"><a href="#七、开始使用" class="headerlink" title="七、开始使用"></a><strong>七、开始使用</strong></h1><p>详情见下一篇博客<br>7.1. 发布文章<br>7.2. 网站设置<br>7.3. 更换主题<br>7.4. 常用代码</p>
+<hr>
+<h1 id="八、常见问题"><a href="#八、常见问题" class="headerlink" title="八、常见问题"></a><strong>八、常见问题</strong></h1><h2 id="详情见下一篇博客"><a href="#详情见下一篇博客" class="headerlink" title="详情见下一篇博客"></a>详情见下一篇博客</h2>]]></content>
+      <categories>
+        <category>使用教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -920,6 +920,373 @@
       </tags>
   </entry>
   <entry>
+    <title>关于blog常见报错及解决方法</title>
+    <url>/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在发blog的时候，经常会遇到一些重复性的报错问题，这些报错感觉都很眼熟，好像每天都会遇到（笑哭）。第一次看不懂报错，直接复制粘贴甩给百度翻译，但是就算翻译成中文人也还是懵逼的。比如这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/a.png" alt="a"></p>
+<p>又或是这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/b.png" alt="b"></p>
+<p>或许是那样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/c.png" alt="c"></p>
+<p>等等等等…</p>
+<p>第二次第三次又遇到一样的情况，索性就整理出来吧。（持续更新）</p>
+<h1 id="hexo-d报错解决："><a href="#hexo-d报错解决：" class="headerlink" title="hexo d报错解决："></a>hexo d报错解决：</h1><h4 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054 错误解决"></a>OpenSSL SSL_read: Connection was reset, errno 10054 错误解决</h4><p>首先，造成这个错误很有可能是网络不稳定，连接超时导致的，<br> 如果再次尝试后依然报错，可以执行下面的命令</p>
+<p>在D:\blog\blog中打开Git-Bash命令页面，执行git命令脚本：修改设置，解除ssl验证</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时，再执行hexo d即可解决</p>
+<h1 id="hexo-s-报错解决"><a href="#hexo-s-报错解决" class="headerlink" title="hexo s 报错解决"></a>hexo s 报错解决</h1><h4 id="node-15260-Warning"><a href="#node-15260-Warning" class="headerlink" title="(node:15260) Warning"></a>(node:15260) Warning</h4><p><img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/d.png" alt="d"></p>
+<p>很简单 不用管它 （警告而已warning,我也不知道为什么还能运行qwq)</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见密码学攻击手法和实现</title>
+    <url>/2021/08/03/%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>哈希函数算法实现原理和应用</title>
+    <url>/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>hash，一般翻译做“散列”，也有直接音译为”哈希”</p>
+<p>就是把任意长度的输入通过散列算法，变换成固定长度的输出，该输出就是散列值。</p>
+<p>MD（Message Digest )，为计算机安全领域广泛使用的一种散列函数，用以提供消息的<strong>完整性保护</strong>。目前广泛使用的是第五版，因此也被称为MD5。</p>
+<p>MD5和SHA1可以说是目前应用最广泛的Hash算法，而它们都是以MD4为基础设计的。</p>
+<p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
+</blockquote>
+<p>举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现（两个MD5值不相同）。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。</p>
+<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><p>在线网站<a href="https://www.sojson.com/encrypt_md5.html">MD5在线加密/解密/破解—MD5在线 (sojson.com)</a></p>
+<p>明文是2021加密后</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/1.png" alt="加密"></p>
+<p>选取任意一组密文 进行解密</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/2.png"></p>
+<p>但是稍微复杂一点的字母就解不出来了唉</p>
+<h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1><h2 id="MD5算法的原理"><a href="#MD5算法的原理" class="headerlink" title="MD5算法的原理"></a>MD5算法的原理</h2><p>对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</p>
+<p>首先是对信息进行填充，<strong>使其位长对512求余的结果=448</strong></p>
+<p>因此，原来信息的位长应该为<code>N*512+448</code></p>
+<p>填充的方法：在原信息后补一个1和许多0，直到满足条件</p>
+<p>填充完毕后，在这个结果后面加一个以64位二进制表示的填充前的信息长度</p>
+<p>因此，现在的消息位长=N*512+448+64=(N+1)*512，这样的长度刚好是512的整数倍</p>
+<p>流程图如下：</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210801081452.png"></p>
+<p>表示第i个分组，每次的运算都由前一轮的128位结果值和第i块512bit值进行运算。初始的128位值为初始链接变量，这些参数用于第一轮的运算，他们分别为：<code>A=0x01234567</code>，<code>B=0x89ABCDEF</code>，<code>C=0xFEDCBA98</code>，<code>D=0x76543210</code>。</p>
+<hr>
+<p>每一分组的算法流程如下：</p>
+<p>第一分组需要将上面四个链接变量复制到另外四个变量中：</p>
+<p>A到a，B到b，C到c，D到d。</p>
+<p>从第二分组开始的变量为上一分组的运算结果。</p>
+<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行<strong>16次</strong>操作。每次操作对a、b、c和d中的<strong>其中三个作一次非线性函数</strong>运算，然后将所得结果<strong>加上第四个</strong>变量，文本的一个子分组和一个常数。再将所得结果<strong>向左环移</strong>一个不定的数，并<strong>加上</strong>a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
+<p>以一下是每次操作中用到的四个非线性函数（每轮一个）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">F(X,Y,Z) =(X&amp;Y)|((~X)&amp;Z)</span><br><span class="line">G(X,Y,Z) =(X&amp;Z)|(Y&amp;(~Z))</span><br><span class="line">H(X,Y,Z) =X^Y^Z</span><br><span class="line">I(X,Y,Z)=Y^(X|(~Z))</span><br><span class="line">#（&amp;；是与，|是或，~是非，^是异或）</span><br></pre></td></tr></table></figure>
+
+<p>这四个函数的说明：如果X、Y和Z的对应位是独立和均匀的，那么结果的每一位也应是独立和均匀的。</p>
+<p>F是一个逐位运算的函数。即，如果X，那么Y，否则Z。函数H是逐位奇偶操作符。</p>
+<p>假设Mj表示消息的第j个子分组（从0到15），常数ti是4294967296*abs(sin(i)）的整数部分，i取值从1到64，单位是弧度。（4294967296等于2的32次方）</p>
+<p>FF(a,b,c,d,Mj,s,ti）表示 a = b + ((a + F(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>GG(a,b,c,d,Mj,s,ti）表示 a = b + ((a + G(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>HH(a,b,c,d,Mj,s,ti）表示 a = b + ((a + H(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>Ⅱ（a,b,c,d,Mj,s,ti）表示 a = b + ((a + I(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>这四轮（64步）是：</p>
+<p>第一轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FF(a,b,c,d,M0,7,0xd76aa478）</span><br><span class="line">FF(d,a,b,c,M1,12,0xe8c7b756）</span><br><span class="line">FF(c,d,a,b,M2,17,0x242070db)</span><br><span class="line">FF(b,c,d,a,M3,22,0xc1bdceee)</span><br><span class="line">FF(a,b,c,d,M4,7,0xf57c0faf)</span><br><span class="line">FF(d,a,b,c,M5,12,0x4787c62a)</span><br><span class="line">FF(c,d,a,b,M6,17,0xa8304613）</span><br><span class="line">FF(b,c,d,a,M7,22,0xfd469501）</span><br><span class="line">FF(a,b,c,d,M8,7,0x698098d8）</span><br><span class="line">FF(d,a,b,c,M9,12,0x8b44f7af)</span><br><span class="line">FF(c,d,a,b,M10,17,0xffff5bb1）</span><br><span class="line">FF(b,c,d,a,M11,22,0x895cd7be)</span><br><span class="line">FF(a,b,c,d,M12,7,0x6b901122）</span><br><span class="line">FF(d,a,b,c,M13,12,0xfd987193）</span><br><span class="line">FF(c,d,a,b,M14,17,0xa679438e)</span><br><span class="line">FF(b,c,d,a,M15,22,0x49b40821）</span><br></pre></td></tr></table></figure>
+
+<p>第二轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GG(a,b,c,d,M1,5,0xf61e2562）</span><br><span class="line">GG(d,a,b,c,M6,9,0xc040b340）</span><br><span class="line">GG(c,d,a,b,M11,14,0x265e5a51）</span><br><span class="line">GG(b,c,d,a,M0,20,0xe9b6c7aa)</span><br><span class="line">GG(a,b,c,d,M5,5,0xd62f105d)</span><br><span class="line">GG(d,a,b,c,M10,9,0x02441453）</span><br><span class="line">GG(c,d,a,b,M15,14,0xd8a1e681）</span><br><span class="line">GG(b,c,d,a,M4,20,0xe7d3fbc8）</span><br><span class="line">GG(a,b,c,d,M9,5,0x21e1cde6）</span><br><span class="line">GG(d,a,b,c,M14,9,0xc33707d6）</span><br><span class="line">GG(c,d,a,b,M3,14,0xf4d50d87）</span><br><span class="line">GG(b,c,d,a,M8,20,0x455a14ed)</span><br><span class="line">GG(a,b,c,d,M13,5,0xa9e3e905）</span><br><span class="line">GG(d,a,b,c,M2,9,0xfcefa3f8）</span><br><span class="line">GG(c,d,a,b,M7,14,0x676f02d9）</span><br><span class="line">GG(b,c,d,a,M12,20,0x8d2a4c8a)</span><br></pre></td></tr></table></figure>
+
+<p>第三轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HH(a,b,c,d,M5,4,0xfffa3942）</span><br><span class="line">HH(d,a,b,c,M8,11,0x8771f681）</span><br><span class="line">HH(c,d,a,b,M11,16,0x6d9d6122）</span><br><span class="line">HH(b,c,d,a,M14,23,0xfde5380c)</span><br><span class="line">HH(a,b,c,d,M1,4,0xa4beea44）</span><br><span class="line">HH(d,a,b,c,M4,11,0x4bdecfa9）</span><br><span class="line">HH(c,d,a,b,M7,16,0xf6bb4b60）</span><br><span class="line">HH(b,c,d,a,M10,23,0xbebfbc70）</span><br><span class="line">HH(a,b,c,d,M13,4,0x289b7ec6）</span><br><span class="line">HH(d,a,b,c,M0,11,0xeaa127fa)</span><br><span class="line">HH(c,d,a,b,M3,16,0xd4ef3085）</span><br><span class="line">HH(b,c,d,a,M6,23,0x04881d05）</span><br><span class="line">HH(a,b,c,d,M9,4,0xd9d4d039）</span><br><span class="line">HH(d,a,b,c,M12,11,0xe6db99e5）</span><br><span class="line">HH(c,d,a,b,M15,16,0x1fa27cf8）</span><br><span class="line">HH(b,c,d,a,M2,23,0xc4ac5665）</span><br></pre></td></tr></table></figure>
+
+<p>第四轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ⅱ（a,b,c,d,M0,6,0xf4292244）</span><br><span class="line">Ⅱ（d,a,b,c,M7,10,0x432aff97）</span><br><span class="line">Ⅱ（c,d,a,b,M14,15,0xab9423a7）</span><br><span class="line">Ⅱ（b,c,d,a,M5,21,0xfc93a039）</span><br><span class="line">Ⅱ（a,b,c,d,M12,6,0x655b59c3）</span><br><span class="line">Ⅱ（d,a,b,c,M3,10,0x8f0ccc92）</span><br><span class="line">Ⅱ（c,d,a,b,M10,15,0xffeff47d)</span><br><span class="line">Ⅱ（b,c,d,a,M1,21,0x85845dd1）</span><br><span class="line">Ⅱ（a,b,c,d,M8,6,0x6fa87e4f)</span><br><span class="line">Ⅱ（d,a,b,c,M15,10,0xfe2ce6e0)</span><br><span class="line">Ⅱ（c,d,a,b,M6,15,0xa3014314）</span><br><span class="line">Ⅱ（b,c,d,a,M13,21,0x4e0811a1）</span><br><span class="line">Ⅱ（a,b,c,d,M4,6,0xf7537e82）</span><br><span class="line">Ⅱ（d,a,b,c,M11,10,0xbd3af235）</span><br><span class="line">Ⅱ（c,d,a,b,M2,15,0x2ad7d2bb)</span><br><span class="line">Ⅱ（b,c,d,a,M9,21,0xeb86d391）</span><br></pre></td></tr></table></figure>
+
+<p>所有这些完成之后，将A、B、C、D分别加上a、b、c、d。然后用下一分组数据继续运行算法，最后的输出是A、B、C和D的级联。</p>
+<p>当你按照我上面所说的方法实现MD5算法以后，你可以用以下几个信息对你做出来的程序作一个简单的测试，看看程序有没有错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MD5 (&quot;&quot;) = d41d8cd98f00b204e9800998ecf8427e</span><br><span class="line">MD5 (&quot;a&quot;) = 0cc175b9c0f1b6a831c399e269772661</span><br><span class="line">MD5 (&quot;abc&quot;) = 900150983cd24fb0d6963f7d28e17f72</span><br><span class="line">MD5 (&quot;message digest&quot;) =f96b697d7cb7938d525a2f31aaf161d0</span><br><span class="line">MD5 (&quot;abcdefghijklmnopqrstuvwxyz&quot;) </span><br><span class="line">= c3fcd3d76192e4007dfb496cca67e13b</span><br><span class="line">MD5 (&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;)</span><br><span class="line">=f29939a25efabaef3b87e2cbfe641315</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>消息认证与数字签名</title>
+    <url>/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数字签名验证实验"><a href="#数字签名验证实验" class="headerlink" title="数字签名验证实验"></a>数字签名验证实验</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>数字签名，又称公钥数字签名、电子签章，是一种类似写在纸上的普通的物理签名，但是使用了公钥加密领域的技术实现，用于鉴别数字信息的方法。一套数字签名通常定义两种互补的运算，一个用于签名，一个用于验证。简单地说，所谓数字签名就是附加在原来数据上一些数据或者对原来数据做一些密码变换。这种数据或变换允许数据单元的接收者用以确认数据单元的来源和数据单元的完整性并保护数据，防止被人(例如接收者)进行伪造。</p>
+<hr>
+<p>基于公钥密码体制和私钥密码体制都可以获得数字签名，主要是基于公钥密码体制的数字签名。包括普通数字签名和特殊数字签名。</p>
+<p>普通数字签名算法：RSA、ElGamal、Fiat-Shamir、Guillou-Quisquarter、Schnorr、Ong-Schnorr-Shamir数字签名算法、Des/DSA、椭圆曲线数字签名算法、有限自动机数字签名算法</p>
+<p>特殊数字签名：盲签名、代理签名、群签名、不可否认签名、公平盲签名、门限签名、具有消息恢复功能的签名</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>保证信息传输的完整性、发送者的身份认证、防止交易中的抵赖发生</p>
+<p>解释：数字签名技术是将摘要信息用发送者的私钥加密，与原文一起传送给接收者。接收者只有用发送者的公钥才能解密被加密的摘要信息，然后用HASH函数对收到的原文产生一个摘要信息，与解密的摘要信息对比。如果相同，则说明收到的信息是完整的，在传输过程中没有被修改，否则说明信息被修改过，因此数字签名能够验证信息的完整性。</p>
+<h2 id="数字签名的过程"><a href="#数字签名的过程" class="headerlink" title="数字签名的过程"></a>数字签名的过程</h2><blockquote>
+<ol>
+<li><p>利用一定的算法(如MD5)，将要签名的报文作为一个散列函数的输入，产生一个定长的安全散列码，即消息摘要；</p>
+</li>
+<li><p>使用发送方的私有密钥对这个消息摘要进行加密，形成签名；</p>
+</li>
+<li><p>将报文和签名传送出去；</p>
+</li>
+<li><p>接收方接收报文，并根据报文产生一个消息摘要，同时使用发方的公开密钥对签名进行解密；</p>
+</li>
+<li><p>如果接收方计算得出的消息摘要，和它解密后的签名互相匹配，那么签名就是有效的；</p>
+</li>
+<li><p>因为只有发送方知道私有密钥，并对签名进行了加密，因此只有发方才能产生有效的签名。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="对文件做签名验证"><a href="#对文件做签名验证" class="headerlink" title="对文件做签名验证"></a>对文件做签名验证</h2><p>在实验机里打开cmd控制台，进入sigcheck程序目录，输入sigcheck，点击回车，会出现使用说明</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/1.png"></p>
+<p>以存在的calc为例，把calc所在路径复制到cmd</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/2.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck C:\windows\system32\calc.exe</span><br></pre></td></tr></table></figure>
+
+<p>如下图，会出现，signed，即被签名</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/3.png"></p>
+<p>现在我们试试另外一个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck helloworld.exe</span><br></pre></td></tr></table></figure>
+
+<p>很显然，unsigned，这是没有被签名的文件</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/4.png"></p>
+<h2 id="批量验证文件签名"><a href="#批量验证文件签名" class="headerlink" title="批量验证文件签名"></a>批量验证文件签名</h2><p>从上面实验我们可以看到一个一个试文件很繁琐麻烦，很多情况下，我们需要找出某个目录里所有未经过数字签名的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck -e C:\windows\System32 &gt;abc.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/5.png"></p>
+<p>执行后可以查看abc.txt文件，发现都是经过数字签名后的</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/6.png"></p>
+<h1 id="单向哈希函数与mac"><a href="#单向哈希函数与mac" class="headerlink" title="单向哈希函数与mac"></a>单向哈希函数与mac</h1><p>我们现在虚拟机上的终端运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim 1.txt</span><br></pre></td></tr></table></figure>
+
+<p>创建一个文件，本人不知道vim的命令语法，于是上万能的百度，现在例举用到的操作</p>
+<p>插入模式（按<code>i</code>键进入） 左下角显示–INSERT–</p>
+<p>命令模式（按<code>ESC</code>键退出）</p>
+<p>输入<code>：wq</code></p>
+<blockquote>
+<p>:w 保存文件但不退出vi<br>:w file 将修改另外保存到file中，不退出vi<br>:w! 强制保存，不推出vi<br>:wq 保存文件并退出vi<br>:wq! 强制保存文件，并退出vi<br>:q 不保存文件，退出vi<br>:q! 不保存文件，强制退出vi<br>:e! 放弃所有修改，从上次保存文件开始再编辑命令历史</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -md5 1.txt</span><br></pre></td></tr></table></figure>
+
+<p>顾名思义，dgst就是消息摘要，这里我们用md5加密</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/8.png"></p>
+<p>我们试试sha1加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/9.png" alt="9"></p>
+<p><code>-hmac</code>指的是加盐加密，我们分别用abcd,abcde,abcdef来加盐，可以看到一个字母的添加带来翻天覆地变化，但是长度都是固定的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 -hmac”abcd”  1.txt</span><br><span class="line">openssl dgst -sha1 -hmac”abcde”  1.txt</span><br><span class="line">openssl dgst -sha1 -hmac”abcdef”  1.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/10.png"></p>
+<p>现在我们再创建两个txt，分别用MD5进行加密</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -md5  2.txt</span><br><span class="line">openssl dgst -md5  2.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/12.png"></p>
+<p>我们可以看到数字一样但是位置不一样的文件，它的MD5是完全不一样的，且没有任何规律</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat 2.txt</span><br><span class="line">cat 3.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/11.png"></p>
+<h1 id="powershell调用DLL实现RSA签名"><a href="#powershell调用DLL实现RSA签名" class="headerlink" title="powershell调用DLL实现RSA签名"></a>powershell调用DLL实现RSA签名</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><h3 id="powershell简介"><a href="#powershell简介" class="headerlink" title="powershell简介"></a>powershell简介</h3><p>PowerShell是运行在windows机器上实现系统和应用程序自动化管理的命令行脚本环境，是cmd.exe命令行提示符的加强版。它有很好的可读性和易用性。</p>
+<h3 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h3><p> DLL(Dynamic Link Library)文件为动态链接库文件，又称“应用程序拓展”，是软件文件类型。在Windows中，许多应用程序并不是一个完整的可执行文件，它们被分割成一些相对独立的动态链接库，即DLL文件，放置于系统中。</p>
+<h3 id="RSA签名验证机制"><a href="#RSA签名验证机制" class="headerlink" title="RSA签名验证机制"></a>RSA签名验证机制</h3><p>RSA的签名验证用于通信数据防篡改，如图</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/13.png"></p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public void RSAKey(out string xmlKeys, out string xmlPublicKey)  //生成RSA密钥对</span><br><span class="line"></span><br><span class="line">  public void GetHash(string strSource, ref string strHashData) // 获取hash摘要</span><br><span class="line"></span><br><span class="line">  public void SignatureFormatter(string strKeyPrivate, string strHashbyteSignature, ref string strEncryptedSignatureData) //RSA签名</span><br><span class="line"></span><br><span class="line">  public bool SignatureDeformatter(string strKeyPublic, string strHashbyteDeformatter, string strDeformatterData) // RSA验签</span><br></pre></td></tr></table></figure>
+
+<p>在Powershell中调用操作系统的RSA类库</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/14.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RSACryption.ps1</span><br></pre></td></tr></table></figure>
+
+<p>从中获取明文hash摘要</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/15.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CheckSigned.ps1</span><br></pre></td></tr></table></figure>
+
+<p>签名验证结果返回True，如图所示，表明签名验证结果是正确的。</p>
+<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/Snipaste_2021-08-02_22-58-44.png"></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>现代密码之对称算法</title>
+    <url>/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>现代密码学的任务不仅仅只限于传统密码学的“保密通信”，而是含义更广的“信息安全”，其中包括“保密通信”、“数据加密”、“数字签名”等重要的功能。现代密码学已成为信息时代无处不在不可或缺的信息安全卫士。</p>
+<p>现代密码学的安全性主要由密钥的设计和使用决定。</p>
+<blockquote>
+<p>按技术特征，现代密码学分为三类：</p>
+<p>对称算法、非对称算法、摘要算法</p>
+</blockquote>
+<p>今天主要讲讲对称算法0w0</p>
+<p><strong>对称算法</strong></p>
+<p>又称传统密码算法、秘密密钥算法或单密钥算法。加密与解密密钥一样的密码算法。该算法又分为序列密码（流密码）算法、分组密码算法</p>
+<h2 id="序列密码算法"><a href="#序列密码算法" class="headerlink" title="序列密码算法"></a>序列密码算法</h2><p>序列密码也称为流密码，它是对称密码算法的一种。序列密码具有实现简单、便于硬件实施、加解密处理速度快、没有或只有有限的错误传播等特点。</p>
+<p>在实际应用中，特别是专用或机密机构中保持着优势，典型的应用领域包括无线通信、外交通信。</p>
+<p>1949年Shannon证明了只有一次一密的密码体制是绝对安全的，这给序列密码技术的研究以强大的支持，序列密码方案的发展是模仿一次一密系统的尝试。那神马是一次一密呢？</p>
+<p>1、密钥和加密的消息等长</p>
+<p>2、密钥由真正随机符号组成</p>
+<p>3、密钥只用一次，永不对其他消息复用</p>
+<p>这就像在一天的24小时之内，把每个时间点看成一个密钥，每一个密钥一一对应一个时间点，永不复用。</p>
+<h3 id="RC4加密"><a href="#RC4加密" class="headerlink" title="RC4加密"></a>RC4加密</h3><h4 id="RC4原理"><a href="#RC4原理" class="headerlink" title="RC4原理"></a>RC4原理</h4><blockquote>
+<p>1、密钥流：RC4算法关键是依据明文和密钥生成相应的密钥流，密钥流的长度和明文的长度是相同的。假如明文有333字节，那么密钥流也要有333字节。当然，加密生成的密文也是333字节。</p>
+<p>2、状态向量S：长度为256，S[0],S[1]…..S[255]。每一个单元都是一个字节，算法执行的不论什么时候。S都包含0-255的8比特数的排列组合，仅仅只是值的位置发生了变换。</p>
+<p>3、暂时向量T：长度为256，每一个单元也是一个字节。假如密钥的长度是256，就直接把密钥的值赋给T，否则，轮转地将密钥的每一个字节赋给T</p>
+<p>4、密钥K：长度为1-256字节。密钥≠密钥流！二者长度没有必然关系，通常密钥的长度为16字节</p>
+</blockquote>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730224154.png" alt="搜狗截图20210730224154" style="zoom:80%;">
+
+
+
+<h4 id="柯克霍夫原则Kerckhoffs"><a href="#柯克霍夫原则Kerckhoffs" class="headerlink" title="柯克霍夫原则Kerckhoffs"></a>柯克霍夫原则Kerckhoffs</h4><p>提出：即使密码系统的任何细节已为人悉知，只要密钥（key）未泄漏，它也应是安全的。</p>
+<p>Kerckhoffs准则认为，一个密码系统的安全性不是取决于其算法对于攻击者来说是否保密，而是建立在它所选择的密钥对于攻击者来说是否保密。</p>
+<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><p>–<strong>使用CrypTool对字符串进行RC4加解密操作</strong></p>
+<p>step1：待加密明文</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/Snipaste_2021-07-30_23-03-00.png" alt="Snipaste_2021-07-30_23-03-00" style="zoom:80%;">
+
+<p>step2：选择RC4加密</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230527.png" alt="搜狗截图20210730230527" style="zoom:80%;">
+
+<p>step3：选择8bits密钥长度，并点encrypt显示密文</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230610.png" alt="搜狗截图20210730230610" style="zoom:80%;">
+
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230746.png" alt="搜狗截图20210730230746" style="zoom:80%;">
+
+<p>step4：试试24bits密钥长度加密后的密文</p>
+<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/image-20210730230930203.png" alt="image-20210730230930203" style="zoom:80%;">
+
+<hr>
+<p><strong>–对8bits密钥长度进行穷举攻击</strong></p>
+<p> 安全研究人员称，现在世界上近三分之一的HTTPS加密连接可被破解，并且效率极高。这种针对RC4加密的破解技术，同样也可以用来破解WiFi数据包。</p>
+<p>研究人员很早前就发现可以利用RC4中的统计偏差，导致可对加密信息中的一些伪随机字节能进行猜测，8bits密钥长度加密的密文，几乎可以秒破解，而24bits的密钥长度可能需要几分钟，这就是之前文章所说的“时间复杂度”</p>
+<p>step1：按RC4分解</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/1.png" alt="1"></p>
+<p>step2:8bits长度密钥加密密文</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/2.png" alt="2"></p>
+<p>step3：秒破解穷举结果</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/3.png" alt="3"></p>
+<hr>
+<h2 id="分组密码算法"><a href="#分组密码算法" class="headerlink" title="分组密码算法"></a>分组密码算法</h2><p>把明文分成了确定长度的数据块（字节块），用同一密钥和算法加密每一明文块后得到等长的密文块，然后把密文块按顺序组合起来得到密文。反之也可以得到明文。</p>
+<h3 id="IDEA加密算法"><a href="#IDEA加密算法" class="headerlink" title="IDEA加密算法"></a>IDEA加密算法</h3><p>IDEA是International Data Encryption Algorithm的缩写，即国际数据加密算法，广泛的应用在安全电子邮件PGP中。 </p>
+<blockquote>
+<p>IDEA加密算法是一个<strong>分组长度为64位</strong>的分组密码算法，**密钥长度为128位,**同一个算法即可用于加密，也可用于解密。发展IDEA也是因为感到DES具有密钥太短等缺点。IDEA的密钥为128位，这么长的密钥在今后若干年内应该是安全的。这是基于“相异代数群上的混合运算”设计思想，算法运用硬件与软件实现都很容易，而且比DES算法在实现上快的多。IDEA自问世以来，已经经历了大量的详细审查，对密码分析具有很强的抵抗能力，在多种商业产品中被使用。</p>
+</blockquote>
+<p><strong>IDEA加密算法的原理</strong></p>
+<blockquote>
+<p> 64-位数据分组被分成4个16-位子分组：xl，X2，x3，x4。</p>
+<p>这4个子分组成为算法的第一轮的输入，总共有8轮。</p>
+<p>在每一轮中，这4个子分组相列相异或，相加，相乘，且与6个16-位子密钥相异或，相加，相乘。</p>
+<p>在轮与轮间，第二和第二个子分组交换。最后在输出变换中4个子分组与4个子密钥进行运算。</p>
+</blockquote>
+<p>以下表述中的相加，指的是：（a + b) mod p，其结果是a+b算术和除以p的余数。例如对于下列表述中的“（2)X2和第二个子密钥相加”就是指用X2与第二个子密钥的和除以2^16(即65536)后的余数。</p>
+<p>以下表述中的相乘，指的是：（a × b) mod p，其结果是 a × b算术乘法除以p的余数。例如对于下列表述中的“（1)X1和第一个子密钥相乘。”就是指用X1和第一个子密钥相乘后的积除于(2^16+1)(即65537)后的余数。</p>
+<p>异或指的是不进位加法。</p>
+<blockquote>
+<p>   (1)X1和第一个子密钥相乘。</p>
+<p>   (2)X2和第二个子密钥相加。</p>
+<p>   (3)X3和第三个子密钥相加。</p>
+<p>   (4)X4和第四个子密钥相乘。</p>
+<p>   (5)将第（1)步和第（3)步的结果相异或。·</p>
+<p>   (6)将第（2)步和第（4)步的结果相异或。</p>
+<p>   (7)将第（5)步的结果与第五个子密钥相乘。</p>
+<p>   (8)将第（6)步和第（7)步的结果相加。</p>
+<p>   (9)将第（8)步的结果与第六个子密钥相乘。</p>
+<p>   (10)将第（7)步和第（9)步的结果相加。</p>
+<p>   (11)将第（1)步和第（9)步的结果相异或。</p>
+<p>   (12)将第（3)步和第（9)步的结果相异或。</p>
+<p>   (13)将第（2)步和第（10)步的结果相异或。</p>
+<p>   (14)将第（4)步和第（10)步的结果相异或。</p>
+</blockquote>
+<p> 每一轮的输出是第（11)、（12)、（13)和（14) 步的结果形成的4个子分组。将中间两个分组分组交换（最后一轮除外）后，即为下一轮的输入。</p>
+<p> 经过8轮运算之后，有一个最终的输出变换：</p>
+<blockquote>
+<p>  (1) X1和第一个子密钥相乘。</p>
+<p>   (2) X2和第二个子密钥相加。</p>
+<p>   (3) X3和第三个子密钥相加。</p>
+<p>   (4) X4和第四个子密钥相乘。</p>
+</blockquote>
+<p> 最后，这4个子分组重新连接到一起产生密文。</p>
+<h3 id="DES对称加密算法"><a href="#DES对称加密算法" class="headerlink" title="DES对称加密算法"></a>DES对称加密算法</h3><p> DES全称为Data Encryption Standard，即数据加密标准，是一种使用密钥加密的块算法</p>
+<p> DES算法就是一个把64位的明文输入块变为64位密文输出块的算法,它所使用的密钥也是64位（其实只使用到了56位，其余8位为奇偶校验位</p>
+<blockquote>
+<p>DES算法的入口参数有三个：Key、Data、Mode。</p>
+<p>Key（密钥）：为7个字节共56位，是DES算法的工作密钥（若说密钥为64位，其指的也是56位的秘钥加上8位奇偶校验位，奇偶校验位为第8,16,24,32,40,48,56,64位）</p>
+<p>Data（数据）：为8个字节64位，是要被加密或被解密的数据</p>
+<p>Mode（模式）： 为DES的工作方式,有两种:加密或解密。</p>
+</blockquote>
+<h4 id="DES加密过程"><a href="#DES加密过程" class="headerlink" title="DES加密过程"></a>DES加密过程</h4><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/4.png" alt="DES算法的流程图"></p>
+<h5 id="IP置换（初始置换）"><a href="#IP置换（初始置换）" class="headerlink" title="IP置换（初始置换）"></a>IP置换（初始置换）</h5><p> 初始置换的原理其实很简单，根据一个初始置换表，对照表中的数值，将明文数据相应位置的数据移动到该数据所在的位置即可</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/6.png"></p>
+<p>现在假设我们按照以下顺序置换</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/7.png"></p>
+<p>先置换a，在原来1的位置，在置换b，在原来2的位置，以此类推，直到按照上表的顺序全部置换完毕</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/8.png"></p>
+<p> 至此我们便得到了初始置换之后的数据Data=“5XPHzrjb7ZRJBtld91TLDvnf=3VNFxph4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">L0 = “5XPHzrjb7ZRJBtld91TLDvnf=3VNFxph”</span><br><span class="line">R0 = “4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</span><br></pre></td></tr></table></figure>
+
+<h5 id="函数f运算"><a href="#函数f运算" class="headerlink" title="函数f运算"></a>函数f运算</h5><p>我们上面说到的16轮完全相同的运算，指的是运算所使用的函数或者说算法是一样的，但是参数L、R以及K是不相同的，而这是什么相同的运算呢？看下图↓</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/5.png" alt="函数f流程图"></p>
+<p> 从上图我们可以知道，函数f主要对数据的右半部分R进行了操作。下面对这个运算进行一定解释说明</p>
+<h6 id="扩展置换E"><a href="#扩展置换E" class="headerlink" title="扩展置换E"></a>扩展置换E</h6><p>扩展置换的作用对象是我们在初始置换后，将数据拆分为两部分（L,R）中的右半部分R。扩展置换表如下：</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/9.png"></p>
+<p>中间的4*8组是数据R（32位），左右两列黑色的是扩展时添加的数据。黑32是上一列最后一位蓝32的数据，黑4是上一列最后一位蓝4的数据，以此类推</p>
+<p>我们得到上面的  <code>R0=“4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</code></p>
+<p>分组后扩展：</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/10.png"></p>
+<p>之后得到48位的R0 <code>“g4WOGYGYqia6a6YQI(i)AI(i)Askc8c80SKCKCume+e+2UMEMEwog4”</code></p>
+<h6 id="子密钥K的生成"><a href="#子密钥K的生成" class="headerlink" title="子密钥K的生成"></a>子密钥K的生成</h6><p>子秘钥K的生成过程中，又有两次置换，称为压缩置换1和压缩置换2</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/a.png"></p>
+<p>而循环左移的位数按照下表进行</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/b.png"></p>
+<h6 id="S盒替换"><a href="#S盒替换" class="headerlink" title="S盒替换"></a>S盒替换</h6><p>在扩展置换E结束之后，进行K1与R0的异或运算后得到的48位数据压缩为32位数据，S盒一共有8个，每一个都是一个4行16列的数组</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/%E4%BB%8E%E3%80%81.png"></p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/c.png">我们前面扩展置换后得到的R0是48位的数据，我们的S盒有8个，那么我们就需要将得到的R0平均分为8组，每组对应一个S盒。</p>
+<p>每一组的数据长度为6位，假设第一组的二进制数据为：“100110”</p>
+<p>那么，我们取第一位与最后一位，组成行数：“10”=2</p>
+<p>取中间四位，组成列数：“0011”=3</p>
+<p>那么，在对应的S1盒中，取2行3列的数据（第3行第4列）：8</p>
+<p>转换为2进制：“1000”</p>
+<p> 那么就将这个得到的4位二进制数据，代替原来第一组的6位数据，这样一来，等8个S盒全部代替完毕，我们就得到32位的数据。</p>
+<h6 id="P盒置换"><a href="#P盒置换" class="headerlink" title="P盒置换"></a>P盒置换</h6><p> S盒置换完成之后，要进行的就是P盒置换了，输入32位的数据，得到32位的输出，置换表如下：</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/d.png"></p>
+<p>至此我们便得到了f(R0,K1),只要再与L0进行异或运算，就得到了第一轮运算最终的R1，然后再将R0的值赋给L1，就完成了第一轮的运算，得到了L1,R1。</p>
+<h6 id="末置换"><a href="#末置换" class="headerlink" title="末置换"></a>末置换</h6><p>经过16次的运算，我们在函数f的最后，会得到L16、R16</p>
+<p>然后将L16与R16合并，但是与之前的步骤中的合并不同，此次合并需要先交换二者的位置，也就是应该是R16L16</p>
+<p>合并之后我们就得到了长度为64位的数据，在用这64位数据进行末置换，最终得到的数据就是加密后的数据。</p>
+<p><a href="https://the-x.cn/cryptography/Des.aspx">传送门DES加解密</a></p>
+<h3 id="AES加密算法"><a href="#AES加密算法" class="headerlink" title="AES加密算法"></a>AES加密算法</h3><p>高级加密标准（Advanced Encryption Standard ），采用的一种区块加密标准。这个标准用来替代原先的DES。</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/11.png"></p>
+<p>AES的加密过程是在一个4×4的字节矩阵上运作，其初值就是一个明文区块（矩阵中一个元素大小就是明文区块中的一个Byte）。加密时，各轮AES加密循环（除最后一轮外）均包含4个步骤：</p>
+<blockquote>
+<p>1、 字节替代（SubBytes）—透过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。</p>
+<p>2、行移位（ShiftRows）—将矩阵中的每个横列进行循环式移位。</p>
+<p>3、列混淆（MixColumns）—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey取代。</p>
+<p>4、轮密钥加（AddRoundKey）—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。</p>
+</blockquote>
+<p>AES的解密过程分别为对应的逆操作。由于每一步操作都是可逆的，按照相反的顺序进行解密即可恢复明文。加解密中每轮的密钥分别由初始密钥扩展得到。算法中16字节的明文、密文和轮密钥都以一个4x4的矩阵表示。</p>
+<p>下面从网上找了几张图来直观说明</p>
+<h6 id="字节代替"><a href="#字节代替" class="headerlink" title="字节代替"></a>字节代替</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/12.png"></p>
+<h6 id="行移位"><a href="#行移位" class="headerlink" title="行移位"></a>行移位</h6><p>在AES中（区块大小128位），第一行维持不变，第二行里的每个字节都向左循环移动一格，第三行里的每个字节都向左循环移动二格，第四行里的每个字节都向左循环移动三格。经过行移位之后，矩阵中每一竖列，都是由输入矩阵中的每个不同列中的元素组成。</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/13.png"></p>
+<h6 id="列混淆"><a href="#列混淆" class="headerlink" title="列混淆"></a>列混淆</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/14.png"></p>
+<h6 id="轮密相加"><a href="#轮密相加" class="headerlink" title="轮密相加"></a>轮密相加</h6><p>密钥将会与原矩阵合并。在每次的加密循环中，都会由主密钥产生一把回合密钥</p>
+<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/15.png"></p>
+<h6 id="密钥扩展"><a href="#密钥扩展" class="headerlink" title="密钥扩展"></a>密钥扩展</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/16.png"></p>
+<hr>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>编码入门总结</title>
     <url>/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>编码–隐匿在计算机背后的语言。在计算机眼里读到的所有文字都是由0和1组成的字符串，为了能让汉字正常显示在屏幕上，我们需要做以下两件事情：</p>
@@ -1040,29 +1407,6 @@
       </categories>
       <tags>
         <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于blog常见报错及解决方法</title>
-    <url>/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在发blog的时候，经常会遇到一些重复性的报错问题，这些报错感觉都很眼熟，好像每天都会遇到（笑哭）。第一次看不懂报错，直接复制粘贴甩给百度翻译，但是就算翻译成中文人也还是懵逼的。比如这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/a.png" alt="a"></p>
-<p>又或是这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/b.png" alt="b"></p>
-<p>或许是那样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/c.png" alt="c"></p>
-<p>等等等等…</p>
-<p>第二次第三次又遇到一样的情况，索性就整理出来吧。（持续更新）</p>
-<h1 id="hexo-d报错解决："><a href="#hexo-d报错解决：" class="headerlink" title="hexo d报错解决："></a>hexo d报错解决：</h1><h4 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054 错误解决"></a>OpenSSL SSL_read: Connection was reset, errno 10054 错误解决</h4><p>首先，造成这个错误很有可能是网络不稳定，连接超时导致的，<br> 如果再次尝试后依然报错，可以执行下面的命令</p>
-<p>在D:\blog\blog中打开Git-Bash命令页面，执行git命令脚本：修改设置，解除ssl验证</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
-
-<p>此时，再执行hexo d即可解决</p>
-<h1 id="hexo-s-报错解决"><a href="#hexo-s-报错解决" class="headerlink" title="hexo s 报错解决"></a>hexo s 报错解决</h1><h4 id="node-15260-Warning"><a href="#node-15260-Warning" class="headerlink" title="(node:15260) Warning"></a>(node:15260) Warning</h4><p><img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/d.png" alt="d"></p>
-<p>很简单 不用管它 （警告而已warning,我也不知道为什么还能运行qwq)</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1273,350 +1617,6 @@
 <p>按照上述原则，将明文 <code>TH EQ UI CK BR OW NF OX JU MP SO VE RT HE LA ZY DO GX</code> 加以转换得到 <code>KU ND LH GT LF WU ES PW LH SI/J NP CG CR AG BU VZ QA I/JV</code></p>
 <p>将得到的字母改为大写并五个一组列好，得到密文 <code>KUNDL HGTLF WUESP WLHSI NPCGC RAGBU VZQAI V</code></p>
 <p><a href="http://www.practicalcryptography.com/ciphers/classical-era/playfair/">Practical Cryptography</a></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>消息认证与数字签名</title>
-    <url>/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数字签名验证实验"><a href="#数字签名验证实验" class="headerlink" title="数字签名验证实验"></a>数字签名验证实验</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>数字签名，又称公钥数字签名、电子签章，是一种类似写在纸上的普通的物理签名，但是使用了公钥加密领域的技术实现，用于鉴别数字信息的方法。一套数字签名通常定义两种互补的运算，一个用于签名，一个用于验证。简单地说，所谓数字签名就是附加在原来数据上一些数据或者对原来数据做一些密码变换。这种数据或变换允许数据单元的接收者用以确认数据单元的来源和数据单元的完整性并保护数据，防止被人(例如接收者)进行伪造。</p>
-<hr>
-<p>基于公钥密码体制和私钥密码体制都可以获得数字签名，主要是基于公钥密码体制的数字签名。包括普通数字签名和特殊数字签名。</p>
-<p>普通数字签名算法：RSA、ElGamal、Fiat-Shamir、Guillou-Quisquarter、Schnorr、Ong-Schnorr-Shamir数字签名算法、Des/DSA、椭圆曲线数字签名算法、有限自动机数字签名算法</p>
-<p>特殊数字签名：盲签名、代理签名、群签名、不可否认签名、公平盲签名、门限签名、具有消息恢复功能的签名</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>保证信息传输的完整性、发送者的身份认证、防止交易中的抵赖发生</p>
-<p>解释：数字签名技术是将摘要信息用发送者的私钥加密，与原文一起传送给接收者。接收者只有用发送者的公钥才能解密被加密的摘要信息，然后用HASH函数对收到的原文产生一个摘要信息，与解密的摘要信息对比。如果相同，则说明收到的信息是完整的，在传输过程中没有被修改，否则说明信息被修改过，因此数字签名能够验证信息的完整性。</p>
-<h2 id="数字签名的过程"><a href="#数字签名的过程" class="headerlink" title="数字签名的过程"></a>数字签名的过程</h2><blockquote>
-<ol>
-<li><p>利用一定的算法(如MD5)，将要签名的报文作为一个散列函数的输入，产生一个定长的安全散列码，即消息摘要；</p>
-</li>
-<li><p>使用发送方的私有密钥对这个消息摘要进行加密，形成签名；</p>
-</li>
-<li><p>将报文和签名传送出去；</p>
-</li>
-<li><p>接收方接收报文，并根据报文产生一个消息摘要，同时使用发方的公开密钥对签名进行解密；</p>
-</li>
-<li><p>如果接收方计算得出的消息摘要，和它解密后的签名互相匹配，那么签名就是有效的；</p>
-</li>
-<li><p>因为只有发送方知道私有密钥，并对签名进行了加密，因此只有发方才能产生有效的签名。</p>
-</li>
-</ol>
-</blockquote>
-<h2 id="对文件做签名验证"><a href="#对文件做签名验证" class="headerlink" title="对文件做签名验证"></a>对文件做签名验证</h2><p>在实验机里打开cmd控制台，进入sigcheck程序目录，输入sigcheck，点击回车，会出现使用说明</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/1.png"></p>
-<p>以存在的calc为例，把calc所在路径复制到cmd</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/2.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck C:\windows\system32\calc.exe</span><br></pre></td></tr></table></figure>
-
-<p>如下图，会出现，signed，即被签名</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/3.png"></p>
-<p>现在我们试试另外一个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck helloworld.exe</span><br></pre></td></tr></table></figure>
-
-<p>很显然，unsigned，这是没有被签名的文件</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/4.png"></p>
-<h2 id="批量验证文件签名"><a href="#批量验证文件签名" class="headerlink" title="批量验证文件签名"></a>批量验证文件签名</h2><p>从上面实验我们可以看到一个一个试文件很繁琐麻烦，很多情况下，我们需要找出某个目录里所有未经过数字签名的文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sigcheck -e C:\windows\System32 &gt;abc.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/5.png"></p>
-<p>执行后可以查看abc.txt文件，发现都是经过数字签名后的</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/6.png"></p>
-<h1 id="单向哈希函数与mac"><a href="#单向哈希函数与mac" class="headerlink" title="单向哈希函数与mac"></a>单向哈希函数与mac</h1><p>我们现在虚拟机上的终端运行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim 1.txt</span><br></pre></td></tr></table></figure>
-
-<p>创建一个文件，本人不知道vim的命令语法，于是上万能的百度，现在例举用到的操作</p>
-<p>插入模式（按<code>i</code>键进入） 左下角显示–INSERT–</p>
-<p>命令模式（按<code>ESC</code>键退出）</p>
-<p>输入<code>：wq</code></p>
-<blockquote>
-<p>:w 保存文件但不退出vi<br>:w file 将修改另外保存到file中，不退出vi<br>:w! 强制保存，不推出vi<br>:wq 保存文件并退出vi<br>:wq! 强制保存文件，并退出vi<br>:q 不保存文件，退出vi<br>:q! 不保存文件，强制退出vi<br>:e! 放弃所有修改，从上次保存文件开始再编辑命令历史</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -md5 1.txt</span><br></pre></td></tr></table></figure>
-
-<p>顾名思义，dgst就是消息摘要，这里我们用md5加密</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/8.png"></p>
-<p>我们试试sha1加密</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 1.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/9.png" alt="9"></p>
-<p><code>-hmac</code>指的是加盐加密，我们分别用abcd,abcde,abcdef来加盐，可以看到一个字母的添加带来翻天覆地变化，但是长度都是固定的</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha1 -hmac”abcd”  1.txt</span><br><span class="line">openssl dgst -sha1 -hmac”abcde”  1.txt</span><br><span class="line">openssl dgst -sha1 -hmac”abcdef”  1.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/10.png"></p>
-<p>现在我们再创建两个txt，分别用MD5进行加密</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl dgst -md5  2.txt</span><br><span class="line">openssl dgst -md5  2.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/12.png"></p>
-<p>我们可以看到数字一样但是位置不一样的文件，它的MD5是完全不一样的，且没有任何规律</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat 2.txt</span><br><span class="line">cat 3.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/11.png"></p>
-<h1 id="powershell调用DLL实现RSA签名"><a href="#powershell调用DLL实现RSA签名" class="headerlink" title="powershell调用DLL实现RSA签名"></a>powershell调用DLL实现RSA签名</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><h3 id="powershell简介"><a href="#powershell简介" class="headerlink" title="powershell简介"></a>powershell简介</h3><p>PowerShell是运行在windows机器上实现系统和应用程序自动化管理的命令行脚本环境，是cmd.exe命令行提示符的加强版。它有很好的可读性和易用性。</p>
-<h3 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h3><p> DLL(Dynamic Link Library)文件为动态链接库文件，又称“应用程序拓展”，是软件文件类型。在Windows中，许多应用程序并不是一个完整的可执行文件，它们被分割成一些相对独立的动态链接库，即DLL文件，放置于系统中。</p>
-<h3 id="RSA签名验证机制"><a href="#RSA签名验证机制" class="headerlink" title="RSA签名验证机制"></a>RSA签名验证机制</h3><p>RSA的签名验证用于通信数据防篡改，如图</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/13.png"></p>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public void RSAKey(out string xmlKeys, out string xmlPublicKey)  //生成RSA密钥对</span><br><span class="line"></span><br><span class="line">  public void GetHash(string strSource, ref string strHashData) // 获取hash摘要</span><br><span class="line"></span><br><span class="line">  public void SignatureFormatter(string strKeyPrivate, string strHashbyteSignature, ref string strEncryptedSignatureData) //RSA签名</span><br><span class="line"></span><br><span class="line">  public bool SignatureDeformatter(string strKeyPublic, string strHashbyteDeformatter, string strDeformatterData) // RSA验签</span><br></pre></td></tr></table></figure>
-
-<p>在Powershell中调用操作系统的RSA类库</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/14.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RSACryption.ps1</span><br></pre></td></tr></table></figure>
-
-<p>从中获取明文hash摘要</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/15.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CheckSigned.ps1</span><br></pre></td></tr></table></figure>
-
-<p>签名验证结果返回True，如图所示，表明签名验证结果是正确的。</p>
-<p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/Snipaste_2021-08-02_22-58-44.png"></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈希函数算法实现原理和应用</title>
-    <url>/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>hash，一般翻译做“散列”，也有直接音译为”哈希”</p>
-<p>就是把任意长度的输入通过散列算法，变换成固定长度的输出，该输出就是散列值。</p>
-<p>MD（Message Digest )，为计算机安全领域广泛使用的一种散列函数，用以提供消息的<strong>完整性保护</strong>。目前广泛使用的是第五版，因此也被称为MD5。</p>
-<p>MD5和SHA1可以说是目前应用最广泛的Hash算法，而它们都是以MD4为基础设计的。</p>
-<p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
-</blockquote>
-<p>举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现（两个MD5值不相同）。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。</p>
-<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><p>在线网站<a href="https://www.sojson.com/encrypt_md5.html">MD5在线加密/解密/破解—MD5在线 (sojson.com)</a></p>
-<p>明文是2021加密后</p>
-<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/1.png" alt="加密"></p>
-<p>选取任意一组密文 进行解密</p>
-<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/2.png"></p>
-<p>但是稍微复杂一点的字母就解不出来了唉</p>
-<h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1><h2 id="MD5算法的原理"><a href="#MD5算法的原理" class="headerlink" title="MD5算法的原理"></a>MD5算法的原理</h2><p>对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</p>
-<p>首先是对信息进行填充，<strong>使其位长对512求余的结果=448</strong></p>
-<p>因此，原来信息的位长应该为<code>N*512+448</code></p>
-<p>填充的方法：在原信息后补一个1和许多0，直到满足条件</p>
-<p>填充完毕后，在这个结果后面加一个以64位二进制表示的填充前的信息长度</p>
-<p>因此，现在的消息位长=N*512+448+64=(N+1)*512，这样的长度刚好是512的整数倍</p>
-<p>流程图如下：</p>
-<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210801081452.png"></p>
-<p>表示第i个分组，每次的运算都由前一轮的128位结果值和第i块512bit值进行运算。初始的128位值为初始链接变量，这些参数用于第一轮的运算，他们分别为：<code>A=0x01234567</code>，<code>B=0x89ABCDEF</code>，<code>C=0xFEDCBA98</code>，<code>D=0x76543210</code>。</p>
-<hr>
-<p>每一分组的算法流程如下：</p>
-<p>第一分组需要将上面四个链接变量复制到另外四个变量中：</p>
-<p>A到a，B到b，C到c，D到d。</p>
-<p>从第二分组开始的变量为上一分组的运算结果。</p>
-<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行<strong>16次</strong>操作。每次操作对a、b、c和d中的<strong>其中三个作一次非线性函数</strong>运算，然后将所得结果<strong>加上第四个</strong>变量，文本的一个子分组和一个常数。再将所得结果<strong>向左环移</strong>一个不定的数，并<strong>加上</strong>a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
-<p>以一下是每次操作中用到的四个非线性函数（每轮一个）。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">F(X,Y,Z) =(X&amp;Y)|((~X)&amp;Z)</span><br><span class="line">G(X,Y,Z) =(X&amp;Z)|(Y&amp;(~Z))</span><br><span class="line">H(X,Y,Z) =X^Y^Z</span><br><span class="line">I(X,Y,Z)=Y^(X|(~Z))</span><br><span class="line">#（&amp;；是与，|是或，~是非，^是异或）</span><br></pre></td></tr></table></figure>
-
-<p>这四个函数的说明：如果X、Y和Z的对应位是独立和均匀的，那么结果的每一位也应是独立和均匀的。</p>
-<p>F是一个逐位运算的函数。即，如果X，那么Y，否则Z。函数H是逐位奇偶操作符。</p>
-<p>假设Mj表示消息的第j个子分组（从0到15），常数ti是4294967296*abs(sin(i)）的整数部分，i取值从1到64，单位是弧度。（4294967296等于2的32次方）</p>
-<p>FF(a,b,c,d,Mj,s,ti）表示 a = b + ((a + F(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>GG(a,b,c,d,Mj,s,ti）表示 a = b + ((a + G(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>HH(a,b,c,d,Mj,s,ti）表示 a = b + ((a + H(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>Ⅱ（a,b,c,d,Mj,s,ti）表示 a = b + ((a + I(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>这四轮（64步）是：</p>
-<p>第一轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FF(a,b,c,d,M0,7,0xd76aa478）</span><br><span class="line">FF(d,a,b,c,M1,12,0xe8c7b756）</span><br><span class="line">FF(c,d,a,b,M2,17,0x242070db)</span><br><span class="line">FF(b,c,d,a,M3,22,0xc1bdceee)</span><br><span class="line">FF(a,b,c,d,M4,7,0xf57c0faf)</span><br><span class="line">FF(d,a,b,c,M5,12,0x4787c62a)</span><br><span class="line">FF(c,d,a,b,M6,17,0xa8304613）</span><br><span class="line">FF(b,c,d,a,M7,22,0xfd469501）</span><br><span class="line">FF(a,b,c,d,M8,7,0x698098d8）</span><br><span class="line">FF(d,a,b,c,M9,12,0x8b44f7af)</span><br><span class="line">FF(c,d,a,b,M10,17,0xffff5bb1）</span><br><span class="line">FF(b,c,d,a,M11,22,0x895cd7be)</span><br><span class="line">FF(a,b,c,d,M12,7,0x6b901122）</span><br><span class="line">FF(d,a,b,c,M13,12,0xfd987193）</span><br><span class="line">FF(c,d,a,b,M14,17,0xa679438e)</span><br><span class="line">FF(b,c,d,a,M15,22,0x49b40821）</span><br></pre></td></tr></table></figure>
-
-<p>第二轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GG(a,b,c,d,M1,5,0xf61e2562）</span><br><span class="line">GG(d,a,b,c,M6,9,0xc040b340）</span><br><span class="line">GG(c,d,a,b,M11,14,0x265e5a51）</span><br><span class="line">GG(b,c,d,a,M0,20,0xe9b6c7aa)</span><br><span class="line">GG(a,b,c,d,M5,5,0xd62f105d)</span><br><span class="line">GG(d,a,b,c,M10,9,0x02441453）</span><br><span class="line">GG(c,d,a,b,M15,14,0xd8a1e681）</span><br><span class="line">GG(b,c,d,a,M4,20,0xe7d3fbc8）</span><br><span class="line">GG(a,b,c,d,M9,5,0x21e1cde6）</span><br><span class="line">GG(d,a,b,c,M14,9,0xc33707d6）</span><br><span class="line">GG(c,d,a,b,M3,14,0xf4d50d87）</span><br><span class="line">GG(b,c,d,a,M8,20,0x455a14ed)</span><br><span class="line">GG(a,b,c,d,M13,5,0xa9e3e905）</span><br><span class="line">GG(d,a,b,c,M2,9,0xfcefa3f8）</span><br><span class="line">GG(c,d,a,b,M7,14,0x676f02d9）</span><br><span class="line">GG(b,c,d,a,M12,20,0x8d2a4c8a)</span><br></pre></td></tr></table></figure>
-
-<p>第三轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HH(a,b,c,d,M5,4,0xfffa3942）</span><br><span class="line">HH(d,a,b,c,M8,11,0x8771f681）</span><br><span class="line">HH(c,d,a,b,M11,16,0x6d9d6122）</span><br><span class="line">HH(b,c,d,a,M14,23,0xfde5380c)</span><br><span class="line">HH(a,b,c,d,M1,4,0xa4beea44）</span><br><span class="line">HH(d,a,b,c,M4,11,0x4bdecfa9）</span><br><span class="line">HH(c,d,a,b,M7,16,0xf6bb4b60）</span><br><span class="line">HH(b,c,d,a,M10,23,0xbebfbc70）</span><br><span class="line">HH(a,b,c,d,M13,4,0x289b7ec6）</span><br><span class="line">HH(d,a,b,c,M0,11,0xeaa127fa)</span><br><span class="line">HH(c,d,a,b,M3,16,0xd4ef3085）</span><br><span class="line">HH(b,c,d,a,M6,23,0x04881d05）</span><br><span class="line">HH(a,b,c,d,M9,4,0xd9d4d039）</span><br><span class="line">HH(d,a,b,c,M12,11,0xe6db99e5）</span><br><span class="line">HH(c,d,a,b,M15,16,0x1fa27cf8）</span><br><span class="line">HH(b,c,d,a,M2,23,0xc4ac5665）</span><br></pre></td></tr></table></figure>
-
-<p>第四轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ⅱ（a,b,c,d,M0,6,0xf4292244）</span><br><span class="line">Ⅱ（d,a,b,c,M7,10,0x432aff97）</span><br><span class="line">Ⅱ（c,d,a,b,M14,15,0xab9423a7）</span><br><span class="line">Ⅱ（b,c,d,a,M5,21,0xfc93a039）</span><br><span class="line">Ⅱ（a,b,c,d,M12,6,0x655b59c3）</span><br><span class="line">Ⅱ（d,a,b,c,M3,10,0x8f0ccc92）</span><br><span class="line">Ⅱ（c,d,a,b,M10,15,0xffeff47d)</span><br><span class="line">Ⅱ（b,c,d,a,M1,21,0x85845dd1）</span><br><span class="line">Ⅱ（a,b,c,d,M8,6,0x6fa87e4f)</span><br><span class="line">Ⅱ（d,a,b,c,M15,10,0xfe2ce6e0)</span><br><span class="line">Ⅱ（c,d,a,b,M6,15,0xa3014314）</span><br><span class="line">Ⅱ（b,c,d,a,M13,21,0x4e0811a1）</span><br><span class="line">Ⅱ（a,b,c,d,M4,6,0xf7537e82）</span><br><span class="line">Ⅱ（d,a,b,c,M11,10,0xbd3af235）</span><br><span class="line">Ⅱ（c,d,a,b,M2,15,0x2ad7d2bb)</span><br><span class="line">Ⅱ（b,c,d,a,M9,21,0xeb86d391）</span><br></pre></td></tr></table></figure>
-
-<p>所有这些完成之后，将A、B、C、D分别加上a、b、c、d。然后用下一分组数据继续运行算法，最后的输出是A、B、C和D的级联。</p>
-<p>当你按照我上面所说的方法实现MD5算法以后，你可以用以下几个信息对你做出来的程序作一个简单的测试，看看程序有没有错误。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MD5 (&quot;&quot;) = d41d8cd98f00b204e9800998ecf8427e</span><br><span class="line">MD5 (&quot;a&quot;) = 0cc175b9c0f1b6a831c399e269772661</span><br><span class="line">MD5 (&quot;abc&quot;) = 900150983cd24fb0d6963f7d28e17f72</span><br><span class="line">MD5 (&quot;message digest&quot;) =f96b697d7cb7938d525a2f31aaf161d0</span><br><span class="line">MD5 (&quot;abcdefghijklmnopqrstuvwxyz&quot;) </span><br><span class="line">= c3fcd3d76192e4007dfb496cca67e13b</span><br><span class="line">MD5 (&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;)</span><br><span class="line">=f29939a25efabaef3b87e2cbfe641315</span><br></pre></td></tr></table></figure>
-
-<hr>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常见密码学攻击手法和实现</title>
-    <url>/2021/08/03/%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-  </entry>
-  <entry>
-    <title>现代密码之对称算法</title>
-    <url>/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>现代密码学的任务不仅仅只限于传统密码学的“保密通信”，而是含义更广的“信息安全”，其中包括“保密通信”、“数据加密”、“数字签名”等重要的功能。现代密码学已成为信息时代无处不在不可或缺的信息安全卫士。</p>
-<p>现代密码学的安全性主要由密钥的设计和使用决定。</p>
-<blockquote>
-<p>按技术特征，现代密码学分为三类：</p>
-<p>对称算法、非对称算法、摘要算法</p>
-</blockquote>
-<p>今天主要讲讲对称算法0w0</p>
-<p><strong>对称算法</strong></p>
-<p>又称传统密码算法、秘密密钥算法或单密钥算法。加密与解密密钥一样的密码算法。该算法又分为序列密码（流密码）算法、分组密码算法</p>
-<h2 id="序列密码算法"><a href="#序列密码算法" class="headerlink" title="序列密码算法"></a>序列密码算法</h2><p>序列密码也称为流密码，它是对称密码算法的一种。序列密码具有实现简单、便于硬件实施、加解密处理速度快、没有或只有有限的错误传播等特点。</p>
-<p>在实际应用中，特别是专用或机密机构中保持着优势，典型的应用领域包括无线通信、外交通信。</p>
-<p>1949年Shannon证明了只有一次一密的密码体制是绝对安全的，这给序列密码技术的研究以强大的支持，序列密码方案的发展是模仿一次一密系统的尝试。那神马是一次一密呢？</p>
-<p>1、密钥和加密的消息等长</p>
-<p>2、密钥由真正随机符号组成</p>
-<p>3、密钥只用一次，永不对其他消息复用</p>
-<p>这就像在一天的24小时之内，把每个时间点看成一个密钥，每一个密钥一一对应一个时间点，永不复用。</p>
-<h3 id="RC4加密"><a href="#RC4加密" class="headerlink" title="RC4加密"></a>RC4加密</h3><h4 id="RC4原理"><a href="#RC4原理" class="headerlink" title="RC4原理"></a>RC4原理</h4><blockquote>
-<p>1、密钥流：RC4算法关键是依据明文和密钥生成相应的密钥流，密钥流的长度和明文的长度是相同的。假如明文有333字节，那么密钥流也要有333字节。当然，加密生成的密文也是333字节。</p>
-<p>2、状态向量S：长度为256，S[0],S[1]…..S[255]。每一个单元都是一个字节，算法执行的不论什么时候。S都包含0-255的8比特数的排列组合，仅仅只是值的位置发生了变换。</p>
-<p>3、暂时向量T：长度为256，每一个单元也是一个字节。假如密钥的长度是256，就直接把密钥的值赋给T，否则，轮转地将密钥的每一个字节赋给T</p>
-<p>4、密钥K：长度为1-256字节。密钥≠密钥流！二者长度没有必然关系，通常密钥的长度为16字节</p>
-</blockquote>
-<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730224154.png" alt="搜狗截图20210730224154" style="zoom:80%;">
-
-
-
-<h4 id="柯克霍夫原则Kerckhoffs"><a href="#柯克霍夫原则Kerckhoffs" class="headerlink" title="柯克霍夫原则Kerckhoffs"></a>柯克霍夫原则Kerckhoffs</h4><p>提出：即使密码系统的任何细节已为人悉知，只要密钥（key）未泄漏，它也应是安全的。</p>
-<p>Kerckhoffs准则认为，一个密码系统的安全性不是取决于其算法对于攻击者来说是否保密，而是建立在它所选择的密钥对于攻击者来说是否保密。</p>
-<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><p>–<strong>使用CrypTool对字符串进行RC4加解密操作</strong></p>
-<p>step1：待加密明文</p>
-<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/Snipaste_2021-07-30_23-03-00.png" alt="Snipaste_2021-07-30_23-03-00" style="zoom:80%;">
-
-<p>step2：选择RC4加密</p>
-<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230527.png" alt="搜狗截图20210730230527" style="zoom:80%;">
-
-<p>step3：选择8bits密钥长度，并点encrypt显示密文</p>
-<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230610.png" alt="搜狗截图20210730230610" style="zoom:80%;">
-
-<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/搜狗截图20210730230746.png" alt="搜狗截图20210730230746" style="zoom:80%;">
-
-<p>step4：试试24bits密钥长度加密后的密文</p>
-<img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/image-20210730230930203.png" alt="image-20210730230930203" style="zoom:80%;">
-
-<hr>
-<p><strong>–对8bits密钥长度进行穷举攻击</strong></p>
-<p> 安全研究人员称，现在世界上近三分之一的HTTPS加密连接可被破解，并且效率极高。这种针对RC4加密的破解技术，同样也可以用来破解WiFi数据包。</p>
-<p>研究人员很早前就发现可以利用RC4中的统计偏差，导致可对加密信息中的一些伪随机字节能进行猜测，8bits密钥长度加密的密文，几乎可以秒破解，而24bits的密钥长度可能需要几分钟，这就是之前文章所说的“时间复杂度”</p>
-<p>step1：按RC4分解</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/1.png" alt="1"></p>
-<p>step2:8bits长度密钥加密密文</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/2.png" alt="2"></p>
-<p>step3：秒破解穷举结果</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/3.png" alt="3"></p>
-<hr>
-<h2 id="分组密码算法"><a href="#分组密码算法" class="headerlink" title="分组密码算法"></a>分组密码算法</h2><p>把明文分成了确定长度的数据块（字节块），用同一密钥和算法加密每一明文块后得到等长的密文块，然后把密文块按顺序组合起来得到密文。反之也可以得到明文。</p>
-<h3 id="IDEA加密算法"><a href="#IDEA加密算法" class="headerlink" title="IDEA加密算法"></a>IDEA加密算法</h3><p>IDEA是International Data Encryption Algorithm的缩写，即国际数据加密算法，广泛的应用在安全电子邮件PGP中。 </p>
-<blockquote>
-<p>IDEA加密算法是一个<strong>分组长度为64位</strong>的分组密码算法，**密钥长度为128位,**同一个算法即可用于加密，也可用于解密。发展IDEA也是因为感到DES具有密钥太短等缺点。IDEA的密钥为128位，这么长的密钥在今后若干年内应该是安全的。这是基于“相异代数群上的混合运算”设计思想，算法运用硬件与软件实现都很容易，而且比DES算法在实现上快的多。IDEA自问世以来，已经经历了大量的详细审查，对密码分析具有很强的抵抗能力，在多种商业产品中被使用。</p>
-</blockquote>
-<p><strong>IDEA加密算法的原理</strong></p>
-<blockquote>
-<p> 64-位数据分组被分成4个16-位子分组：xl，X2，x3，x4。</p>
-<p>这4个子分组成为算法的第一轮的输入，总共有8轮。</p>
-<p>在每一轮中，这4个子分组相列相异或，相加，相乘，且与6个16-位子密钥相异或，相加，相乘。</p>
-<p>在轮与轮间，第二和第二个子分组交换。最后在输出变换中4个子分组与4个子密钥进行运算。</p>
-</blockquote>
-<p>以下表述中的相加，指的是：（a + b) mod p，其结果是a+b算术和除以p的余数。例如对于下列表述中的“（2)X2和第二个子密钥相加”就是指用X2与第二个子密钥的和除以2^16(即65536)后的余数。</p>
-<p>以下表述中的相乘，指的是：（a × b) mod p，其结果是 a × b算术乘法除以p的余数。例如对于下列表述中的“（1)X1和第一个子密钥相乘。”就是指用X1和第一个子密钥相乘后的积除于(2^16+1)(即65537)后的余数。</p>
-<p>异或指的是不进位加法。</p>
-<blockquote>
-<p>   (1)X1和第一个子密钥相乘。</p>
-<p>   (2)X2和第二个子密钥相加。</p>
-<p>   (3)X3和第三个子密钥相加。</p>
-<p>   (4)X4和第四个子密钥相乘。</p>
-<p>   (5)将第（1)步和第（3)步的结果相异或。·</p>
-<p>   (6)将第（2)步和第（4)步的结果相异或。</p>
-<p>   (7)将第（5)步的结果与第五个子密钥相乘。</p>
-<p>   (8)将第（6)步和第（7)步的结果相加。</p>
-<p>   (9)将第（8)步的结果与第六个子密钥相乘。</p>
-<p>   (10)将第（7)步和第（9)步的结果相加。</p>
-<p>   (11)将第（1)步和第（9)步的结果相异或。</p>
-<p>   (12)将第（3)步和第（9)步的结果相异或。</p>
-<p>   (13)将第（2)步和第（10)步的结果相异或。</p>
-<p>   (14)将第（4)步和第（10)步的结果相异或。</p>
-</blockquote>
-<p> 每一轮的输出是第（11)、（12)、（13)和（14) 步的结果形成的4个子分组。将中间两个分组分组交换（最后一轮除外）后，即为下一轮的输入。</p>
-<p> 经过8轮运算之后，有一个最终的输出变换：</p>
-<blockquote>
-<p>  (1) X1和第一个子密钥相乘。</p>
-<p>   (2) X2和第二个子密钥相加。</p>
-<p>   (3) X3和第三个子密钥相加。</p>
-<p>   (4) X4和第四个子密钥相乘。</p>
-</blockquote>
-<p> 最后，这4个子分组重新连接到一起产生密文。</p>
-<h3 id="DES对称加密算法"><a href="#DES对称加密算法" class="headerlink" title="DES对称加密算法"></a>DES对称加密算法</h3><p> DES全称为Data Encryption Standard，即数据加密标准，是一种使用密钥加密的块算法</p>
-<p> DES算法就是一个把64位的明文输入块变为64位密文输出块的算法,它所使用的密钥也是64位（其实只使用到了56位，其余8位为奇偶校验位</p>
-<blockquote>
-<p>DES算法的入口参数有三个：Key、Data、Mode。</p>
-<p>Key（密钥）：为7个字节共56位，是DES算法的工作密钥（若说密钥为64位，其指的也是56位的秘钥加上8位奇偶校验位，奇偶校验位为第8,16,24,32,40,48,56,64位）</p>
-<p>Data（数据）：为8个字节64位，是要被加密或被解密的数据</p>
-<p>Mode（模式）： 为DES的工作方式,有两种:加密或解密。</p>
-</blockquote>
-<h4 id="DES加密过程"><a href="#DES加密过程" class="headerlink" title="DES加密过程"></a>DES加密过程</h4><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/4.png" alt="DES算法的流程图"></p>
-<h5 id="IP置换（初始置换）"><a href="#IP置换（初始置换）" class="headerlink" title="IP置换（初始置换）"></a>IP置换（初始置换）</h5><p> 初始置换的原理其实很简单，根据一个初始置换表，对照表中的数值，将明文数据相应位置的数据移动到该数据所在的位置即可</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/6.png"></p>
-<p>现在假设我们按照以下顺序置换</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/7.png"></p>
-<p>先置换a，在原来1的位置，在置换b，在原来2的位置，以此类推，直到按照上表的顺序全部置换完毕</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/8.png"></p>
-<p> 至此我们便得到了初始置换之后的数据Data=“5XPHzrjb7ZRJBtld91TLDvnf=3VNFxph4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">L0 = “5XPHzrjb7ZRJBtld91TLDvnf=3VNFxph”</span><br><span class="line">R0 = “4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</span><br></pre></td></tr></table></figure>
-
-<h5 id="函数f运算"><a href="#函数f运算" class="headerlink" title="函数f运算"></a>函数f运算</h5><p>我们上面说到的16轮完全相同的运算，指的是运算所使用的函数或者说算法是一样的，但是参数L、R以及K是不相同的，而这是什么相同的运算呢？看下图↓</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/5.png" alt="函数f流程图"></p>
-<p> 从上图我们可以知道，函数f主要对数据的右半部分R进行了操作。下面对这个运算进行一定解释说明</p>
-<h6 id="扩展置换E"><a href="#扩展置换E" class="headerlink" title="扩展置换E"></a>扩展置换E</h6><p>扩展置换的作用对象是我们在初始置换后，将数据拆分为两部分（L,R）中的右半部分R。扩展置换表如下：</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/9.png"></p>
-<p>中间的4*8组是数据R（32位），左右两列黑色的是扩展时添加的数据。黑32是上一列最后一位蓝32的数据，黑4是上一列最后一位蓝4的数据，以此类推</p>
-<p>我们得到上面的  <code>R0=“4WOGyqia6YQI(i)Askc80SKCume+2UMEwog”</code></p>
-<p>分组后扩展：</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/10.png"></p>
-<p>之后得到48位的R0 <code>“g4WOGYGYqia6a6YQI(i)AI(i)Askc8c80SKCKCume+e+2UMEMEwog4”</code></p>
-<h6 id="子密钥K的生成"><a href="#子密钥K的生成" class="headerlink" title="子密钥K的生成"></a>子密钥K的生成</h6><p>子秘钥K的生成过程中，又有两次置换，称为压缩置换1和压缩置换2</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/a.png"></p>
-<p>而循环左移的位数按照下表进行</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/b.png"></p>
-<h6 id="S盒替换"><a href="#S盒替换" class="headerlink" title="S盒替换"></a>S盒替换</h6><p>在扩展置换E结束之后，进行K1与R0的异或运算后得到的48位数据压缩为32位数据，S盒一共有8个，每一个都是一个4行16列的数组</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/%E4%BB%8E%E3%80%81.png"></p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/c.png">我们前面扩展置换后得到的R0是48位的数据，我们的S盒有8个，那么我们就需要将得到的R0平均分为8组，每组对应一个S盒。</p>
-<p>每一组的数据长度为6位，假设第一组的二进制数据为：“100110”</p>
-<p>那么，我们取第一位与最后一位，组成行数：“10”=2</p>
-<p>取中间四位，组成列数：“0011”=3</p>
-<p>那么，在对应的S1盒中，取2行3列的数据（第3行第4列）：8</p>
-<p>转换为2进制：“1000”</p>
-<p> 那么就将这个得到的4位二进制数据，代替原来第一组的6位数据，这样一来，等8个S盒全部代替完毕，我们就得到32位的数据。</p>
-<h6 id="P盒置换"><a href="#P盒置换" class="headerlink" title="P盒置换"></a>P盒置换</h6><p> S盒置换完成之后，要进行的就是P盒置换了，输入32位的数据，得到32位的输出，置换表如下：</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/d.png"></p>
-<p>至此我们便得到了f(R0,K1),只要再与L0进行异或运算，就得到了第一轮运算最终的R1，然后再将R0的值赋给L1，就完成了第一轮的运算，得到了L1,R1。</p>
-<h6 id="末置换"><a href="#末置换" class="headerlink" title="末置换"></a>末置换</h6><p>经过16次的运算，我们在函数f的最后，会得到L16、R16</p>
-<p>然后将L16与R16合并，但是与之前的步骤中的合并不同，此次合并需要先交换二者的位置，也就是应该是R16L16</p>
-<p>合并之后我们就得到了长度为64位的数据，在用这64位数据进行末置换，最终得到的数据就是加密后的数据。</p>
-<p><a href="https://the-x.cn/cryptography/Des.aspx">传送门DES加解密</a></p>
-<h3 id="AES加密算法"><a href="#AES加密算法" class="headerlink" title="AES加密算法"></a>AES加密算法</h3><p>高级加密标准（Advanced Encryption Standard ），采用的一种区块加密标准。这个标准用来替代原先的DES。</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/11.png"></p>
-<p>AES的加密过程是在一个4×4的字节矩阵上运作，其初值就是一个明文区块（矩阵中一个元素大小就是明文区块中的一个Byte）。加密时，各轮AES加密循环（除最后一轮外）均包含4个步骤：</p>
-<blockquote>
-<p>1、 字节替代（SubBytes）—透过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。</p>
-<p>2、行移位（ShiftRows）—将矩阵中的每个横列进行循环式移位。</p>
-<p>3、列混淆（MixColumns）—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey取代。</p>
-<p>4、轮密钥加（AddRoundKey）—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。</p>
-</blockquote>
-<p>AES的解密过程分别为对应的逆操作。由于每一步操作都是可逆的，按照相反的顺序进行解密即可恢复明文。加解密中每轮的密钥分别由初始密钥扩展得到。算法中16字节的明文、密文和轮密钥都以一个4x4的矩阵表示。</p>
-<p>下面从网上找了几张图来直观说明</p>
-<h6 id="字节代替"><a href="#字节代替" class="headerlink" title="字节代替"></a>字节代替</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/12.png"></p>
-<h6 id="行移位"><a href="#行移位" class="headerlink" title="行移位"></a>行移位</h6><p>在AES中（区块大小128位），第一行维持不变，第二行里的每个字节都向左循环移动一格，第三行里的每个字节都向左循环移动二格，第四行里的每个字节都向左循环移动三格。经过行移位之后，矩阵中每一竖列，都是由输入矩阵中的每个不同列中的元素组成。</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/13.png"></p>
-<h6 id="列混淆"><a href="#列混淆" class="headerlink" title="列混淆"></a>列混淆</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/14.png"></p>
-<h6 id="轮密相加"><a href="#轮密相加" class="headerlink" title="轮密相加"></a>轮密相加</h6><p>密钥将会与原矩阵合并。在每次的加密循环中，都会由主密钥产生一把回合密钥</p>
-<p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/15.png"></p>
-<h6 id="密钥扩展"><a href="#密钥扩展" class="headerlink" title="密钥扩展"></a>密钥扩展</h6><p><img src="/2021/07/30/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E4%B9%8B%E5%AF%B9%E7%A7%B0%E7%AE%97%E6%B3%95/16.png"></p>
-<hr>
 ]]></content>
       <categories>
         <category>学习笔记</category>
