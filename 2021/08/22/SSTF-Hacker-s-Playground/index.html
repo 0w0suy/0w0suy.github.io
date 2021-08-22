@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SSTF(Hacker's Playground) | Suy's Blog</title><meta name="keywords" content="密码学"><meta name="author" content="0w0suy"><meta name="copyright" content="0w0suy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言第一次打CTF，crypto的Tutorial部分涉及两题，RSA101和RC Four，结果是一题也没整出来。。好歹也是研究了一下午的真题，决定在比赛结束后看看大佬写的write up 链接传送门 正文RSA101题目如下  题目的代码如下 1234567891011121314151617181920212223242526272829303132333435363738394041424">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSTF(Hacker&#39;s Playground)">
+<meta property="og:url" content="https://0w0suy.github.io/2021/08/22/SSTF-Hacker-s-Playground/index.html">
+<meta property="og:site_name" content="Suy&#39;s Blog">
+<meta property="og:description" content="前言第一次打CTF，crypto的Tutorial部分涉及两题，RSA101和RC Four，结果是一题也没整出来。。好歹也是研究了一下午的真题，决定在比赛结束后看看大佬写的write up 链接传送门 正文RSA101题目如下  题目的代码如下 1234567891011121314151617181920212223242526272829303132333435363738394041424">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-08-22T05:41:59.000Z">
+<meta property="article:modified_time" content="2021-08-22T15:05:03.884Z">
+<meta property="article:author" content="0w0suy">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0w0suy.github.io/2021/08/22/SSTF-Hacker-s-Playground/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: 0w0suy","link":"Link: ","source":"Source: Suy's Blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SSTF(Hacker\'s Playground)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-22 23:05:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Suy's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Suy's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SSTF(Hacker's Playground)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-08-22T05:41:59.000Z" title="Created 2021-08-22 13:41:59">2021-08-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-08-22T15:05:03.884Z" title="Updated 2021-08-22 23:05:03">2021-08-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/">CTF</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SSTF(Hacker's Playground)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一次打CTF，crypto的Tutorial部分涉及两题，RSA101和RC Four，结果是一题也没整出来。。好歹也是研究了一下午的真题，决定在比赛结束后看看大佬写的write up</p>
+<p><a target="_blank" rel="noopener" href="https://playground.sstf.site/">链接传送门</a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="RSA101"><a href="#RSA101" class="headerlink" title="RSA101"></a>RSA101</h2><p>题目如下</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/1.png" alt="题目1-1"></p>
+<p>题目的代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">from base64 import b64encode, b64decode</span><br><span class="line">from Crypto.Util.number import getStrongPrime, bytes_to_long, long_to_bytes</span><br><span class="line">from os import system</span><br><span class="line"></span><br><span class="line">p = getStrongPrime(512)</span><br><span class="line">q = getStrongPrime(512)</span><br><span class="line">n = p * q</span><br><span class="line">e = 65537</span><br><span class="line">d = pow(e, -1, (p - 1) * (q - 1))</span><br><span class="line"></span><br><span class="line">print(&quot;[RSA parameters]&quot;)</span><br><span class="line">print(&quot;n =&quot;, hex(n))</span><br><span class="line">print(&quot;e =&quot;, hex(e))</span><br><span class="line"></span><br><span class="line">def sign(msg):</span><br><span class="line">	m = bytes_to_long(msg)</span><br><span class="line">	s = pow(m, d, n)</span><br><span class="line">	return long_to_bytes(s)</span><br><span class="line"></span><br><span class="line">def verify(s):</span><br><span class="line">	s = bytes_to_long(s)</span><br><span class="line">	v = pow(s, e, n)</span><br><span class="line">	return long_to_bytes(v)</span><br><span class="line"></span><br><span class="line">def welcome():</span><br><span class="line">	print(&quot;\nWelcome to command signer/executor.&quot;)</span><br><span class="line">	print(&quot;Menu : 1. Verify and run a command&quot;)</span><br><span class="line">	print(&quot;       2. Sign a command&quot;)</span><br><span class="line">	print(&quot;       3. Exit&quot;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	welcome()</span><br><span class="line">	sel = input(&quot; &gt; &quot;).strip()</span><br><span class="line">	if sel == &quot;1&quot;:</span><br><span class="line">		sgn = input(&quot;Signed command: &quot;).strip()</span><br><span class="line">		sgn = b64decode(sgn)</span><br><span class="line">		cmd = verify(sgn)</span><br><span class="line"></span><br><span class="line">		commands = [&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;]</span><br><span class="line">		if cmd.decode() in commands:</span><br><span class="line">			system(cmd)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Possible commands: &quot;, commands)</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;2&quot;:</span><br><span class="line">		cmd = input(&quot;Base64 encoded command to sign: &quot;)</span><br><span class="line">		cmd = b64decode(cmd)</span><br><span class="line">		if cmd == &quot;cat flag&quot;:</span><br><span class="line">			print(&quot;It&#x27;s forbidden.&quot;)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Signed command:&quot;, b64encode(sign(cmd)).decode())</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;3&quot;:</span><br><span class="line">		print(&quot;bye.&quot;)</span><br><span class="line">		exit()</span><br><span class="line"></span><br><span class="line">	else:</span><br><span class="line">		print(&quot;Invalid selection.&quot;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>我对代码的理解是：</p>
+<p>1、引用了<code>base64</code>，<code>crypto.util.number</code>,<code>os</code>这三个库</p>
+<p>2、随机生成两个512比特的大素数p和q，因此n的值随着每次运行而变化</p>
+<p>3、定义了函数名为sign的函数，msg为参数，在函数体中m是把参数msg从bytes（字节串，以二进制存储）转为long整型，s=m^d^ mod n，返回的是s的bytes型，而v=s^e^ mod n，返回的也是v的bytes型。</p>
+<p>4、如果在交互式窗口输入1，要输入已被签名过的命令（Signed command），对这个命令进行<code>b64decode</code>解密，在运用<code>&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;</code>这些命令，可以将字符串转化成命令在服务器上运行；</p>
+<p>如果在交互式窗口输入2，用Base64对命令进行签名sign加密，在对命令cmd用base64解密，如果解密后的<code>cmd==cat flag</code>，则输出<code>It&#39;s forbidden</code>.，否则输出<code>Signed command:</code>；</p>
+<p>如果在交互式窗口输入3，输出“bye”后退出运行；</p>
+<p>如果在交互式窗口输入不为1，2,3，就输出“Invalid selection.”</p>
+<hr>
+<p>在学习大佬的write up后对代码理解的更正：</p>
+<p>如果在交互式窗口输入1，会对输入的指令先base64解密，然后再RSA加密，如果两次加密后的内容<code>cmd.decode() in commands</code>，那么就会执行<code>commands</code>里面的操作；</p>
+<p>输入2，就是对第一部分的逆向操作，但是不能输入<code>cat flag</code></p>
+<p>别忘了题目还给了服务器The server is running at: <code>nc rsa101.sstf.site 1104</code>.</p>
+<p>关于如何与服务器交互，在kali中代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc rsa101.sstf.site 1104</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/2.png"></p>
+<p>以输入<code>ls -l</code>为例，得到用base64加密后的字符串<code>bHMgLWw=</code></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/3.png"></p>
+<p>输入2，生成签名过的命令</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/4.png"></p>
+<p>输入1，运行签名后的命令</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/5.png"></p>
+<p>结果是没有得到<code>cat flag</code></p>
+<p>假如直接输入<code>cat flag</code>，也没法执行</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/6.png"></p>
+<p>从给出的def出发</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/7.png"></p>
+<p>转化一下平常用的表达，把c分解成m1m2两个因数，<em>m</em>1<em>m</em>2≡<em>c</em>≡<em>m</em>^e^ <em>m<strong>o</strong>d</em> <em>n</em></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210822223836.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">c = bytes_to_long(b&#x27;cat flag&#x27;)</span><br><span class="line">print(c)</span><br><span class="line">m1=103</span><br><span class="line">m2=69525558883514113</span><br><span class="line">m1=b64encode(long_to_bytes(m1))</span><br><span class="line">m2=b64encode(long_to_bytes(m2))</span><br><span class="line">print(m1,m2)</span><br><span class="line"></span><br><span class="line"># m1=&#x27;Zw==&#x27;</span><br><span class="line"># m2=&#x27;9wEgoA/3AQ==&#x27;</span><br><span class="line"></span><br><span class="line">#signed_m1=&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;</span><br><span class="line">#signed_m2=&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;</span><br><span class="line"></span><br><span class="line">m1=bytes_to_long(b64decode(&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;))</span><br><span class="line">#print(m1)</span><br><span class="line">m2=bytes_to_long(b64decode(&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;))</span><br><span class="line">#print(m2)</span><br><span class="line"></span><br><span class="line">n=0xbefe9a8bb0f6af7ea24a58eb2fc349749cb88cf1f27181f2125e387eed8eca9550c81b3f292dfdf0fabad04bbfa83195ea9c48b7d7d8eded8783b8a00b7310d4642cf34b5944acb259df89c3b2069168aa4a064c8cacfb521ddee9f261c579b1ab15762ebc8a34bd6e26e17289bcf8e8201b2bb54cfb9ec7a6b2e3cfcc0606a7</span><br><span class="line">e = 0x10001</span><br><span class="line">c=(m1*m2)%n</span><br><span class="line">c=long_to_bytes(c)</span><br><span class="line">c = b64encode(c)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<p>得到的c是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b&#x27;9wEgoA/3AQ==&#x27; b&#x27;qoCIiqa35CtJ1A7Hjln1NEzzv7Noh0kNFiPDEY2TrRLkxooCoxbnJ3XpcR5IekFa8imQv9gfLO99++eZNRSZBN0UQaxYkvDrqX4XTipNfp0SGBBlkUkj8Y7COWs5IqtE76inZCSTJmMMv8OZU4AbEI6N3s25/EdNhhwu27dYU0o=&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在输入签名验证</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210822172149.png" alt="搜狗截图20210822172149"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">0w0suy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://0w0suy.github.io/2021/08/22/SSTF-Hacker-s-Playground/">https://0w0suy.github.io/2021/08/22/SSTF-Hacker-s-Playground/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">CTF之常见密码学攻击手法和实现</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/07/24/RSA公钥文件解密的分析/" title="RSA公钥文件解密的分析"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-24</div><div class="title">RSA公钥文件解密的分析</div></div></a></div><div><a href="/2021/07/23/RSA密码的深入浅出/" title="RSA密码的深入浅出"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-23</div><div class="title">RSA密码的深入浅出</div></div></a></div><div><a href="/2021/07/31/哈希函数算法实现原理和应用/" title="哈希函数算法实现原理和应用"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-31</div><div class="title">哈希函数算法实现原理和应用</div></div></a></div><div><a href="/2021/08/02/消息认证与数字签名/" title="消息认证与数字签名"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-02</div><div class="title">消息认证与数字签名</div></div></a></div><div><a href="/2021/07/30/现代密码之对称算法/" title="现代密码之对称算法"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-30</div><div class="title">现代密码之对称算法</div></div></a></div><div><a href="/2021/07/25/编码入门总结/" title="编码入门总结"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-25</div><div class="title">编码入门总结</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA101"><span class="toc-number">2.1.</span> <span class="toc-text">RSA101</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 0w0suy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,  welcome  to  my  <a  target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer" data-id="6878400626&userid=406650299&creatorld=406650299" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>

@@ -1769,4 +1769,60 @@
         <tag>密码学</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SSTF(Hacker&#39;s Playground)</title>
+    <url>/2021/08/22/SSTF-Hacker-s-Playground/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一次打CTF，crypto的Tutorial部分涉及两题，RSA101和RC Four，结果是一题也没整出来。。好歹也是研究了一下午的真题，决定在比赛结束后看看大佬写的write up</p>
+<p><a href="https://playground.sstf.site/">链接传送门</a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="RSA101"><a href="#RSA101" class="headerlink" title="RSA101"></a>RSA101</h2><p>题目如下</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/1.png" alt="题目1-1"></p>
+<p>题目的代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from base64 import b64encode, b64decode</span><br><span class="line">from Crypto.Util.number import getStrongPrime, bytes_to_long, long_to_bytes</span><br><span class="line">from os import system</span><br><span class="line"></span><br><span class="line">p = getStrongPrime(512)</span><br><span class="line">q = getStrongPrime(512)</span><br><span class="line">n = p * q</span><br><span class="line">e = 65537</span><br><span class="line">d = pow(e, -1, (p - 1) * (q - 1))</span><br><span class="line"></span><br><span class="line">print(&quot;[RSA parameters]&quot;)</span><br><span class="line">print(&quot;n =&quot;, hex(n))</span><br><span class="line">print(&quot;e =&quot;, hex(e))</span><br><span class="line"></span><br><span class="line">def sign(msg):</span><br><span class="line">	m = bytes_to_long(msg)</span><br><span class="line">	s = pow(m, d, n)</span><br><span class="line">	return long_to_bytes(s)</span><br><span class="line"></span><br><span class="line">def verify(s):</span><br><span class="line">	s = bytes_to_long(s)</span><br><span class="line">	v = pow(s, e, n)</span><br><span class="line">	return long_to_bytes(v)</span><br><span class="line"></span><br><span class="line">def welcome():</span><br><span class="line">	print(&quot;\nWelcome to command signer/executor.&quot;)</span><br><span class="line">	print(&quot;Menu : 1. Verify and run a command&quot;)</span><br><span class="line">	print(&quot;       2. Sign a command&quot;)</span><br><span class="line">	print(&quot;       3. Exit&quot;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	welcome()</span><br><span class="line">	sel = input(&quot; &gt; &quot;).strip()</span><br><span class="line">	if sel == &quot;1&quot;:</span><br><span class="line">		sgn = input(&quot;Signed command: &quot;).strip()</span><br><span class="line">		sgn = b64decode(sgn)</span><br><span class="line">		cmd = verify(sgn)</span><br><span class="line"></span><br><span class="line">		commands = [&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;]</span><br><span class="line">		if cmd.decode() in commands:</span><br><span class="line">			system(cmd)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Possible commands: &quot;, commands)</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;2&quot;:</span><br><span class="line">		cmd = input(&quot;Base64 encoded command to sign: &quot;)</span><br><span class="line">		cmd = b64decode(cmd)</span><br><span class="line">		if cmd == &quot;cat flag&quot;:</span><br><span class="line">			print(&quot;It&#x27;s forbidden.&quot;)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Signed command:&quot;, b64encode(sign(cmd)).decode())</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;3&quot;:</span><br><span class="line">		print(&quot;bye.&quot;)</span><br><span class="line">		exit()</span><br><span class="line"></span><br><span class="line">	else:</span><br><span class="line">		print(&quot;Invalid selection.&quot;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>我对代码的理解是：</p>
+<p>1、引用了<code>base64</code>，<code>crypto.util.number</code>,<code>os</code>这三个库</p>
+<p>2、随机生成两个512比特的大素数p和q，因此n的值随着每次运行而变化</p>
+<p>3、定义了函数名为sign的函数，msg为参数，在函数体中m是把参数msg从bytes（字节串，以二进制存储）转为long整型，s=m^d^ mod n，返回的是s的bytes型，而v=s^e^ mod n，返回的也是v的bytes型。</p>
+<p>4、如果在交互式窗口输入1，要输入已被签名过的命令（Signed command），对这个命令进行<code>b64decode</code>解密，在运用<code>&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;</code>这些命令，可以将字符串转化成命令在服务器上运行；</p>
+<p>如果在交互式窗口输入2，用Base64对命令进行签名sign加密，在对命令cmd用base64解密，如果解密后的<code>cmd==cat flag</code>，则输出<code>It&#39;s forbidden</code>.，否则输出<code>Signed command:</code>；</p>
+<p>如果在交互式窗口输入3，输出“bye”后退出运行；</p>
+<p>如果在交互式窗口输入不为1，2,3，就输出“Invalid selection.”</p>
+<hr>
+<p>在学习大佬的write up后对代码理解的更正：</p>
+<p>如果在交互式窗口输入1，会对输入的指令先base64解密，然后再RSA加密，如果两次加密后的内容<code>cmd.decode() in commands</code>，那么就会执行<code>commands</code>里面的操作；</p>
+<p>输入2，就是对第一部分的逆向操作，但是不能输入<code>cat flag</code></p>
+<p>别忘了题目还给了服务器The server is running at: <code>nc rsa101.sstf.site 1104</code>.</p>
+<p>关于如何与服务器交互，在kali中代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc rsa101.sstf.site 1104</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/2.png"></p>
+<p>以输入<code>ls -l</code>为例，得到用base64加密后的字符串<code>bHMgLWw=</code></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/3.png"></p>
+<p>输入2，生成签名过的命令</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/4.png"></p>
+<p>输入1，运行签名后的命令</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/5.png"></p>
+<p>结果是没有得到<code>cat flag</code></p>
+<p>假如直接输入<code>cat flag</code>，也没法执行</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/6.png"></p>
+<p>从给出的def出发</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/7.png"></p>
+<p>转化一下平常用的表达，把c分解成m1m2两个因数，<em>m</em>1<em>m</em>2≡<em>c</em>≡<em>m</em>^e^ <em>m<strong>o</strong>d</em> <em>n</em></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210822223836.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = bytes_to_long(b&#x27;cat flag&#x27;)</span><br><span class="line">print(c)</span><br><span class="line">m1=103</span><br><span class="line">m2=69525558883514113</span><br><span class="line">m1=b64encode(long_to_bytes(m1))</span><br><span class="line">m2=b64encode(long_to_bytes(m2))</span><br><span class="line">print(m1,m2)</span><br><span class="line"></span><br><span class="line"># m1=&#x27;Zw==&#x27;</span><br><span class="line"># m2=&#x27;9wEgoA/3AQ==&#x27;</span><br><span class="line"></span><br><span class="line">#signed_m1=&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;</span><br><span class="line">#signed_m2=&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;</span><br><span class="line"></span><br><span class="line">m1=bytes_to_long(b64decode(&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;))</span><br><span class="line">#print(m1)</span><br><span class="line">m2=bytes_to_long(b64decode(&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;))</span><br><span class="line">#print(m2)</span><br><span class="line"></span><br><span class="line">n=0xbefe9a8bb0f6af7ea24a58eb2fc349749cb88cf1f27181f2125e387eed8eca9550c81b3f292dfdf0fabad04bbfa83195ea9c48b7d7d8eded8783b8a00b7310d4642cf34b5944acb259df89c3b2069168aa4a064c8cacfb521ddee9f261c579b1ab15762ebc8a34bd6e26e17289bcf8e8201b2bb54cfb9ec7a6b2e3cfcc0606a7</span><br><span class="line">e = 0x10001</span><br><span class="line">c=(m1*m2)%n</span><br><span class="line">c=long_to_bytes(c)</span><br><span class="line">c = b64encode(c)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<p>得到的c是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b&#x27;9wEgoA/3AQ==&#x27; b&#x27;qoCIiqa35CtJ1A7Hjln1NEzzv7Noh0kNFiPDEY2TrRLkxooCoxbnJ3XpcR5IekFa8imQv9gfLO99++eZNRSZBN0UQaxYkvDrqX4XTipNfp0SGBBlkUkj8Y7COWs5IqtE76inZCSTJmMMv8OZU4AbEI6N3s25/EdNhhwu27dYU0o=&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在输入签名验证</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210822172149.png" alt="搜狗截图20210822172149"></p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
 </search>
