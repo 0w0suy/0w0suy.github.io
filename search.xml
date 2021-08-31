@@ -1778,7 +1778,6 @@
 <p><img src="/2021/08/22/SSTF-Hacker-s-Playground/1.png" alt="题目1-1"></p>
 <p>题目的代码如下</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from base64 import b64encode, b64decode</span><br><span class="line">from Crypto.Util.number import getStrongPrime, bytes_to_long, long_to_bytes</span><br><span class="line">from os import system</span><br><span class="line"></span><br><span class="line">p = getStrongPrime(512)</span><br><span class="line">q = getStrongPrime(512)</span><br><span class="line">n = p * q</span><br><span class="line">e = 65537</span><br><span class="line">d = pow(e, -1, (p - 1) * (q - 1))</span><br><span class="line"></span><br><span class="line">print(&quot;[RSA parameters]&quot;)</span><br><span class="line">print(&quot;n =&quot;, hex(n))</span><br><span class="line">print(&quot;e =&quot;, hex(e))</span><br><span class="line"></span><br><span class="line">def sign(msg):</span><br><span class="line">	m = bytes_to_long(msg)</span><br><span class="line">	s = pow(m, d, n)</span><br><span class="line">	return long_to_bytes(s)</span><br><span class="line"></span><br><span class="line">def verify(s):</span><br><span class="line">	s = bytes_to_long(s)</span><br><span class="line">	v = pow(s, e, n)</span><br><span class="line">	return long_to_bytes(v)</span><br><span class="line"></span><br><span class="line">def welcome():</span><br><span class="line">	print(&quot;\nWelcome to command signer/executor.&quot;)</span><br><span class="line">	print(&quot;Menu : 1. Verify and run a command&quot;)</span><br><span class="line">	print(&quot;       2. Sign a command&quot;)</span><br><span class="line">	print(&quot;       3. Exit&quot;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	welcome()</span><br><span class="line">	sel = input(&quot; &gt; &quot;).strip()</span><br><span class="line">	if sel == &quot;1&quot;:</span><br><span class="line">		sgn = input(&quot;Signed command: &quot;).strip()</span><br><span class="line">		sgn = b64decode(sgn)</span><br><span class="line">		cmd = verify(sgn)</span><br><span class="line"></span><br><span class="line">		commands = [&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;]</span><br><span class="line">		if cmd.decode() in commands:</span><br><span class="line">			system(cmd)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Possible commands: &quot;, commands)</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;2&quot;:</span><br><span class="line">		cmd = input(&quot;Base64 encoded command to sign: &quot;)</span><br><span class="line">		cmd = b64decode(cmd)</span><br><span class="line">		if cmd == &quot;cat flag&quot;:</span><br><span class="line">			print(&quot;It&#x27;s forbidden.&quot;)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Signed command:&quot;, b64encode(sign(cmd)).decode())</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;3&quot;:</span><br><span class="line">		print(&quot;bye.&quot;)</span><br><span class="line">		exit()</span><br><span class="line"></span><br><span class="line">	else:</span><br><span class="line">		print(&quot;Invalid selection.&quot;)</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>我对代码的理解是：</p>
 <p>1、引用了<code>base64</code>，<code>crypto.util.number</code>,<code>os</code>这三个库</p>
@@ -1795,28 +1794,25 @@
 <p>别忘了题目还给了服务器The server is running at: <code>nc rsa101.sstf.site 1104</code>.</p>
 <p>关于如何与服务器交互，在kali中代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc rsa101.sstf.site 1104</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/2.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/2.png" alt></p>
 <p>以输入<code>ls -l</code>为例，得到用base64加密后的字符串<code>bHMgLWw=</code></p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/3.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/3.png" alt></p>
 <p>输入2，生成签名过的命令</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/4.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/4.png" alt></p>
 <p>输入1，运行签名后的命令</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/5.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/5.png" alt></p>
 <p>结果是没有得到<code>cat flag</code></p>
 <p>假如直接输入<code>cat flag</code>，也没法执行</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/6.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/6.png" alt></p>
 <p>从给出的def出发</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/7.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/7.png" alt></p>
 <p>转化一下平常用的表达，把c分解成m1m2两个因数，<em>m</em>1<em>m</em>2≡<em>c</em>≡<em>m</em>^e^ <em>m<strong>o</strong>d</em> <em>n</em></p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210822223836.png"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/搜狗截图20210822223836.png" alt></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = bytes_to_long(b&#x27;cat flag&#x27;)</span><br><span class="line">print(c)</span><br><span class="line">m1=103</span><br><span class="line">m2=69525558883514113</span><br><span class="line">m1=b64encode(long_to_bytes(m1))</span><br><span class="line">m2=b64encode(long_to_bytes(m2))</span><br><span class="line">print(m1,m2)</span><br><span class="line"></span><br><span class="line"># m1=&#x27;Zw==&#x27;</span><br><span class="line"># m2=&#x27;9wEgoA/3AQ==&#x27;</span><br><span class="line"></span><br><span class="line">#signed_m1=&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;</span><br><span class="line">#signed_m2=&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;</span><br><span class="line"></span><br><span class="line">m1=bytes_to_long(b64decode(&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;))</span><br><span class="line">#print(m1)</span><br><span class="line">m2=bytes_to_long(b64decode(&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;))</span><br><span class="line">#print(m2)</span><br><span class="line"></span><br><span class="line">n=0xbefe9a8bb0f6af7ea24a58eb2fc349749cb88cf1f27181f2125e387eed8eca9550c81b3f292dfdf0fabad04bbfa83195ea9c48b7d7d8eded8783b8a00b7310d4642cf34b5944acb259df89c3b2069168aa4a064c8cacfb521ddee9f261c579b1ab15762ebc8a34bd6e26e17289bcf8e8201b2bb54cfb9ec7a6b2e3cfcc0606a7</span><br><span class="line">e = 0x10001</span><br><span class="line">c=(m1*m2)%n</span><br><span class="line">c=long_to_bytes(c)</span><br><span class="line">c = b64encode(c)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
-
 <p>得到的c是</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b&#x27;9wEgoA/3AQ==&#x27; b&#x27;qoCIiqa35CtJ1A7Hjln1NEzzv7Noh0kNFiPDEY2TrRLkxooCoxbnJ3XpcR5IekFa8imQv9gfLO99++eZNRSZBN0UQaxYkvDrqX4XTipNfp0SGBBlkUkj8Y7COWs5IqtE76inZCSTJmMMv8OZU4AbEI6N3s25/EdNhhwu27dYU0o=&#x27;</span><br></pre></td></tr></table></figure>
-
 <p>在输入签名验证</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20210822172149.png" alt="搜狗截图20210822172149"></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/搜狗截图20210822172149.png" alt="搜狗截图20210822172149"></p>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -1824,5 +1820,216 @@
       <tags>
         <tag>密码学</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>C语言入门</title>
+    <url>/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>前言</p>
+<p>这是对一些基础知识的补充和理解</p>
+<hr>
+<h5 id="Q1：常见的计算机语言类型有哪些"><a href="#Q1：常见的计算机语言类型有哪些" class="headerlink" title="Q1：常见的计算机语言类型有哪些 ?"></a><strong>Q1：常见的计算机语言类型有哪些 ?</strong></h5><p>高级语言、汇编语言、机器语言</p>
+<ul>
+<li><strong>对比(利用3种类型语言编写1+1)</strong><ul>
+<li>机器语言<ul>
+<li><code>10111000 00000001 00000000 00000101 00000001 00000000</code></li>
+</ul>
+</li>
+<li>汇编语言<ul>
+<li><code>MOV AX, 1 ADD AX, 1</code></li>
+</ul>
+</li>
+<li>高级语言<ul>
+<li><code>1 + 1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>机器语言：可以直接被cpu执行，不需要编译器</p>
+<p>汇编语言：是机器语言的助记符，需要编译成机器语言才能执行，开始用机器语言来写第一个编译器（后面不用了）</p>
+<p>高级语言：有了汇编语言，就可以用汇编语言来写c语言的编译器，因为麻烦接着引发出了用c语言本身来写编译器</p>
+<hr>
+<h5 id="Q2：解释器与编译器"><a href="#Q2：解释器与编译器" class="headerlink" title="Q2：解释器与编译器"></a><strong>Q2：解释器与编译器</strong></h5><p>解释器：一种计算机程序，将每个高级程序语句转换成机器代码</p>
+<p>编译器：把高级语言编写的程序转换成机器码，将人可读的代码转换成计算机可读的01代码</p>
+<p><strong>两者都是将高级语言转换成机器码，解释器在程序运行时将代码转换成机器码，编译器在程序运行之前将代码转换成机器码</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>解释器</th>
+<th>编译器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>每次读取一行</td>
+<td>读取整个程序</td>
+</tr>
+<tr>
+<td>output</td>
+<td>不产生中间代码</td>
+<td>生成中间代码</td>
+</tr>
+<tr>
+<td>工作机制</td>
+<td>编译和执行同时进行</td>
+<td>先编译后执行</td>
+</tr>
+<tr>
+<td>存储空间</td>
+<td>小，因为不创建中间对象</td>
+<td>大，因为生成中间目标代码</td>
+</tr>
+<tr>
+<td>运行速度</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+<tr>
+<td>错误检测</td>
+<td>容易，因为每次读取一行</td>
+<td>难，因为是整体读取程序</td>
+</tr>
+<tr>
+<td>编程语言</td>
+<td>PHP，python</td>
+<td>C,C++，JAVA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h5 id="Q3：数据怎么存储和分类？"><a href="#Q3：数据怎么存储和分类？" class="headerlink" title="Q3：数据怎么存储和分类？"></a><strong>Q3：数据怎么存储和分类？</strong></h5><p>C程序在运行时，其代码和变量存放在内存和寄存器中，由于寄存器的个数很少，所以内存是c程序的重要存储区。变量的生存期（从系统为变量分配存储单元开始到将存储单元回收为止的期限）由变量的存储位置决定，变量的存储类型又决定了变量的存储位置。</p>
+<p>存储空间</p>
+<ul>
+<li><p>程序区</p>
+<p>存放程序</p>
+</li>
+<li><p>静态存储区</p>
+<p>程序开始执行时就分配的固定存储单元，如全局变量</p>
+</li>
+<li><p>动态存储区</p>
+<p>在函数调用过程中进行动态分配的存储单元，如函数形参、自动变量、函数调用时的现场保护、返回值地址</p>
+</li>
+</ul>
+<p>存储类型</p>
+<ul>
+<li><p>auto</p>
+<p>自动变量，调用函数时，系统为其分配存储空间，函数执行结束，所占用的空间会被释放。必须给自动变量赋初始值。</p>
+</li>
+<li><p>static</p>
+<p>静态变量，在整个程序运行期间占用存储空间不被释放，下次再调用函数时，变量的值是该函数上次调用后的值。可以不赋初始值，默认为0</p>
+</li>
+<li><p>register</p>
+<p>寄存器变量，存放在cpu的寄存器中，访问寄存器的速度比访问内存中的变量速度快，因此可以存放程序中使用频率高的变量（如控制循环次数的变量），但寄存器数量有限，若超过一定数量则会自动转化为自动变量</p>
+</li>
+<li><p>extern</p>
+<p>外部变量，定义在函数外部的全局变量，存放在静态存储区中</p>
+</li>
+</ul>
+<hr>
+<h5 id="Q4-二进制是怎么编码的？"><a href="#Q4-二进制是怎么编码的？" class="headerlink" title="Q4:二进制是怎么编码的？"></a>Q4:二进制是怎么编码的？</h5><p>原码反码补码</p>
+<ul>
+<li><p>计算机只能识别0和1, 所以计算机中存储的数据都是以0和1的形式存储的</p>
+</li>
+<li><p>数据在计算机内部是以补码的形式储存的, 所有数据的运算都是以补码进行的</p>
+</li>
+<li><p>二进制的最高位我们称之为符号位, 最高位是0代表是一个正数, 最高位是1代表是一个负数</p>
+</li>
+<li><p>正数的原码、反码和补码</p>
+<p>正数的原码、反码和补码都是它的二进制<br>例如: 12的原码、反码和补码分别为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0000 0000 0000 0000 0000 0000 0000 1100</span><br><span class="line">0000 0000 0000 0000 0000 0000 0000 1100</span><br><span class="line">0000 0000 0000 0000 0000 0000 0000 1100</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>负数的原码、反码和补码</p>
+<p>负数的原码：是将该负数的二进制最高位变为1<br>负数的反码： 是将该数的原码除了符号位以外的其它位取反<br>负数的补码： 就是它的反码 + 1<br>例如: -12的原码、反码和补码分别为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0000 0000 0000 0000 0000 0000 0000 1100 // 12二进制</span><br><span class="line"> 1000 0000 0000 0000 0000 0000 0000 1100 // -12原码</span><br><span class="line"> 1111 1111 1111 1111 1111 1111 1111 0011  // -12反码</span><br><span class="line"> 1111 1111 1111 1111 1111 1111 1111 0100 // -12补码</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="Q5：字符与字符串的区别？"><a href="#Q5：字符与字符串的区别？" class="headerlink" title="Q5：字符与字符串的区别？"></a>Q5：字符与字符串的区别？</h5><ul>
+<li><p>字符是位于单撇号中的字符变量</p>
+<ul>
+<li><p>char类型变量占1个字节存储空间，共8位</p>
+</li>
+<li><p>除单个字符以外, C语言的的转义字符也可以利用char类型存储</p>
+<p>| 字符 | 意义                              |<br>| —— | ————————————————- |<br>| \b   | 退格(BS)当前位置向后回退一个字符  |<br>| \r   | 回车(CR),将当前位置移至本行开头   |<br>| \n   | 换行(LF),将当前位置移至下一行开头 |<br>| \t   | 水平制表(HT),跳到下一个 TAB 位置  |<br>| \0   | 用于表示字符串的结束标记          |<br>| <code>\</code>  | 代表一个反斜线字符                |<br>| \“  | 代表一个双引号字符”               |<br>| \’   | 代表一个单引号字符’               |</p>
+</li>
+<li><p>计算机只能识别0和1, 所以char类型存储数据并不是存储一个字符, 而是将字符转换为0和1之后再存储,在ASCII表中定义了每一个字符对应的整数</p>
+</li>
+<li><p>char类型占一个字节, 一个中文字符占3字节(unicode表),所以char不可以存储中文</p>
+</li>
+<li><p>char类型存储字符时会先查找对应的ASCII码值, 存储的是ASCII值, 所以字符6和数字6存储的内容不同</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char ch1 = &#x27;6&#x27;; // 存储的是ASCII码 64</span><br><span class="line">char ch2 = 6; //  存储的是数字 6</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>字符串是位于双引号中的字符序列</p>
+<ul>
+<li>在C语言中没有专门的字符串变量,通常用一个字符数组来存放一个字符串。</li>
+<li>当把一个字符串存入一个数组时,会把结束符‘\0’存入数组,并以此作为该字符串是否结束的标志</li>
+<li>字符串在内存中是逐个字符存储的,一个字符占用一个字节,所以字符串的结束符长度也是占用的内存单元的字节数。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="Q6：signed和unsigned的区别？"><a href="#Q6：signed和unsigned的区别？" class="headerlink" title="Q6：signed和unsigned的区别？"></a>Q6：signed和unsigned的区别？</h5><p>signed int等价于signed，unsigned int等价于unsigned<br>signed和unsigned的区别：就是它们的最高位是否要当做符号位，并不会像short和long那样改变数据的长度，即所占的字节数。</p>
+<ul>
+<li>signed：表示有符号，也就是说最高位要当做符号位。但是int的最高位本来就是符号位，因此signed和int是一样的。signed的取值范围是-2^31 ~ 2^31 - 1</li>
+<li>unsigned：表示无符号，也就是说最高位并不当做符号位，所以不包括负数。取值范围是0 ~ 2^32 - 1。</li>
+</ul>
+<hr>
+<h5 id="Q7：怎么理解内存、内存地址、寻址空间？"><a href="#Q7：怎么理解内存、内存地址、寻址空间？" class="headerlink" title="Q7：怎么理解内存、内存地址、寻址空间？"></a>Q7：怎么理解内存、内存地址、寻址空间？</h5><ul>
+<li>内存</li>
+</ul>
+<p>与内存相对的是外存，外存通常是磁性介质或光盘，像硬盘，软盘，磁带，CD等，能<strong>长期保存信息</strong>。程序和数据平常存储在硬盘等存储器上，不管你开机或关机了，它们都是存在的，不会丢失。硬盘可以存储的东西很多，但<strong>其传输数据的速度较慢</strong>。所以需要运行程序或打开数据时，这些数据必须从硬盘等存储器上先传到另一种容量小但速度快得多的存储器，之后才送入CPU进行执行处理。这中间的存储器就是内存。</p>
+<p>它们要存储数据，所以就必须按一定的单位的数据分配一个地址。有了地址，程序才能找到这些数据。</p>
+<ul>
+<li>内存地址</li>
+</ul>
+<p>计算机把所有的信息都给数字化了，所以它知道自已把一个数据，一条命令记到了内存中的哪个（些）位置。</p>
+<p>如果让计算机在内存里记住“丁小明”这个名字，可以示意为：</p>
+<p><img src="/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/1.png" alt></p>
+<p>第一行，每一格表示一段内存，而格子里的内容是这段内容记下的数据；</p>
+<p>第二行，每一格内数字就是对应的内存的地址。<br>汉字在一个地址（位置），必须放在连续的两个地址空间内。像英文的里字母，比如’A’, 像阿拉伯数字：比如’1’,可以就是放在一个内存地址里。</p>
+<p>计算机记住“丁”字的内存地址是首地址，也就是1000H</p>
+<p>但在计算机中，所有信息都被数字化为二进制的0和1，那“丁”字的内存地址1000H该怎么存储呢</p>
+<p>我们假设在那一串里的 0001 0010 0111 0101 对应的是 “丁” 字，那么有：</p>
+<p><img src="/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/2.png" alt></p>
+<p>第一行，“丁”是给人看的</p>
+<p>第二行， 0001 0010 0111 0101是计算机内存中实际存储的数据</p>
+<p>第三行，1000H和1001H是内存的地址，每8个0,1分为一格地址</p>
+<p><strong>即1字节=8比特，内存地址存的是字节而不是比特</strong></p>
+<p><strong>位，称为比特，即0或1，是计算机存储的最小单位</strong></p>
+<p><strong>字节是计算机中数据处理的基本单位</strong></p>
+<ul>
+<li>寻址空间</li>
+</ul>
+<p>一般指的是CPU对于内存寻址的能力。通俗地说，就是能最多用到多少内存的一个问题。数据在<a href="https://baike.baidu.com/item/存储器/1583185">存储器</a>(RAM)中存放是有规律的 ，CPU在运算的时候需要把数据提取出来就需要知道数据存放在哪里 ，这时候就需要挨家挨户的找，这就叫做寻址，但如果地址太多超出了CPU的能力范围，CPU就无法找到数据了。 CPU最大能查找多大范围的地址叫做寻址能力 ，CPU的寻址能力以<a href="https://baike.baidu.com/item/字节/1096318">字节</a>为单位 ，如32位寻址的CPU可以寻址2的32次方大小的地址也就是4G，这也是为什么32位的CPU最大能搭配4G内存的原因 ，再多的话CPU就找不到了。</p>
+<p>参考<a href="https://blog.csdn.net/weixin_41490593/article/details/90664711"> 内存地址的概念和理解_</a></p>
+<p><a href="https://www.cnblogs.com/Lanht/p/10780364.html">内存地址与内存空间 - Lan_ht - 博客园 (cnblogs.com)</a></p>
+<hr>
+<p>Q9：</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/08/31/test/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script type="math/tex; mode=display">
+\begin{eqnarray}
+\nabla\cdot\vec{E} &=& \frac{\rho}{\epsilon_0} \\
+\nabla\cdot\vec{B} &=& 0 \\
+\nabla\times\vec{E} &=& -\frac{\partial B}{\partial t} \\
+\nabla\times\vec{B} &=& \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)
+\end{eqnarray}</script>]]></content>
   </entry>
 </search>
