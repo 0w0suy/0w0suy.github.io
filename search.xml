@@ -1824,8 +1824,159 @@
   <entry>
     <title>C语言入门</title>
     <url>/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>前言</p>
-<p>这是对一些基础知识的补充和理解</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>数据类型包括</p>
+<ul>
+<li><p>基本类型（以二进制补码形式存储）</p>
+<ul>
+<li>整型<ul>
+<li>短整型：short-2字节</li>
+<li>整型：int-4字节</li>
+<li>长整型：long-4/8字节（取决于32/64位机）</li>
+</ul>
+</li>
+<li>浮点型<ul>
+<li>单精度-4字节</li>
+<li>双精度-8字节</li>
+</ul>
+</li>
+<li>字符型<ul>
+<li>char-1字节（存储字符ASCII值）</li>
+</ul>
+</li>
+<li>枚举类型enum</li>
+</ul>
+<p>在“枚举”类型的定义中列举出所有可能的取值, 被说明为该“枚举”类型的变量取值不能超过定义的范围。该说明的是,枚举类型是一种基本数据类型,而不是一种构造类型,因为它不能再分解为任何基本类型。</p>
+<p><strong>枚举类型定义</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum 枚举名&#123;</span><br><span class="line">	枚举元素1，</span><br><span class="line">	枚举元素2，</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line">enum 枚举名 枚举变量；</span><br></pre></td></tr></table></figure>
+<p>eg</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum day&#123;</span><br><span class="line">	Monday，</span><br><span class="line">	Tuesday，</span><br><span class="line">	Wednesday，</span><br><span class="line">	Thursday，</span><br><span class="line">	Friday，</span><br><span class="line">	Saturday，</span><br><span class="line">	Sunday</span><br><span class="line">&#125;；</span><br><span class="line">enum day d;</span><br></pre></td></tr></table></figure>
+<p><strong>注意点</strong></p>
+</li>
+</ul>
+<p>枚举元素的值取决于定义时各枚举元素排列的先后顺序。默认情况下，第一个枚举元素的值为0，第二个为1，依次顺序加1。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum Season &#123;</span><br><span class="line">    Spring = 9,</span><br><span class="line">    Summer,</span><br><span class="line">    Autumn,</span><br><span class="line">    Winter</span><br><span class="line">&#125;;</span><br><span class="line">// 也就是说spring的值为9，summer的值为10，autumn的值为11，winter的值为12</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造类型<ul>
+<li>数组[]</li>
+</ul>
+</li>
+</ul>
+<p>存放相同类型，在内存中占用一段连续存储空间</p>
+<p><strong>定义数组</strong>：元素类型 数组名[元素个数]：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int age[10]:</span><br></pre></td></tr></table></figure>
+<p><strong>初始化数组</strong>：</p>
+<p>如果定义数组后,没有初始化,数组中是有值的,是随机的数</p>
+<p>指定元素个数,完全初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int age[3]=&#123;19,18,20&#125;;</span><br></pre></td></tr></table></figure>
+<p>不指定元素个数,完全初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int age[]=&#123;19,18,20&#125;;//根据大括号中的元素的个数来确定数组的元素个数</span><br></pre></td></tr></table></figure>
+<p>指定元素个数,部分初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int nums[10] = &#123;1,2&#125;; //没有显式初始化的元素,那么系统会自动将其初始化为0</span><br></pre></td></tr></table></figure>
+<p><strong>注意点</strong>：</p>
+<p>对于数组来说, 只能在定义的同时初始化多个值, 不能先定义再初始化多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int ages[3]; </span><br><span class="line">ages = &#123;4, 6, 9&#125;; // 报错</span><br></pre></td></tr></table></figure>
+<p>[]中不能存放变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int number = 10;</span><br><span class="line">int ages2[number] = &#123;19, 22, 33&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>数组的使用</strong></p>
+<p>通过下标（索引）访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ages[0]=10;// 找到下标为0的元素, 赋值为10</span><br><span class="line">int a = ages[2];</span><br><span class="line">printf(&quot;a = %d&quot;, a); // 取出下标为2的元素保存的值</span><br></pre></td></tr></table></figure>
+<p><strong>数组的遍历</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int ages[3]=&#123;19,18,20&#125;;</span><br><span class="line">for(i=0;i&lt;3;i++)&#123;</span><br><span class="line">	printf(&quot;ages[%d]=%d&quot;,i,ages[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>数组的长度计算方法</strong></p>
+<p>数组在内存中占用的字节数取决于其存储的数据类型和数据的个数</p>
+<p>数组所占的存储空间=一个元素所占用的存储空间*元素个数（数组的长度）</p>
+<p>数组的长度=数组占用的总字节个数/数组元素占用的字节数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int ages[3]=&#123;19,18,20&#125;;</span><br><span class="line">int length=sizeof(ages)/sizeof(int);</span><br><span class="line">printf(&quot;length=%d&quot;,length);  //length=4</span><br></pre></td></tr></table></figure>
+<p><strong>二维数组</strong></p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a[2][3]=&#123;&#123;1,2,3&#125;,&#123;4,5,6&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>二维数组的定义</strong></p>
+<p>数据类型 数组名[一维数组的个数] [一维数组的元素个数]</p>
+<p><strong>二维数组的初始化</strong></p>
+<p>和一维数组类似</p>
+<p>定义的同时初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a[2][3]=&#123;&#123;1,2,3&#125;,&#123;4,5,6&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p>先定义后初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a[2][3];</span><br><span class="line">a[0][0]=1;</span><br><span class="line">a[0][1]=2;</span><br><span class="line">a[0][2]=3;</span><br><span class="line">a[1][0]=4;</span><br><span class="line">a[1][1]=5;</span><br><span class="line">a[1][2]=6;</span><br></pre></td></tr></table></figure>
+<p><strong>注意点</strong></p>
+<p>可以省略[]内的行数，但不能省略列数。因为一旦总元素个数和列数已知，就可以推出行数</p>
+<p><strong>二维数组的遍历</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char zimu[2][3]=&#123;&#123;&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;&#125;,&#123;&#x27;d&#x27;,&#x27;e&#x27;,&#x27;f&#x27;&#125;&#125;;</span><br><span class="line">for (int i=0;i&lt;2;i++)&#123;</span><br><span class="line">	for(int j=0;j&lt;3;j++)&#123;</span><br><span class="line">		printf(&quot;字母是:%c&quot;,zimu[i][j]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>二维数组的地址</strong></p>
+<p> cs = &amp;cs = &amp;cs[0] = &amp;cs[0][0]</p>
+<ul>
+<li>结构体struct</li>
+</ul>
+<p>用于保存一组不同类型数组的</p>
+<p>比如：在学生登记表中,包括学生的学号，姓名，学院信息等</p>
+<p><strong>定义结构体类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct　结构体名&#123;</span><br><span class="line">     类型名1　成员名1;</span><br><span class="line">     类型名2　成员名2;</span><br><span class="line">     ……</span><br><span class="line">     类型名n　成员名n;</span><br><span class="line"> &#125;;</span><br><span class="line"> struct 结构体类型名 结构体变量名；</span><br></pre></td></tr></table></figure>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">	int age;</span><br><span class="line">	char name;</span><br><span class="line">	float height;</span><br><span class="line">&#125;;</span><br><span class="line">struct student stu;</span><br></pre></td></tr></table></figure>
+<p><strong>结构体成员的访问</strong></p>
+<p>结构体变量名.成员名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">	int age;</span><br><span class="line">	char name;</span><br><span class="line">	float height;</span><br><span class="line">&#125;;</span><br><span class="line">struct student stu;</span><br><span class="line">stu.age=27; //访问stu的age成员</span><br><span class="line">printf(&quot;age=%d&quot;,stu.age);</span><br></pre></td></tr></table></figure>
+<p><strong>结构体变量的初始化</strong></p>
+<p>定义的同时按顺序初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">	int age;</span><br><span class="line">	float height;</span><br><span class="line">&#125;;</span><br><span class="line">struct student stu=&#123;18,1.75&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>结构体数组</strong></p>
+<p>struct 结构体变量名称 数组名称[数组中元素个数]；</p>
+<p>定义同时初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">	int age;</span><br><span class="line">	float height;</span><br><span class="line">&#125;;</span><br><span class="line">struct student stu[2]=&#123;&#123;18,1.75&#125;,&#123;19,1.85&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>结构体内存分析</strong></p>
+<p>结构体变量占用的内存空间是成员中占用内存最大成员的倍数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct student&#123;</span><br><span class="line">	int age; //4</span><br><span class="line">	char name;//1</span><br><span class="line">	double score;//8</span><br><span class="line">&#125;;</span><br><span class="line">struct student stu;</span><br><span class="line">printf(&quot;sizeof=%d\n&quot;,sizeof(p));//16</span><br></pre></td></tr></table></figure>
+<p>占用内存最大属性是score, 占8个字节, 所以第一次会分配8个字节</p>
+<p>将第一次分配的8个字节分配给age4个,分配给ch1个, 还剩下3个字节</p>
+<p>当需要分配给score时, 发现只剩下3个字节, 所以会再次开辟8个字节存储空间</p>
+<p>一共开辟了两次8个字节空间, 所以最终p占用16个字节</p>
+<ul>
+<li>共用体union</li>
+</ul>
+<p>和结构体不同的是, 结构体的每个成员都是占用一块独立的存储空间, 而<strong>共用体所有的成员都占用同一块存储空间</strong>，由于所有属性共享同一块内存空间，所以只要其中一个属性发生了改变，其他的属性都会受到影响。</p>
+<p><strong>定义共用体</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">union 共用体名&#123;</span><br><span class="line">	数据类型 属性名称；</span><br><span class="line">	数据类型 属性名称；</span><br><span class="line">	...</span><br><span class="line">&#125;；</span><br><span class="line">union 共用体名 共用体变量名称；</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指针类型*</li>
+</ul>
+<p><strong>指针的类型</strong></p>
+<p>把指针声明语句里的指针名字去掉，剩下的部分就是这个指针的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int*ptr;//指针的类型是int*</span><br><span class="line">char*ptr;//指针的类型是char*</span><br><span class="line">int**ptr;//指针的类型是int**</span><br><span class="line">int(*ptr)[3];//指针的类型是int(*)[3]</span><br><span class="line">int*(*ptr)[4];//指针的类型是int*(*)[4]</span><br></pre></td></tr></table></figure>
+<p><strong>指针所指向的类型</strong></p>
+<p>把指针声明语句中的指针名字和名字左边的指针声明符*去掉，剩下的就是指针所指向的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int*ptr;//指针的类型是int</span><br><span class="line">char*ptr;//指针的类型是char</span><br><span class="line">int**ptr;//指针的类型是int*</span><br><span class="line">int(*ptr)[3];//指针的类型是int()[3]</span><br><span class="line">int*(*ptr)[4];//指针的类型是int*()[4]</span><br></pre></td></tr></table></figure>
+<p><strong>指针的值=指针所指向的地址=指针所指向的内存区</strong></p>
+<p>指针的值是xxx，即指针指向了以xxx为首地址的一片内存区域</p>
+<p>指针指向了某块内存区域，即指针的值是某块内存区域的首地址</p>
+<p><strong>指针的算术运算</strong></p>
+<p>指针的加减是以单元为单位的（由于地址是用字节为单位的）</p>
+<p>假设p是一个指向地址1000的整型指针，执行p++后，p将指向位置1004，因为整型是4字节，即当前位置往后移4字节。</p>
+<p>假设p是一个指向地址1000的字符指针，执行p++后，p将指向位置1001，因为字符是1字节，下一个字符位置在1001。</p>
+<p><strong>指针的关系运算</strong></p>
+<p>指针可以用关系运算符进行比较，如==，&lt;,&gt; </p>
+<ol>
+<li>px &gt; py 表示 px 指向的存储地址是否大于 py 指向的地址</li>
+<li>px == py 表示 px 和 py 是否指向同一个存储单元</li>
+<li>px == 0 和 px != 0 表示 px 是否为空指针</li>
+</ol>
+<p><strong>运算符&amp;和*</strong></p>
+<p>&amp;是取址运算符，*是间接运算符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a=12;</span><br><span class="line">int *p;</span><br><span class="line">p=&amp;a;</span><br><span class="line">//&amp;a的结果是一个指针，指针的类型是int *，指向的类型是int，指向的地址是a的地址</span><br><span class="line">*p=24;</span><br><span class="line">//*p的类型是p所指向的类型int，它所占用的地址是p所指向的地址a</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int *p;</span><br><span class="line">int b;</span><br><span class="line">int **ptr;</span><br><span class="line">ptr=&amp;P;</span><br><span class="line">//&amp;p的结果是个指针，指针的类型是p的类型加个*，即int**，指向的类型是int*</span><br><span class="line">*ptr=&amp;b;</span><br><span class="line">//*ptr是个指针，&amp;b也是个指针，两个指针的类型和所指向的类型都是一样的，所以这里是用&amp;b来给*ptr赋值</span><br></pre></td></tr></table></figure>
+<p><strong>指针类型转换</strong></p>
+<p>当我们初始化一个指针或给一个指针赋值时，赋值号的左边是一个指针，赋值号的右边的一个指针表达式。指针所指向的类型和指针表达式所指向的类型是一样的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">float f=12.3;</span><br><span class="line">float *fptr=&amp;f;</span><br><span class="line">int *p;</span><br><span class="line">//不能实现p=&amp;f,因为二者的类型不一致</span><br></pre></td></tr></table></figure>
+<p>强制类型转换：`（type*）type</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p=(int*)&amp;f;</span><br></pre></td></tr></table></figure>
+<p>这样强制类型转换的结果是一个新指针，该新指针的类型是TYPE *，它指向的类型是TYPE，它指向的地址就是原指针指向的地址。<br>而原来的指针p 的一切属性都没有被修改。</p>
+<ul>
+<li>空类型（关键字void）</li>
+</ul>
+<p>C语言中的void类型，代表任意类型，而不是空的意思。任意类型的意思不是说想变成谁就变成谁，而是说它的类型是未知的，是还没指定的。</p>
+<p>void * 是void类型的指针。void类型的指针的含义是：这是一个指针变量，该指针指向一个void类型的数。void类型的数就是说这个数有可能是int，也有可能是float，也有可能是个结构体，哪种类型都有可能。</p>
+<p>在函数的参数列表和返回值中，void代表的含义是：一个函数形参列表为void，表示这个函数调用时不需要给它传参。返回值类型是void，表示这个函数不会返回一个有意义的返回值。所以调用者也不要想着去使用该返回值。</p>
+<hr>
+<p>下面是对《C语言程序设计基础》存在的一些问题解答</p>
 <hr>
 <h5 id="Q1：常见的计算机语言类型有哪些"><a href="#Q1：常见的计算机语言类型有哪些" class="headerlink" title="Q1：常见的计算机语言类型有哪些 ?"></a><strong>Q1：常见的计算机语言类型有哪些 ?</strong></h5><p>高级语言、汇编语言、机器语言</p>
 <ul>
@@ -2004,7 +2155,7 @@
 <p>第三行，1000H和1001H是内存的地址，每8个0,1分为一格地址</p>
 <p><strong>即1字节=8比特，内存地址存的是字节而不是比特</strong></p>
 <p><strong>位，称为比特，即0或1，是计算机存储的最小单位</strong></p>
-<p><strong>字节是计算机中数据处理的基本单位</strong></p>
+<p><strong>字节是计算机中数据处理的基本单位（内存机构的最小寻址单位）</strong></p>
 <ul>
 <li>寻址空间</li>
 </ul>
@@ -2012,7 +2163,53 @@
 <p>参考<a href="https://blog.csdn.net/weixin_41490593/article/details/90664711"> 内存地址的概念和理解_</a></p>
 <p><a href="https://www.cnblogs.com/Lanht/p/10780364.html">内存地址与内存空间 - Lan_ht - 博客园 (cnblogs.com)</a></p>
 <hr>
-<p>Q9：</p>
+<h5 id="Q8：运算顺序的规则以及短路求值"><a href="#Q8：运算顺序的规则以及短路求值" class="headerlink" title="Q8：运算顺序的规则以及短路求值"></a>Q8：<strong>运算顺序的规则以及短路求值</strong></h5><p>按照连接运算对象的个数，可以分为单目运算，双目运算，三目运算。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>特点</th>
+<th>运算方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单目运算符</td>
+<td>只带一个运算对象</td>
+<td>自右向左</td>
+</tr>
+<tr>
+<td>双目运算符</td>
+<td>带两个运算对象</td>
+<td>自左向右</td>
+</tr>
+<tr>
+<td>三目运算符</td>
+<td>条件运算符</td>
+<td>自左向右</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>运算优先级：单目运算符&gt;双目运算符&gt;三目运算符&gt;赋值运算符&gt;逗号运算符</strong></p>
+<p><img src="/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/3.png" alt="3"></p>
+<p><img src="/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/4.png" alt="4"></p>
+<p><img src="/2021/08/24/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/5.png" alt="5"></p>
+<p><strong>短路求值</strong></p>
+<p>C语言的逻辑操作符 &amp;&amp; , || 具有 短路求值 的特性。</p>
+<ul>
+<li><strong>逻辑与 &amp;&amp;</strong><br>&amp;&amp; 操作符的左操作数总是首先进行求值, 如果它的值为真, 则继续计算右操作数的值, 然后执行与操作得到表达式结果; 如果它的值为假, 根据与操作 <strong>有假则假</strong> 的性质可以断定该表达式的值为假, 所以不再计算右操作数的值.</li>
+<li><strong>逻辑或 ||</strong><br>|| 操作符的左操作数也是首先进行求值, 如果它的值为假, 则继续计算右操作数的值, 然后执行与操作得到表达式结果; 如果它的值为真, 根据或操作 <strong>有真则真</strong> 的性质可以断定该表达式的值为真, 所以不再计算右操作数的值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a=3,b=3;</span><br><span class="line">    (a=3)&amp;&amp;(b=5);</span><br><span class="line">    printf(&quot;a=%d,b=%d\n&quot;, a,b);</span><br><span class="line">    (a=1)||(b=5);</span><br><span class="line">    printf(&quot;a=%d,b=%d\n&quot;, a,b);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>则输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=3,b=5</span><br><span class="line">a=1,b=5</span><br></pre></td></tr></table></figure>
+<p>若是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a=3,b=3;</span><br><span class="line">    (a=1)&amp;&amp;(b=5);</span><br><span class="line">    printf(&quot;a=%d,b=%d\n&quot;, a,b);</span><br><span class="line">    (a=1)||(b=5);</span><br><span class="line">    printf(&quot;a=%d,b=%d\n&quot;, a,b);</span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>则输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=1，b=5</span><br><span class="line">a=1，b=3</span><br></pre></td></tr></table></figure>
+<hr>
 ]]></content>
       <categories>
         <category>学习笔记</category>
