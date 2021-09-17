@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>系统概述及数据表示 | Suy's Blog</title><meta name="keywords" content="计组"><meta name="author" content="0w0suy"><meta name="copyright" content="0w0suy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="主要内容 第1章(计算机系统概述)主要介绍冯诺依曼结构的特点、计算机硬件的基本组成、计算机软件设计和执行过程、计算机系统层次结构以及系统性能评价方法。  第2章(数据的机器级表示)主要介绍无符号数和带符号整数的表示、 IEEE 754 浮点数标准、西文字符和汉字的编码表示、大端小端存放顺序及对齐方式以及常用检纠错码表示与使用方法等。  计算机系统概述冯诺依曼体系基本思想：  采用“存储程序”工作方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统概述及数据表示">
+<meta property="og:url" content="https://0w0suy.github.io/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/index.html">
+<meta property="og:site_name" content="Suy&#39;s Blog">
+<meta property="og:description" content="主要内容 第1章(计算机系统概述)主要介绍冯诺依曼结构的特点、计算机硬件的基本组成、计算机软件设计和执行过程、计算机系统层次结构以及系统性能评价方法。  第2章(数据的机器级表示)主要介绍无符号数和带符号整数的表示、 IEEE 754 浮点数标准、西文字符和汉字的编码表示、大端小端存放顺序及对齐方式以及常用检纠错码表示与使用方法等。  计算机系统概述冯诺依曼体系基本思想：  采用“存储程序”工作方">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-09-17T07:54:09.000Z">
+<meta property="article:modified_time" content="2021-09-17T11:06:06.846Z">
+<meta property="article:author" content="0w0suy">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0w0suy.github.io/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: 0w0suy","link":"Link: ","source":"Source: Suy's Blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '系统概述及数据表示',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-17 19:06:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Suy's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Suy's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">系统概述及数据表示</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-09-17T07:54:09.000Z" title="Created 2021-09-17 15:54:09">2021-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-09-17T11:06:06.846Z" title="Updated 2021-09-17 19:06:06">2021-09-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">课堂笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="系统概述及数据表示"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>主要内容</p>
+<p>第1章(计算机系统概述)主要介绍<strong>冯诺依曼结构的特点</strong>、计算机<strong>硬件的基本组成</strong>、计算机<strong>软件设计</strong>和<strong>执行过程</strong>、计算机<strong>系统层次结构</strong>以及<strong>系统性能评价</strong>方法。 </p>
+<p>第2章(数据的机器级表示)主要介绍<strong>无符号数和带符号整数的表示</strong>、 <strong>IEEE 754 浮点数</strong>标准、<strong>西文字符</strong>和<strong>汉字的编码</strong>表示、<strong>大端小端存放顺序</strong>及<strong>对齐方式</strong>以及常用<strong>检纠错码表示与使用方法</strong>等。</p>
+<hr>
+<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="冯诺依曼体系"><a href="#冯诺依曼体系" class="headerlink" title="冯诺依曼体系"></a>冯诺依曼体系</h2><p>基本思想：</p>
+<ul>
+<li>采用“<strong>存储程序</strong>”工作方式<ul>
+<li>存储程序：任何要计算机完成的工作都要先被编写成程序，然后将程序和原始数据送入主存并启动执行。一旦程序被启动，计算机应能在不需操作人员干预下，自动完成逐条取出指令和执行指令的任务。</li>
+</ul>
+</li>
+<li>计算机由运算器、控制器、存储器、输入设备和输出设备5个基本部件组成</li>
+<li>计算机内部以二进制形式表示指令和数据；每条指令由操作码和地址码组成，操作码指出数据类型，地址码指出操作数的地址。</li>
+<li>5个基本部件的功能：<ul>
+<li>存储器：不仅能存储数据，而且也能存放指令，形式上数据和指令没有区别，但计算机能区分它们</li>
+<li>控制器：能自动执行指令</li>
+<li>运算器：能进行加减乘除四种基本运算，也能进行一些逻辑运算和附加运算</li>
+<li>输入输出设备：操作人员可通过其与主机进行通信</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机硬件基本组成"><a href="#计算机硬件基本组成" class="headerlink" title="计算机硬件基本组成"></a>计算机硬件基本组成</h2><p>硬件包括：中央处理器、存储器、I/O控制器、外部设备、各类总线</p>
+<ul>
+<li>中央处理器：CPU=控制器+运算器。</li>
+<li>存储器：存储器=内存+外存，内存=主存储器+高速缓存，外存=辅助存储器+海量后备存储器，目前主要的辅助存储器是磁盘存储器和固态硬盘</li>
+<li>外部设备：称I/O设备，也称外设。外设=机械部分+电子部分，机械部分是外部设备本身，电子设备是控制外部设备的I/O控制器或I/O适配器。例如：键盘接口、打印机、显卡、网卡都属于I/O控制器</li>
+<li>总线：传输信息的介质，用于在部件之间传输信息，在CPU和I/O模块中都内含相应的存储部件，即缓存器</li>
+</ul>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/1.png" alt></p>
+<h2 id="计算机软件设计和执行过程"><a href="#计算机软件设计和执行过程" class="headerlink" title="计算机软件设计和执行过程"></a>计算机软件设计和执行过程</h2><ul>
+<li>软件=系统软件+应用软件<ul>
+<li>系统软件：介于计算机硬件和应用程序之间，包括操作系统、语言处理系统、数据库管理系统、各类实用程序。<ul>
+<li>操作系统：如Windows，管理整个计算机系统的各种资源，包括对它们进行调度、管理、监视和服务</li>
+<li>语言处理系统：如C语言编译器，主演用于提供一个用高级语言编程的环境，包括源程序的编辑、翻译、调试、链接、装入运行等</li>
+<li>数据库管理系统：如Oracle，提供计算机用户和硬件之间的人机交互页面，并提供对应用软件的支持</li>
+<li>各类使用程序：如磁盘碎片整理程序、备份程序</li>
+</ul>
+</li>
+<li>应用软件：为数据处理、科学计算、事务管理等应用所编写的各类程序。如qq，网易云音乐，微信，微博等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机层次结构"><a href="#计算机层次结构" class="headerlink" title="计算机层次结构"></a>计算机层次结构</h2><p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/2.png" alt></p>
+<p>ISA：指令集体系结构，是软件和硬件之间借口的一个完整定义。所有软件功能都建立于ISA之上。</p>
+<ul>
+<li>硬件设计者角度：指令系统为CPU提供功能需求，要求易于硬件设计</li>
+<li>系统程序员角度：通过指令系统来使用硬件，要求易于编写编译器</li>
+</ul>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/3.png" alt="ppt-1-66"></p>
+<h2 id="计算机性能评价"><a href="#计算机性能评价" class="headerlink" title="计算机性能评价"></a>计算机性能评价</h2><p>执行时间=CPU时间+其他时间</p>
+<p>CPU时间=用户CPU时间+系统CPU时间</p>
+<p>计算机系统的性能评价主要考虑的CPU性能，即用户CPU时间。</p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/4.png" alt></p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/5.png" alt></p>
+<h2 id="课堂补充"><a href="#课堂补充" class="headerlink" title="课堂补充"></a>课堂补充</h2><h3 id="兼容机"><a href="#兼容机" class="headerlink" title="兼容机"></a>兼容机</h3><p>指软件的兼容，特征：相同或相似的指令集/操作系统</p>
+<h3 id="单位换算"><a href="#单位换算" class="headerlink" title="单位换算"></a>单位换算</h3><p>1KHZ=1000HZ</p>
+<p>1MHZ=10^6HZ</p>
+<p>1GHZ=1000MHZ=10^9HZ</p>
+<h3 id="性价比R"><a href="#性价比R" class="headerlink" title="性价比R"></a>性价比R</h3><p>R=性能/价格=1/时间*价格</p>
+<h3 id="MIPS、MFLOPS、GELOPS"><a href="#MIPS、MFLOPS、GELOPS" class="headerlink" title="MIPS、MFLOPS、GELOPS"></a>MIPS、MFLOPS、GELOPS</h3><p>MIPS：million instruction per second，每秒执行百万条指令，表示定点执行速度</p>
+<p>MFLOPS：浮点操作速度</p>
+<p>GFLOPS：G=10^9M</p>
+<h1 id="数据的机器级表示"><a href="#数据的机器级表示" class="headerlink" title="数据的机器级表示"></a>数据的机器级表示</h1><p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/6.png" alt></p>
+<h2 id="无符号数和带符号整数的表示"><a href="#无符号数和带符号整数的表示" class="headerlink" title="无符号数和带符号整数的表示"></a>无符号数和带符号整数的表示</h2><p>无符号整数：Unsigned integer,即正整数或非负整数。</p>
+<p>带符号整数：signed integer，即用一个二进位来表示符号。</p>
+<ul>
+<li>8位无符号整数最大是255（1111 1111），n位无符号整数可表示的范围0~（2^n-1)</li>
+<li>8位带符号整数最大为127（0111 1111），n位带符号整数可表示的范围-2^n-1~ 2^(n-1)-1</li>
+</ul>
+<h2 id="求负数的补码"><a href="#求负数的补码" class="headerlink" title="求负数的补码"></a>求负数的补码</h2><p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/7.png" alt></p>
+<h2 id="IEEE-754-浮点数标准"><a href="#IEEE-754-浮点数标准" class="headerlink" title="IEEE 754 浮点数标准"></a><strong>IEEE 754 浮点数标准</strong></h2><p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/8.png" alt></p>
+<p>例如，-12.75用<code>IEEE754</code>表示</p>
+<p>整数部分12，二进制表示为1100B</p>
+<p>小数部分.75,二进制表示为.11B</p>
+<p>因此1100.11B规格化为<code>1.10011*2^3</code></p>
+<p>阶码e=3+127=2+128=<code>1000 0010B</code></p>
+<p>f=0.10011，所以用IEEE754表示为</p>
+<p><code>1 1000 0010 1001 1000 0000 0000 0000 0000 0</code></p>
+<h2 id="西文字符和汉字的编码"><a href="#西文字符和汉字的编码" class="headerlink" title="西文字符和汉字的编码"></a>西文字符和汉字的编码</h2><h3 id="西文字符的编码"><a href="#西文字符的编码" class="headerlink" title="西文字符的编码"></a>西文字符的编码</h3><ul>
+<li>表示（常用编码为7位ASCII码）<ul>
+<li>十进制数字：0/1/2…/9</li>
+<li>英文字母：A/B/…/Z/a/b/…/z</li>
+<li>专用符号：+/-/%/*/&amp;/…… </li>
+<li>控制字符（不可打印或显示）</li>
+</ul>
+</li>
+</ul>
+<h3 id="汉字的编码"><a href="#汉字的编码" class="headerlink" title="汉字的编码"></a>汉字的编码</h3><ul>
+<li><p>编码形式</p>
+<ul>
+<li><p>有以下几种汉字代码：<br>输入码：对汉字用相应按键进行编码表示，用于输入<br>内码：用于在系统中进行存储、查找、传送等处理<br>字模点阵或轮廓描述: 描述汉字字模点阵或轮廓，用于显示/打印</p>
+<ul>
+<li><p>输入码：向计算机输入汉字的方式</p>
+<p>1、 手写汉字联机识别输入，或者是印刷汉字扫描输入后自动识别，这两种方法现均已达到实用水平。<br>2、 用语音输入汉字，虽然简单易操作，但离实用阶段还相差很远。<br>3、 利用英文键盘输入汉字：每个汉字用一个或几个键表示，这种对每个汉字用相应按键进行的编码称为汉字“输入码”，又称外码。输入码的码元为按键。是最简便、最广泛的汉字输入方法。<br>   常用的方法有：搜狗拼音、五笔字型、智能ABC、微软拼音等</p>
+</li>
+<li><p>内码：西文字符常用的内码就是ASCII码。至少需要2个字节才能表示一个汉字内码。</p>
+</li>
+<li><p>字模点阵或轮廓描述：为便于打印、显示汉字，汉字字形必须预先存在机内</p>
+<ul>
+<li>字库 (font)：所有汉字形状的描述信息集合<br>不同字体 (如宋体、仿宋、楷体、黑体等) 对应不同字库<br>从字库中找到字形描述信息，然后送设备输出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="大端小端存放顺序及对齐方式"><a href="#大端小端存放顺序及对齐方式" class="headerlink" title="大端小端存放顺序及对齐方式"></a>大端小端存放顺序及对齐方式</h2><h3 id="大端小端"><a href="#大端小端" class="headerlink" title="大端小端"></a>大端小端</h3><p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/9.png" alt></p>
+<h3 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h3><p><strong>要求数据的地址是相应的边界地址</strong></p>
+<p>若不按照对齐方式，虽节省了空间，但增加了访存次数！</p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/10.png" alt></p>
+<h2 id="常用检纠错码表示与使用方法"><a href="#常用检纠错码表示与使用方法" class="headerlink" title="常用检纠错码表示与使用方法"></a>常用检纠错码表示与使用方法</h2><p>常用的数据校验码有：奇偶校验码、海明校验码、循环冗余校验码。</p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/11.png" alt></p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/12.png" alt></p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/13.png" alt></p>
+<p><img src="/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/14.png" alt></p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="BCD码表示十进制数"><a href="#BCD码表示十进制数" class="headerlink" title="BCD码表示十进制数"></a>BCD码表示十进制数</h3><ul>
+<li>十进制有权码<ul>
+<li>每个十进制数位的4个二进制位（称为基2码）都有一个确定的权。8421码是最常用的十进制有权码。也称自然BCD（NBCD）码</li>
+</ul>
+</li>
+<li>十进制无权码<ul>
+<li>每个十进制数位的4个基2码没有确定的权。在无权码方案中，用的较多的是余3码和格雷码。</li>
+</ul>
+</li>
+</ul>
+<p>例如：<code>+236=(1100 0010 0011 0110)8421</code>  </p>
+<h3 id="数据的宽度和存储"><a href="#数据的宽度和存储" class="headerlink" title="数据的宽度和存储"></a>数据的宽度和存储</h3><p>比特：bit，是计算机中处理、存储、传输信息的最小单位</p>
+<p>字节：byte，也称位组，是二进制信息的计量单位</p>
+<ul>
+<li>现代计算机中，存储器按字节编址</li>
+<li>字节是最小可寻址单位</li>
+</ul>
+<p>字：word，与字长不同，区别如下</p>
+<h3 id="字与字长的区别"><a href="#字与字长的区别" class="headerlink" title="字与字长的区别"></a>字与字长的区别</h3><ul>
+<li><p>“字长”指定点运算数据通路的宽度</p>
+<ul>
+<li>数据通路指CPU内部数据流经的路径以及路径上的部件，主要是CPU内部进行数据运算、存储和传送的部件，这些部件的宽度基本上要一致，才能相互匹配。因此，”字长”等于CPU内部总线的宽度、运算器的位数、通用寄存器的宽度等。</li>
+</ul>
+</li>
+<li><p>“字”表示被处理信息的单位，用来度量数据类型的宽度。</p>
+</li>
+</ul>
+<h3 id="数据量的度量单位"><a href="#数据量的度量单位" class="headerlink" title="数据量的度量单位"></a>数据量的度量单位</h3><p>要区分容量单位和带宽单位！</p>
+<p>容量单位</p>
+<blockquote>
+<p>   “千字节”(KB)，1KB=210字节=1024B<br>   “兆字节”(MB)，1MB=220字节=1024KB<br>   “千兆字节”(GB)，1GB=230字节=1024MB<br>   “兆兆字节”(TB)，1TB=240字节=1024GB</p>
+</blockquote>
+<p>通信中的带宽单位</p>
+<blockquote>
+<p>   “千比特/秒”(kb/s)，1kbps=103 b/s=1000 bps<br>   “兆比特/秒”(Mb/s)，1Mbps=106 b/s =1000 kbps<br>   “千兆比特/秒”(Gb/s)，1Gbps=109 b/s =1000 Mbps<br>   “兆兆比特/秒”(Tb/s)，1Tbps=1012 b/s =1000 Gbps</p>
+</blockquote>
+<p>注意！</p>
+<p>如果把b换成B，则表示字节而不是比特（位）<br>例如，10MBps表示 10兆字节/秒</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">0w0suy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://0w0suy.github.io/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/">https://0w0suy.github.io/2021/09/17/%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%8F%8A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux基础操作</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">计算机系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB"><span class="toc-number">1.1.</span> <span class="toc-text">冯诺依曼体系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">计算机硬件基本组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%92%8C%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">计算机软件设计和执行过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">计算机层次结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%A7%E8%83%BD%E8%AF%84%E4%BB%B7"><span class="toc-number">1.5.</span> <span class="toc-text">计算机性能评价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E8%A1%A5%E5%85%85"><span class="toc-number">1.6.</span> <span class="toc-text">课堂补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%9C%BA"><span class="toc-number">1.6.1.</span> <span class="toc-text">兼容机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97"><span class="toc-number">1.6.2.</span> <span class="toc-text">单位换算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E4%BB%B7%E6%AF%94R"><span class="toc-number">1.6.3.</span> <span class="toc-text">性价比R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MIPS%E3%80%81MFLOPS%E3%80%81GELOPS"><span class="toc-number">1.6.4.</span> <span class="toc-text">MIPS、MFLOPS、GELOPS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">数据的机器级表示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0%E5%92%8C%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.1.</span> <span class="toc-text">无符号数和带符号整数的表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%B4%9F%E6%95%B0%E7%9A%84%E8%A1%A5%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">求负数的补码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IEEE-754-%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%87%E5%87%86"><span class="toc-number">2.3.</span> <span class="toc-text">IEEE 754 浮点数标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A5%BF%E6%96%87%E5%AD%97%E7%AC%A6%E5%92%8C%E6%B1%89%E5%AD%97%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-number">2.4.</span> <span class="toc-text">西文字符和汉字的编码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A5%BF%E6%96%87%E5%AD%97%E7%AC%A6%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-number">2.4.1.</span> <span class="toc-text">西文字符的编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-number">2.4.2.</span> <span class="toc-text">汉字的编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E7%AB%AF%E5%B0%8F%E7%AB%AF%E5%AD%98%E6%94%BE%E9%A1%BA%E5%BA%8F%E5%8F%8A%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">大端小端存放顺序及对齐方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E7%AB%AF%E5%B0%8F%E7%AB%AF"><span class="toc-number">2.5.1.</span> <span class="toc-text">大端小端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="toc-number">2.5.2.</span> <span class="toc-text">对齐方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A3%80%E7%BA%A0%E9%94%99%E7%A0%81%E8%A1%A8%E7%A4%BA%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.6.</span> <span class="toc-text">常用检纠错码表示与使用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">2.7.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BCD%E7%A0%81%E8%A1%A8%E7%A4%BA%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0"><span class="toc-number">2.7.1.</span> <span class="toc-text">BCD码表示十进制数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%BD%E5%BA%A6%E5%92%8C%E5%AD%98%E5%82%A8"><span class="toc-number">2.7.2.</span> <span class="toc-text">数据的宽度和存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%B8%8E%E5%AD%97%E9%95%BF%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.7.3.</span> <span class="toc-text">字与字长的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%87%8F%E7%9A%84%E5%BA%A6%E9%87%8F%E5%8D%95%E4%BD%8D"><span class="toc-number">2.7.4.</span> <span class="toc-text">数据量的度量单位</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 0w0suy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,  welcome  to  my  <a  target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer" data-id="6878400626&userid=406650299&creatorld=406650299" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
