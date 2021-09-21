@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux基础操作</title>
+    <url>/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pwd				查看当前工作目录</span><br><span class="line">clear 			清除屏幕</span><br><span class="line">cd ~			当前用户目录</span><br><span class="line">cd /			根目录</span><br><span class="line">cd -			上一次访问的目录</span><br><span class="line">cd ..			上一级目录</span><br><span class="line">ll				查看当前目录下内容（LL的小写）</span><br><span class="line">mkdir aaa		在当前目录下创建aaa目录，相对路径；</span><br><span class="line">mkdir ./bbb		在当前目录下创建bbb目录，相对路径；</span><br><span class="line">mkdir /ccc		在根目录下创建ccc目录，绝对路径；</span><br><span class="line">find / -name &#x27;b&#x27;		查询根目录下（包括子目录），名以b的目录和文件；</span><br><span class="line">find / -name &#x27;b*&#x27;		查询根目录下（包括子目录），名以b开头的目录和文件； </span><br><span class="line">mv 原先目录 文件的名称   重命名 mv tomcat001 tomcat </span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">rm -rf /bbb			强制删除/目录下的bbb目录。如果bbb目录中还有子目录，也会被强制删除，不会提示；</span><br><span class="line">rm -r /bbb			普通删除。会询问你是否删除每一个文件</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/1.png" alt></p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -r a.java		删除当前目录下的a.java文件（每次回询问是否删除y：同意）</span><br><span class="line">rm -rf ./a*			强制删除当前目录下以a开头的所有文件；</span><br><span class="line">rm -rf ./*			强制删除当前目录下所有文件（慎用）；</span><br></pre></td></tr></table></figure>
+<h2 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim a.java   	进入一般模式</span><br><span class="line">i(按键)   		进入插入模式(编辑模式)</span><br><span class="line">ESC(按键)  		退出</span><br><span class="line">:wq 			保存退出（shift+：调起输入框）</span><br><span class="line">:q！			不保存退出（shift+：调起输入框）（内容更改）</span><br><span class="line">:q				不保存退出（shift+：调起输入框）（没有内容更改）</span><br></pre></td></tr></table></figure>
+<h2 id="查看内容"><a href="#查看内容" class="headerlink" title="查看内容"></a>查看内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -a        列出目录所有文件，包含以.开头的隐藏文件（all）</span><br><span class="line">ls -A        列出除.及..的其他文件 </span><br><span class="line">ls -r        反序排列</span><br><span class="line">ls -t        以文件修改的时间排序</span><br><span class="line">ls -S        以文件大小排序</span><br><span class="line">ls -h        以易读大小显示 </span><br><span class="line">ls -l        除了文件名之外，还将文件的权限，所有者，文件大小等信息详细列出来 (long)   </span><br><span class="line">cat a.java		查看a.java文件的最后一页内容；</span><br><span class="line">more a.java		从第一页开始查看a.java文件内容，按回车键一行一行进行查看，按空格键一页一页进行查看，q退出；</span><br><span class="line">less a.java		从第一页开始查看a.java文件内容，按回车键一行一行的看，按空格键一页一页的看，支持使用PageDown和PageUp翻页，q退出；</span><br><span class="line">head a.java				查看a.java文件的前10行内容；</span><br><span class="line">tail -f a.java			查看a.java文件的后10行内容；</span><br><span class="line">head -n 7 a.java		查看a.java文件的前7行内容；</span><br><span class="line">tail -n 7 a.java		查看a.java文件的后7行内容；</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/3.png" alt></p>
+<h2 id="文件详细信息"><a href="#文件详细信息" class="headerlink" title="文件详细信息"></a>文件详细信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> R:Read  w:write  x: execute执行</span><br><span class="line">-rw-r--r-- 1 root root  34942 Jan 19  2018 bootstrap.jar</span><br><span class="line">前三位代表当前用户对文件权限：可以读/可以写/不能执行</span><br><span class="line">中间三位代表当前组的其他用户对当前文件的操作权限：可以读/不能写/不能执行</span><br><span class="line">后三位其他用户对当前文件权限：可以读/不能写/不能执行</span><br><span class="line">链接数：1</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/2.png" alt></p>
+<h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zcvf start.tar.gz a.java b.java	将当前目录下a.java、b.java打包</span><br><span class="line">tar -zcvf start.tar.gz ./*				将当前目录下的所欲文件打包压缩成haha.tar.gz文件</span><br><span class="line">tar -xvf start.tar.gz				解压start.tar.gz压缩包，到当前文件夹下；</span><br><span class="line">tar -xvf start.tar.gz -C usr/local（C为大写，中间无空格）</span><br><span class="line">									解压start.tar.gz压缩包，到/usr/local目录下；</span><br></pre></td></tr></table></figure>
+<h2 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unzip file1.zip  				解压一个zip格式压缩包</span><br><span class="line">zip lib.zip tomcat.jar			将单个文件压缩(lib.zip)</span><br><span class="line">zip -r lib.zip lib/				将目录进行压缩(lib.zip)</span><br><span class="line">zip -r lib.zip tomcat-embed.jar xml-aps.jar		将多个文件压缩为zip文件(lib.zip)	</span><br></pre></td></tr></table></figure>
+<h1 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install iptables-services		下载并安装iptables</span><br><span class="line">yum list					列出当前系统中安装的所有包</span><br><span class="line">yum search package_name		在rpm仓库中搜寻软件包</span><br><span class="line">yum update package_name.rpm		更新当前系统中所有安装的rpm包</span><br><span class="line">yum update package_name		更新一个rpm包</span><br><span class="line">yum remove package_name		删除一个rpm包</span><br><span class="line">yum clean all				删除所有缓存的包和头文件</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>使用教程</category>
+      </categories>
+      <tags>
+        <tag>linus</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/07/06/Hello%20World/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is my very first post！</p>
@@ -49,25 +71,70 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Linux基础操作</title>
-    <url>/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pwd				查看当前工作目录</span><br><span class="line">clear 			清除屏幕</span><br><span class="line">cd ~			当前用户目录</span><br><span class="line">cd /			根目录</span><br><span class="line">cd -			上一次访问的目录</span><br><span class="line">cd ..			上一级目录</span><br><span class="line">ll				查看当前目录下内容（LL的小写）</span><br><span class="line">mkdir aaa		在当前目录下创建aaa目录，相对路径；</span><br><span class="line">mkdir ./bbb		在当前目录下创建bbb目录，相对路径；</span><br><span class="line">mkdir /ccc		在根目录下创建ccc目录，绝对路径；</span><br><span class="line">find / -name &#x27;b&#x27;		查询根目录下（包括子目录），名以b的目录和文件；</span><br><span class="line">find / -name &#x27;b*&#x27;		查询根目录下（包括子目录），名以b开头的目录和文件； </span><br><span class="line">mv 原先目录 文件的名称   重命名 mv tomcat001 tomcat </span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">rm -rf /bbb			强制删除/目录下的bbb目录。如果bbb目录中还有子目录，也会被强制删除，不会提示；</span><br><span class="line">rm -r /bbb			普通删除。会询问你是否删除每一个文件</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/1.png" alt></p>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -r a.java		删除当前目录下的a.java文件（每次回询问是否删除y：同意）</span><br><span class="line">rm -rf ./a*			强制删除当前目录下以a开头的所有文件；</span><br><span class="line">rm -rf ./*			强制删除当前目录下所有文件（慎用）；</span><br></pre></td></tr></table></figure>
-<h2 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim a.java   	进入一般模式</span><br><span class="line">i(按键)   		进入插入模式(编辑模式)</span><br><span class="line">ESC(按键)  		退出</span><br><span class="line">:wq 			保存退出（shift+：调起输入框）</span><br><span class="line">:q！			不保存退出（shift+：调起输入框）（内容更改）</span><br><span class="line">:q				不保存退出（shift+：调起输入框）（没有内容更改）</span><br></pre></td></tr></table></figure>
-<h2 id="查看内容"><a href="#查看内容" class="headerlink" title="查看内容"></a>查看内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -a        列出目录所有文件，包含以.开头的隐藏文件（all）</span><br><span class="line">ls -A        列出除.及..的其他文件 </span><br><span class="line">ls -r        反序排列</span><br><span class="line">ls -t        以文件修改的时间排序</span><br><span class="line">ls -S        以文件大小排序</span><br><span class="line">ls -h        以易读大小显示 </span><br><span class="line">ls -l        除了文件名之外，还将文件的权限，所有者，文件大小等信息详细列出来 (long)   </span><br><span class="line">cat a.java		查看a.java文件的最后一页内容；</span><br><span class="line">more a.java		从第一页开始查看a.java文件内容，按回车键一行一行进行查看，按空格键一页一页进行查看，q退出；</span><br><span class="line">less a.java		从第一页开始查看a.java文件内容，按回车键一行一行的看，按空格键一页一页的看，支持使用PageDown和PageUp翻页，q退出；</span><br><span class="line">head a.java				查看a.java文件的前10行内容；</span><br><span class="line">tail -f a.java			查看a.java文件的后10行内容；</span><br><span class="line">head -n 7 a.java		查看a.java文件的前7行内容；</span><br><span class="line">tail -n 7 a.java		查看a.java文件的后7行内容；</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/3.png" alt></p>
-<h2 id="文件详细信息"><a href="#文件详细信息" class="headerlink" title="文件详细信息"></a>文件详细信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> R:Read  w:write  x: execute执行</span><br><span class="line">-rw-r--r-- 1 root root  34942 Jan 19  2018 bootstrap.jar</span><br><span class="line">前三位代表当前用户对文件权限：可以读/可以写/不能执行</span><br><span class="line">中间三位代表当前组的其他用户对当前文件的操作权限：可以读/不能写/不能执行</span><br><span class="line">后三位其他用户对当前文件权限：可以读/不能写/不能执行</span><br><span class="line">链接数：1</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/2.png" alt></p>
-<h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zcvf start.tar.gz a.java b.java	将当前目录下a.java、b.java打包</span><br><span class="line">tar -zcvf start.tar.gz ./*				将当前目录下的所欲文件打包压缩成haha.tar.gz文件</span><br><span class="line">tar -xvf start.tar.gz				解压start.tar.gz压缩包，到当前文件夹下；</span><br><span class="line">tar -xvf start.tar.gz -C usr/local（C为大写，中间无空格）</span><br><span class="line">									解压start.tar.gz压缩包，到/usr/local目录下；</span><br></pre></td></tr></table></figure>
-<h2 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unzip file1.zip  				解压一个zip格式压缩包</span><br><span class="line">zip lib.zip tomcat.jar			将单个文件压缩(lib.zip)</span><br><span class="line">zip -r lib.zip lib/				将目录进行压缩(lib.zip)</span><br><span class="line">zip -r lib.zip tomcat-embed.jar xml-aps.jar		将多个文件压缩为zip文件(lib.zip)	</span><br></pre></td></tr></table></figure>
-<h1 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install iptables-services		下载并安装iptables</span><br><span class="line">yum list					列出当前系统中安装的所有包</span><br><span class="line">yum search package_name		在rpm仓库中搜寻软件包</span><br><span class="line">yum update package_name.rpm		更新当前系统中所有安装的rpm包</span><br><span class="line">yum update package_name		更新一个rpm包</span><br><span class="line">yum remove package_name		删除一个rpm包</span><br><span class="line">yum clean all				删除所有缓存的包和头文件</span><br></pre></td></tr></table></figure>
+    <title>Mysql服务器的基本配置及访问办法</title>
+    <url>/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>存在即合理，从两个问题开始引入mysql</p>
+<p>1、“这是什么？”</p>
+<p>2、“为什么要有这个？”</p>
+<h2 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h2><p>数据库，是用来存储数据的。数据库由表组成，表由列组成。这个表就像Excel一样，它适合存放一些文字信息。比如，id、密码、电话号码、地址等等，但是它不适合存放单个大体量的文件对象，比如，电影、照片。</p>
+<p>简单的举个栗子，比如说QQ中的数据库，会存放users的网名、密码、QQ号、个性签名等数据，但是qq空间的动态里的视频、音乐、图片可能就不会放在数据库里。</p>
+<h2 id="MySQL是什么？"><a href="#MySQL是什么？" class="headerlink" title="MySQL是什么？"></a><strong>MySQL是什么？</strong></h2><p>MySQL是一种数据库软件。数据库和MySQL的关系，就像是聊天软件与QQ、微信的关系。世界上有各种各样的数据库，比如Oracle、MySQL、SQL Server等等，一般互联网公司都会用MySQL，因为它是免费、使用范围最广。</p>
+<p>MySQL已经成为当前网络中使用最多的数据库之一，特别是在Web应用上，它占据了中小型应用的绝对优势。这一切都源于它的小巧易用、安全有效、开放式许可和多平台，更主要的是它与三大Web语言之一——PHP的完美结合。</p>
+<h2 id="SQL是什么？"><a href="#SQL是什么？" class="headerlink" title="SQL是什么？"></a><strong>SQL是什么</strong>？</h2><p>SQL是一种编程语言，就像Java、C++、Python。它是用来操纵数据库的一种语言。只需要上百个英文单词，SQL就能对数据进行让人眼花缭乱的操作。</p>
+<h2 id="为什么要有数据库？"><a href="#为什么要有数据库？" class="headerlink" title="为什么要有数据库？"></a>为什么要有数据库？</h2><p>数据库可以让很多人同时地进行访问、更改数据。而excel不能供一个大型系统使用，它的性能不够好。（想象一下数亿人同时操控一个Excel文件，啊，那真是不能想象，一定卡顿爆）</p>
+<hr>
+<p>总的来说，数据库是一种数据存储系统，其中最具代表性的是mysql，我们使用sql语言对它进行操纵。</p>
+<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><p>用户系统：Windows操作系统</p>
+<p>工具：MySQL5.5软件</p>
+<h1 id="数据库安全实验"><a href="#数据库安全实验" class="headerlink" title="数据库安全实验"></a>数据库安全实验</h1><p>1、安装MySQL</p>
+<p>在MySQL官网上点download，进入MySQL Community server下载想要下载的版本，直接下载installer，不要下载zip压缩包（我下载的是5.5.29，截止到2021.07.19，最新版本是8.0.25，越稳定越好，随便下个5.5.29的）</p>
+<p>几个非默认的页面需要注意一下（并非一直点next）</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/安装步骤1.png" alt="勾选server machine"></p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step2.png" alt="勾选manual，并选择utf8"></p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step3.png" alt="勾选include bin directory in windows path"></p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step4.png" alt="等待四个自动勾选后安装完成"></p>
+<p>2、MySQL密码为安装时所设，键入后回车，界面如下。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/a.png" alt></p>
+<p>3、运行下图命令，查看User表。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/b.png" alt></p>
+<p>4、运行update命令，将MySQL数据库root用户的口令改成123456。其中最后一句命令flush privileges的意思是强制刷新内存授权表，否则用的还是缓冲中的口令，这时非法用户还可以用root用户及空口令登录，直到重启MySQL服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set password = password(&#x27;123456&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/c.png" alt></p>
+<p>5、运行delete命令，删除空用户。Host字段为localhost的匿名用户拥有所有的权限，就是说本地用户用空的用户名和空的口令登录MySQL数据库服务器可以得到最高的权限，所以匿名用户必须删除。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where user=&#x27;&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/d.png" alt></p>
+<p>6、Desc User</p>
+<p>User表是授权表中最重要的一个，运行下图命令，列出可以连接服务器的用户及其加密口令，并且它指定它们有哪种全局（超级用户）权限。在User表启用的任何权限均是全局权限，并适用于所有数据库。所以我们不能给任何用户访问MySQL. User表的权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc user;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/e.png" alt></p>
+<p>7、Desc DB</p>
+<p>运行下图命令，查看DB表，列出所有数据库，而用户有权限访问它们。在这里指定的权限适用于一个数据库中的所有表。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">desc db;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/f.png" alt></p>
+<p>8、Desc Host</p>
+<p>Host表如下图所示，与DB表结合使用在一个较好层次上控制特定主机对数据库的访问权限，这可能比单独使用DB好些。这个表不受GRANT和REVOKE语句的影响。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc host;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/g.png" alt></p>
+<p>9、设置用户权限</p>
+<p>如下图命令用于在本地增加一个具有所有权限的test 用户(超级用户)，密码是test。ON子句中的<em>.</em>意味着“所有数据库、所有表”。with grant option表示它具有grant权限。用grant语句创建权限是不需要再手工刷新授权表的，因为它已经自动刷新了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to test@localhost identified by &#x27;test&#x27; with grant option;</span><br><span class="line">select User,Password from user;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/h.png" alt></p>
+<p>查看运行结果，如下图。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/i.png" alt></p>
+<p>10、删除用户的权限，并删除用户</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">revoke all on *.* from test@localhost;</span><br><span class="line">delete from user where user=&#x27;test&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>删除用户权限。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/j.png" alt></p>
+<p>删除用户test。</p>
+<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/k.png" alt></p>
+<p>到这就OK啦</p>
 ]]></content>
       <categories>
-        <category>使用教程</category>
+        <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>linus</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -180,70 +247,79 @@
       </tags>
   </entry>
   <entry>
-    <title>Mysql服务器的基本配置及访问办法</title>
-    <url>/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>存在即合理，从两个问题开始引入mysql</p>
-<p>1、“这是什么？”</p>
-<p>2、“为什么要有这个？”</p>
-<h2 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h2><p>数据库，是用来存储数据的。数据库由表组成，表由列组成。这个表就像Excel一样，它适合存放一些文字信息。比如，id、密码、电话号码、地址等等，但是它不适合存放单个大体量的文件对象，比如，电影、照片。</p>
-<p>简单的举个栗子，比如说QQ中的数据库，会存放users的网名、密码、QQ号、个性签名等数据，但是qq空间的动态里的视频、音乐、图片可能就不会放在数据库里。</p>
-<h2 id="MySQL是什么？"><a href="#MySQL是什么？" class="headerlink" title="MySQL是什么？"></a><strong>MySQL是什么？</strong></h2><p>MySQL是一种数据库软件。数据库和MySQL的关系，就像是聊天软件与QQ、微信的关系。世界上有各种各样的数据库，比如Oracle、MySQL、SQL Server等等，一般互联网公司都会用MySQL，因为它是免费、使用范围最广。</p>
-<p>MySQL已经成为当前网络中使用最多的数据库之一，特别是在Web应用上，它占据了中小型应用的绝对优势。这一切都源于它的小巧易用、安全有效、开放式许可和多平台，更主要的是它与三大Web语言之一——PHP的完美结合。</p>
-<h2 id="SQL是什么？"><a href="#SQL是什么？" class="headerlink" title="SQL是什么？"></a><strong>SQL是什么</strong>？</h2><p>SQL是一种编程语言，就像Java、C++、Python。它是用来操纵数据库的一种语言。只需要上百个英文单词，SQL就能对数据进行让人眼花缭乱的操作。</p>
-<h2 id="为什么要有数据库？"><a href="#为什么要有数据库？" class="headerlink" title="为什么要有数据库？"></a>为什么要有数据库？</h2><p>数据库可以让很多人同时地进行访问、更改数据。而excel不能供一个大型系统使用，它的性能不够好。（想象一下数亿人同时操控一个Excel文件，啊，那真是不能想象，一定卡顿爆）</p>
-<hr>
-<p>总的来说，数据库是一种数据存储系统，其中最具代表性的是mysql，我们使用sql语言对它进行操纵。</p>
-<h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><p>用户系统：Windows操作系统</p>
-<p>工具：MySQL5.5软件</p>
-<h1 id="数据库安全实验"><a href="#数据库安全实验" class="headerlink" title="数据库安全实验"></a>数据库安全实验</h1><p>1、安装MySQL</p>
-<p>在MySQL官网上点download，进入MySQL Community server下载想要下载的版本，直接下载installer，不要下载zip压缩包（我下载的是5.5.29，截止到2021.07.19，最新版本是8.0.25，越稳定越好，随便下个5.5.29的）</p>
-<p>几个非默认的页面需要注意一下（并非一直点next）</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/安装步骤1.png" alt="勾选server machine"></p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step2.png" alt="勾选manual，并选择utf8"></p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step3.png" alt="勾选include bin directory in windows path"></p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/step4.png" alt="等待四个自动勾选后安装完成"></p>
-<p>2、MySQL密码为安装时所设，键入后回车，界面如下。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/a.png" alt></p>
-<p>3、运行下图命令，查看User表。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/b.png" alt></p>
-<p>4、运行update命令，将MySQL数据库root用户的口令改成123456。其中最后一句命令flush privileges的意思是强制刷新内存授权表，否则用的还是缓冲中的口令，这时非法用户还可以用root用户及空口令登录，直到重启MySQL服务器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update user set password = password(&#x27;123456&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/c.png" alt></p>
-<p>5、运行delete命令，删除空用户。Host字段为localhost的匿名用户拥有所有的权限，就是说本地用户用空的用户名和空的口令登录MySQL数据库服务器可以得到最高的权限，所以匿名用户必须删除。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from user where user=&#x27;&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/d.png" alt></p>
-<p>6、Desc User</p>
-<p>User表是授权表中最重要的一个，运行下图命令，列出可以连接服务器的用户及其加密口令，并且它指定它们有哪种全局（超级用户）权限。在User表启用的任何权限均是全局权限，并适用于所有数据库。所以我们不能给任何用户访问MySQL. User表的权限。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc user;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/e.png" alt></p>
-<p>7、Desc DB</p>
-<p>运行下图命令，查看DB表，列出所有数据库，而用户有权限访问它们。在这里指定的权限适用于一个数据库中的所有表。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">desc db;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/f.png" alt></p>
-<p>8、Desc Host</p>
-<p>Host表如下图所示，与DB表结合使用在一个较好层次上控制特定主机对数据库的访问权限，这可能比单独使用DB好些。这个表不受GRANT和REVOKE语句的影响。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc host;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/g.png" alt></p>
-<p>9、设置用户权限</p>
-<p>如下图命令用于在本地增加一个具有所有权限的test 用户(超级用户)，密码是test。ON子句中的<em>.</em>意味着“所有数据库、所有表”。with grant option表示它具有grant权限。用grant语句创建权限是不需要再手工刷新授权表的，因为它已经自动刷新了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to test@localhost identified by &#x27;test&#x27; with grant option;</span><br><span class="line">select User,Password from user;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/h.png" alt></p>
-<p>查看运行结果，如下图。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/i.png" alt></p>
-<p>10、删除用户的权限，并删除用户</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">revoke all on *.* from test@localhost;</span><br><span class="line">delete from user where user=&#x27;test&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<p>删除用户权限。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/j.png" alt></p>
-<p>删除用户test。</p>
-<p><img src="/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/k.png" alt></p>
-<p>到这就OK啦</p>
+    <title>Python实例1--文本进度条</title>
+    <url>/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="文本进度条的分析"><a href="#文本进度条的分析" class="headerlink" title="文本进度条的分析"></a>文本进度条的分析</h1><p>1、采用字符串方式打印可以动态变化的文本进度条</p>
+<p>2、进度条需要能在一行中逐渐变化</p>
+<p>3、采用sleep（）模拟一个持续的进度</p>
+<h1 id="文本进度条框架"><a href="#文本进度条框架" class="headerlink" title="文本进度条框架"></a>文本进度条框架</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 10</span><br><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*i</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
+<p>执行结果如下图</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/a.png" alt="运行结果"></p>
+<p>我们可以看到这个文本进度条包括百分比，”开始阅读”及”阅读完毕”的字眼，以及剩余阅读部分的进度条格式。</p>
+<h2 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
+<p>我们先引入一个time库，整体用sleep函数，来生成一个持续不断的时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line"></span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
+<p>我们打印了开始阅读和阅读完毕的字眼，为了使看起来更加美观，引入了减号”-“，字体居中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scale = 10</span><br></pre></td></tr></table></figure>
+<p>scale指的是文本进度条的大概宽度</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(scale+1):</span><br></pre></td></tr></table></figure>
+<p>for循环，for i in range 这样的表达方式，表示遍历range（） 对象。之所以称为遍历循环，是因为for语句的循环执行次数是根据遍历结构中元素的个数确定的。遍历循环可以简单的理解为从遍历结构中逐一提取元素，放入循环变量中，对于每个所提取的元素执行一次循环体语句，当遍历结构中所有的元素都被访问遍了，遍历循环就正常结束。</p>
+<p>放到进度条中，可以理解为，每经过一个循环，计算机完成一个任务，打印一个进度条，计算机再完成一个任务，再打印一个进度条。直到进度条百分百，即完成了任务，打印出“阅读完毕”。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = &#x27;*&#x27;*i</span><br></pre></td></tr></table></figure>
+<p>定义a，字符*与循环变量i的乘积</p>
+<p>(在字符串中学过，字符串与整数的乘积表示字符串被复制的次数)  </p>
+<p>因此，a表示星号*被复制的次数，而星号指当前的百分比所表达的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b = &#x27;.&#x27;*(scale - i)</span><br></pre></td></tr></table></figure>
+<p>  定义b，用.表示，与当前剩余的进度条的笔记之间的乘积。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = (i/scale)*100</span><br></pre></td></tr></table></figure>
+<p>   c指的是我们输出与当前进度条和进度相关的百分比</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br></pre></td></tr></table></figure>
+<p>前面我们学过，百分比%和括号{}，可以表示占位符。用三个占位符表示三个槽。<code>&#123;:^3.0f&#125;%</code>表示某%，<code>[&#123;&#125;-&gt;&#123;&#125;]</code>前者占位符表示星号*，即已阅读进度条，后者占位符表示点.，即剩余进度条。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+<p>表示将程序短暂的停顿1秒</p>
+<h1 id="单行动态刷新"><a href="#单行动态刷新" class="headerlink" title="单行动态刷新"></a>单行动态刷新</h1><h2 id="刷新的本质"><a href="#刷新的本质" class="headerlink" title="刷新的本质"></a>刷新的本质</h2><p>刷新的本质是用后打印的字符覆盖之前的字符。</p>
+<p>比如说，截止到2021年7月16日9点19分，国内疫情实时大数据报告有9007979480人在浏览这个网页，当我刷新一次截止到2021年7月16日9点20分，这个数据变成了9007982317，用后面的数据覆盖了原来数据的位置，之前的数据被替换，对用户来说，这就是刷新效果。</p>
+<p>这就需要我们的程序，在输出某一个 字符的字符串的时候，不能够换行到下一行。因为一旦换行到下一行，之前的数据就不能被后来的所覆盖。因为print函数执行完后会进行到下一行，所以我们要让print不能换行。并且要让光标退回到之前的位置，实现覆盖。</p>
+<p>总而言之，刷新要做到两点:</p>
+<p>1.不能换行</p>
+<p>2.要能退回</p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">for i in range(101):</span><br><span class="line">    print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+<p>执行结果如下图</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/b.png" alt="单行刷新运行结果"></p>
+<h2 id="分析代码-1"><a href="#分析代码-1" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
+<p>还是使用time库的sleep函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`for i in range(101):`</span><br></pre></td></tr></table></figure>
+<p>构造101次的循环过程。因为为了输入文本进度条，从0%到100</p>
+<p>%，划分为101次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br></pre></td></tr></table></figure>
+<p> 在format后面增加了<code>,end=&quot;&quot;</code>，这是print函数的一个参数，end后字符串为空字符，表示print完不会增加新的内容，光标还是停留在最后一个字符上。<code>\r&#123;:3&#125;%</code>表示在打印输出字符串之前，将光标退回到当前行的行首。</p>
+<p>简单来说，在每次输出前，把光标放到行首，覆盖原来的数据，在输出后也不换行，下一次循环再输出的时候，再把光标放到行首，覆盖上次的数据后，再输出，又不换行。这样就构成了一种单行刷新的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
+<p>表示将程序短暂的停顿1秒</p>
+<h2 id="分析结果"><a href="#分析结果" class="headerlink" title="分析结果"></a>分析结果</h2><p>我们看到的是从0%到100%的结果，但实际上是一个一个覆盖刷新的效果。因为IDLE本身是一个编写式的开发环境，它并不是程序运行的主要环境。</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/c.png" alt="如图，一个一个输出"></p>
+<h1 id="进度条的改进完善"><a href="#进度条的改进完善" class="headerlink" title="进度条的改进完善"></a>进度条的改进完善</h1><h2 id="运用知识"><a href="#运用知识" class="headerlink" title="运用知识"></a>运用知识</h2><p>1、字符串处理</p>
+<p>2、数字处理</p>
+<p>3、时间库的使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 50</span><br><span class="line">print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</span><br><span class="line">start = time.perf_counter()</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*1</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    dur = time.perf_counter() - start</span><br><span class="line">    print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;\n&quot;+&quot;阅读完毕&quot;.center(scale//2,&quot;-&quot;))</span><br></pre></td></tr></table></figure>
+<p>运行结果如下图</p>
+<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/d.png" alt="完善后得！"></p>
+<p>区别：</p>
+<p><code>print(&quot;-----开始阅读------&quot;)</code></p>
+<p><code>print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</code></p>
+<p>刚开始我们为了让结果看起来更美观，用减号-来分隔，但如果页面布局或大小变化，这样显得不太智能。现在我们使用字符串处理中的<code>.center</code>方法，将一个-字符填充在执行开始或者执行结束的两侧，通过填充的方式，自动实现减号构成的分隔线条。</p>
+<p>并且我们还增加了计时效果<code>start = time.perf_counter()</code>，确定了一个开始时间，而<code>dur = time.perf_counter() - start</code>表示每次循环所消耗的时间。</p>
+<p><code>print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</code>中的<code>\n</code>，表示文本的刷新效果，实现光标向行首移动。<code>end=&quot;&quot;</code>表示每次输出后不换行。</p>
+<h1 id="进度条的举一反三"><a href="#进度条的举一反三" class="headerlink" title="进度条的举一反三"></a>进度条的举一反三</h1><h2 id="计算问题扩展"><a href="#计算问题扩展" class="headerlink" title="计算问题扩展"></a>计算问题扩展</h2><p>文本进度条程序使用了perf_counter()计时，计时方法适合各类需要统计时间的计算问题。</p>
+<p>在上文我们可以看到在每次打印进度条后，会加上一个时间，即相隔循环打印时间。这样我们就可以用perf_counter()来比较不同算法时间、统计部分程序运行时间。</p>
+<h2 id="进度条应用扩展"><a href="#进度条应用扩展" class="headerlink" title="进度条应用扩展"></a>进度条应用扩展</h2><p>不仅可以应用于文本进度条，也可以在大型加载的程序中增加进度条，因为进度条是人机交互的桥梁，通过进度条我们可以直观的看到计算机运行的进度，可以给我们带来对程序更好的理解。</p>
 ]]></content>
       <categories>
-        <category>学习笔记</category>
+        <category>实例</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -350,134 +426,6 @@
 ]]></content>
       <categories>
         <category>实例</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python实例1--文本进度条</title>
-    <url>/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="文本进度条的分析"><a href="#文本进度条的分析" class="headerlink" title="文本进度条的分析"></a>文本进度条的分析</h1><p>1、采用字符串方式打印可以动态变化的文本进度条</p>
-<p>2、进度条需要能在一行中逐渐变化</p>
-<p>3、采用sleep（）模拟一个持续的进度</p>
-<h1 id="文本进度条框架"><a href="#文本进度条框架" class="headerlink" title="文本进度条框架"></a>文本进度条框架</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 10</span><br><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*i</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
-<p>执行结果如下图</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/a.png" alt="运行结果"></p>
-<p>我们可以看到这个文本进度条包括百分比，”开始阅读”及”阅读完毕”的字眼，以及剩余阅读部分的进度条格式。</p>
-<h2 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
-<p>我们先引入一个time库，整体用sleep函数，来生成一个持续不断的时间。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;-----开始阅读------&quot;)</span><br><span class="line"></span><br><span class="line">print(&quot;------阅读完毕------&quot;)</span><br></pre></td></tr></table></figure>
-<p>我们打印了开始阅读和阅读完毕的字眼，为了使看起来更加美观，引入了减号”-“，字体居中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scale = 10</span><br></pre></td></tr></table></figure>
-<p>scale指的是文本进度条的大概宽度</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for i in range(scale+1):</span><br></pre></td></tr></table></figure>
-<p>for循环，for i in range 这样的表达方式，表示遍历range（） 对象。之所以称为遍历循环，是因为for语句的循环执行次数是根据遍历结构中元素的个数确定的。遍历循环可以简单的理解为从遍历结构中逐一提取元素，放入循环变量中，对于每个所提取的元素执行一次循环体语句，当遍历结构中所有的元素都被访问遍了，遍历循环就正常结束。</p>
-<p>放到进度条中，可以理解为，每经过一个循环，计算机完成一个任务，打印一个进度条，计算机再完成一个任务，再打印一个进度条。直到进度条百分百，即完成了任务，打印出“阅读完毕”。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = &#x27;*&#x27;*i</span><br></pre></td></tr></table></figure>
-<p>定义a，字符*与循环变量i的乘积</p>
-<p>(在字符串中学过，字符串与整数的乘积表示字符串被复制的次数)  </p>
-<p>因此，a表示星号*被复制的次数，而星号指当前的百分比所表达的信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b = &#x27;.&#x27;*(scale - i)</span><br></pre></td></tr></table></figure>
-<p>  定义b，用.表示，与当前剩余的进度条的笔记之间的乘积。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = (i/scale)*100</span><br></pre></td></tr></table></figure>
-<p>   c指的是我们输出与当前进度条和进度相关的百分比</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br></pre></td></tr></table></figure>
-<p>前面我们学过，百分比%和括号{}，可以表示占位符。用三个占位符表示三个槽。<code>&#123;:^3.0f&#125;%</code>表示某%，<code>[&#123;&#125;-&gt;&#123;&#125;]</code>前者占位符表示星号*，即已阅读进度条，后者占位符表示点.，即剩余进度条。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
-<p>表示将程序短暂的停顿1秒</p>
-<h1 id="单行动态刷新"><a href="#单行动态刷新" class="headerlink" title="单行动态刷新"></a>单行动态刷新</h1><h2 id="刷新的本质"><a href="#刷新的本质" class="headerlink" title="刷新的本质"></a>刷新的本质</h2><p>刷新的本质是用后打印的字符覆盖之前的字符。</p>
-<p>比如说，截止到2021年7月16日9点19分，国内疫情实时大数据报告有9007979480人在浏览这个网页，当我刷新一次截止到2021年7月16日9点20分，这个数据变成了9007982317，用后面的数据覆盖了原来数据的位置，之前的数据被替换，对用户来说，这就是刷新效果。</p>
-<p>这就需要我们的程序，在输出某一个 字符的字符串的时候，不能够换行到下一行。因为一旦换行到下一行，之前的数据就不能被后来的所覆盖。因为print函数执行完后会进行到下一行，所以我们要让print不能换行。并且要让光标退回到之前的位置，实现覆盖。</p>
-<p>总而言之，刷新要做到两点:</p>
-<p>1.不能换行</p>
-<p>2.要能退回</p>
-<p>代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">for i in range(101):</span><br><span class="line">    print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br></pre></td></tr></table></figure>
-<p>执行结果如下图</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/b.png" alt="单行刷新运行结果"></p>
-<h2 id="分析代码-1"><a href="#分析代码-1" class="headerlink" title="分析代码"></a>分析代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br></pre></td></tr></table></figure>
-<p>还是使用time库的sleep函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`for i in range(101):`</span><br></pre></td></tr></table></figure>
-<p>构造101次的循环过程。因为为了输入文本进度条，从0%到100</p>
-<p>%，划分为101次。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)</span><br></pre></td></tr></table></figure>
-<p> 在format后面增加了<code>,end=&quot;&quot;</code>，这是print函数的一个参数，end后字符串为空字符，表示print完不会增加新的内容，光标还是停留在最后一个字符上。<code>\r&#123;:3&#125;%</code>表示在打印输出字符串之前，将光标退回到当前行的行首。</p>
-<p>简单来说，在每次输出前，把光标放到行首，覆盖原来的数据，在输出后也不换行，下一次循环再输出的时候，再把光标放到行首，覆盖上次的数据后，再输出，又不换行。这样就构成了一种单行刷新的效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">time.sleep(0.1)</span><br></pre></td></tr></table></figure>
-<p>表示将程序短暂的停顿1秒</p>
-<h2 id="分析结果"><a href="#分析结果" class="headerlink" title="分析结果"></a>分析结果</h2><p>我们看到的是从0%到100%的结果，但实际上是一个一个覆盖刷新的效果。因为IDLE本身是一个编写式的开发环境，它并不是程序运行的主要环境。</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/c.png" alt="如图，一个一个输出"></p>
-<h1 id="进度条的改进完善"><a href="#进度条的改进完善" class="headerlink" title="进度条的改进完善"></a>进度条的改进完善</h1><h2 id="运用知识"><a href="#运用知识" class="headerlink" title="运用知识"></a>运用知识</h2><p>1、字符串处理</p>
-<p>2、数字处理</p>
-<p>3、时间库的使用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import time</span><br><span class="line">scale = 50</span><br><span class="line">print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</span><br><span class="line">start = time.perf_counter()</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &#x27;*&#x27;*1</span><br><span class="line">    b = &#x27;.&#x27;*(scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    dur = time.perf_counter() - start</span><br><span class="line">    print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;\n&quot;+&quot;阅读完毕&quot;.center(scale//2,&quot;-&quot;))</span><br></pre></td></tr></table></figure>
-<p>运行结果如下图</p>
-<p><img src="/2021/07/16/Python%E5%AE%9E%E4%BE%8B1--%E6%96%87%E6%9C%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1/d.png" alt="完善后得！"></p>
-<p>区别：</p>
-<p><code>print(&quot;-----开始阅读------&quot;)</code></p>
-<p><code>print(&quot;开始阅读&quot;.center(scale//2,&quot;-&quot;))</code></p>
-<p>刚开始我们为了让结果看起来更美观，用减号-来分隔，但如果页面布局或大小变化，这样显得不太智能。现在我们使用字符串处理中的<code>.center</code>方法，将一个-字符填充在执行开始或者执行结束的两侧，通过填充的方式，自动实现减号构成的分隔线条。</p>
-<p>并且我们还增加了计时效果<code>start = time.perf_counter()</code>，确定了一个开始时间，而<code>dur = time.perf_counter() - start</code>表示每次循环所消耗的时间。</p>
-<p><code>print(&quot;\r:&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&quot;&quot;)</code>中的<code>\n</code>，表示文本的刷新效果，实现光标向行首移动。<code>end=&quot;&quot;</code>表示每次输出后不换行。</p>
-<h1 id="进度条的举一反三"><a href="#进度条的举一反三" class="headerlink" title="进度条的举一反三"></a>进度条的举一反三</h1><h2 id="计算问题扩展"><a href="#计算问题扩展" class="headerlink" title="计算问题扩展"></a>计算问题扩展</h2><p>文本进度条程序使用了perf_counter()计时，计时方法适合各类需要统计时间的计算问题。</p>
-<p>在上文我们可以看到在每次打印进度条后，会加上一个时间，即相隔循环打印时间。这样我们就可以用perf_counter()来比较不同算法时间、统计部分程序运行时间。</p>
-<h2 id="进度条应用扩展"><a href="#进度条应用扩展" class="headerlink" title="进度条应用扩展"></a>进度条应用扩展</h2><p>不仅可以应用于文本进度条，也可以在大型加载的程序中增加进度条，因为进度条是人机交互的桥梁，通过进度条我们可以直观的看到计算机运行的进度，可以给我们带来对程序更好的理解。</p>
-]]></content>
-      <categories>
-        <category>实例</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSTF(Hacker&#39;s Playground)</title>
-    <url>/2021/08/22/SSTF-Hacker-s-Playground/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一次打CTF，crypto的Tutorial部分涉及两题，RSA101和RC Four，结果是一题也没整出来。。好歹也是研究了一下午的真题，决定在比赛结束后看看大佬写的write up</p>
-<p><a href="https://playground.sstf.site/">链接传送门</a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="RSA101"><a href="#RSA101" class="headerlink" title="RSA101"></a>RSA101</h2><p>题目如下</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/1.png" alt="题目1-1"></p>
-<p>题目的代码如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from base64 import b64encode, b64decode</span><br><span class="line">from Crypto.Util.number import getStrongPrime, bytes_to_long, long_to_bytes</span><br><span class="line">from os import system</span><br><span class="line"></span><br><span class="line">p = getStrongPrime(512)</span><br><span class="line">q = getStrongPrime(512)</span><br><span class="line">n = p * q</span><br><span class="line">e = 65537</span><br><span class="line">d = pow(e, -1, (p - 1) * (q - 1))</span><br><span class="line"></span><br><span class="line">print(&quot;[RSA parameters]&quot;)</span><br><span class="line">print(&quot;n =&quot;, hex(n))</span><br><span class="line">print(&quot;e =&quot;, hex(e))</span><br><span class="line"></span><br><span class="line">def sign(msg):</span><br><span class="line">	m = bytes_to_long(msg)</span><br><span class="line">	s = pow(m, d, n)</span><br><span class="line">	return long_to_bytes(s)</span><br><span class="line"></span><br><span class="line">def verify(s):</span><br><span class="line">	s = bytes_to_long(s)</span><br><span class="line">	v = pow(s, e, n)</span><br><span class="line">	return long_to_bytes(v)</span><br><span class="line"></span><br><span class="line">def welcome():</span><br><span class="line">	print(&quot;\nWelcome to command signer/executor.&quot;)</span><br><span class="line">	print(&quot;Menu : 1. Verify and run a command&quot;)</span><br><span class="line">	print(&quot;       2. Sign a command&quot;)</span><br><span class="line">	print(&quot;       3. Exit&quot;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	welcome()</span><br><span class="line">	sel = input(&quot; &gt; &quot;).strip()</span><br><span class="line">	if sel == &quot;1&quot;:</span><br><span class="line">		sgn = input(&quot;Signed command: &quot;).strip()</span><br><span class="line">		sgn = b64decode(sgn)</span><br><span class="line">		cmd = verify(sgn)</span><br><span class="line"></span><br><span class="line">		commands = [&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;]</span><br><span class="line">		if cmd.decode() in commands:</span><br><span class="line">			system(cmd)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Possible commands: &quot;, commands)</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;2&quot;:</span><br><span class="line">		cmd = input(&quot;Base64 encoded command to sign: &quot;)</span><br><span class="line">		cmd = b64decode(cmd)</span><br><span class="line">		if cmd == &quot;cat flag&quot;:</span><br><span class="line">			print(&quot;It&#x27;s forbidden.&quot;)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Signed command:&quot;, b64encode(sign(cmd)).decode())</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;3&quot;:</span><br><span class="line">		print(&quot;bye.&quot;)</span><br><span class="line">		exit()</span><br><span class="line"></span><br><span class="line">	else:</span><br><span class="line">		print(&quot;Invalid selection.&quot;)</span><br></pre></td></tr></table></figure>
-<hr>
-<p>我对代码的理解是：</p>
-<p>1、引用了<code>base64</code>，<code>crypto.util.number</code>,<code>os</code>这三个库</p>
-<p>2、随机生成两个512比特的大素数p和q，因此n的值随着每次运行而变化</p>
-<p>3、定义了函数名为sign的函数，msg为参数，在函数体中m是把参数msg从bytes（字节串，以二进制存储）转为long整型，s=m^d^ mod n，返回的是s的bytes型，而v=s^e^ mod n，返回的也是v的bytes型。</p>
-<p>4、如果在交互式窗口输入1，要输入已被签名过的命令（Signed command），对这个命令进行<code>b64decode</code>解密，在运用<code>&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;</code>这些命令，可以将字符串转化成命令在服务器上运行；</p>
-<p>如果在交互式窗口输入2，用Base64对命令进行签名sign加密，在对命令cmd用base64解密，如果解密后的<code>cmd==cat flag</code>，则输出<code>It&#39;s forbidden</code>.，否则输出<code>Signed command:</code>；</p>
-<p>如果在交互式窗口输入3，输出“bye”后退出运行；</p>
-<p>如果在交互式窗口输入不为1，2,3，就输出“Invalid selection.”</p>
-<hr>
-<p>在学习大佬的write up后对代码理解的更正：</p>
-<p>如果在交互式窗口输入1，会对输入的指令先base64解密，然后再RSA加密，如果两次加密后的内容<code>cmd.decode() in commands</code>，那么就会执行<code>commands</code>里面的操作；</p>
-<p>输入2，就是对第一部分的逆向操作，但是不能输入<code>cat flag</code></p>
-<p>别忘了题目还给了服务器The server is running at: <code>nc rsa101.sstf.site 1104</code>.</p>
-<p>关于如何与服务器交互，在kali中代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc rsa101.sstf.site 1104</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/2.png" alt></p>
-<p>以输入<code>ls -l</code>为例，得到用base64加密后的字符串<code>bHMgLWw=</code></p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/3.png" alt></p>
-<p>输入2，生成签名过的命令</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/4.png" alt></p>
-<p>输入1，运行签名后的命令</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/5.png" alt></p>
-<p>结果是没有得到<code>cat flag</code></p>
-<p>假如直接输入<code>cat flag</code>，也没法执行</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/6.png" alt></p>
-<p>从给出的def出发</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/7.png" alt></p>
-<p>转化一下平常用的表达，把c分解成m1m2两个因数，<em>m</em>1<em>m</em>2≡<em>c</em>≡<em>m</em>^e^ <em>m<strong>o</strong>d</em> <em>n</em></p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/搜狗截图20210822223836.png" alt></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = bytes_to_long(b&#x27;cat flag&#x27;)</span><br><span class="line">print(c)</span><br><span class="line">m1=103</span><br><span class="line">m2=69525558883514113</span><br><span class="line">m1=b64encode(long_to_bytes(m1))</span><br><span class="line">m2=b64encode(long_to_bytes(m2))</span><br><span class="line">print(m1,m2)</span><br><span class="line"></span><br><span class="line"># m1=&#x27;Zw==&#x27;</span><br><span class="line"># m2=&#x27;9wEgoA/3AQ==&#x27;</span><br><span class="line"></span><br><span class="line">#signed_m1=&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;</span><br><span class="line">#signed_m2=&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;</span><br><span class="line"></span><br><span class="line">m1=bytes_to_long(b64decode(&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;))</span><br><span class="line">#print(m1)</span><br><span class="line">m2=bytes_to_long(b64decode(&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;))</span><br><span class="line">#print(m2)</span><br><span class="line"></span><br><span class="line">n=0xbefe9a8bb0f6af7ea24a58eb2fc349749cb88cf1f27181f2125e387eed8eca9550c81b3f292dfdf0fabad04bbfa83195ea9c48b7d7d8eded8783b8a00b7310d4642cf34b5944acb259df89c3b2069168aa4a064c8cacfb521ddee9f261c579b1ab15762ebc8a34bd6e26e17289bcf8e8201b2bb54cfb9ec7a6b2e3cfcc0606a7</span><br><span class="line">e = 0x10001</span><br><span class="line">c=(m1*m2)%n</span><br><span class="line">c=long_to_bytes(c)</span><br><span class="line">c = b64encode(c)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
-<p>得到的c是</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b&#x27;9wEgoA/3AQ==&#x27; b&#x27;qoCIiqa35CtJ1A7Hjln1NEzzv7Noh0kNFiPDEY2TrRLkxooCoxbnJ3XpcR5IekFa8imQv9gfLO99++eZNRSZBN0UQaxYkvDrqX4XTipNfp0SGBBlkUkj8Y7COWs5IqtE76inZCSTJmMMv8OZU4AbEI6N3s25/EdNhhwu27dYU0o=&#x27;</span><br></pre></td></tr></table></figure>
-<p>在输入签名验证</p>
-<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/搜狗截图20210822172149.png" alt="搜狗截图20210822172149"></p>
-]]></content>
-      <categories>
-        <category>CTF</category>
       </categories>
       <tags>
         <tag>密码学</tag>
@@ -624,6 +572,58 @@
 ]]></content>
       <categories>
         <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSTF(Hacker&#39;s Playground)</title>
+    <url>/2021/08/22/SSTF-Hacker-s-Playground/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一次打CTF，crypto的Tutorial部分涉及两题，RSA101和RC Four，结果是一题也没整出来。。好歹也是研究了一下午的真题，决定在比赛结束后看看大佬写的write up</p>
+<p><a href="https://playground.sstf.site/">链接传送门</a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="RSA101"><a href="#RSA101" class="headerlink" title="RSA101"></a>RSA101</h2><p>题目如下</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/1.png" alt="题目1-1"></p>
+<p>题目的代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from base64 import b64encode, b64decode</span><br><span class="line">from Crypto.Util.number import getStrongPrime, bytes_to_long, long_to_bytes</span><br><span class="line">from os import system</span><br><span class="line"></span><br><span class="line">p = getStrongPrime(512)</span><br><span class="line">q = getStrongPrime(512)</span><br><span class="line">n = p * q</span><br><span class="line">e = 65537</span><br><span class="line">d = pow(e, -1, (p - 1) * (q - 1))</span><br><span class="line"></span><br><span class="line">print(&quot;[RSA parameters]&quot;)</span><br><span class="line">print(&quot;n =&quot;, hex(n))</span><br><span class="line">print(&quot;e =&quot;, hex(e))</span><br><span class="line"></span><br><span class="line">def sign(msg):</span><br><span class="line">	m = bytes_to_long(msg)</span><br><span class="line">	s = pow(m, d, n)</span><br><span class="line">	return long_to_bytes(s)</span><br><span class="line"></span><br><span class="line">def verify(s):</span><br><span class="line">	s = bytes_to_long(s)</span><br><span class="line">	v = pow(s, e, n)</span><br><span class="line">	return long_to_bytes(v)</span><br><span class="line"></span><br><span class="line">def welcome():</span><br><span class="line">	print(&quot;\nWelcome to command signer/executor.&quot;)</span><br><span class="line">	print(&quot;Menu : 1. Verify and run a command&quot;)</span><br><span class="line">	print(&quot;       2. Sign a command&quot;)</span><br><span class="line">	print(&quot;       3. Exit&quot;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	welcome()</span><br><span class="line">	sel = input(&quot; &gt; &quot;).strip()</span><br><span class="line">	if sel == &quot;1&quot;:</span><br><span class="line">		sgn = input(&quot;Signed command: &quot;).strip()</span><br><span class="line">		sgn = b64decode(sgn)</span><br><span class="line">		cmd = verify(sgn)</span><br><span class="line"></span><br><span class="line">		commands = [&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;]</span><br><span class="line">		if cmd.decode() in commands:</span><br><span class="line">			system(cmd)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Possible commands: &quot;, commands)</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;2&quot;:</span><br><span class="line">		cmd = input(&quot;Base64 encoded command to sign: &quot;)</span><br><span class="line">		cmd = b64decode(cmd)</span><br><span class="line">		if cmd == &quot;cat flag&quot;:</span><br><span class="line">			print(&quot;It&#x27;s forbidden.&quot;)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;Signed command:&quot;, b64encode(sign(cmd)).decode())</span><br><span class="line"></span><br><span class="line">	elif sel == &quot;3&quot;:</span><br><span class="line">		print(&quot;bye.&quot;)</span><br><span class="line">		exit()</span><br><span class="line"></span><br><span class="line">	else:</span><br><span class="line">		print(&quot;Invalid selection.&quot;)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>我对代码的理解是：</p>
+<p>1、引用了<code>base64</code>，<code>crypto.util.number</code>,<code>os</code>这三个库</p>
+<p>2、随机生成两个512比特的大素数p和q，因此n的值随着每次运行而变化</p>
+<p>3、定义了函数名为sign的函数，msg为参数，在函数体中m是把参数msg从bytes（字节串，以二进制存储）转为long整型，s=m^d^ mod n，返回的是s的bytes型，而v=s^e^ mod n，返回的也是v的bytes型。</p>
+<p>4、如果在交互式窗口输入1，要输入已被签名过的命令（Signed command），对这个命令进行<code>b64decode</code>解密，在运用<code>&quot;ls -l&quot;, &quot;pwd&quot;, &quot;id&quot;, &quot;cat flag&quot;</code>这些命令，可以将字符串转化成命令在服务器上运行；</p>
+<p>如果在交互式窗口输入2，用Base64对命令进行签名sign加密，在对命令cmd用base64解密，如果解密后的<code>cmd==cat flag</code>，则输出<code>It&#39;s forbidden</code>.，否则输出<code>Signed command:</code>；</p>
+<p>如果在交互式窗口输入3，输出“bye”后退出运行；</p>
+<p>如果在交互式窗口输入不为1，2,3，就输出“Invalid selection.”</p>
+<hr>
+<p>在学习大佬的write up后对代码理解的更正：</p>
+<p>如果在交互式窗口输入1，会对输入的指令先base64解密，然后再RSA加密，如果两次加密后的内容<code>cmd.decode() in commands</code>，那么就会执行<code>commands</code>里面的操作；</p>
+<p>输入2，就是对第一部分的逆向操作，但是不能输入<code>cat flag</code></p>
+<p>别忘了题目还给了服务器The server is running at: <code>nc rsa101.sstf.site 1104</code>.</p>
+<p>关于如何与服务器交互，在kali中代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc rsa101.sstf.site 1104</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/2.png" alt></p>
+<p>以输入<code>ls -l</code>为例，得到用base64加密后的字符串<code>bHMgLWw=</code></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/3.png" alt></p>
+<p>输入2，生成签名过的命令</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/4.png" alt></p>
+<p>输入1，运行签名后的命令</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/5.png" alt></p>
+<p>结果是没有得到<code>cat flag</code></p>
+<p>假如直接输入<code>cat flag</code>，也没法执行</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/6.png" alt></p>
+<p>从给出的def出发</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/7.png" alt></p>
+<p>转化一下平常用的表达，把c分解成m1m2两个因数，<em>m</em>1<em>m</em>2≡<em>c</em>≡<em>m</em>^e^ <em>m<strong>o</strong>d</em> <em>n</em></p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/搜狗截图20210822223836.png" alt></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = bytes_to_long(b&#x27;cat flag&#x27;)</span><br><span class="line">print(c)</span><br><span class="line">m1=103</span><br><span class="line">m2=69525558883514113</span><br><span class="line">m1=b64encode(long_to_bytes(m1))</span><br><span class="line">m2=b64encode(long_to_bytes(m2))</span><br><span class="line">print(m1,m2)</span><br><span class="line"></span><br><span class="line"># m1=&#x27;Zw==&#x27;</span><br><span class="line"># m2=&#x27;9wEgoA/3AQ==&#x27;</span><br><span class="line"></span><br><span class="line">#signed_m1=&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;</span><br><span class="line">#signed_m2=&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;</span><br><span class="line"></span><br><span class="line">m1=bytes_to_long(b64decode(&#x27;MCDC7xSQfPRr134uRAa/ZjuUSATaI3I4FHjJNMEI7P+xLh4fqn02FpKm84OL7Su8rdz1Paj98a9KKLZZyfn+vhWPLgcOval7zBE/HfzUDMpbmp+lYojP/2+9T2mlhn8xo2PuzAVtofLTxplaC4a5d2e+UK7pXDza02QXBcmoGGM=&#x27;))</span><br><span class="line">#print(m1)</span><br><span class="line">m2=bytes_to_long(b64decode(&#x27;QqgBF18BT48Wi6unKtwVMh1yNaYCMnI3j1EJCLSfTsM9WsX89KGhJRKGmK8sudoSKjFMz1mDPLrl9xgbTn9ROUyU4w5J3ffVcW/+UNYzTFlpfwAT5obMQb1ALJdtr8uuO/XlPABRFExIQqAy1/Efx90avDrMxoJFeb082DMonlQ=&#x27;))</span><br><span class="line">#print(m2)</span><br><span class="line"></span><br><span class="line">n=0xbefe9a8bb0f6af7ea24a58eb2fc349749cb88cf1f27181f2125e387eed8eca9550c81b3f292dfdf0fabad04bbfa83195ea9c48b7d7d8eded8783b8a00b7310d4642cf34b5944acb259df89c3b2069168aa4a064c8cacfb521ddee9f261c579b1ab15762ebc8a34bd6e26e17289bcf8e8201b2bb54cfb9ec7a6b2e3cfcc0606a7</span><br><span class="line">e = 0x10001</span><br><span class="line">c=(m1*m2)%n</span><br><span class="line">c=long_to_bytes(c)</span><br><span class="line">c = b64encode(c)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+<p>得到的c是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b&#x27;9wEgoA/3AQ==&#x27; b&#x27;qoCIiqa35CtJ1A7Hjln1NEzzv7Noh0kNFiPDEY2TrRLkxooCoxbnJ3XpcR5IekFa8imQv9gfLO99++eZNRSZBN0UQaxYkvDrqX4XTipNfp0SGBBlkUkj8Y7COWs5IqtE76inZCSTJmMMv8OZU4AbEI6N3s25/EdNhhwu27dYU0o=&#x27;</span><br></pre></td></tr></table></figure>
+<p>在输入签名验证</p>
+<p><img src="/2021/08/22/SSTF-Hacker-s-Playground/搜狗截图20210822172149.png" alt="搜狗截图20210822172149"></p>
+]]></content>
+      <categories>
+        <category>CTF</category>
       </categories>
       <tags>
         <tag>密码学</tag>
@@ -930,68 +930,6 @@
       </tags>
   </entry>
   <entry>
-    <title>哈希函数算法实现原理和应用</title>
-    <url>/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>hash，一般翻译做“散列”，也有直接音译为”哈希”</p>
-<p>就是把任意长度的输入通过散列算法，变换成固定长度的输出，该输出就是散列值。</p>
-<p>MD（Message Digest )，为计算机安全领域广泛使用的一种散列函数，用以提供消息的<strong>完整性保护</strong>。目前广泛使用的是第五版，因此也被称为MD5。</p>
-<p>MD5和SHA1可以说是目前应用最广泛的Hash算法，而它们都是以MD4为基础设计的。</p>
-<p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
-</blockquote>
-<p>举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现（两个MD5值不相同）。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。</p>
-<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><p>在线网站<a href="https://www.sojson.com/encrypt_md5.html">MD5在线加密/解密/破解—MD5在线 (sojson.com)</a></p>
-<p>明文是2021加密后</p>
-<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/1.png" alt="加密"></p>
-<p>选取任意一组密文 进行解密</p>
-<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/2.png" alt></p>
-<p>但是稍微复杂一点的字母就解不出来了唉</p>
-<h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1><h2 id="MD5算法的原理"><a href="#MD5算法的原理" class="headerlink" title="MD5算法的原理"></a>MD5算法的原理</h2><p>对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</p>
-<p>首先是对信息进行填充，<strong>使其位长对512求余的结果=448</strong></p>
-<p>因此，原来信息的位长应该为<code>N*512+448</code></p>
-<p>填充的方法：在原信息后补一个1和许多0，直到满足条件</p>
-<p>填充完毕后，在这个结果后面加一个以64位二进制表示的填充前的信息长度</p>
-<p>因此，现在的消息位长=N<em>512+448+64=(N+1)</em>512，这样的长度刚好是512的整数倍</p>
-<p>流程图如下：</p>
-<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/搜狗截图20210801081452.png" alt></p>
-<p>表示第i个分组，每次的运算都由前一轮的128位结果值和第i块512bit值进行运算。初始的128位值为初始链接变量，这些参数用于第一轮的运算，他们分别为：<code>A=0x01234567</code>，<code>B=0x89ABCDEF</code>，<code>C=0xFEDCBA98</code>，<code>D=0x76543210</code>。</p>
-<hr>
-<p>每一分组的算法流程如下：</p>
-<p>第一分组需要将上面四个链接变量复制到另外四个变量中：</p>
-<p>A到a，B到b，C到c，D到d。</p>
-<p>从第二分组开始的变量为上一分组的运算结果。</p>
-<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行<strong>16次</strong>操作。每次操作对a、b、c和d中的<strong>其中三个作一次非线性函数</strong>运算，然后将所得结果<strong>加上第四个</strong>变量，文本的一个子分组和一个常数。再将所得结果<strong>向左环移</strong>一个不定的数，并<strong>加上</strong>a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
-<p>以一下是每次操作中用到的四个非线性函数（每轮一个）。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">F(X,Y,Z) =(X&amp;Y)|((~X)&amp;Z)</span><br><span class="line">G(X,Y,Z) =(X&amp;Z)|(Y&amp;(~Z))</span><br><span class="line">H(X,Y,Z) =X^Y^Z</span><br><span class="line">I(X,Y,Z)=Y^(X|(~Z))</span><br><span class="line">#（&amp;；是与，|是或，~是非，^是异或）</span><br></pre></td></tr></table></figure>
-<p>这四个函数的说明：如果X、Y和Z的对应位是独立和均匀的，那么结果的每一位也应是独立和均匀的。</p>
-<p>F是一个逐位运算的函数。即，如果X，那么Y，否则Z。函数H是逐位奇偶操作符。</p>
-<p>假设Mj表示消息的第j个子分组（从0到15），常数ti是4294967296*abs(sin(i)）的整数部分，i取值从1到64，单位是弧度。（4294967296等于2的32次方）</p>
-<p>FF(a,b,c,d,Mj,s,ti）表示 a = b + ((a + F(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>GG(a,b,c,d,Mj,s,ti）表示 a = b + ((a + G(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>HH(a,b,c,d,Mj,s,ti）表示 a = b + ((a + H(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>Ⅱ（a,b,c,d,Mj,s,ti）表示 a = b + ((a + I(b,c,d) + Mj + ti) &lt;&lt; s)</p>
-<p>这四轮（64步）是：</p>
-<p>第一轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FF(a,b,c,d,M0,7,0xd76aa478）</span><br><span class="line">FF(d,a,b,c,M1,12,0xe8c7b756）</span><br><span class="line">FF(c,d,a,b,M2,17,0x242070db)</span><br><span class="line">FF(b,c,d,a,M3,22,0xc1bdceee)</span><br><span class="line">FF(a,b,c,d,M4,7,0xf57c0faf)</span><br><span class="line">FF(d,a,b,c,M5,12,0x4787c62a)</span><br><span class="line">FF(c,d,a,b,M6,17,0xa8304613）</span><br><span class="line">FF(b,c,d,a,M7,22,0xfd469501）</span><br><span class="line">FF(a,b,c,d,M8,7,0x698098d8）</span><br><span class="line">FF(d,a,b,c,M9,12,0x8b44f7af)</span><br><span class="line">FF(c,d,a,b,M10,17,0xffff5bb1）</span><br><span class="line">FF(b,c,d,a,M11,22,0x895cd7be)</span><br><span class="line">FF(a,b,c,d,M12,7,0x6b901122）</span><br><span class="line">FF(d,a,b,c,M13,12,0xfd987193）</span><br><span class="line">FF(c,d,a,b,M14,17,0xa679438e)</span><br><span class="line">FF(b,c,d,a,M15,22,0x49b40821）</span><br></pre></td></tr></table></figure>
-<p>第二轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GG(a,b,c,d,M1,5,0xf61e2562）</span><br><span class="line">GG(d,a,b,c,M6,9,0xc040b340）</span><br><span class="line">GG(c,d,a,b,M11,14,0x265e5a51）</span><br><span class="line">GG(b,c,d,a,M0,20,0xe9b6c7aa)</span><br><span class="line">GG(a,b,c,d,M5,5,0xd62f105d)</span><br><span class="line">GG(d,a,b,c,M10,9,0x02441453）</span><br><span class="line">GG(c,d,a,b,M15,14,0xd8a1e681）</span><br><span class="line">GG(b,c,d,a,M4,20,0xe7d3fbc8）</span><br><span class="line">GG(a,b,c,d,M9,5,0x21e1cde6）</span><br><span class="line">GG(d,a,b,c,M14,9,0xc33707d6）</span><br><span class="line">GG(c,d,a,b,M3,14,0xf4d50d87）</span><br><span class="line">GG(b,c,d,a,M8,20,0x455a14ed)</span><br><span class="line">GG(a,b,c,d,M13,5,0xa9e3e905）</span><br><span class="line">GG(d,a,b,c,M2,9,0xfcefa3f8）</span><br><span class="line">GG(c,d,a,b,M7,14,0x676f02d9）</span><br><span class="line">GG(b,c,d,a,M12,20,0x8d2a4c8a)</span><br></pre></td></tr></table></figure>
-<p>第三轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HH(a,b,c,d,M5,4,0xfffa3942）</span><br><span class="line">HH(d,a,b,c,M8,11,0x8771f681）</span><br><span class="line">HH(c,d,a,b,M11,16,0x6d9d6122）</span><br><span class="line">HH(b,c,d,a,M14,23,0xfde5380c)</span><br><span class="line">HH(a,b,c,d,M1,4,0xa4beea44）</span><br><span class="line">HH(d,a,b,c,M4,11,0x4bdecfa9）</span><br><span class="line">HH(c,d,a,b,M7,16,0xf6bb4b60）</span><br><span class="line">HH(b,c,d,a,M10,23,0xbebfbc70）</span><br><span class="line">HH(a,b,c,d,M13,4,0x289b7ec6）</span><br><span class="line">HH(d,a,b,c,M0,11,0xeaa127fa)</span><br><span class="line">HH(c,d,a,b,M3,16,0xd4ef3085）</span><br><span class="line">HH(b,c,d,a,M6,23,0x04881d05）</span><br><span class="line">HH(a,b,c,d,M9,4,0xd9d4d039）</span><br><span class="line">HH(d,a,b,c,M12,11,0xe6db99e5）</span><br><span class="line">HH(c,d,a,b,M15,16,0x1fa27cf8）</span><br><span class="line">HH(b,c,d,a,M2,23,0xc4ac5665）</span><br></pre></td></tr></table></figure>
-<p>第四轮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ⅱ（a,b,c,d,M0,6,0xf4292244）</span><br><span class="line">Ⅱ（d,a,b,c,M7,10,0x432aff97）</span><br><span class="line">Ⅱ（c,d,a,b,M14,15,0xab9423a7）</span><br><span class="line">Ⅱ（b,c,d,a,M5,21,0xfc93a039）</span><br><span class="line">Ⅱ（a,b,c,d,M12,6,0x655b59c3）</span><br><span class="line">Ⅱ（d,a,b,c,M3,10,0x8f0ccc92）</span><br><span class="line">Ⅱ（c,d,a,b,M10,15,0xffeff47d)</span><br><span class="line">Ⅱ（b,c,d,a,M1,21,0x85845dd1）</span><br><span class="line">Ⅱ（a,b,c,d,M8,6,0x6fa87e4f)</span><br><span class="line">Ⅱ（d,a,b,c,M15,10,0xfe2ce6e0)</span><br><span class="line">Ⅱ（c,d,a,b,M6,15,0xa3014314）</span><br><span class="line">Ⅱ（b,c,d,a,M13,21,0x4e0811a1）</span><br><span class="line">Ⅱ（a,b,c,d,M4,6,0xf7537e82）</span><br><span class="line">Ⅱ（d,a,b,c,M11,10,0xbd3af235）</span><br><span class="line">Ⅱ（c,d,a,b,M2,15,0x2ad7d2bb)</span><br><span class="line">Ⅱ（b,c,d,a,M9,21,0xeb86d391）</span><br></pre></td></tr></table></figure>
-<p>所有这些完成之后，将A、B、C、D分别加上a、b、c、d。然后用下一分组数据继续运行算法，最后的输出是A、B、C和D的级联。</p>
-<p>当你按照我上面所说的方法实现MD5算法以后，你可以用以下几个信息对你做出来的程序作一个简单的测试，看看程序有没有错误。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MD5 (&quot;&quot;) = d41d8cd98f00b204e9800998ecf8427e</span><br><span class="line">MD5 (&quot;a&quot;) = 0cc175b9c0f1b6a831c399e269772661</span><br><span class="line">MD5 (&quot;abc&quot;) = 900150983cd24fb0d6963f7d28e17f72</span><br><span class="line">MD5 (&quot;message digest&quot;) =f96b697d7cb7938d525a2f31aaf161d0</span><br><span class="line">MD5 (&quot;abcdefghijklmnopqrstuvwxyz&quot;) </span><br><span class="line">= c3fcd3d76192e4007dfb496cca67e13b</span><br><span class="line">MD5 (&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;)</span><br><span class="line">=f29939a25efabaef3b87e2cbfe641315</span><br></pre></td></tr></table></figure>
-<hr>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>消息认证与数字签名</title>
     <url>/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数字签名验证实验"><a href="#数字签名验证实验" class="headerlink" title="数字签名验证实验"></a>数字签名验证实验</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>数字签名，又称公钥数字签名、电子签章，是一种类似写在纸上的普通的物理签名，但是使用了公钥加密领域的技术实现，用于鉴别数字信息的方法。一套数字签名通常定义两种互补的运算，一个用于签名，一个用于验证。简单地说，所谓数字签名就是附加在原来数据上一些数据或者对原来数据做一些密码变换。这种数据或变换允许数据单元的接收者用以确认数据单元的来源和数据单元的完整性并保护数据，防止被人(例如接收者)进行伪造。</p>
@@ -1069,6 +1007,68 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CheckSigned.ps1</span><br></pre></td></tr></table></figure>
 <p>签名验证结果返回True，如图所示，表明签名验证结果是正确的。</p>
 <p><img src="/2021/08/02/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/Snipaste_2021-08-02_22-58-44.png" alt></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈希函数算法实现原理和应用</title>
+    <url>/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>hash，一般翻译做“散列”，也有直接音译为”哈希”</p>
+<p>就是把任意长度的输入通过散列算法，变换成固定长度的输出，该输出就是散列值。</p>
+<p>MD（Message Digest )，为计算机安全领域广泛使用的一种散列函数，用以提供消息的<strong>完整性保护</strong>。目前广泛使用的是第五版，因此也被称为MD5。</p>
+<p>MD5和SHA1可以说是目前应用最广泛的Hash算法，而它们都是以MD4为基础设计的。</p>
+<p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
+</blockquote>
+<p>举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现（两个MD5值不相同）。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。</p>
+<h1 id="MD5加解密"><a href="#MD5加解密" class="headerlink" title="MD5加解密"></a>MD5加解密</h1><p>在线网站<a href="https://www.sojson.com/encrypt_md5.html">MD5在线加密/解密/破解—MD5在线 (sojson.com)</a></p>
+<p>明文是2021加密后</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/1.png" alt="加密"></p>
+<p>选取任意一组密文 进行解密</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/2.png" alt></p>
+<p>但是稍微复杂一点的字母就解不出来了唉</p>
+<h1 id="Hash算法MD5分析"><a href="#Hash算法MD5分析" class="headerlink" title="Hash算法MD5分析"></a>Hash算法MD5分析</h1><h2 id="MD5算法的原理"><a href="#MD5算法的原理" class="headerlink" title="MD5算法的原理"></a>MD5算法的原理</h2><p>对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</p>
+<p>首先是对信息进行填充，<strong>使其位长对512求余的结果=448</strong></p>
+<p>因此，原来信息的位长应该为<code>N*512+448</code></p>
+<p>填充的方法：在原信息后补一个1和许多0，直到满足条件</p>
+<p>填充完毕后，在这个结果后面加一个以64位二进制表示的填充前的信息长度</p>
+<p>因此，现在的消息位长=N<em>512+448+64=(N+1)</em>512，这样的长度刚好是512的整数倍</p>
+<p>流程图如下：</p>
+<p><img src="/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/搜狗截图20210801081452.png" alt></p>
+<p>表示第i个分组，每次的运算都由前一轮的128位结果值和第i块512bit值进行运算。初始的128位值为初始链接变量，这些参数用于第一轮的运算，他们分别为：<code>A=0x01234567</code>，<code>B=0x89ABCDEF</code>，<code>C=0xFEDCBA98</code>，<code>D=0x76543210</code>。</p>
+<hr>
+<p>每一分组的算法流程如下：</p>
+<p>第一分组需要将上面四个链接变量复制到另外四个变量中：</p>
+<p>A到a，B到b，C到c，D到d。</p>
+<p>从第二分组开始的变量为上一分组的运算结果。</p>
+<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行<strong>16次</strong>操作。每次操作对a、b、c和d中的<strong>其中三个作一次非线性函数</strong>运算，然后将所得结果<strong>加上第四个</strong>变量，文本的一个子分组和一个常数。再将所得结果<strong>向左环移</strong>一个不定的数，并<strong>加上</strong>a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
+<p>以一下是每次操作中用到的四个非线性函数（每轮一个）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">F(X,Y,Z) =(X&amp;Y)|((~X)&amp;Z)</span><br><span class="line">G(X,Y,Z) =(X&amp;Z)|(Y&amp;(~Z))</span><br><span class="line">H(X,Y,Z) =X^Y^Z</span><br><span class="line">I(X,Y,Z)=Y^(X|(~Z))</span><br><span class="line">#（&amp;；是与，|是或，~是非，^是异或）</span><br></pre></td></tr></table></figure>
+<p>这四个函数的说明：如果X、Y和Z的对应位是独立和均匀的，那么结果的每一位也应是独立和均匀的。</p>
+<p>F是一个逐位运算的函数。即，如果X，那么Y，否则Z。函数H是逐位奇偶操作符。</p>
+<p>假设Mj表示消息的第j个子分组（从0到15），常数ti是4294967296*abs(sin(i)）的整数部分，i取值从1到64，单位是弧度。（4294967296等于2的32次方）</p>
+<p>FF(a,b,c,d,Mj,s,ti）表示 a = b + ((a + F(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>GG(a,b,c,d,Mj,s,ti）表示 a = b + ((a + G(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>HH(a,b,c,d,Mj,s,ti）表示 a = b + ((a + H(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>Ⅱ（a,b,c,d,Mj,s,ti）表示 a = b + ((a + I(b,c,d) + Mj + ti) &lt;&lt; s)</p>
+<p>这四轮（64步）是：</p>
+<p>第一轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FF(a,b,c,d,M0,7,0xd76aa478）</span><br><span class="line">FF(d,a,b,c,M1,12,0xe8c7b756）</span><br><span class="line">FF(c,d,a,b,M2,17,0x242070db)</span><br><span class="line">FF(b,c,d,a,M3,22,0xc1bdceee)</span><br><span class="line">FF(a,b,c,d,M4,7,0xf57c0faf)</span><br><span class="line">FF(d,a,b,c,M5,12,0x4787c62a)</span><br><span class="line">FF(c,d,a,b,M6,17,0xa8304613）</span><br><span class="line">FF(b,c,d,a,M7,22,0xfd469501）</span><br><span class="line">FF(a,b,c,d,M8,7,0x698098d8）</span><br><span class="line">FF(d,a,b,c,M9,12,0x8b44f7af)</span><br><span class="line">FF(c,d,a,b,M10,17,0xffff5bb1）</span><br><span class="line">FF(b,c,d,a,M11,22,0x895cd7be)</span><br><span class="line">FF(a,b,c,d,M12,7,0x6b901122）</span><br><span class="line">FF(d,a,b,c,M13,12,0xfd987193）</span><br><span class="line">FF(c,d,a,b,M14,17,0xa679438e)</span><br><span class="line">FF(b,c,d,a,M15,22,0x49b40821）</span><br></pre></td></tr></table></figure>
+<p>第二轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GG(a,b,c,d,M1,5,0xf61e2562）</span><br><span class="line">GG(d,a,b,c,M6,9,0xc040b340）</span><br><span class="line">GG(c,d,a,b,M11,14,0x265e5a51）</span><br><span class="line">GG(b,c,d,a,M0,20,0xe9b6c7aa)</span><br><span class="line">GG(a,b,c,d,M5,5,0xd62f105d)</span><br><span class="line">GG(d,a,b,c,M10,9,0x02441453）</span><br><span class="line">GG(c,d,a,b,M15,14,0xd8a1e681）</span><br><span class="line">GG(b,c,d,a,M4,20,0xe7d3fbc8）</span><br><span class="line">GG(a,b,c,d,M9,5,0x21e1cde6）</span><br><span class="line">GG(d,a,b,c,M14,9,0xc33707d6）</span><br><span class="line">GG(c,d,a,b,M3,14,0xf4d50d87）</span><br><span class="line">GG(b,c,d,a,M8,20,0x455a14ed)</span><br><span class="line">GG(a,b,c,d,M13,5,0xa9e3e905）</span><br><span class="line">GG(d,a,b,c,M2,9,0xfcefa3f8）</span><br><span class="line">GG(c,d,a,b,M7,14,0x676f02d9）</span><br><span class="line">GG(b,c,d,a,M12,20,0x8d2a4c8a)</span><br></pre></td></tr></table></figure>
+<p>第三轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HH(a,b,c,d,M5,4,0xfffa3942）</span><br><span class="line">HH(d,a,b,c,M8,11,0x8771f681）</span><br><span class="line">HH(c,d,a,b,M11,16,0x6d9d6122）</span><br><span class="line">HH(b,c,d,a,M14,23,0xfde5380c)</span><br><span class="line">HH(a,b,c,d,M1,4,0xa4beea44）</span><br><span class="line">HH(d,a,b,c,M4,11,0x4bdecfa9）</span><br><span class="line">HH(c,d,a,b,M7,16,0xf6bb4b60）</span><br><span class="line">HH(b,c,d,a,M10,23,0xbebfbc70）</span><br><span class="line">HH(a,b,c,d,M13,4,0x289b7ec6）</span><br><span class="line">HH(d,a,b,c,M0,11,0xeaa127fa)</span><br><span class="line">HH(c,d,a,b,M3,16,0xd4ef3085）</span><br><span class="line">HH(b,c,d,a,M6,23,0x04881d05）</span><br><span class="line">HH(a,b,c,d,M9,4,0xd9d4d039）</span><br><span class="line">HH(d,a,b,c,M12,11,0xe6db99e5）</span><br><span class="line">HH(c,d,a,b,M15,16,0x1fa27cf8）</span><br><span class="line">HH(b,c,d,a,M2,23,0xc4ac5665）</span><br></pre></td></tr></table></figure>
+<p>第四轮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ⅱ（a,b,c,d,M0,6,0xf4292244）</span><br><span class="line">Ⅱ（d,a,b,c,M7,10,0x432aff97）</span><br><span class="line">Ⅱ（c,d,a,b,M14,15,0xab9423a7）</span><br><span class="line">Ⅱ（b,c,d,a,M5,21,0xfc93a039）</span><br><span class="line">Ⅱ（a,b,c,d,M12,6,0x655b59c3）</span><br><span class="line">Ⅱ（d,a,b,c,M3,10,0x8f0ccc92）</span><br><span class="line">Ⅱ（c,d,a,b,M10,15,0xffeff47d)</span><br><span class="line">Ⅱ（b,c,d,a,M1,21,0x85845dd1）</span><br><span class="line">Ⅱ（a,b,c,d,M8,6,0x6fa87e4f)</span><br><span class="line">Ⅱ（d,a,b,c,M15,10,0xfe2ce6e0)</span><br><span class="line">Ⅱ（c,d,a,b,M6,15,0xa3014314）</span><br><span class="line">Ⅱ（b,c,d,a,M13,21,0x4e0811a1）</span><br><span class="line">Ⅱ（a,b,c,d,M4,6,0xf7537e82）</span><br><span class="line">Ⅱ（d,a,b,c,M11,10,0xbd3af235）</span><br><span class="line">Ⅱ（c,d,a,b,M2,15,0x2ad7d2bb)</span><br><span class="line">Ⅱ（b,c,d,a,M9,21,0xeb86d391）</span><br></pre></td></tr></table></figure>
+<p>所有这些完成之后，将A、B、C、D分别加上a、b、c、d。然后用下一分组数据继续运行算法，最后的输出是A、B、C和D的级联。</p>
+<p>当你按照我上面所说的方法实现MD5算法以后，你可以用以下几个信息对你做出来的程序作一个简单的测试，看看程序有没有错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MD5 (&quot;&quot;) = d41d8cd98f00b204e9800998ecf8427e</span><br><span class="line">MD5 (&quot;a&quot;) = 0cc175b9c0f1b6a831c399e269772661</span><br><span class="line">MD5 (&quot;abc&quot;) = 900150983cd24fb0d6963f7d28e17f72</span><br><span class="line">MD5 (&quot;message digest&quot;) =f96b697d7cb7938d525a2f31aaf161d0</span><br><span class="line">MD5 (&quot;abcdefghijklmnopqrstuvwxyz&quot;) </span><br><span class="line">= c3fcd3d76192e4007dfb496cca67e13b</span><br><span class="line">MD5 (&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;)</span><br><span class="line">=f29939a25efabaef3b87e2cbfe641315</span><br></pre></td></tr></table></figure>
+<hr>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -1405,50 +1405,6 @@
       </tags>
   </entry>
   <entry>
-    <title>运算方法和运算部件</title>
-    <url>/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要内容</p>
-<p>第3章(运算方法和运算部件〉主要介绍各类<strong>定点数和浮点数的运算方法</strong>和相应的<strong>运算部件</strong> ，以及<strong>核心运算部件ALU</strong>的功能和设计实现等。</p>
-<hr>
-<p>头一回计组课上就能听懂，之前都是课后花时间补救的&gt;_&lt;</p>
-<p>因此 今天是复习而不是预习！必须趁热打铁写个笔记</p>
-<h1 id="核心运算部件ALU"><a href="#核心运算部件ALU" class="headerlink" title="核心运算部件ALU"></a>核心运算部件ALU</h1><p>基本运算部件：加法器、ALU、移位器，ALU的核心部件是加法器</p>
-<p>要看懂书上的图解前，得先知道一些集成电路的逻辑符号和数学运算符（破案了！上一节上课听不懂的原因</p>
-<p>常用集成电路逻辑符号对照表</p>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/1.png" alt></p>
-<p>基本数学运算</p>
-<p>异或（xor），数学符号为“⊕”，相同为假，不同为真。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊕y=1110</span><br></pre></td></tr></table></figure>
-<p>同或，数学符号为⊙，相同为真，不同为假</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊙y=0001</span><br></pre></td></tr></table></figure>
-<p>与非，与+非，都为1时输出0</p>
-<p>或非，或+非，都为1时输出1</p>
-<h2 id="串行进位加法器"><a href="#串行进位加法器" class="headerlink" title="串行进位加法器"></a>串行进位加法器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Fi：全加和  Ci：全加进位</span><br><span class="line">Fi=Xi⊕Yi⊕Ci-1 </span><br><span class="line">Ci= XiCi-1 + YiCi-1 + XiYi</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/2.png" alt="2"></p>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/3.png" alt="71页"></p>
-<p>从3.2可以看出，进位输入到进位输出要经过2级门延迟，所以n位串行加法器从C0到Cn的延迟时间为2n级门延迟。</p>
-<p>串行加法器的缺点：运行速度慢，因为进位按串行方式传递，高位进位依赖低位进位。</p>
-<h2 id="并行进位加法器"><a href="#并行进位加法器" class="headerlink" title="并行进位加法器"></a>并行进位加法器</h2><p>并行进位加法器的提出是因为串行进位加法器采用串行逐级传递进位，电路延迟与位数成正比关系。CLA加法器=进位生成部件+进位传递部件+CLA部件+求和部件</p>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/4.png" alt></p>
-<p>由上式可知，各进位之间无需等待，可以相互独立同时产生。</p>
-<h2 id="带标志加法器"><a href="#带标志加法器" class="headerlink" title="带标志加法器"></a>带标志加法器</h2><p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/QQ图片20210919151110.jpg" alt="QQ图片2021091915111"></p>
-<ul>
-<li>计算机中所有算术运算都基于加法器实现！</li>
-<li>加法器不知道所运算的是带符号数还是无符号数。</li>
-<li>加法器不判定对错，总是取低n位作为结果，并生成标志信息。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OF溢出标志：是针对有符号数运算的情况</span><br><span class="line">CF进位/借位：是无符号数运算处理的情况（比较大小判别）</span><br><span class="line">2-（-4）---&gt; 0010-1100=0010+0100=0110   CF=01=1 借位</span><br><span class="line">(-4)-2 ---&gt;  1100-0010=1100+1110=1 1010 CF=11=0 借位</span><br><span class="line">（-4在计算机中以补码1100表示，当成无符号数是12）</span><br><span class="line">5-4    ---&gt; 0101-0100=0101+1100=1 0001  CF=11=0 借位</span><br><span class="line">4-5   ---&gt; 0101-0101=0100+1011=1111     CF=01=1 借位</span><br><span class="line">5+4   ---&gt; 0101+0100=1001               CF=00=0 进位</span><br><span class="line">9+8   ---&gt;1001+1000=1 0001              CF=10=1 进位</span><br><span class="line">浮点数节码采用移码表示，目的为了更好比较大小。</span><br></pre></td></tr></table></figure>
-<h1 id="定点数运算及其运算部件"><a href="#定点数运算及其运算部件" class="headerlink" title="定点数运算及其运算部件"></a>定点数运算及其运算部件</h1><h2 id="补码加减运算"><a href="#补码加减运算" class="headerlink" title="补码加减运算"></a>补码加减运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">补码的定义    假定补码有n位，则：</span><br><span class="line">[X]补=2n +X  （-2n-1≤X＜2n-1 ,mod 2n）</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据补码定义，有如下公式：</span><br><span class="line">[x+y]补 =2n+x+y= 2n+x+2n+y= [x]补+[y]补 (mod 2n )</span><br><span class="line">[x-y]补=2n+x-y= 2n+x+2n-y= [x]补+[-y]补 (mod 2n )</span><br></pre></td></tr></table></figure>
-<h2 id="原码加减运算"><a href="#原码加减运算" class="headerlink" title="原码加减运算"></a>原码加减运算</h2><h1 id="浮点数运算及其运算部件"><a href="#浮点数运算及其运算部件" class="headerlink" title="浮点数运算及其运算部件"></a>浮点数运算及其运算部件</h1>]]></content>
-      <categories>
-        <category>课堂笔记</category>
-      </categories>
-      <tags>
-        <tag>计组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>编码入门总结</title>
     <url>/2021/07/25/%E7%BC%96%E7%A0%81%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>编码—隐匿在计算机背后的语言。在计算机眼里读到的所有文字都是由0和1组成的字符串，为了能让汉字正常显示在屏幕上，我们需要做以下两件事情：</p>
@@ -1554,6 +1510,50 @@
       </categories>
       <tags>
         <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运算方法和运算部件</title>
+    <url>/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要内容</p>
+<p>第3章(运算方法和运算部件〉主要介绍各类<strong>定点数和浮点数的运算方法</strong>和相应的<strong>运算部件</strong> ，以及<strong>核心运算部件ALU</strong>的功能和设计实现等。</p>
+<hr>
+<p>头一回计组课上就能听懂，之前都是课后花时间补救的&gt;_&lt;</p>
+<p>因此 今天是复习而不是预习！必须趁热打铁写个笔记</p>
+<h1 id="核心运算部件ALU"><a href="#核心运算部件ALU" class="headerlink" title="核心运算部件ALU"></a>核心运算部件ALU</h1><p>基本运算部件：加法器、ALU、移位器，ALU的核心部件是加法器</p>
+<p>要看懂书上的图解前，得先知道一些集成电路的逻辑符号和数学运算符（破案了！上一节上课听不懂的原因</p>
+<p>常用集成电路逻辑符号对照表</p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/1.png" alt></p>
+<p>基本数学运算</p>
+<p>异或（xor），数学符号为“⊕”，相同为假，不同为真。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊕y=1110</span><br></pre></td></tr></table></figure>
+<p>同或，数学符号为⊙，相同为真，不同为假</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊙y=0001</span><br></pre></td></tr></table></figure>
+<p>与非，与+非，都为1时输出0</p>
+<p>或非，或+非，都为1时输出1</p>
+<h2 id="串行进位加法器"><a href="#串行进位加法器" class="headerlink" title="串行进位加法器"></a>串行进位加法器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Fi：全加和  Ci：全加进位</span><br><span class="line">Fi=Xi⊕Yi⊕Ci-1 </span><br><span class="line">Ci= XiCi-1 + YiCi-1 + XiYi</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/2.png" alt="2"></p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/3.png" alt="71页"></p>
+<p>从3.2可以看出，进位输入到进位输出要经过2级门延迟，所以n位串行加法器从C0到Cn的延迟时间为2n级门延迟。</p>
+<p>串行加法器的缺点：运行速度慢，因为进位按串行方式传递，高位进位依赖低位进位。</p>
+<h2 id="并行进位加法器"><a href="#并行进位加法器" class="headerlink" title="并行进位加法器"></a>并行进位加法器</h2><p>并行进位加法器的提出是因为串行进位加法器采用串行逐级传递进位，电路延迟与位数成正比关系。CLA加法器=进位生成部件+进位传递部件+CLA部件+求和部件</p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/4.png" alt></p>
+<p>由上式可知，各进位之间无需等待，可以相互独立同时产生。</p>
+<h2 id="带标志加法器"><a href="#带标志加法器" class="headerlink" title="带标志加法器"></a>带标志加法器</h2><p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/QQ图片20210919151110.jpg" alt="QQ图片2021091915111"></p>
+<ul>
+<li>计算机中所有算术运算都基于加法器实现！</li>
+<li>加法器不知道所运算的是带符号数还是无符号数。</li>
+<li>加法器不判定对错，总是取低n位作为结果，并生成标志信息。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OF溢出标志：是针对有符号数运算的情况</span><br><span class="line">CF进位/借位：是无符号数运算处理的情况（比较大小判别）</span><br><span class="line">2-（-4）---&gt; 0010-1100=0010+0100=0110   CF=01=1 借位</span><br><span class="line">(-4)-2 ---&gt;  1100-0010=1100+1110=1 1010 CF=11=0 借位</span><br><span class="line">（-4在计算机中以补码1100表示，当成无符号数是12）</span><br><span class="line">5-4    ---&gt; 0101-0100=0101+1100=1 0001  CF=11=0 借位</span><br><span class="line">4-5   ---&gt; 0101-0101=0100+1011=1111     CF=01=1 借位</span><br><span class="line">5+4   ---&gt; 0101+0100=1001               CF=00=0 进位</span><br><span class="line">9+8   ---&gt;1001+1000=1 0001              CF=10=1 进位</span><br><span class="line">浮点数节码采用移码表示，目的为了更好比较大小。</span><br></pre></td></tr></table></figure>
+<h1 id="定点数运算及其运算部件"><a href="#定点数运算及其运算部件" class="headerlink" title="定点数运算及其运算部件"></a>定点数运算及其运算部件</h1><h2 id="补码加减运算"><a href="#补码加减运算" class="headerlink" title="补码加减运算"></a>补码加减运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">补码的定义    假定补码有n位，则：</span><br><span class="line">[X]补=2n +X  （-2n-1≤X＜2n-1 ,mod 2n）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据补码定义，有如下公式：</span><br><span class="line">[x+y]补 =2n+x+y= 2n+x+2n+y= [x]补+[y]补 (mod 2n )</span><br><span class="line">[x-y]补=2n+x-y= 2n+x+2n-y= [x]补+[-y]补 (mod 2n )</span><br></pre></td></tr></table></figure>
+<h2 id="原码加减运算"><a href="#原码加减运算" class="headerlink" title="原码加减运算"></a>原码加减运算</h2><h1 id="浮点数运算及其运算部件"><a href="#浮点数运算及其运算部件" class="headerlink" title="浮点数运算及其运算部件"></a>浮点数运算及其运算部件</h1>]]></content>
+      <categories>
+        <category>课堂笔记</category>
+      </categories>
+      <tags>
+        <tag>计组</tag>
       </tags>
   </entry>
   <entry>
