@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Linux基础操作</title>
-    <url>/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pwd				查看当前工作目录</span><br><span class="line">clear 			清除屏幕</span><br><span class="line">cd ~			当前用户目录</span><br><span class="line">cd /			根目录</span><br><span class="line">cd -			上一次访问的目录</span><br><span class="line">cd ..			上一级目录</span><br><span class="line">ll				查看当前目录下内容（LL的小写）</span><br><span class="line">mkdir aaa		在当前目录下创建aaa目录，相对路径；</span><br><span class="line">mkdir ./bbb		在当前目录下创建bbb目录，相对路径；</span><br><span class="line">mkdir /ccc		在根目录下创建ccc目录，绝对路径；</span><br><span class="line">find / -name &#x27;b&#x27;		查询根目录下（包括子目录），名以b的目录和文件；</span><br><span class="line">find / -name &#x27;b*&#x27;		查询根目录下（包括子目录），名以b开头的目录和文件； </span><br><span class="line">mv 原先目录 文件的名称   重命名 mv tomcat001 tomcat </span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">rm -rf /bbb			强制删除/目录下的bbb目录。如果bbb目录中还有子目录，也会被强制删除，不会提示；</span><br><span class="line">rm -r /bbb			普通删除。会询问你是否删除每一个文件</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/1.png" alt></p>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -r a.java		删除当前目录下的a.java文件（每次回询问是否删除y：同意）</span><br><span class="line">rm -rf ./a*			强制删除当前目录下以a开头的所有文件；</span><br><span class="line">rm -rf ./*			强制删除当前目录下所有文件（慎用）；</span><br></pre></td></tr></table></figure>
-<h2 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim a.java   	进入一般模式</span><br><span class="line">i(按键)   		进入插入模式(编辑模式)</span><br><span class="line">ESC(按键)  		退出</span><br><span class="line">:wq 			保存退出（shift+：调起输入框）</span><br><span class="line">:q！			不保存退出（shift+：调起输入框）（内容更改）</span><br><span class="line">:q				不保存退出（shift+：调起输入框）（没有内容更改）</span><br></pre></td></tr></table></figure>
-<h2 id="查看内容"><a href="#查看内容" class="headerlink" title="查看内容"></a>查看内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -a        列出目录所有文件，包含以.开头的隐藏文件（all）</span><br><span class="line">ls -A        列出除.及..的其他文件 </span><br><span class="line">ls -r        反序排列</span><br><span class="line">ls -t        以文件修改的时间排序</span><br><span class="line">ls -S        以文件大小排序</span><br><span class="line">ls -h        以易读大小显示 </span><br><span class="line">ls -l        除了文件名之外，还将文件的权限，所有者，文件大小等信息详细列出来 (long)   </span><br><span class="line">cat a.java		查看a.java文件的最后一页内容；</span><br><span class="line">more a.java		从第一页开始查看a.java文件内容，按回车键一行一行进行查看，按空格键一页一页进行查看，q退出；</span><br><span class="line">less a.java		从第一页开始查看a.java文件内容，按回车键一行一行的看，按空格键一页一页的看，支持使用PageDown和PageUp翻页，q退出；</span><br><span class="line">head a.java				查看a.java文件的前10行内容；</span><br><span class="line">tail -f a.java			查看a.java文件的后10行内容；</span><br><span class="line">head -n 7 a.java		查看a.java文件的前7行内容；</span><br><span class="line">tail -n 7 a.java		查看a.java文件的后7行内容；</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/3.png" alt></p>
-<h2 id="文件详细信息"><a href="#文件详细信息" class="headerlink" title="文件详细信息"></a>文件详细信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> R:Read  w:write  x: execute执行</span><br><span class="line">-rw-r--r-- 1 root root  34942 Jan 19  2018 bootstrap.jar</span><br><span class="line">前三位代表当前用户对文件权限：可以读/可以写/不能执行</span><br><span class="line">中间三位代表当前组的其他用户对当前文件的操作权限：可以读/不能写/不能执行</span><br><span class="line">后三位其他用户对当前文件权限：可以读/不能写/不能执行</span><br><span class="line">链接数：1</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/2.png" alt></p>
-<h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zcvf start.tar.gz a.java b.java	将当前目录下a.java、b.java打包</span><br><span class="line">tar -zcvf start.tar.gz ./*				将当前目录下的所欲文件打包压缩成haha.tar.gz文件</span><br><span class="line">tar -xvf start.tar.gz				解压start.tar.gz压缩包，到当前文件夹下；</span><br><span class="line">tar -xvf start.tar.gz -C usr/local（C为大写，中间无空格）</span><br><span class="line">									解压start.tar.gz压缩包，到/usr/local目录下；</span><br></pre></td></tr></table></figure>
-<h2 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unzip file1.zip  				解压一个zip格式压缩包</span><br><span class="line">zip lib.zip tomcat.jar			将单个文件压缩(lib.zip)</span><br><span class="line">zip -r lib.zip lib/				将目录进行压缩(lib.zip)</span><br><span class="line">zip -r lib.zip tomcat-embed.jar xml-aps.jar		将多个文件压缩为zip文件(lib.zip)	</span><br></pre></td></tr></table></figure>
-<h1 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install iptables-services		下载并安装iptables</span><br><span class="line">yum list					列出当前系统中安装的所有包</span><br><span class="line">yum search package_name		在rpm仓库中搜寻软件包</span><br><span class="line">yum update package_name.rpm		更新当前系统中所有安装的rpm包</span><br><span class="line">yum update package_name		更新一个rpm包</span><br><span class="line">yum remove package_name		删除一个rpm包</span><br><span class="line">yum clean all				删除所有缓存的包和头文件</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>使用教程</category>
-      </categories>
-      <tags>
-        <tag>linus</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/07/06/Hello%20World/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is my very first post！</p>
@@ -135,6 +113,28 @@
       </categories>
       <tags>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux基础操作</title>
+    <url>/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pwd				查看当前工作目录</span><br><span class="line">clear 			清除屏幕</span><br><span class="line">cd ~			当前用户目录</span><br><span class="line">cd /			根目录</span><br><span class="line">cd -			上一次访问的目录</span><br><span class="line">cd ..			上一级目录</span><br><span class="line">ll				查看当前目录下内容（LL的小写）</span><br><span class="line">mkdir aaa		在当前目录下创建aaa目录，相对路径；</span><br><span class="line">mkdir ./bbb		在当前目录下创建bbb目录，相对路径；</span><br><span class="line">mkdir /ccc		在根目录下创建ccc目录，绝对路径；</span><br><span class="line">find / -name &#x27;b&#x27;		查询根目录下（包括子目录），名以b的目录和文件；</span><br><span class="line">find / -name &#x27;b*&#x27;		查询根目录下（包括子目录），名以b开头的目录和文件； </span><br><span class="line">mv 原先目录 文件的名称   重命名 mv tomcat001 tomcat </span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">rm -rf /bbb			强制删除/目录下的bbb目录。如果bbb目录中还有子目录，也会被强制删除，不会提示；</span><br><span class="line">rm -r /bbb			普通删除。会询问你是否删除每一个文件</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/1.png" alt></p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -r a.java		删除当前目录下的a.java文件（每次回询问是否删除y：同意）</span><br><span class="line">rm -rf ./a*			强制删除当前目录下以a开头的所有文件；</span><br><span class="line">rm -rf ./*			强制删除当前目录下所有文件（慎用）；</span><br></pre></td></tr></table></figure>
+<h2 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim a.java   	进入一般模式</span><br><span class="line">i(按键)   		进入插入模式(编辑模式)</span><br><span class="line">ESC(按键)  		退出</span><br><span class="line">:wq 			保存退出（shift+：调起输入框）</span><br><span class="line">:q！			不保存退出（shift+：调起输入框）（内容更改）</span><br><span class="line">:q				不保存退出（shift+：调起输入框）（没有内容更改）</span><br></pre></td></tr></table></figure>
+<h2 id="查看内容"><a href="#查看内容" class="headerlink" title="查看内容"></a>查看内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -a        列出目录所有文件，包含以.开头的隐藏文件（all）</span><br><span class="line">ls -A        列出除.及..的其他文件 </span><br><span class="line">ls -r        反序排列</span><br><span class="line">ls -t        以文件修改的时间排序</span><br><span class="line">ls -S        以文件大小排序</span><br><span class="line">ls -h        以易读大小显示 </span><br><span class="line">ls -l        除了文件名之外，还将文件的权限，所有者，文件大小等信息详细列出来 (long)   </span><br><span class="line">cat a.java		查看a.java文件的最后一页内容；</span><br><span class="line">more a.java		从第一页开始查看a.java文件内容，按回车键一行一行进行查看，按空格键一页一页进行查看，q退出；</span><br><span class="line">less a.java		从第一页开始查看a.java文件内容，按回车键一行一行的看，按空格键一页一页的看，支持使用PageDown和PageUp翻页，q退出；</span><br><span class="line">head a.java				查看a.java文件的前10行内容；</span><br><span class="line">tail -f a.java			查看a.java文件的后10行内容；</span><br><span class="line">head -n 7 a.java		查看a.java文件的前7行内容；</span><br><span class="line">tail -n 7 a.java		查看a.java文件的后7行内容；</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/3.png" alt></p>
+<h2 id="文件详细信息"><a href="#文件详细信息" class="headerlink" title="文件详细信息"></a>文件详细信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> R:Read  w:write  x: execute执行</span><br><span class="line">-rw-r--r-- 1 root root  34942 Jan 19  2018 bootstrap.jar</span><br><span class="line">前三位代表当前用户对文件权限：可以读/可以写/不能执行</span><br><span class="line">中间三位代表当前组的其他用户对当前文件的操作权限：可以读/不能写/不能执行</span><br><span class="line">后三位其他用户对当前文件权限：可以读/不能写/不能执行</span><br><span class="line">链接数：1</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/2.png" alt></p>
+<h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zcvf start.tar.gz a.java b.java	将当前目录下a.java、b.java打包</span><br><span class="line">tar -zcvf start.tar.gz ./*				将当前目录下的所欲文件打包压缩成haha.tar.gz文件</span><br><span class="line">tar -xvf start.tar.gz				解压start.tar.gz压缩包，到当前文件夹下；</span><br><span class="line">tar -xvf start.tar.gz -C usr/local（C为大写，中间无空格）</span><br><span class="line">									解压start.tar.gz压缩包，到/usr/local目录下；</span><br></pre></td></tr></table></figure>
+<h2 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unzip file1.zip  				解压一个zip格式压缩包</span><br><span class="line">zip lib.zip tomcat.jar			将单个文件压缩(lib.zip)</span><br><span class="line">zip -r lib.zip lib/				将目录进行压缩(lib.zip)</span><br><span class="line">zip -r lib.zip tomcat-embed.jar xml-aps.jar		将多个文件压缩为zip文件(lib.zip)	</span><br></pre></td></tr></table></figure>
+<h1 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install iptables-services		下载并安装iptables</span><br><span class="line">yum list					列出当前系统中安装的所有包</span><br><span class="line">yum search package_name		在rpm仓库中搜寻软件包</span><br><span class="line">yum update package_name.rpm		更新当前系统中所有安装的rpm包</span><br><span class="line">yum update package_name		更新一个rpm包</span><br><span class="line">yum remove package_name		删除一个rpm包</span><br><span class="line">yum clean all				删除所有缓存的包和头文件</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>使用教程</category>
+      </categories>
+      <tags>
+        <tag>linus</tag>
       </tags>
   </entry>
   <entry>
@@ -432,27 +432,6 @@
       </tags>
   </entry>
   <entry>
-    <title>github＋hexo懒人搭建博客完整教程</title>
-    <url>/2021/07/07/github%EF%BC%8Bhexo%E6%87%92%E4%BA%BA%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a><strong>一、准备</strong></h1><h2 id="1-1环境搭建"><a href="#1-1环境搭建" class="headerlink" title="1.1环境搭建"></a>1.1环境搭建</h2><p>搭建博客首先是准备环境的搭建，这就像我们体内的细胞依赖于内环境而存活，内环境为细胞的生活提供的必要的水环境以及其它物质交换的通道。我们搭建的环境也是如此。<br>先安装 Node.js 和 Git，因为Hexo 基于 Node.js。<br>附上下载的官网链接<br>Node.js：<a href="https://nodejs.org/zh-cn">https://nodejs.org/zh-cn</a><br>Git：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。<br>安装完成后，Win+R 输入 cmd 并打开（或者左下角点查找），依次输入 node -v、npm -v 和 git —version（注意空格） 并回车，出校如下图表示成功。</p>
-<h2 id="1-2注意事项"><a href="#1-2注意事项" class="headerlink" title="1.2注意事项"></a>1.2注意事项</h2><p>敲代码的时候，将输入法换成英文输入。<br>统一使用 Git Bash 进行操作。</p>
-<h2 id="注意空格。"><a href="#注意空格。" class="headerlink" title="注意空格。"></a>注意空格。</h2><h1 id="二、连接-Github"><a href="#二、连接-Github" class="headerlink" title="二、连接 Github"></a><strong>二、连接 Github</strong></h1><p>使用邮箱注册 GitHub 账户，选择免费账户（Free），并完成邮件验证。<br>在桌面的页面，在空白处右键鼠标点【Git Bash Here】开始运行，设置用户名和邮箱。（注意：用户名是自己的github账户名，邮箱是绑定的邮箱）<br>‘’’<br>git config —global user.name “GitHub 用户名”<br>git config —global user.email “GitHub 邮箱”<br>‘’’<br>创建 SSH 密匙<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。<br>添加密匙：<br>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。<br>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。<br>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。<br>验证连接：<br>打开 Git Bash，输入 ssh -T git@github.com 出现 “Are you sure……”，输入 yes 回车确认。</p>
-<h2 id="显示-“Hi-xxx-You’ve-successfully……”-即连接成功。"><a href="#显示-“Hi-xxx-You’ve-successfully……”-即连接成功。" class="headerlink" title="显示 “Hi xxx! You’ve successfully……” 即连接成功。"></a>显示 “Hi xxx! You’ve successfully……” 即连接成功。</h2><h1 id="三、创建-Github-Pages-仓库"><a href="#三、创建-Github-Pages-仓库" class="headerlink" title="三、创建 Github Pages 仓库"></a><strong>三、创建 Github Pages 仓库</strong></h1><p>GitHub 主页右上角加号 -&gt; New repository：<br>Repository name 中输入 用户名.github.io<br>勾选 “Initialize this repository with a README”<br>Description 选填<br>填好后点击 Create repository 创建。</p>
-<h2 id="创建后默认自动启用-HTTPS，博客地址为：https-用户名-github-io"><a href="#创建后默认自动启用-HTTPS，博客地址为：https-用户名-github-io" class="headerlink" title="创建后默认自动启用 HTTPS，博客地址为：https://用户名.github.io"></a>创建后默认自动启用 HTTPS，博客地址为：<a href="https://用户名.github.io">https://用户名.github.io</a></h2><h1 id="四、本地安装-Hexo-博客程序"><a href="#四、本地安装-Hexo-博客程序" class="headerlink" title="四、本地安装 Hexo 博客程序"></a><strong>四、本地安装 Hexo 博客程序</strong></h1><p>新建一个文件夹用来存放 Hexo 的程序文件，如 Hexo-Blog。打开该文件夹，右键 -&gt; Git Bash Here。</p>
-<h2 id="4-1-安装-Hexo"><a href="#4-1-安装-Hexo" class="headerlink" title="4.1. 安装 Hexo"></a>4.1. 安装 Hexo</h2><p>使用 npm 一键安装 Hexo 博客程序：<br>npm install -g hexo-cli<br>稍等一会后，会出现如下图的代码</p>
-<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2. Hexo 初始化和本地预览"></a>4.2. Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：<br>hexo init      # 初始化<br>npm install    # 安装组件<br>完成后依次输入下面命令，启动本地服务器进行预览：<br>hexo g   # 生成页面<br>hexo s   # 启动预览</p>
-<h2 id="访问-http-localhost-4000，出现-Hexo-默认页面，本地博客安装成功！"><a href="#访问-http-localhost-4000，出现-Hexo-默认页面，本地博客安装成功！" class="headerlink" title="访问 http://localhost:4000，出现 Hexo 默认页面，本地博客安装成功！"></a>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！</h2><h1 id="五、部署-Hexo-到-GitHub-Pages"><a href="#五、部署-Hexo-到-GitHub-Pages" class="headerlink" title="五、部署 Hexo 到 GitHub Pages"></a><strong>五、部署 Hexo 到 GitHub Pages</strong></h1><p>本地博客测试成功后，就是上传到 GitHub 进行部署，使其能够在网络上访问。<br>首先安装 hexo-deployer-git：<br>npm install hexo-deployer-git —save<br>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：<br>‘’’<br>deploy:<br>  type: git<br>  repository: git@github.com:用户名/用户名.github.io.git<br>  branch: master<br>‘’’<br>完成后运行 hexo d 将网站上传部署到 GitHub Pages。</p>
-<h2 id="完成！这时访问我们的-GitHub-域名-https-用户名-github-io-就可以看到-Hexo-网站了。"><a href="#完成！这时访问我们的-GitHub-域名-https-用户名-github-io-就可以看到-Hexo-网站了。" class="headerlink" title="完成！这时访问我们的 GitHub 域名 https://用户名.github.io 就可以看到 Hexo 网站了。"></a>完成！这时访问我们的 GitHub 域名 <a href="https://用户名.github.io">https://用户名.github.io</a> 就可以看到 Hexo 网站了。</h2><h1 id="六、绑定域名（可选）"><a href="#六、绑定域名（可选）" class="headerlink" title="六、绑定域名（可选）"></a><strong>六、绑定域名（可选）</strong></h1><h2 id="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"><a href="#因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。" class="headerlink" title="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"></a>因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。</h2><h1 id="七、开始使用"><a href="#七、开始使用" class="headerlink" title="七、开始使用"></a><strong>七、开始使用</strong></h1><p>详情见下一篇博客<br>7.1. 发布文章<br>7.2. 网站设置<br>7.3. 更换主题<br>7.4. 常用代码</p>
-<hr>
-<h1 id="八、常见问题"><a href="#八、常见问题" class="headerlink" title="八、常见问题"></a><strong>八、常见问题</strong></h1><h2 id="详情见下一篇博客"><a href="#详情见下一篇博客" class="headerlink" title="详情见下一篇博客"></a>详情见下一篇博客</h2>]]></content>
-      <categories>
-        <category>使用教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RSA密码的深入浅出</title>
     <url>/2021/07/23/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>昨天看到这样一句话</p>
@@ -596,6 +575,27 @@
       </categories>
       <tags>
         <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github＋hexo懒人搭建博客完整教程</title>
+    <url>/2021/07/07/github%EF%BC%8Bhexo%E6%87%92%E4%BA%BA%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a><strong>一、准备</strong></h1><h2 id="1-1环境搭建"><a href="#1-1环境搭建" class="headerlink" title="1.1环境搭建"></a>1.1环境搭建</h2><p>搭建博客首先是准备环境的搭建，这就像我们体内的细胞依赖于内环境而存活，内环境为细胞的生活提供的必要的水环境以及其它物质交换的通道。我们搭建的环境也是如此。<br>先安装 Node.js 和 Git，因为Hexo 基于 Node.js。<br>附上下载的官网链接<br>Node.js：<a href="https://nodejs.org/zh-cn">https://nodejs.org/zh-cn</a><br>Git：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>下载 Node.js 和 Git 程序并安装，一路点 “下一步” 按默认配置完成安装。<br>安装完成后，Win+R 输入 cmd 并打开（或者左下角点查找），依次输入 node -v、npm -v 和 git —version（注意空格） 并回车，出校如下图表示成功。</p>
+<h2 id="1-2注意事项"><a href="#1-2注意事项" class="headerlink" title="1.2注意事项"></a>1.2注意事项</h2><p>敲代码的时候，将输入法换成英文输入。<br>统一使用 Git Bash 进行操作。</p>
+<h2 id="注意空格。"><a href="#注意空格。" class="headerlink" title="注意空格。"></a>注意空格。</h2><h1 id="二、连接-Github"><a href="#二、连接-Github" class="headerlink" title="二、连接 Github"></a><strong>二、连接 Github</strong></h1><p>使用邮箱注册 GitHub 账户，选择免费账户（Free），并完成邮件验证。<br>在桌面的页面，在空白处右键鼠标点【Git Bash Here】开始运行，设置用户名和邮箱。（注意：用户名是自己的github账户名，邮箱是绑定的邮箱）<br>‘’’<br>git config —global user.name “GitHub 用户名”<br>git config —global user.email “GitHub 邮箱”<br>‘’’<br>创建 SSH 密匙<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。<br>添加密匙：<br>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。<br>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。<br>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。<br>验证连接：<br>打开 Git Bash，输入 ssh -T git@github.com 出现 “Are you sure……”，输入 yes 回车确认。</p>
+<h2 id="显示-“Hi-xxx-You’ve-successfully……”-即连接成功。"><a href="#显示-“Hi-xxx-You’ve-successfully……”-即连接成功。" class="headerlink" title="显示 “Hi xxx! You’ve successfully……” 即连接成功。"></a>显示 “Hi xxx! You’ve successfully……” 即连接成功。</h2><h1 id="三、创建-Github-Pages-仓库"><a href="#三、创建-Github-Pages-仓库" class="headerlink" title="三、创建 Github Pages 仓库"></a><strong>三、创建 Github Pages 仓库</strong></h1><p>GitHub 主页右上角加号 -&gt; New repository：<br>Repository name 中输入 用户名.github.io<br>勾选 “Initialize this repository with a README”<br>Description 选填<br>填好后点击 Create repository 创建。</p>
+<h2 id="创建后默认自动启用-HTTPS，博客地址为：https-用户名-github-io"><a href="#创建后默认自动启用-HTTPS，博客地址为：https-用户名-github-io" class="headerlink" title="创建后默认自动启用 HTTPS，博客地址为：https://用户名.github.io"></a>创建后默认自动启用 HTTPS，博客地址为：<a href="https://用户名.github.io">https://用户名.github.io</a></h2><h1 id="四、本地安装-Hexo-博客程序"><a href="#四、本地安装-Hexo-博客程序" class="headerlink" title="四、本地安装 Hexo 博客程序"></a><strong>四、本地安装 Hexo 博客程序</strong></h1><p>新建一个文件夹用来存放 Hexo 的程序文件，如 Hexo-Blog。打开该文件夹，右键 -&gt; Git Bash Here。</p>
+<h2 id="4-1-安装-Hexo"><a href="#4-1-安装-Hexo" class="headerlink" title="4.1. 安装 Hexo"></a>4.1. 安装 Hexo</h2><p>使用 npm 一键安装 Hexo 博客程序：<br>npm install -g hexo-cli<br>稍等一会后，会出现如下图的代码</p>
+<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2. Hexo 初始化和本地预览"></a>4.2. Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：<br>hexo init      # 初始化<br>npm install    # 安装组件<br>完成后依次输入下面命令，启动本地服务器进行预览：<br>hexo g   # 生成页面<br>hexo s   # 启动预览</p>
+<h2 id="访问-http-localhost-4000，出现-Hexo-默认页面，本地博客安装成功！"><a href="#访问-http-localhost-4000，出现-Hexo-默认页面，本地博客安装成功！" class="headerlink" title="访问 http://localhost:4000，出现 Hexo 默认页面，本地博客安装成功！"></a>访问 <a href="http://localhost:4000，出现">http://localhost:4000，出现</a> Hexo 默认页面，本地博客安装成功！</h2><h1 id="五、部署-Hexo-到-GitHub-Pages"><a href="#五、部署-Hexo-到-GitHub-Pages" class="headerlink" title="五、部署 Hexo 到 GitHub Pages"></a><strong>五、部署 Hexo 到 GitHub Pages</strong></h1><p>本地博客测试成功后，就是上传到 GitHub 进行部署，使其能够在网络上访问。<br>首先安装 hexo-deployer-git：<br>npm install hexo-deployer-git —save<br>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：<br>‘’’<br>deploy:<br>  type: git<br>  repository: git@github.com:用户名/用户名.github.io.git<br>  branch: master<br>‘’’<br>完成后运行 hexo d 将网站上传部署到 GitHub Pages。</p>
+<h2 id="完成！这时访问我们的-GitHub-域名-https-用户名-github-io-就可以看到-Hexo-网站了。"><a href="#完成！这时访问我们的-GitHub-域名-https-用户名-github-io-就可以看到-Hexo-网站了。" class="headerlink" title="完成！这时访问我们的 GitHub 域名 https://用户名.github.io 就可以看到 Hexo 网站了。"></a>完成！这时访问我们的 GitHub 域名 <a href="https://用户名.github.io">https://用户名.github.io</a> 就可以看到 Hexo 网站了。</h2><h1 id="六、绑定域名（可选）"><a href="#六、绑定域名（可选）" class="headerlink" title="六、绑定域名（可选）"></a><strong>六、绑定域名（可选）</strong></h1><h2 id="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"><a href="#因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。" class="headerlink" title="因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。"></a>因为我用的是免费的github域名，就没有绑定域名。域名注册和解析这步过程略。</h2><h1 id="七、开始使用"><a href="#七、开始使用" class="headerlink" title="七、开始使用"></a><strong>七、开始使用</strong></h1><p>详情见下一篇博客<br>7.1. 发布文章<br>7.2. 网站设置<br>7.3. 更换主题<br>7.4. 常用代码</p>
+<hr>
+<h1 id="八、常见问题"><a href="#八、常见问题" class="headerlink" title="八、常见问题"></a><strong>八、常见问题</strong></h1><h2 id="详情见下一篇博客"><a href="#详情见下一篇博客" class="headerlink" title="详情见下一篇博客"></a>详情见下一篇博客</h2>]]></content>
+      <categories>
+        <category>使用教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -908,6 +908,28 @@
       </tags>
   </entry>
   <entry>
+    <title>关于blog常见报错及解决方法</title>
+    <url>/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在发blog的时候，经常会遇到一些重复性的报错问题，这些报错感觉都很眼熟，好像每天都会遇到（笑哭）。第一次看不懂报错，直接复制粘贴甩给百度翻译，但是就算翻译成中文人也还是懵逼的。比如这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/a.png" alt="a"></p>
+<p>又或是这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/b.png" alt="b"></p>
+<p>或许是那样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/c.png" alt="c"></p>
+<p>等等等等…</p>
+<p>第二次第三次又遇到一样的情况，索性就整理出来吧。（持续更新）</p>
+<h1 id="hexo-d报错解决："><a href="#hexo-d报错解决：" class="headerlink" title="hexo d报错解决："></a>hexo d报错解决：</h1><h4 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054 错误解决"></a>OpenSSL SSL_read: Connection was reset, errno 10054 错误解决</h4><p>首先，造成这个错误很有可能是网络不稳定，连接超时导致的，<br> 如果再次尝试后依然报错，可以执行下面的命令</p>
+<p>在D:\blog\blog中打开Git-Bash命令页面，执行git命令脚本：修改设置，解除ssl验证</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+<p>此时，再执行hexo d即可解决</p>
+<h1 id="hexo-s-报错解决"><a href="#hexo-s-报错解决" class="headerlink" title="hexo s 报错解决"></a>hexo s 报错解决</h1><h4 id="node-15260-Warning"><a href="#node-15260-Warning" class="headerlink" title="(node:15260) Warning"></a>(node:15260) Warning</h4><p><img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/d.png" alt="d"></p>
+<p>很简单 不用管它 （警告而已warning,我也不知道为什么还能运行qwq)</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>哈希函数算法实现原理和应用</title>
     <url>/2021/07/31/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -967,28 +989,6 @@
       </categories>
       <tags>
         <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于blog常见报错及解决方法</title>
-    <url>/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在发blog的时候，经常会遇到一些重复性的报错问题，这些报错感觉都很眼熟，好像每天都会遇到（笑哭）。第一次看不懂报错，直接复制粘贴甩给百度翻译，但是就算翻译成中文人也还是懵逼的。比如这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/a.png" alt="a"></p>
-<p>又或是这样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/b.png" alt="b"></p>
-<p>或许是那样<img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/c.png" alt="c"></p>
-<p>等等等等…</p>
-<p>第二次第三次又遇到一样的情况，索性就整理出来吧。（持续更新）</p>
-<h1 id="hexo-d报错解决："><a href="#hexo-d报错解决：" class="headerlink" title="hexo d报错解决："></a>hexo d报错解决：</h1><h4 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054-错误解决" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054 错误解决"></a>OpenSSL SSL_read: Connection was reset, errno 10054 错误解决</h4><p>首先，造成这个错误很有可能是网络不稳定，连接超时导致的，<br> 如果再次尝试后依然报错，可以执行下面的命令</p>
-<p>在D:\blog\blog中打开Git-Bash命令页面，执行git命令脚本：修改设置，解除ssl验证</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
-<p>此时，再执行hexo d即可解决</p>
-<h1 id="hexo-s-报错解决"><a href="#hexo-s-报错解决" class="headerlink" title="hexo s 报错解决"></a>hexo s 报错解决</h1><h4 id="node-15260-Warning"><a href="#node-15260-Warning" class="headerlink" title="(node:15260) Warning"></a>(node:15260) Warning</h4><p><img src="/2021/07/07/%E5%85%B3%E4%BA%8Eblog%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/d.png" alt="d"></p>
-<p>很简单 不用管它 （警告而已warning,我也不知道为什么还能运行qwq)</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1513,6 +1513,50 @@
       </tags>
   </entry>
   <entry>
+    <title>运算方法和运算部件</title>
+    <url>/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要内容</p>
+<p>第3章(运算方法和运算部件〉主要介绍各类<strong>定点数和浮点数的运算方法</strong>和相应的<strong>运算部件</strong> ，以及<strong>核心运算部件ALU</strong>的功能和设计实现等。</p>
+<hr>
+<p>头一回计组课上就能听懂，之前都是课后花时间补救的&gt;_&lt;</p>
+<p>因此 今天是复习而不是预习！必须趁热打铁写个笔记</p>
+<h1 id="核心运算部件ALU"><a href="#核心运算部件ALU" class="headerlink" title="核心运算部件ALU"></a>核心运算部件ALU</h1><p>基本运算部件：加法器、ALU、移位器，ALU的核心部件是加法器</p>
+<p>要看懂书上的图解前，得先知道一些集成电路的逻辑符号和数学运算符（破案了！上一节上课听不懂的原因</p>
+<p>常用集成电路逻辑符号对照表</p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/1.png" alt></p>
+<p>基本数学运算</p>
+<p>异或（xor），数学符号为“⊕”，相同为假，不同为真。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊕y=1110</span><br></pre></td></tr></table></figure>
+<p>同或，数学符号为⊙，相同为真，不同为假</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊙y=0001</span><br></pre></td></tr></table></figure>
+<p>与非，与+非，都为1时输出0</p>
+<p>或非，或+非，都为1时输出1</p>
+<h2 id="串行进位加法器"><a href="#串行进位加法器" class="headerlink" title="串行进位加法器"></a>串行进位加法器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Fi：全加和  Ci：全加进位</span><br><span class="line">Fi=Xi⊕Yi⊕Ci-1 </span><br><span class="line">Ci= XiCi-1 + YiCi-1 + XiYi</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/2.png" alt="2"></p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/3.png" alt="71页"></p>
+<p>从3.2可以看出，进位输入到进位输出要经过2级门延迟，所以n位串行加法器从C0到Cn的延迟时间为2n级门延迟。</p>
+<p>串行加法器的缺点：运行速度慢，因为进位按串行方式传递，高位进位依赖低位进位。</p>
+<h2 id="并行进位加法器"><a href="#并行进位加法器" class="headerlink" title="并行进位加法器"></a>并行进位加法器</h2><p>并行进位加法器的提出是因为串行进位加法器采用串行逐级传递进位，电路延迟与位数成正比关系。CLA加法器=进位生成部件+进位传递部件+CLA部件+求和部件</p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/4.png" alt></p>
+<p>由上式可知，各进位之间无需等待，可以相互独立同时产生。</p>
+<h2 id="带标志加法器"><a href="#带标志加法器" class="headerlink" title="带标志加法器"></a>带标志加法器</h2><p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/QQ图片20210919151110.jpg" alt="QQ图片2021091915111"></p>
+<ul>
+<li>计算机中所有算术运算都基于加法器实现！</li>
+<li>加法器不知道所运算的是带符号数还是无符号数。</li>
+<li>加法器不判定对错，总是取低n位作为结果，并生成标志信息。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OF溢出标志：是针对有符号数运算的情况</span><br><span class="line">CF进位/借位：是无符号数运算处理的情况（比较大小判别）</span><br><span class="line">2-（-4）---&gt; 0010-1100=0010+0100=0110   CF=01=1 借位</span><br><span class="line">(-4)-2 ---&gt;  1100-0010=1100+1110=1 1010 CF=11=0 借位</span><br><span class="line">（-4在计算机中以补码1100表示，当成无符号数是12）</span><br><span class="line">5-4    ---&gt; 0101-0100=0101+1100=1 0001  CF=11=0 借位</span><br><span class="line">4-5   ---&gt; 0101-0101=0100+1011=1111     CF=01=1 借位</span><br><span class="line">5+4   ---&gt; 0101+0100=1001               CF=00=0 进位</span><br><span class="line">9+8   ---&gt;1001+1000=1 0001              CF=10=1 进位</span><br><span class="line">浮点数节码采用移码表示，目的为了更好比较大小。</span><br></pre></td></tr></table></figure>
+<h1 id="定点数运算及其运算部件"><a href="#定点数运算及其运算部件" class="headerlink" title="定点数运算及其运算部件"></a>定点数运算及其运算部件</h1><h2 id="补码加减运算"><a href="#补码加减运算" class="headerlink" title="补码加减运算"></a>补码加减运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">补码的定义    假定补码有n位，则：</span><br><span class="line">[X]补=2n +X  （-2n-1≤X＜2n-1 ,mod 2n）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据补码定义，有如下公式：</span><br><span class="line">[x+y]补 =2n+x+y= 2n+x+2n+y= [x]补+[y]补 (mod 2n )</span><br><span class="line">[x-y]补=2n+x-y= 2n+x+2n-y= [x]补+[-y]补 (mod 2n )</span><br></pre></td></tr></table></figure>
+<h2 id="原码加减运算"><a href="#原码加减运算" class="headerlink" title="原码加减运算"></a>原码加减运算</h2><h1 id="浮点数运算及其运算部件"><a href="#浮点数运算及其运算部件" class="headerlink" title="浮点数运算及其运算部件"></a>浮点数运算及其运算部件</h1>]]></content>
+      <categories>
+        <category>课堂笔记</category>
+      </categories>
+      <tags>
+        <tag>计组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>那些脑洞大开的加密</title>
     <url>/2021/07/26/%E9%82%A3%E4%BA%9B%E8%84%91%E6%B4%9E%E5%A4%A7%E5%BC%80%E7%9A%84%E5%8A%A0%E5%AF%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>古典密码可以分为换位加密和替换加密</p>
@@ -1682,124 +1726,6 @@
 ]]></content>
       <categories>
         <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CTF之常见密码学攻击手法和实现</title>
-    <url>/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>题目均来源CTF</strong></p>
-<p>通过了解CTF中常见和以前奇葩题型，有助于我们学习更多的内容</p>
-<p>关于rsa的一些基础知识之前就有写过啦，这篇直接开始做题 O(∩_∩)O</p>
-<hr>
-<h2 id="已知p-q-e-求d"><a href="#已知p-q-e-求d" class="headerlink" title="已知p,q,e 求d"></a><code>已知p,q,e 求d</code></h2><p>题目RSA如下</p>
-<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/1.png" alt></p>
-<p>直接带入即可</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">p=473398607161</span><br><span class="line">q=4511491</span><br><span class="line">e=17</span><br><span class="line">fai=(p-1)*(q-1)</span><br><span class="line">d=gmpy2.invert(e,fai)</span><br><span class="line">print(&#x27;d=&#x27;,d)</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d= 125631357777427553</span><br></pre></td></tr></table></figure>
-<p>所以答案套个flag{}</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;125631357777427553&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="已知p-q-e-c-求m"><a href="#已知p-q-e-c-求m" class="headerlink" title="已知p,q,e,c 求m"></a><code>已知p,q,e,c 求m</code></h2><p>题目rsarsa如下</p>
-<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/2.png" alt="2"></p>
-<p>求解，比上一题多一个步骤而已</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line"></span><br><span class="line">p = 9648423029010515676590551740010426534945737639235739800643989352039852507298491399561035009163427050370107570733633350911691280297777160200625281665378483</span><br><span class="line">q = 11874843837980297032092405848653656852760910154543380907650040190704283358909208578251063047732443992230647903887510065547947313543299303261986053486569407</span><br><span class="line">e = 65537</span><br><span class="line">c = 83208298995174604174773590298203639360540024871256126892889661345742403314929861939100492666605647316646576486526217457006376842280869728581726746401583705899941768214138742259689334840735633553053887641847651173776251820293087212885670180367406807406765923638973161375817392737747832762751690104423869019034</span><br><span class="line"></span><br><span class="line">n=p*q</span><br><span class="line">fai=(p-1)*(q-1)</span><br><span class="line">d=gmpy2.invert(e,fai)</span><br><span class="line">m=pow(c,d,n)</span><br><span class="line">print(&#x27;m=&#x27;,m)</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">m= 5577446633554466577768879988</span><br></pre></td></tr></table></figure>
-<p>所以答案是</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123; 5577446633554466577768879988&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="已知p-q-dp-dq-c-求m"><a href="#已知p-q-dp-dq-c-求m" class="headerlink" title="已知p,q,dp,dq,c  求m"></a><code>已知p,q,dp,dq,c  求m</code></h2><p>题目RSA1如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p = 8637633767257008567099653486541091171320491509433615447539162437911244175885667806398411790524083553445158113502227745206205327690939504032994699902053229 </span><br><span class="line">q = 12640674973996472769176047937170883420927050821480010581593137135372473880595613737337630629752577346147039284030082593490776630572584959954205336880228469 </span><br><span class="line">dp = 6500795702216834621109042351193261530650043841056252930930949663358625016881832840728066026150264693076109354874099841380454881716097778307268116910582929 </span><br><span class="line">dq = 783472263673553449019532580386470672380574033551303889137911760438881683674556098098256795673512201963002175438762767516968043599582527539160811120550041 </span><br><span class="line">c = 24722305403887382073567316467649080662631552905960229399079107995602154418176056335800638887527614164073530437657085079676157350205351945222989351316076486573599576041978339872265925062764318536089007310270278526159678937431903862892400747915525118983959970607934142974736675784325993445942031372107342103852</span><br></pre></td></tr></table></figure>
-<p>对新出现的dp，dq先来分析一下，直接手写了hhh</p>
-<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/微信图片_20210803111104.jpg" alt></p>
-<p>解题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line"></span><br><span class="line">p = 8637633767257008567099653486541091171320491509433615447539162437911244175885667806398411790524083553445158113502227745206205327690939504032994699902053229 </span><br><span class="line">q = 12640674973996472769176047937170883420927050821480010581593137135372473880595613737337630629752577346147039284030082593490776630572584959954205336880228469 </span><br><span class="line">dp = 6500795702216834621109042351193261530650043841056252930930949663358625016881832840728066026150264693076109354874099841380454881716097778307268116910582929 </span><br><span class="line">dq = 783472263673553449019532580386470672380574033551303889137911760438881683674556098098256795673512201963002175438762767516968043599582527539160811120550041 </span><br><span class="line">c = 24722305403887382073567316467649080662631552905960229399079107995602154418176056335800638887527614164073530437657085079676157350205351945222989351316076486573599576041978339872265925062764318536089007310270278526159678937431903862892400747915525118983959970607934142974736675784325993445942031372107342103852</span><br><span class="line"></span><br><span class="line">niyuan=gmpy2.invert(p,q)</span><br><span class="line">n=p*q</span><br><span class="line">mp=pow(c,dp,p)</span><br><span class="line">mq=pow(c,dq,q)</span><br><span class="line"></span><br><span class="line">m=(((mp-mq)*niyuan % p)*q+mq)%n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#x27;m=&#x27;,m)</span><br><span class="line">hex_m=hex(m)</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii</span><br><span class="line">mingwen= binascii.unhexlify(&#x27;6e6f784354467b57333163306d335f37305f4368316e343730776e7d&#x27;)</span><br><span class="line">print(mingwen)</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">m= 11630208090204506176302961171539022042721137807911818876637821759101 </span><br><span class="line">0x6e6f784354467b57333163306d335f37305f4368316e343730776e7d </span><br><span class="line">b&#x27;noxCTF&#123;W31c0m3_70_Ch1n470wn&#125;&#x27;</span><br></pre></td></tr></table></figure>
-<p>所以答案</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;W31c0m3_70_Ch1n470wn&#125;</span><br></pre></td></tr></table></figure>
-<p>总结</p>
-<p>1、关系公式：dp≡dmod(p-1),dq≡dmod(q-1)</p>
-<p>2、mp=pow(c,dp,p)，mq=pow(c,dq,q)</p>
-<p>3、推出 m=(((mp-mq)<em>niyuan % p)</em>q+mq)%n</p>
-<h2 id="已知e-n-dp-c-求m"><a href="#已知e-n-dp-c-求m" class="headerlink" title="已知e,n,dp.c 求m"></a><code>已知e,n,dp.c 求m</code></h2><p>题目</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">e = 65537</span><br><span class="line">n = 248254007851526241177721526698901802985832766176221609612258877371620580060433101538328030305219918697643619814200930679612109885533801335348445023751670478437073055544724280684733298051599167660303645183146161497485358633681492129668802402065797789905550489547645118787266601929429724133167768465309665906113</span><br><span class="line">dp = 905074498052346904643025132879518330691925174573054004621877253318682675055421970943552016695528560364834446303196939207056642927148093290374440210503657</span><br><span class="line">c = 140423670976252696807533673586209400575664282100684119784203527124521188996403826597436883766041879067494280957410201958935737360380801845453829293997433414188838725751796261702622028587211560353362847191060306578510511380965162133472698713063592621028959167072781482562673683090590521214218071160287665180751</span><br></pre></td></tr></table></figure>
-<p>分析一波只含dp的情况</p>
-<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/微信图片_20210803202428.jpg" alt></p>
-<p>现在来解题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line"></span><br><span class="line">e = 65537</span><br><span class="line">n = 248254007851526241177721526698901802985832766176221609612258877371620580060433101538328030305219918697643619814200930679612109885533801335348445023751670478437073055544724280684733298051599167660303645183146161497485358633681492129668802402065797789905550489547645118787266601929429724133167768465309665906113</span><br><span class="line">dp = 905074498052346904643025132879518330691925174573054004621877253318682675055421970943552016695528560364834446303196939207056642927148093290374440210503657</span><br><span class="line">c = 140423670976252696807533673586209400575664282100684119784203527124521188996403826597436883766041879067494280957410201958935737360380801845453829293997433414188838725751796261702622028587211560353362847191060306578510511380965162133472698713063592621028959167072781482562673683090590521214218071160287665180751</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for x in range(1,e):          #在(1,e)中遍历取一个数x</span><br><span class="line"></span><br><span class="line">  if (dp*e-1)%x==0:           </span><br><span class="line"></span><br><span class="line">​    if n%(((dp*e-1)//x)+1) == 0:   #存在p，使得n能被p整除</span><br><span class="line">​       p=((dp*e-1)//x)+1           #求p</span><br><span class="line">​       q=n//p                      #求q</span><br><span class="line">​       fai=(p-1)*(q-1)             </span><br><span class="line">​       d=gmpy2.invert(e,fai)      </span><br><span class="line">​       m=pow(c,d,n)                </span><br><span class="line"></span><br><span class="line">print(&#x27;m=&#x27;,m)</span><br><span class="line">hex_m=hex(m)</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii </span><br><span class="line">mingwen= binascii.unhexlify(&#x27;666c61677b776f775f6c65616b696e675f64705f627265616b735f7273613f5f39383932343734333530327d&#x27;)</span><br><span class="line">print(mingwen)</span><br></pre></td></tr></table></figure>
-<p>输出结果为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">m= 3670434958110785066911905751469631231338751225710158680692616521935747246580688484040488309932916523151997 </span><br><span class="line">0x666c61677b776f775f6c65616b696e675f64705f627265616b735f7273613f5f39383932343734333530327</span><br><span class="line">d b&#x27;flag&#123;wow_leaking_dp_breaks_rsa?_98924743502&#125;&#x27;</span><br></pre></td></tr></table></figure>
-<p>因此答案为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;wow_leaking_dp_breaks_rsa?_98924743502&#125;</span><br></pre></td></tr></table></figure>
-<p>总结</p>
-<p>1、存在p的前提是，n要存在，所以 <code>if (dp*e-1)%x==0:</code>不能漏</p>
-<p>2、存在的这个p,必须满足被n整除（%==0）</p>
-<p>3、注意==和=区别，前者表等于，后者是赋值</p>
-<h2 id="已知c1-c2-e1-e2-n-求m"><a href="#已知c1-c2-e1-e2-n-求m" class="headerlink" title="已知c1,c2,e1,e2,n  求m"></a><code>已知c1,c2,e1,e2,n  求m</code></h2><p>题目RSA3如下(共模攻击)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c1=22322035275663237041646893770451933509324701913484303338076210603542612758956262869640822486470121149424485571361007421293675516338822195280313794991136048140918842471219840263536338886250492682739436410013436651161720725855484866690084788721349555662019879081501113222996123305533009325964377798892703161521852805956811219563883312896330156298621674684353919547558127920925706842808914762199011054955816534977675267395009575347820387073483928425066536361482774892370969520740304287456555508933372782327506569010772537497541764311429052216291198932092617792645253901478910801592878203564861118912045464959832566051361</span><br><span class="line">n=22708078815885011462462049064339185898712439277226831073457888403129378547350292420267016551819052430779004755846649044001024141485283286483130702616057274698473611149508798869706347501931583117632710700787228016480127677393649929530416598686027354216422565934459015161927613607902831542857977859612596282353679327773303727004407262197231586324599181983572622404590354084541788062262164510140605868122410388090174420147752408554129789760902300898046273909007852818474030770699647647363015102118956737673941354217692696044969695308506436573142565573487583507037356944848039864382339216266670673567488871508925311154801</span><br><span class="line">e1=11187289</span><br><span class="line">c2=18702010045187015556548691642394982835669262147230212731309938675226458555210425972429418449273410535387985931036711854265623905066805665751803269106880746769003478900791099590239513925449748814075904017471585572848473556490565450062664706449128415834787961947266259789785962922238701134079720414228414066193071495304612341052987455615930023536823801499269773357186087452747500840640419365011554421183037505653461286732740983702740822671148045619497667184586123657285604061875653909567822328914065337797733444640351518775487649819978262363617265797982843179630888729407238496650987720428708217115257989007867331698397</span><br><span class="line">e2=9647291</span><br></pre></td></tr></table></figure>
-<p>原理</p>
-<p>对于同一明文m，用同一模数n，不同指数e1，e2对其加密，因此c1和c2也是不同的。在这情况下已知n，c1,c2,e1,e2,就可以列出两个式子求得一个未知数m。</p>
-<p>假设<strong>e1,e2互质</strong>，即<code>gcd(e1,e2)=1</code>,此时有<code>e1s1+e2s2=1</code>(s1,s2一正一负，且为整数)，在之前的数论提到过，这样可以求出一组解（s1,s2).假设s1为正数，s2为负数。</p>
-<p><code>c1≡m^e1^ mod n</code>,<code>c2≡m^e2^ mod n</code></p>
-<p>相乘<code>c1c2≡m^(e1+e2)^mod n</code></p>
-<p>因此 c1^s1^c2^s2^≡m^e1s1+e2s2^ mod n</p>
-<p>所以 c1^s1^c2^s2^ ≡m mod n</p>
-<p>等式变换后 m≡ c1^s1^c2^s2^ mod n</p>
-<hr>
-<p>解题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import libnum   </span><br><span class="line">import gmpy2    </span><br><span class="line"></span><br><span class="line">n = 22708078815885011462462049064339185898712439277226831073457888403129378547350292420267016551819052430779004755846649044001024141485283286483130702616057274698473611149508798869706347501931583117632710700787228016480127677393649929530416598686027354216422565934459015161927613607902831542857977859612596282353679327773303727004407262197231586324599181983572622404590354084541788062262164510140605868122410388090174420147752408554129789760902300898046273909007852818474030770699647647363015102118956737673941354217692696044969695308506436573142565573487583507037356944848039864382339216266670673567488871508925311154801</span><br><span class="line">c1 = 22322035275663237041646893770451933509324701913484303338076210603542612758956262869640822486470121149424485571361007421293675516338822195280313794991136048140918842471219840263536338886250492682739436410013436651161720725855484866690084788721349555662019879081501113222996123305533009325964377798892703161521852805956811219563883312896330156298621674684353919547558127920925706842808914762199011054955816534977675267395009575347820387073483928425066536361482774892370969520740304287456555508933372782327506569010772537497541764311429052216291198932092617792645253901478910801592878203564861118912045464959832566051361</span><br><span class="line">c2 = 18702010045187015556548691642394982835669262147230212731309938675226458555210425972429418449273410535387985931036711854265623905066805665751803269106880746769003478900791099590239513925449748814075904017471585572848473556490565450062664706449128415834787961947266259789785962922238701134079720414228414066193071495304612341052987455615930023536823801499269773357186087452747500840640419365011554421183037505653461286732740983702740822671148045619497667184586123657285604061875653909567822328914065337797733444640351518775487649819978262363617265797982843179630888729407238496650987720428708217115257989007867331698397</span><br><span class="line">e1 = 11187289</span><br><span class="line">e2 = 9647291</span><br><span class="line"></span><br><span class="line">s = gcdext(e1,e2)    #gmpy2.gcdext(),扩展欧几里得算法，返回tuple元组，满足s[1]*e1+s[2]*e2=1</span><br><span class="line"></span><br><span class="line">m = pow(c1,s[1],n)*pow(c2,s[2],n)%n </span><br><span class="line"></span><br><span class="line">print(m)</span><br><span class="line">hex_m=hex(m) #把m十进制数字转化成十六进制</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii</span><br><span class="line">mingwen=binascii.unhexlify(&#x27;666c61677b34396439313037376131616263623134663161396435343663383062653965667d&#x27;)</span><br><span class="line">print (mingwen)</span><br></pre></td></tr></table></figure>
-<p>输出结果即答案</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;49d91077a1abcb14f1a9d546c80be9ef&#125;</span><br></pre></td></tr></table></figure>
-<p>总结</p>
-<p>1、gmpy2.gcdext(),扩展欧几里得算法，返回tuple元组，满足s[1]e1+s[2]e2=1</p>
-<p>2、 m≡ c1^s1^c2^s2^ mod n，表示出s1,s2即可</p>
-<h2 id="已知flag-enc-pub-key-求m"><a href="#已知flag-enc-pub-key-求m" class="headerlink" title="已知flag.enc,pub.key  求m"></a><code>已知flag.enc,pub.key  求m</code></h2><p>将pub.key的后缀改为txt，打开</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMAzLFxkrkcYL2wch21CM2kQVFpY9+7+/AvKr1rzQczdAgMBAAE=</span><br><span class="line">-----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
-<p>之前写过一篇用虚拟机openssl命令解key的，后来发现在线网站也可以实现</p>
-<p><a href="http://ctf.ssleye.com/pub_asys.html">SSL在线工具-公钥解析 (ssleye.com)</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">n=86934482296048119190666062003494800588905656017203025617216654058378322103517</span><br><span class="line">e=65537</span><br></pre></td></tr></table></figure>
-<p>再分解n</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p=285960468890451637935629440372639283459</span><br><span class="line">q=304008741604601924494328155975272418463</span><br></pre></td></tr></table></figure>
-<p>后来我又get到一个方便的tool，可以直接计算d</p>
-<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/4.png" alt></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d=81176168860169991027846870170527607562179635470395365333547868786951080991441</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import rsa</span><br><span class="line"></span><br><span class="line">e= 65537</span><br><span class="line">n= 86934482296048119190666062003494800588905656017203025617216654058378322103517</span><br><span class="line">p= 285960468890451637935629440372639283459</span><br><span class="line">q= 304008741604601924494328155975272418463</span><br><span class="line">d= 81176168860169991027846870170527607562179635470395365333547868786951080991441</span><br><span class="line"></span><br><span class="line">key = rsa.PrivateKey(n,e,d,q,p)         </span><br><span class="line">with open(r&quot;C:\Users\Lenovo\Desktop\0eaf8d6c-3fe5-4549-9e81-94ac42535e7b (1)\flag.enc&quot;,&quot;rb&quot;) as f:  </span><br><span class="line">    f = f.read()</span><br><span class="line">    print(rsa.decrypt(f,key))           </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b&#x27;flag&#123;decrypt_256&#125;</span><br></pre></td></tr></table></figure>
-<p>总结</p>
-<p>1、<code>with open(&quot;C:\Users\Lenovo\Desktop\0eaf8d6c-3fe5-4549-9e81-94ac42535e7b (1)\flag.enc&quot;,&quot;rb&quot;) as f:</code>  行不通，就在<code>open（“</code>加个r</p>
-<p>2、flag.enc的路径要复制完整</p>
-<p>3、“rb”，表示读取</p>
-<h2 id="已知n-e-c-求m，且c为字符串"><a href="#已知n-e-c-求m，且c为字符串" class="headerlink" title="已知n,e,c 求m，且c为字符串"></a><code>已知n,e,c 求m，且c为字符串</code></h2><p>题目RSAROLL如下，有两个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#data.txt</span><br><span class="line">&#123;920139713,19&#125;</span><br><span class="line"></span><br><span class="line">704796792</span><br><span class="line">752211152</span><br><span class="line">274704164</span><br><span class="line">18414022</span><br><span class="line">368270835</span><br><span class="line">483295235</span><br><span class="line">263072905</span><br><span class="line">459788476</span><br><span class="line">483295235</span><br><span class="line">459788476</span><br><span class="line">663551792</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">428313374</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">425392137</span><br><span class="line">704796792</span><br><span class="line">458265677</span><br><span class="line">341524652</span><br><span class="line">483295235</span><br><span class="line">534149509</span><br><span class="line">425392137</span><br><span class="line">428313374</span><br><span class="line">425392137</span><br><span class="line">341524652</span><br><span class="line">458265677</span><br><span class="line">263072905</span><br><span class="line">483295235</span><br><span class="line">828509797</span><br><span class="line">341524652</span><br><span class="line">425392137</span><br><span class="line">475206804</span><br><span class="line">428313374</span><br><span class="line">483295235</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">306220148</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#题目.txt</span><br><span class="line">RSA roll！roll！roll！</span><br><span class="line">Only number and a-z</span><br><span class="line">（don&#x27;t use editor</span><br><span class="line">which MS provide）</span><br></pre></td></tr></table></figure>
-<p>解题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line"></span><br><span class="line">p=18443</span><br><span class="line">q=49891</span><br><span class="line">n=920139713</span><br><span class="line">e=19</span><br><span class="line">d = gmpy2.invert(e,(p-1)*(q-1))</span><br><span class="line">flag = []</span><br><span class="line">with open(r&quot;C:\Users\Lenovo\Desktop\02c01a13-3a86-47de-8648-f03328a5e5d8 (1)\RsaRoll\data.txt&quot;) as f:</span><br><span class="line">    f.readline() </span><br><span class="line">    f.readline()</span><br><span class="line">    for i in f:</span><br><span class="line">        flag.append(chr(pow(int(i),d,n)))</span><br><span class="line">print(&quot;&quot;.join(flag))</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;13212je2ue28fy71w8u87y31r78eu1e2&#125;</span><br></pre></td></tr></table></figure>
-<p>总结</p>
-<p>1、 f.readline() 用于从文件读取整行，包括 “\n” 字符</p>
-<h2 id="已知n，c，e，且e-3，求m"><a href="#已知n，c，e，且e-3，求m" class="headerlink" title="已知n，c，e，且e=3，求m"></a><code>已知n，c，e，且e=3，求m</code></h2><p>题目 Dangerous RSA如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#n:  0x52d483c27cd806550fbe0e37a61af2e7cf5e0efb723dfc81174c918a27627779b21fa3c851e9e94188eaee3d5cd6f752406a43fbecb53e80836ff1e185d3ccd7782ea846c2e91a7b0808986666e0bdadbfb7bdd65670a589a4d2478e9adcafe97c6ee23614bcb2ecc23580f4d2e3cc1ecfec25c50da4bc754dde6c8bfd8d1fc16956c74d8e9196046a01dc9f3024e11461c294f29d7421140732fedacac97b8fe50999117d27943c953f18c4ff4f8c258d839764078d4b6ef6e8591e0ff5563b31a39e6374d0d41c8c46921c25e5904a817ef8e39e5c9b71225a83269693e0b7e3218fc5e5a1e8412ba16e588b3d6ac536dce39fcdfce81eec79979ea6872793L</span><br><span class="line">#e:  0x3</span><br><span class="line">#c:0x10652cdfaa6b63f6d7bd1109da08181e500e5643f5b240a9024bfa84d5f2cac9310562978347bb232d63e7289283871efab83d84ff5a7b64a94a79d34cfbd4ef121723ba1f663e514f83f6f01492b4e13e1bb4296d96ea5a353d3bf2edd2f449c03c4a3e995237985a596908adc741f32365</span><br><span class="line">so,how to get the message?</span><br></pre></td></tr></table></figure>
-<p>思路</p>
-<p>e=3，属于低加密指数攻击，存在以下两种情况</p>
-<p>总的关系式：c=m^3^ mod n，c=kn+m^3^</p>
-<p>1、如果明文m较小，导致m^3^&lt;n,所以c=m^3^，所以m=c开3次方</p>
-<p>2、如果明文m较大，导致m^3^&gt;n,满足c=kn+m^3^，所以m=（c-kn）开3次方</p>
-<hr>
-<p>解题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2 </span><br><span class="line">import libnum</span><br><span class="line">n = 0x52d483c27cd806550fbe0e37a61af2e7cf5e0efb723dfc81174c918a27627779b21fa3c851e9e94188eaee3d5cd6f752406a43fbecb53e80836ff1e185d3ccd7782ea846c2e91a7b0808986666e0bdadbfb7bdd65670a589a4d2478e9adcafe97c6ee23614bcb2ecc23580f4d2e3cc1ecfec25c50da4bc754dde6c8bfd8d1fc16956c74d8e9196046a01dc9f3024e11461c294f29d7421140732fedacac97b8fe50999117d27943c953f18c4ff4f8c258d839764078d4b6ef6e8591e0ff5563b31a39e6374d0d41c8c46921c25e5904a817ef8e39e5c9b71225a83269693e0b7e3218fc5e5a1e8412ba16e588b3d6ac536dce39fcdfce81eec79979ea6872793</span><br><span class="line">c = 0x10652cdfaa6b63f6d7bd1109da08181e500e5643f5b240a9024bfa84d5f2cac9310562978347bb232d63e7289283871efab83d84ff5a7b64a94a79d34cfbd4ef121723ba1f663e514f83f6f01492b4e13e1bb4296d96ea5a353d3bf2edd2f449c03c4a3e995237985a596908adc741f32365</span><br><span class="line">e=3</span><br><span class="line"></span><br><span class="line">k = 0</span><br><span class="line">while 1:</span><br><span class="line">    if(gmpy2.iroot(c+k*n,3)[1]==1):    </span><br><span class="line">        print(gmpy2.iroot(c+k*n,3))</span><br><span class="line">        break</span><br><span class="line">    i=i+1</span><br><span class="line">hex_m=hex(13040004482819713819817340524563023159919305047824600478799740488797710355579494486728991357)</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii</span><br><span class="line">mingwen=binascii.unhexlify(&#x27;666c61677b32356466386361663030366565356462393464343831343463333362326333627d&#x27;)</span><br><span class="line"></span><br><span class="line">print(mingwen)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(mpz(13040004482819713819817340524563023159919305047824600478799740488797710355579494486728991357), True)</span><br><span class="line">0x666c61677b32356466386361663030366565356462393464343831343463333362326333627d</span><br><span class="line">b&#x27;flag&#123;25df8caf006ee5db94d48144c33b2c3b&#125;&#x27;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;25df8caf006ee5db94d48144c33b2c3b&#125;</span><br></pre></td></tr></table></figure>
-<p>总结</p>
-<p>1、gmpy2.iroot指开根，<code>gmpy2.iroot</code>(81,2)，表示求大整数x=81开n=2次根，输出的结果是(mpz(9),True)</p>
-<p>2、对k进行爆破，只要能开方成功就break，否则继续遍历</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
       </categories>
       <tags>
         <tag>密码学</tag>
@@ -2203,6 +2129,124 @@
       </tags>
   </entry>
   <entry>
+    <title>CTF之常见密码学攻击手法和实现</title>
+    <url>/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>题目均来源CTF</strong></p>
+<p>通过了解CTF中常见和以前奇葩题型，有助于我们学习更多的内容</p>
+<p>关于rsa的一些基础知识之前就有写过啦，这篇直接开始做题 O(∩_∩)O</p>
+<hr>
+<h2 id="已知p-q-e-求d"><a href="#已知p-q-e-求d" class="headerlink" title="已知p,q,e 求d"></a><code>已知p,q,e 求d</code></h2><p>题目RSA如下</p>
+<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/1.png" alt></p>
+<p>直接带入即可</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">p=473398607161</span><br><span class="line">q=4511491</span><br><span class="line">e=17</span><br><span class="line">fai=(p-1)*(q-1)</span><br><span class="line">d=gmpy2.invert(e,fai)</span><br><span class="line">print(&#x27;d=&#x27;,d)</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d= 125631357777427553</span><br></pre></td></tr></table></figure>
+<p>所以答案套个flag{}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;125631357777427553&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="已知p-q-e-c-求m"><a href="#已知p-q-e-c-求m" class="headerlink" title="已知p,q,e,c 求m"></a><code>已知p,q,e,c 求m</code></h2><p>题目rsarsa如下</p>
+<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/2.png" alt="2"></p>
+<p>求解，比上一题多一个步骤而已</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line"></span><br><span class="line">p = 9648423029010515676590551740010426534945737639235739800643989352039852507298491399561035009163427050370107570733633350911691280297777160200625281665378483</span><br><span class="line">q = 11874843837980297032092405848653656852760910154543380907650040190704283358909208578251063047732443992230647903887510065547947313543299303261986053486569407</span><br><span class="line">e = 65537</span><br><span class="line">c = 83208298995174604174773590298203639360540024871256126892889661345742403314929861939100492666605647316646576486526217457006376842280869728581726746401583705899941768214138742259689334840735633553053887641847651173776251820293087212885670180367406807406765923638973161375817392737747832762751690104423869019034</span><br><span class="line"></span><br><span class="line">n=p*q</span><br><span class="line">fai=(p-1)*(q-1)</span><br><span class="line">d=gmpy2.invert(e,fai)</span><br><span class="line">m=pow(c,d,n)</span><br><span class="line">print(&#x27;m=&#x27;,m)</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">m= 5577446633554466577768879988</span><br></pre></td></tr></table></figure>
+<p>所以答案是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123; 5577446633554466577768879988&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="已知p-q-dp-dq-c-求m"><a href="#已知p-q-dp-dq-c-求m" class="headerlink" title="已知p,q,dp,dq,c  求m"></a><code>已知p,q,dp,dq,c  求m</code></h2><p>题目RSA1如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p = 8637633767257008567099653486541091171320491509433615447539162437911244175885667806398411790524083553445158113502227745206205327690939504032994699902053229 </span><br><span class="line">q = 12640674973996472769176047937170883420927050821480010581593137135372473880595613737337630629752577346147039284030082593490776630572584959954205336880228469 </span><br><span class="line">dp = 6500795702216834621109042351193261530650043841056252930930949663358625016881832840728066026150264693076109354874099841380454881716097778307268116910582929 </span><br><span class="line">dq = 783472263673553449019532580386470672380574033551303889137911760438881683674556098098256795673512201963002175438762767516968043599582527539160811120550041 </span><br><span class="line">c = 24722305403887382073567316467649080662631552905960229399079107995602154418176056335800638887527614164073530437657085079676157350205351945222989351316076486573599576041978339872265925062764318536089007310270278526159678937431903862892400747915525118983959970607934142974736675784325993445942031372107342103852</span><br></pre></td></tr></table></figure>
+<p>对新出现的dp，dq先来分析一下，直接手写了hhh</p>
+<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/微信图片_20210803111104.jpg" alt></p>
+<p>解题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line"></span><br><span class="line">p = 8637633767257008567099653486541091171320491509433615447539162437911244175885667806398411790524083553445158113502227745206205327690939504032994699902053229 </span><br><span class="line">q = 12640674973996472769176047937170883420927050821480010581593137135372473880595613737337630629752577346147039284030082593490776630572584959954205336880228469 </span><br><span class="line">dp = 6500795702216834621109042351193261530650043841056252930930949663358625016881832840728066026150264693076109354874099841380454881716097778307268116910582929 </span><br><span class="line">dq = 783472263673553449019532580386470672380574033551303889137911760438881683674556098098256795673512201963002175438762767516968043599582527539160811120550041 </span><br><span class="line">c = 24722305403887382073567316467649080662631552905960229399079107995602154418176056335800638887527614164073530437657085079676157350205351945222989351316076486573599576041978339872265925062764318536089007310270278526159678937431903862892400747915525118983959970607934142974736675784325993445942031372107342103852</span><br><span class="line"></span><br><span class="line">niyuan=gmpy2.invert(p,q)</span><br><span class="line">n=p*q</span><br><span class="line">mp=pow(c,dp,p)</span><br><span class="line">mq=pow(c,dq,q)</span><br><span class="line"></span><br><span class="line">m=(((mp-mq)*niyuan % p)*q+mq)%n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#x27;m=&#x27;,m)</span><br><span class="line">hex_m=hex(m)</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii</span><br><span class="line">mingwen= binascii.unhexlify(&#x27;6e6f784354467b57333163306d335f37305f4368316e343730776e7d&#x27;)</span><br><span class="line">print(mingwen)</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">m= 11630208090204506176302961171539022042721137807911818876637821759101 </span><br><span class="line">0x6e6f784354467b57333163306d335f37305f4368316e343730776e7d </span><br><span class="line">b&#x27;noxCTF&#123;W31c0m3_70_Ch1n470wn&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>所以答案</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;W31c0m3_70_Ch1n470wn&#125;</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<p>1、关系公式：dp≡dmod(p-1),dq≡dmod(q-1)</p>
+<p>2、mp=pow(c,dp,p)，mq=pow(c,dq,q)</p>
+<p>3、推出 m=(((mp-mq)<em>niyuan % p)</em>q+mq)%n</p>
+<h2 id="已知e-n-dp-c-求m"><a href="#已知e-n-dp-c-求m" class="headerlink" title="已知e,n,dp.c 求m"></a><code>已知e,n,dp.c 求m</code></h2><p>题目</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">e = 65537</span><br><span class="line">n = 248254007851526241177721526698901802985832766176221609612258877371620580060433101538328030305219918697643619814200930679612109885533801335348445023751670478437073055544724280684733298051599167660303645183146161497485358633681492129668802402065797789905550489547645118787266601929429724133167768465309665906113</span><br><span class="line">dp = 905074498052346904643025132879518330691925174573054004621877253318682675055421970943552016695528560364834446303196939207056642927148093290374440210503657</span><br><span class="line">c = 140423670976252696807533673586209400575664282100684119784203527124521188996403826597436883766041879067494280957410201958935737360380801845453829293997433414188838725751796261702622028587211560353362847191060306578510511380965162133472698713063592621028959167072781482562673683090590521214218071160287665180751</span><br></pre></td></tr></table></figure>
+<p>分析一波只含dp的情况</p>
+<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/微信图片_20210803202428.jpg" alt></p>
+<p>现在来解题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line"></span><br><span class="line">e = 65537</span><br><span class="line">n = 248254007851526241177721526698901802985832766176221609612258877371620580060433101538328030305219918697643619814200930679612109885533801335348445023751670478437073055544724280684733298051599167660303645183146161497485358633681492129668802402065797789905550489547645118787266601929429724133167768465309665906113</span><br><span class="line">dp = 905074498052346904643025132879518330691925174573054004621877253318682675055421970943552016695528560364834446303196939207056642927148093290374440210503657</span><br><span class="line">c = 140423670976252696807533673586209400575664282100684119784203527124521188996403826597436883766041879067494280957410201958935737360380801845453829293997433414188838725751796261702622028587211560353362847191060306578510511380965162133472698713063592621028959167072781482562673683090590521214218071160287665180751</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for x in range(1,e):          #在(1,e)中遍历取一个数x</span><br><span class="line"></span><br><span class="line">  if (dp*e-1)%x==0:           </span><br><span class="line"></span><br><span class="line">​    if n%(((dp*e-1)//x)+1) == 0:   #存在p，使得n能被p整除</span><br><span class="line">​       p=((dp*e-1)//x)+1           #求p</span><br><span class="line">​       q=n//p                      #求q</span><br><span class="line">​       fai=(p-1)*(q-1)             </span><br><span class="line">​       d=gmpy2.invert(e,fai)      </span><br><span class="line">​       m=pow(c,d,n)                </span><br><span class="line"></span><br><span class="line">print(&#x27;m=&#x27;,m)</span><br><span class="line">hex_m=hex(m)</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii </span><br><span class="line">mingwen= binascii.unhexlify(&#x27;666c61677b776f775f6c65616b696e675f64705f627265616b735f7273613f5f39383932343734333530327d&#x27;)</span><br><span class="line">print(mingwen)</span><br></pre></td></tr></table></figure>
+<p>输出结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">m= 3670434958110785066911905751469631231338751225710158680692616521935747246580688484040488309932916523151997 </span><br><span class="line">0x666c61677b776f775f6c65616b696e675f64705f627265616b735f7273613f5f39383932343734333530327</span><br><span class="line">d b&#x27;flag&#123;wow_leaking_dp_breaks_rsa?_98924743502&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>因此答案为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;wow_leaking_dp_breaks_rsa?_98924743502&#125;</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<p>1、存在p的前提是，n要存在，所以 <code>if (dp*e-1)%x==0:</code>不能漏</p>
+<p>2、存在的这个p,必须满足被n整除（%==0）</p>
+<p>3、注意==和=区别，前者表等于，后者是赋值</p>
+<h2 id="已知c1-c2-e1-e2-n-求m"><a href="#已知c1-c2-e1-e2-n-求m" class="headerlink" title="已知c1,c2,e1,e2,n  求m"></a><code>已知c1,c2,e1,e2,n  求m</code></h2><p>题目RSA3如下(共模攻击)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c1=22322035275663237041646893770451933509324701913484303338076210603542612758956262869640822486470121149424485571361007421293675516338822195280313794991136048140918842471219840263536338886250492682739436410013436651161720725855484866690084788721349555662019879081501113222996123305533009325964377798892703161521852805956811219563883312896330156298621674684353919547558127920925706842808914762199011054955816534977675267395009575347820387073483928425066536361482774892370969520740304287456555508933372782327506569010772537497541764311429052216291198932092617792645253901478910801592878203564861118912045464959832566051361</span><br><span class="line">n=22708078815885011462462049064339185898712439277226831073457888403129378547350292420267016551819052430779004755846649044001024141485283286483130702616057274698473611149508798869706347501931583117632710700787228016480127677393649929530416598686027354216422565934459015161927613607902831542857977859612596282353679327773303727004407262197231586324599181983572622404590354084541788062262164510140605868122410388090174420147752408554129789760902300898046273909007852818474030770699647647363015102118956737673941354217692696044969695308506436573142565573487583507037356944848039864382339216266670673567488871508925311154801</span><br><span class="line">e1=11187289</span><br><span class="line">c2=18702010045187015556548691642394982835669262147230212731309938675226458555210425972429418449273410535387985931036711854265623905066805665751803269106880746769003478900791099590239513925449748814075904017471585572848473556490565450062664706449128415834787961947266259789785962922238701134079720414228414066193071495304612341052987455615930023536823801499269773357186087452747500840640419365011554421183037505653461286732740983702740822671148045619497667184586123657285604061875653909567822328914065337797733444640351518775487649819978262363617265797982843179630888729407238496650987720428708217115257989007867331698397</span><br><span class="line">e2=9647291</span><br></pre></td></tr></table></figure>
+<p>原理</p>
+<p>对于同一明文m，用同一模数n，不同指数e1，e2对其加密，因此c1和c2也是不同的。在这情况下已知n，c1,c2,e1,e2,就可以列出两个式子求得一个未知数m。</p>
+<p>假设<strong>e1,e2互质</strong>，即<code>gcd(e1,e2)=1</code>,此时有<code>e1s1+e2s2=1</code>(s1,s2一正一负，且为整数)，在之前的数论提到过，这样可以求出一组解（s1,s2).假设s1为正数，s2为负数。</p>
+<p><code>c1≡m^e1^ mod n</code>,<code>c2≡m^e2^ mod n</code></p>
+<p>相乘<code>c1c2≡m^(e1+e2)^mod n</code></p>
+<p>因此 c1^s1^c2^s2^≡m^e1s1+e2s2^ mod n</p>
+<p>所以 c1^s1^c2^s2^ ≡m mod n</p>
+<p>等式变换后 m≡ c1^s1^c2^s2^ mod n</p>
+<hr>
+<p>解题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import libnum   </span><br><span class="line">import gmpy2    </span><br><span class="line"></span><br><span class="line">n = 22708078815885011462462049064339185898712439277226831073457888403129378547350292420267016551819052430779004755846649044001024141485283286483130702616057274698473611149508798869706347501931583117632710700787228016480127677393649929530416598686027354216422565934459015161927613607902831542857977859612596282353679327773303727004407262197231586324599181983572622404590354084541788062262164510140605868122410388090174420147752408554129789760902300898046273909007852818474030770699647647363015102118956737673941354217692696044969695308506436573142565573487583507037356944848039864382339216266670673567488871508925311154801</span><br><span class="line">c1 = 22322035275663237041646893770451933509324701913484303338076210603542612758956262869640822486470121149424485571361007421293675516338822195280313794991136048140918842471219840263536338886250492682739436410013436651161720725855484866690084788721349555662019879081501113222996123305533009325964377798892703161521852805956811219563883312896330156298621674684353919547558127920925706842808914762199011054955816534977675267395009575347820387073483928425066536361482774892370969520740304287456555508933372782327506569010772537497541764311429052216291198932092617792645253901478910801592878203564861118912045464959832566051361</span><br><span class="line">c2 = 18702010045187015556548691642394982835669262147230212731309938675226458555210425972429418449273410535387985931036711854265623905066805665751803269106880746769003478900791099590239513925449748814075904017471585572848473556490565450062664706449128415834787961947266259789785962922238701134079720414228414066193071495304612341052987455615930023536823801499269773357186087452747500840640419365011554421183037505653461286732740983702740822671148045619497667184586123657285604061875653909567822328914065337797733444640351518775487649819978262363617265797982843179630888729407238496650987720428708217115257989007867331698397</span><br><span class="line">e1 = 11187289</span><br><span class="line">e2 = 9647291</span><br><span class="line"></span><br><span class="line">s = gcdext(e1,e2)    #gmpy2.gcdext(),扩展欧几里得算法，返回tuple元组，满足s[1]*e1+s[2]*e2=1</span><br><span class="line"></span><br><span class="line">m = pow(c1,s[1],n)*pow(c2,s[2],n)%n </span><br><span class="line"></span><br><span class="line">print(m)</span><br><span class="line">hex_m=hex(m) #把m十进制数字转化成十六进制</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii</span><br><span class="line">mingwen=binascii.unhexlify(&#x27;666c61677b34396439313037376131616263623134663161396435343663383062653965667d&#x27;)</span><br><span class="line">print (mingwen)</span><br></pre></td></tr></table></figure>
+<p>输出结果即答案</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;49d91077a1abcb14f1a9d546c80be9ef&#125;</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<p>1、gmpy2.gcdext(),扩展欧几里得算法，返回tuple元组，满足s[1]e1+s[2]e2=1</p>
+<p>2、 m≡ c1^s1^c2^s2^ mod n，表示出s1,s2即可</p>
+<h2 id="已知flag-enc-pub-key-求m"><a href="#已知flag-enc-pub-key-求m" class="headerlink" title="已知flag.enc,pub.key  求m"></a><code>已知flag.enc,pub.key  求m</code></h2><p>将pub.key的后缀改为txt，打开</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAMAzLFxkrkcYL2wch21CM2kQVFpY9+7+/AvKr1rzQczdAgMBAAE=</span><br><span class="line">-----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
+<p>之前写过一篇用虚拟机openssl命令解key的，后来发现在线网站也可以实现</p>
+<p><a href="http://ctf.ssleye.com/pub_asys.html">SSL在线工具-公钥解析 (ssleye.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">n=86934482296048119190666062003494800588905656017203025617216654058378322103517</span><br><span class="line">e=65537</span><br></pre></td></tr></table></figure>
+<p>再分解n</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">p=285960468890451637935629440372639283459</span><br><span class="line">q=304008741604601924494328155975272418463</span><br></pre></td></tr></table></figure>
+<p>后来我又get到一个方便的tool，可以直接计算d</p>
+<p><img src="/2021/08/03/CTF%E4%B9%8B%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95%E5%92%8C%E5%AE%9E%E7%8E%B0/4.png" alt></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d=81176168860169991027846870170527607562179635470395365333547868786951080991441</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line">import rsa</span><br><span class="line"></span><br><span class="line">e= 65537</span><br><span class="line">n= 86934482296048119190666062003494800588905656017203025617216654058378322103517</span><br><span class="line">p= 285960468890451637935629440372639283459</span><br><span class="line">q= 304008741604601924494328155975272418463</span><br><span class="line">d= 81176168860169991027846870170527607562179635470395365333547868786951080991441</span><br><span class="line"></span><br><span class="line">key = rsa.PrivateKey(n,e,d,q,p)         </span><br><span class="line">with open(r&quot;C:\Users\Lenovo\Desktop\0eaf8d6c-3fe5-4549-9e81-94ac42535e7b (1)\flag.enc&quot;,&quot;rb&quot;) as f:  </span><br><span class="line">    f = f.read()</span><br><span class="line">    print(rsa.decrypt(f,key))           </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b&#x27;flag&#123;decrypt_256&#125;</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<p>1、<code>with open(&quot;C:\Users\Lenovo\Desktop\0eaf8d6c-3fe5-4549-9e81-94ac42535e7b (1)\flag.enc&quot;,&quot;rb&quot;) as f:</code>  行不通，就在<code>open（“</code>加个r</p>
+<p>2、flag.enc的路径要复制完整</p>
+<p>3、“rb”，表示读取</p>
+<h2 id="已知n-e-c-求m，且c为字符串"><a href="#已知n-e-c-求m，且c为字符串" class="headerlink" title="已知n,e,c 求m，且c为字符串"></a><code>已知n,e,c 求m，且c为字符串</code></h2><p>题目RSAROLL如下，有两个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#data.txt</span><br><span class="line">&#123;920139713,19&#125;</span><br><span class="line"></span><br><span class="line">704796792</span><br><span class="line">752211152</span><br><span class="line">274704164</span><br><span class="line">18414022</span><br><span class="line">368270835</span><br><span class="line">483295235</span><br><span class="line">263072905</span><br><span class="line">459788476</span><br><span class="line">483295235</span><br><span class="line">459788476</span><br><span class="line">663551792</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">428313374</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">425392137</span><br><span class="line">704796792</span><br><span class="line">458265677</span><br><span class="line">341524652</span><br><span class="line">483295235</span><br><span class="line">534149509</span><br><span class="line">425392137</span><br><span class="line">428313374</span><br><span class="line">425392137</span><br><span class="line">341524652</span><br><span class="line">458265677</span><br><span class="line">263072905</span><br><span class="line">483295235</span><br><span class="line">828509797</span><br><span class="line">341524652</span><br><span class="line">425392137</span><br><span class="line">475206804</span><br><span class="line">428313374</span><br><span class="line">483295235</span><br><span class="line">475206804</span><br><span class="line">459788476</span><br><span class="line">306220148</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#题目.txt</span><br><span class="line">RSA roll！roll！roll！</span><br><span class="line">Only number and a-z</span><br><span class="line">（don&#x27;t use editor</span><br><span class="line">which MS provide）</span><br></pre></td></tr></table></figure>
+<p>解题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2</span><br><span class="line"></span><br><span class="line">p=18443</span><br><span class="line">q=49891</span><br><span class="line">n=920139713</span><br><span class="line">e=19</span><br><span class="line">d = gmpy2.invert(e,(p-1)*(q-1))</span><br><span class="line">flag = []</span><br><span class="line">with open(r&quot;C:\Users\Lenovo\Desktop\02c01a13-3a86-47de-8648-f03328a5e5d8 (1)\RsaRoll\data.txt&quot;) as f:</span><br><span class="line">    f.readline() </span><br><span class="line">    f.readline()</span><br><span class="line">    for i in f:</span><br><span class="line">        flag.append(chr(pow(int(i),d,n)))</span><br><span class="line">print(&quot;&quot;.join(flag))</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;13212je2ue28fy71w8u87y31r78eu1e2&#125;</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<p>1、 f.readline() 用于从文件读取整行，包括 “\n” 字符</p>
+<h2 id="已知n，c，e，且e-3，求m"><a href="#已知n，c，e，且e-3，求m" class="headerlink" title="已知n，c，e，且e=3，求m"></a><code>已知n，c，e，且e=3，求m</code></h2><p>题目 Dangerous RSA如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#n:  0x52d483c27cd806550fbe0e37a61af2e7cf5e0efb723dfc81174c918a27627779b21fa3c851e9e94188eaee3d5cd6f752406a43fbecb53e80836ff1e185d3ccd7782ea846c2e91a7b0808986666e0bdadbfb7bdd65670a589a4d2478e9adcafe97c6ee23614bcb2ecc23580f4d2e3cc1ecfec25c50da4bc754dde6c8bfd8d1fc16956c74d8e9196046a01dc9f3024e11461c294f29d7421140732fedacac97b8fe50999117d27943c953f18c4ff4f8c258d839764078d4b6ef6e8591e0ff5563b31a39e6374d0d41c8c46921c25e5904a817ef8e39e5c9b71225a83269693e0b7e3218fc5e5a1e8412ba16e588b3d6ac536dce39fcdfce81eec79979ea6872793L</span><br><span class="line">#e:  0x3</span><br><span class="line">#c:0x10652cdfaa6b63f6d7bd1109da08181e500e5643f5b240a9024bfa84d5f2cac9310562978347bb232d63e7289283871efab83d84ff5a7b64a94a79d34cfbd4ef121723ba1f663e514f83f6f01492b4e13e1bb4296d96ea5a353d3bf2edd2f449c03c4a3e995237985a596908adc741f32365</span><br><span class="line">so,how to get the message?</span><br></pre></td></tr></table></figure>
+<p>思路</p>
+<p>e=3，属于低加密指数攻击，存在以下两种情况</p>
+<p>总的关系式：c=m^3^ mod n，c=kn+m^3^</p>
+<p>1、如果明文m较小，导致m^3^&lt;n,所以c=m^3^，所以m=c开3次方</p>
+<p>2、如果明文m较大，导致m^3^&gt;n,满足c=kn+m^3^，所以m=（c-kn）开3次方</p>
+<hr>
+<p>解题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gmpy2 </span><br><span class="line">import libnum</span><br><span class="line">n = 0x52d483c27cd806550fbe0e37a61af2e7cf5e0efb723dfc81174c918a27627779b21fa3c851e9e94188eaee3d5cd6f752406a43fbecb53e80836ff1e185d3ccd7782ea846c2e91a7b0808986666e0bdadbfb7bdd65670a589a4d2478e9adcafe97c6ee23614bcb2ecc23580f4d2e3cc1ecfec25c50da4bc754dde6c8bfd8d1fc16956c74d8e9196046a01dc9f3024e11461c294f29d7421140732fedacac97b8fe50999117d27943c953f18c4ff4f8c258d839764078d4b6ef6e8591e0ff5563b31a39e6374d0d41c8c46921c25e5904a817ef8e39e5c9b71225a83269693e0b7e3218fc5e5a1e8412ba16e588b3d6ac536dce39fcdfce81eec79979ea6872793</span><br><span class="line">c = 0x10652cdfaa6b63f6d7bd1109da08181e500e5643f5b240a9024bfa84d5f2cac9310562978347bb232d63e7289283871efab83d84ff5a7b64a94a79d34cfbd4ef121723ba1f663e514f83f6f01492b4e13e1bb4296d96ea5a353d3bf2edd2f449c03c4a3e995237985a596908adc741f32365</span><br><span class="line">e=3</span><br><span class="line"></span><br><span class="line">k = 0</span><br><span class="line">while 1:</span><br><span class="line">    if(gmpy2.iroot(c+k*n,3)[1]==1):    </span><br><span class="line">        print(gmpy2.iroot(c+k*n,3))</span><br><span class="line">        break</span><br><span class="line">    i=i+1</span><br><span class="line">hex_m=hex(13040004482819713819817340524563023159919305047824600478799740488797710355579494486728991357)</span><br><span class="line">print(hex_m)</span><br><span class="line">import binascii</span><br><span class="line">mingwen=binascii.unhexlify(&#x27;666c61677b32356466386361663030366565356462393464343831343463333362326333627d&#x27;)</span><br><span class="line"></span><br><span class="line">print(mingwen)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(mpz(13040004482819713819817340524563023159919305047824600478799740488797710355579494486728991357), True)</span><br><span class="line">0x666c61677b32356466386361663030366565356462393464343831343463333362326333627d</span><br><span class="line">b&#x27;flag&#123;25df8caf006ee5db94d48144c33b2c3b&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;25df8caf006ee5db94d48144c33b2c3b&#125;</span><br></pre></td></tr></table></figure>
+<p>总结</p>
+<p>1、gmpy2.iroot指开根，<code>gmpy2.iroot</code>(81,2)，表示求大整数x=81开n=2次根，输出的结果是(mpz(9),True)</p>
+<p>2、对k进行爆破，只要能开方成功就break，否则继续遍历</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初识区块链</title>
     <url>/2021/09/12/%E5%88%9D%E8%AF%86%E5%8C%BA%E5%9D%97%E9%93%BE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>没有安全，何谈财富？</p>
@@ -2320,50 +2364,6 @@
       </categories>
       <tags>
         <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>运算方法和运算部件</title>
-    <url>/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要内容</p>
-<p>第3章(运算方法和运算部件〉主要介绍各类<strong>定点数和浮点数的运算方法</strong>和相应的<strong>运算部件</strong> ，以及<strong>核心运算部件ALU</strong>的功能和设计实现等。</p>
-<hr>
-<p>头一回计组课上就能听懂，之前都是课后花时间补救的&gt;_&lt;</p>
-<p>因此 今天是复习而不是预习！必须趁热打铁写个笔记</p>
-<h1 id="核心运算部件ALU"><a href="#核心运算部件ALU" class="headerlink" title="核心运算部件ALU"></a>核心运算部件ALU</h1><p>基本运算部件：加法器、ALU、移位器，ALU的核心部件是加法器</p>
-<p>要看懂书上的图解前，得先知道一些集成电路的逻辑符号和数学运算符（破案了！上一节上课听不懂的原因</p>
-<p>常用集成电路逻辑符号对照表</p>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/1.png" alt></p>
-<p>基本数学运算</p>
-<p>异或（xor），数学符号为“⊕”，相同为假，不同为真。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊕y=1110</span><br></pre></td></tr></table></figure>
-<p>同或，数学符号为⊙，相同为真，不同为假</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊙y=0001</span><br></pre></td></tr></table></figure>
-<p>与非，与+非，都为1时输出0</p>
-<p>或非，或+非，都为1时输出1</p>
-<h2 id="串行进位加法器"><a href="#串行进位加法器" class="headerlink" title="串行进位加法器"></a>串行进位加法器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Fi：全加和  Ci：全加进位</span><br><span class="line">Fi=Xi⊕Yi⊕Ci-1 </span><br><span class="line">Ci= XiCi-1 + YiCi-1 + XiYi</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/2.png" alt="2"></p>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/3.png" alt="71页"></p>
-<p>从3.2可以看出，进位输入到进位输出要经过2级门延迟，所以n位串行加法器从C0到Cn的延迟时间为2n级门延迟。</p>
-<p>串行加法器的缺点：运行速度慢，因为进位按串行方式传递，高位进位依赖低位进位。</p>
-<h2 id="并行进位加法器"><a href="#并行进位加法器" class="headerlink" title="并行进位加法器"></a>并行进位加法器</h2><p>并行进位加法器的提出是因为串行进位加法器采用串行逐级传递进位，电路延迟与位数成正比关系。CLA加法器=进位生成部件+进位传递部件+CLA部件+求和部件</p>
-<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/4.png" alt></p>
-<p>由上式可知，各进位之间无需等待，可以相互独立同时产生。</p>
-<h2 id="带标志加法器"><a href="#带标志加法器" class="headerlink" title="带标志加法器"></a>带标志加法器</h2><p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/QQ图片20210919151110.jpg" alt="QQ图片2021091915111"></p>
-<ul>
-<li>计算机中所有算术运算都基于加法器实现！</li>
-<li>加法器不知道所运算的是带符号数还是无符号数。</li>
-<li>加法器不判定对错，总是取低n位作为结果，并生成标志信息。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OF溢出标志：是针对有符号数运算的情况</span><br><span class="line">CF进位/借位：是无符号数运算处理的情况（比较大小判别）</span><br><span class="line">2-（-4）---&gt; 0010-1100=0010+0100=0110   CF=01=1 借位</span><br><span class="line">(-4)-2 ---&gt;  1100-0010=1100+1110=1 1010 CF=11=0 借位</span><br><span class="line">（-4在计算机中以补码1100表示，当成无符号数是12）</span><br><span class="line">5-4    ---&gt; 0101-0100=0101+1100=1 0001  CF=11=0 借位</span><br><span class="line">4-5   ---&gt; 0101-0101=0100+1011=1111     CF=01=1 借位</span><br><span class="line">5+4   ---&gt; 0101+0100=1001               CF=00=0 进位</span><br><span class="line">9+8   ---&gt;1001+1000=1 0001              CF=10=1 进位</span><br><span class="line">浮点数节码采用移码表示，目的为了更好比较大小。</span><br></pre></td></tr></table></figure>
-<h1 id="定点数运算及其运算部件"><a href="#定点数运算及其运算部件" class="headerlink" title="定点数运算及其运算部件"></a>定点数运算及其运算部件</h1><h2 id="补码加减运算"><a href="#补码加减运算" class="headerlink" title="补码加减运算"></a>补码加减运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">补码的定义    假定补码有n位，则：</span><br><span class="line">[X]补=2n +X  （-2n-1≤X＜2n-1 ,mod 2n）</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据补码定义，有如下公式：</span><br><span class="line">[x+y]补 =2n+x+y= 2n+x+2n+y= [x]补+[y]补 (mod 2n )</span><br><span class="line">[x-y]补=2n+x-y= 2n+x+2n-y= [x]补+[-y]补 (mod 2n )</span><br></pre></td></tr></table></figure>
-<h2 id="原码加减运算"><a href="#原码加减运算" class="headerlink" title="原码加减运算"></a>原码加减运算</h2><h1 id="浮点数运算及其运算部件"><a href="#浮点数运算及其运算部件" class="headerlink" title="浮点数运算及其运算部件"></a>浮点数运算及其运算部件</h1>]]></content>
-      <categories>
-        <category>课堂笔记</category>
-      </categories>
-      <tags>
-        <tag>计组</tag>
       </tags>
   </entry>
 </search>
