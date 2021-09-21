@@ -3,7 +3,24 @@
   <entry>
     <title>Linux基础操作</title>
     <url>/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pwd				查看当前工作目录</span><br><span class="line">clear 			清除屏幕</span><br><span class="line">cd ~			当前用户目录</span><br><span class="line">cd /			根目录</span><br><span class="line">cd -			上一次访问的目录</span><br><span class="line">cd ..			上一级目录</span><br><span class="line">ll				查看当前目录下内容（LL的小写）</span><br><span class="line">mkdir aaa		在当前目录下创建aaa目录，相对路径；</span><br><span class="line">mkdir ./bbb		在当前目录下创建bbb目录，相对路径；</span><br><span class="line">mkdir /ccc		在根目录下创建ccc目录，绝对路径；</span><br><span class="line">find / -name &#x27;b&#x27;		查询根目录下（包括子目录），名以b的目录和文件；</span><br><span class="line">find / -name &#x27;b*&#x27;		查询根目录下（包括子目录），名以b开头的目录和文件； </span><br><span class="line">mv 原先目录 文件的名称   重命名 mv tomcat001 tomcat </span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">cp -r /aaa /bbb			将/目录下的aaa目录复制到/bbb目录下，在/bbb目录下的名称为aaa</span><br><span class="line">rm -rf /bbb			强制删除/目录下的bbb目录。如果bbb目录中还有子目录，也会被强制删除，不会提示；</span><br><span class="line">rm -r /bbb			普通删除。会询问你是否删除每一个文件</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/1.png" alt></p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -r a.java		删除当前目录下的a.java文件（每次回询问是否删除y：同意）</span><br><span class="line">rm -rf ./a*			强制删除当前目录下以a开头的所有文件；</span><br><span class="line">rm -rf ./*			强制删除当前目录下所有文件（慎用）；</span><br></pre></td></tr></table></figure>
+<h2 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim a.java   	进入一般模式</span><br><span class="line">i(按键)   		进入插入模式(编辑模式)</span><br><span class="line">ESC(按键)  		退出</span><br><span class="line">:wq 			保存退出（shift+：调起输入框）</span><br><span class="line">:q！			不保存退出（shift+：调起输入框）（内容更改）</span><br><span class="line">:q				不保存退出（shift+：调起输入框）（没有内容更改）</span><br></pre></td></tr></table></figure>
+<h2 id="查看内容"><a href="#查看内容" class="headerlink" title="查看内容"></a>查看内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -a        列出目录所有文件，包含以.开头的隐藏文件（all）</span><br><span class="line">ls -A        列出除.及..的其他文件 </span><br><span class="line">ls -r        反序排列</span><br><span class="line">ls -t        以文件修改的时间排序</span><br><span class="line">ls -S        以文件大小排序</span><br><span class="line">ls -h        以易读大小显示 </span><br><span class="line">ls -l        除了文件名之外，还将文件的权限，所有者，文件大小等信息详细列出来 (long)   </span><br><span class="line">cat a.java		查看a.java文件的最后一页内容；</span><br><span class="line">more a.java		从第一页开始查看a.java文件内容，按回车键一行一行进行查看，按空格键一页一页进行查看，q退出；</span><br><span class="line">less a.java		从第一页开始查看a.java文件内容，按回车键一行一行的看，按空格键一页一页的看，支持使用PageDown和PageUp翻页，q退出；</span><br><span class="line">head a.java				查看a.java文件的前10行内容；</span><br><span class="line">tail -f a.java			查看a.java文件的后10行内容；</span><br><span class="line">head -n 7 a.java		查看a.java文件的前7行内容；</span><br><span class="line">tail -n 7 a.java		查看a.java文件的后7行内容；</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/3.png" alt></p>
+<h2 id="文件详细信息"><a href="#文件详细信息" class="headerlink" title="文件详细信息"></a>文件详细信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> R:Read  w:write  x: execute执行</span><br><span class="line">-rw-r--r-- 1 root root  34942 Jan 19  2018 bootstrap.jar</span><br><span class="line">前三位代表当前用户对文件权限：可以读/可以写/不能执行</span><br><span class="line">中间三位代表当前组的其他用户对当前文件的操作权限：可以读/不能写/不能执行</span><br><span class="line">后三位其他用户对当前文件权限：可以读/不能写/不能执行</span><br><span class="line">链接数：1</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/12/Linux%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/2.png" alt></p>
+<h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zcvf start.tar.gz a.java b.java	将当前目录下a.java、b.java打包</span><br><span class="line">tar -zcvf start.tar.gz ./*				将当前目录下的所欲文件打包压缩成haha.tar.gz文件</span><br><span class="line">tar -xvf start.tar.gz				解压start.tar.gz压缩包，到当前文件夹下；</span><br><span class="line">tar -xvf start.tar.gz -C usr/local（C为大写，中间无空格）</span><br><span class="line">									解压start.tar.gz压缩包，到/usr/local目录下；</span><br></pre></td></tr></table></figure>
+<h2 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unzip file1.zip  				解压一个zip格式压缩包</span><br><span class="line">zip lib.zip tomcat.jar			将单个文件压缩(lib.zip)</span><br><span class="line">zip -r lib.zip lib/				将目录进行压缩(lib.zip)</span><br><span class="line">zip -r lib.zip tomcat-embed.jar xml-aps.jar		将多个文件压缩为zip文件(lib.zip)	</span><br></pre></td></tr></table></figure>
+<h1 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install iptables-services		下载并安装iptables</span><br><span class="line">yum list					列出当前系统中安装的所有包</span><br><span class="line">yum search package_name		在rpm仓库中搜寻软件包</span><br><span class="line">yum update package_name.rpm		更新当前系统中所有安装的rpm包</span><br><span class="line">yum update package_name		更新一个rpm包</span><br><span class="line">yum remove package_name		删除一个rpm包</span><br><span class="line">yum clean all				删除所有缓存的包和头文件</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>使用教程</category>
+      </categories>
+      <tags>
+        <tag>linus</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -2303,6 +2320,50 @@
       </categories>
       <tags>
         <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运算方法和运算部件</title>
+    <url>/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要内容</p>
+<p>第3章(运算方法和运算部件〉主要介绍各类<strong>定点数和浮点数的运算方法</strong>和相应的<strong>运算部件</strong> ，以及<strong>核心运算部件ALU</strong>的功能和设计实现等。</p>
+<hr>
+<p>头一回计组课上就能听懂，之前都是课后花时间补救的&gt;_&lt;</p>
+<p>因此 今天是复习而不是预习！必须趁热打铁写个笔记</p>
+<h1 id="核心运算部件ALU"><a href="#核心运算部件ALU" class="headerlink" title="核心运算部件ALU"></a>核心运算部件ALU</h1><p>基本运算部件：加法器、ALU、移位器，ALU的核心部件是加法器</p>
+<p>要看懂书上的图解前，得先知道一些集成电路的逻辑符号和数学运算符（破案了！上一节上课听不懂的原因</p>
+<p>常用集成电路逻辑符号对照表</p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/1.png" alt></p>
+<p>基本数学运算</p>
+<p>异或（xor），数学符号为“⊕”，相同为假，不同为真。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊕y=1110</span><br></pre></td></tr></table></figure>
+<p>同或，数学符号为⊙，相同为真，不同为假</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若x=0101B，y=1011B</span><br><span class="line">则x⊙y=0001</span><br></pre></td></tr></table></figure>
+<p>与非，与+非，都为1时输出0</p>
+<p>或非，或+非，都为1时输出1</p>
+<h2 id="串行进位加法器"><a href="#串行进位加法器" class="headerlink" title="串行进位加法器"></a>串行进位加法器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Fi：全加和  Ci：全加进位</span><br><span class="line">Fi=Xi⊕Yi⊕Ci-1 </span><br><span class="line">Ci= XiCi-1 + YiCi-1 + XiYi</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/2.png" alt="2"></p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/3.png" alt="71页"></p>
+<p>从3.2可以看出，进位输入到进位输出要经过2级门延迟，所以n位串行加法器从C0到Cn的延迟时间为2n级门延迟。</p>
+<p>串行加法器的缺点：运行速度慢，因为进位按串行方式传递，高位进位依赖低位进位。</p>
+<h2 id="并行进位加法器"><a href="#并行进位加法器" class="headerlink" title="并行进位加法器"></a>并行进位加法器</h2><p>并行进位加法器的提出是因为串行进位加法器采用串行逐级传递进位，电路延迟与位数成正比关系。CLA加法器=进位生成部件+进位传递部件+CLA部件+求和部件</p>
+<p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/4.png" alt></p>
+<p>由上式可知，各进位之间无需等待，可以相互独立同时产生。</p>
+<h2 id="带标志加法器"><a href="#带标志加法器" class="headerlink" title="带标志加法器"></a>带标志加法器</h2><p><img src="/2021/09/17/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/QQ图片20210919151110.jpg" alt="QQ图片2021091915111"></p>
+<ul>
+<li>计算机中所有算术运算都基于加法器实现！</li>
+<li>加法器不知道所运算的是带符号数还是无符号数。</li>
+<li>加法器不判定对错，总是取低n位作为结果，并生成标志信息。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OF溢出标志：是针对有符号数运算的情况</span><br><span class="line">CF进位/借位：是无符号数运算处理的情况（比较大小判别）</span><br><span class="line">2-（-4）---&gt; 0010-1100=0010+0100=0110   CF=01=1 借位</span><br><span class="line">(-4)-2 ---&gt;  1100-0010=1100+1110=1 1010 CF=11=0 借位</span><br><span class="line">（-4在计算机中以补码1100表示，当成无符号数是12）</span><br><span class="line">5-4    ---&gt; 0101-0100=0101+1100=1 0001  CF=11=0 借位</span><br><span class="line">4-5   ---&gt; 0101-0101=0100+1011=1111     CF=01=1 借位</span><br><span class="line">5+4   ---&gt; 0101+0100=1001               CF=00=0 进位</span><br><span class="line">9+8   ---&gt;1001+1000=1 0001              CF=10=1 进位</span><br><span class="line">浮点数节码采用移码表示，目的为了更好比较大小。</span><br></pre></td></tr></table></figure>
+<h1 id="定点数运算及其运算部件"><a href="#定点数运算及其运算部件" class="headerlink" title="定点数运算及其运算部件"></a>定点数运算及其运算部件</h1><h2 id="补码加减运算"><a href="#补码加减运算" class="headerlink" title="补码加减运算"></a>补码加减运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">补码的定义    假定补码有n位，则：</span><br><span class="line">[X]补=2n +X  （-2n-1≤X＜2n-1 ,mod 2n）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据补码定义，有如下公式：</span><br><span class="line">[x+y]补 =2n+x+y= 2n+x+2n+y= [x]补+[y]补 (mod 2n )</span><br><span class="line">[x-y]补=2n+x-y= 2n+x+2n-y= [x]补+[-y]补 (mod 2n )</span><br></pre></td></tr></table></figure>
+<h2 id="原码加减运算"><a href="#原码加减运算" class="headerlink" title="原码加减运算"></a>原码加减运算</h2><h1 id="浮点数运算及其运算部件"><a href="#浮点数运算及其运算部件" class="headerlink" title="浮点数运算及其运算部件"></a>浮点数运算及其运算部件</h1>]]></content>
+      <categories>
+        <category>课堂笔记</category>
+      </categories>
+      <tags>
+        <tag>计组</tag>
       </tags>
   </entry>
 </search>
