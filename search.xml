@@ -2397,7 +2397,7 @@
   <entry>
     <title>汇编-1</title>
     <url>/2021/09/26/%E6%B1%87%E7%BC%96-1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>汇编学习day1—学习书籍《汇编语言》（第四版）清华大学出版社 王爽 著</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>汇编学习—学习书籍《汇编语言》（第四版）清华大学出版社 王爽 著</p>
 <p>汇编语言是人和计算机沟通的最直接的方式，它描述了机器最终所要执行的指令序列。</p>
 <hr>
 <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="汇编语言产生与组成"><a href="#汇编语言产生与组成" class="headerlink" title="汇编语言产生与组成"></a>汇编语言产生与组成</h2><p>每一种微处理器（cpu），由于硬件设计和内部结构的不同，就需要用不同的电平脉冲来控制，使它工作。所以每一种微处理器都有自己的机器指令集，也就是机器语言。</p>
@@ -2480,13 +2480,110 @@
 <h2 id="段地址"><a href="#段地址" class="headerlink" title="段地址"></a>段地址</h2><p>其实，内存并没有分段，段的划分来自于CPU。由于物理地址=基础地址（段地址*16）+偏移地址，使得我们可以用分段的方式来管理内存。我们可以认为：地址10000H~100FFH的内存单元组成一个段，该段的起始地址为10000H，段地址为1000H，大小为100H</p>
 <p>段地址*16必然是16的倍数，所以一个段的起始地址一定是16的倍数，偏移地址为16位，16位的寻址能力是2^16B即64KB，所以一个段的长度最大是64KB</p>
 <h2 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h2><p>段寄存器是段地址存放的位置，8086CPU中有4个寄存器：CS,DS,SS,ES。当8086CPU要访问内存时由这4个段寄存器提供内存单元的段地址。</p>
-<h2 id="CS和IP"><a href="#CS和IP" class="headerlink" title="CS和IP"></a>CS和IP</h2><p>CS是代码段寄存器，IP是指令指针寄存器。设CS中的内容为M，IP中的内容为N，8086CPU将从内存M*16+N开始，读取一条指令并执行。</p>
+<h2 id="CS和IP"><a href="#CS和IP" class="headerlink" title="CS和IP"></a>CS和IP</h2><p>CS是代码段寄存器，IP是指令指针寄存器。设CS中的内容为M，IP中的内容为N，8086CPU将从内存M<em>16+N开始，读取一条指令并执行。即 CS </em>16+IP</p>
+<ul>
+<li>从CS:IP指向的内存单元读取指令，读取的指令进入指令缓冲器</li>
+<li>IP=IP+所读取指令的长度，从而指向下一条指令</li>
+<li>执行指令，转到第一步，重复过程</li>
+</ul>
+<h2 id="修改CS、IP指令"><a href="#修改CS、IP指令" class="headerlink" title="修改CS、IP指令"></a>修改CS、IP指令</h2><p>程序员可以通过改变CS、IP中的内容来控制cpu执行目标指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">修改AX中的内容：</span><br><span class="line">mov指令-&gt;传送指令</span><br><span class="line">eg:mov ax,123</span><br><span class="line">修改CS、IP的指令：jmp指令</span><br><span class="line">同时修改CS、IP的内容：jmp段地址：偏移地址--&gt;用指令中给出的段地址修改CS，偏移地址修改IP</span><br><span class="line">eg:jmp 2AE3:3,执行后,CS=2AE3H,IP=0003H,CPU将从2AE33H处读取指令</span><br><span class="line">   jmp 3:0B16,执行后，CS=0003H,IP=0B16H,CPU将从00B46H处读取指令</span><br><span class="line">仅修改IP的内容：jmp+某一合法寄存器--&gt;用寄存器中的值修改IP--&gt;mov IP,ax</span><br><span class="line">eg：jmp ax，指令执行前：ax=1000H,CS=2000H,IP=0003H</span><br><span class="line">		   指令执行后：ax=1000H,CS=2000H,IP=1000H</span><br><span class="line">    jmp bx，指令执行前：bx=0B16H,CS=2000H,IP=0003H</span><br><span class="line">            指令执行后，bx=0B16H,CS=2000H,IP=0B16H</span><br></pre></td></tr></table></figure>
+<h2 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h2><p>根据需要，可以将一组内存单元定义为一个段。这段内存是用来存放代码的，即代码段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,0000(B0 00 00)</span><br><span class="line">add ax,0123H(05 23 01)</span><br><span class="line">mov bx,ax(8B D8)</span><br><span class="line">jmp bx(FF E3)</span><br></pre></td></tr></table></figure>
+<p>这段长度为10个字节的指令，存放在123B0H~123B9H的一组内存单元中，把这组内存单元称为代码段</p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
         <tag>汇编</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTF-WAF</title>
+    <url>/2021/10/14/CTF-WAF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="AWD介绍"><a href="#AWD介绍" class="headerlink" title="AWD介绍"></a>AWD介绍</h1><ul>
+<li>CTF中的线下赛又被称为AWD（attack with defence)</li>
+<li>对于选手的攻击能力，防御能力以及团队合作能力都有很高考验</li>
+<li>比赛中有多只队伍，每个队伍维护多台服务器，服务器中存在多个漏洞，利用漏洞攻击其他队伍可以进行得分，修复漏洞可以避免被其他队伍攻击失分</li>
+<li>初始状态所有队伍拥有一台相同的服务器（对于同一个题目来说），得到对方服务器中的flag并提交代表攻击成功，攻击对手的同时做好防御。</li>
+</ul>
+<p>例如：</p>
+<p><img src="/2021/10/14/CTF-WAF/1.png" alt="1"></p>
+<p><img src="/2021/10/14/CTF-WAF/2.png" alt="2"></p>
+<ul>
+<li>提供的主机环境一般是liunx，具体的发行版一般以ubantu和centos为主，正规的主办方会尽可能修补操作系统中存在的漏洞</li>
+<li>一般不给root权限，只给一个能修改代码的低权限用户</li>
+</ul>
+<h2 id="比赛流程"><a href="#比赛流程" class="headerlink" title="比赛流程"></a>比赛流程</h2><p>开始入场时，首先配置本地的网络环境，一般ip是静态配置的，每个队都会拿到一个初始的说明材料。</p>
+<p>主办方可能不给提供外网访问，需要自带外网连接设备，注意可能需要设置静态路由，不然双网可能不能同时访问。</p>
+<p>比赛开始阶段，选手可能会拿到所有目标（包括靶场和flag服务器）的ip地址和访问端口，以及他们要维护的服务器的ssh用户名和密码。选手需要连上自己的服务器做一些基本的安全配置和代码、数据库备份。</p>
+<p>比赛中期，选手通过审计代码中的漏洞，尝试去攻击其他队伍，获取flag，留好后门</p>
+<p>比赛过程中可能遭受其他队伍的攻击，需要恢复代码、数据库，清除后门</p>
+<h2 id="分工协作"><a href="#分工协作" class="headerlink" title="分工协作"></a>分工协作</h2><p>攻击、防御、运维</p>
+<ul>
+<li>攻击-攻击对手的服务<ul>
+<li>在找到漏洞，修补完成的基础上，尽量攻击别人</li>
+<li>要求现场快速根据漏洞写出利用程序，读取攻击flag</li>
+<li>攻击需要自动化，同时攻击x个对手，攻击成功要自动提交flag获得分数</li>
+</ul>
+</li>
+<li>攻击-分析流量直接反击<ul>
+<li>由于快速攻击占据先机非常重要，分析完漏洞写攻击可能比对手慢很多</li>
+<li>直接从对手的攻击流量中学习并直接根据流量反击则快速很多</li>
+<li>需要一个快速通过丢分定位攻击流量并学习的机制</li>
+</ul>
+</li>
+<li>防御-修补自己的服务<ul>
+<li>针对逻辑进行修补</li>
+<li>针对危险函数修补</li>
+<li>修补服务可能造成无法通过主办方的可用性检查</li>
+<li>对方的攻击也有可能造成服务器失效</li>
+</ul>
+</li>
+<li>运维<ul>
+<li>快速熟悉服务器配置</li>
+<li>摸清网络主机</li>
+<li>备份数据</li>
+<li>防止服务被恶意中断</li>
+<li>定时下载分析流量</li>
+</ul>
+</li>
+</ul>
+<h1 id="CTF-WAF"><a href="#CTF-WAF" class="headerlink" title="CTF-WAF"></a>CTF-WAF</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>针对CTF线下AWD比赛临时开发的WAF，能够拦截XSS、SQl、反序列化、菜刀/蚁剑、以及一些CTF常见的危险函数流量。可以绕过对页面检测的check,拦截返回正常页面的html。并且能够对简单payload进行流量转发，自动反打设置好的IP。如果比赛禁止使用通防也可以一键关闭通防，作为流量监控审计所用。</p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>CTF_WAF.php(WAF主要文件)<br>waflog(文件夹)<br>        ………ip.txt(需要反打的ip)<br>        ………log.php(日志审计系统)</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li>将<code>CTF_WAF.php</code>包含进需要保护的文件</li>
+<li>开启<code>WAF</code>开关（<code>CTF_WAF.php</code>代码27行），设置返回页面（<code>CTF_WAF.php</code>代码26行）,</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$this-&gt;Waf_switch=1;//通防开启</span><br><span class="line">$this-&gt;Waf_switch=0;//通防关闭</span><br><span class="line">$this-&gt;resultPage=&quot;http://127.0.0.1/&quot;;//返回页面</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>设置需要反打（流量转发）的主机，在<code>waflog/ip.txt</code></p>
+<p><img src="/2021/10/14/CTF-WAF/3.png" alt="3"></p>
+</li>
+<li><p>模拟对本地主机进行攻击，可以发现并不会返回flag，说明对payload拦截成功</p>
+</li>
+</ul>
+<p><img src="/2021/10/14/CTF-WAF/4.png" alt="4"></p>
+<ul>
+<li><p>查看<code>waflog</code>文件夹下发现生成了logs.txt和flag.txt说明生成了日志文件和flag文件，打开即可看到ip对应的flag</p>
+<p><img src="/2021/10/14/CTF-WAF/5.png" alt="5"></p>
+</li>
+<li><p>修改日志系统密码<code>/waflog/log.php</code>代码4行，修改密码</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$passwd=&quot;admin&quot;;//修改密码</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>登陆后台发现记录了攻击payload。</p>
+<p><img src="/2021/10/14/CTF-WAF/6.png" alt="6"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>AWD</tag>
       </tags>
   </entry>
 </search>
