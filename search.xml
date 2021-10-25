@@ -2741,4 +2741,84 @@
         <tag>密码学</tag>
       </tags>
   </entry>
+  <entry>
+    <title>指令流水线</title>
+    <url>/2021/10/25/%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第6章（指令流水线）主要介绍指令流水线的基本原理、流水段寄存器的概念、流水线数据通路的设计、流水线的控制信号、结构冒险及其处理、数据冒险及其处理、转发技术、控制冒险及其处理、分支预测原理、超标量和动态流水线的概念和技术。</p>
+<h1 id="流水线数据通路和控制逻辑"><a href="#流水线数据通路和控制逻辑" class="headerlink" title="流水线数据通路和控制逻辑"></a>流水线数据通路和控制逻辑</h1><h2 id="流水线的执行效率"><a href="#流水线的执行效率" class="headerlink" title="流水线的执行效率"></a>流水线的执行效率</h2><ul>
+<li>流水线的组成：<ul>
+<li>取指令IF(ifetch)—到内存取指令并计算PC+4，运用到加法器、内存、PC</li>
+<li>译码ID—取数同时译码</li>
+<li>取操作数OF—取数同时译码，运用到寄存器堆读口、译码器</li>
+<li>执行EX—计算地址，运用到加法器、扩展器（16位扩充至32位）、ALU</li>
+<li>写回WB—将数据写到寄存器，运用到寄存器堆写口</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/10/25/%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF/1.png" alt="1"></p>
+<h2 id="单周期指令"><a href="#单周期指令" class="headerlink" title="单周期指令"></a>单周期指令</h2><ul>
+<li>时钟周期=所有步骤所花时间—2+1+2+2+1=8ns</li>
+<li>串行执行时，N条指令的执行时间：8Nns</li>
+<li>每条指令只在一个周期内完成</li>
+</ul>
+<h2 id="流水线性能"><a href="#流水线性能" class="headerlink" title="流水线性能"></a>流水线性能</h2><p><img src="/2021/10/25/%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF/2.png" alt="2"></p>
+<ul>
+<li>时钟周期=最长的指令执行时间：2ns</li>
+<li>流水线方式执行时，N条指令的时间：2（N-1）+10=（4+N）*2ns≈2Nns，所以N很大时，比串行方式快4倍</li>
+<li>每条指令的执行时间：2ns*5=10ns,因此流水线不能缩短每一条指令的执行时间</li>
+</ul>
+<h2 id="流水线指令集的设计"><a href="#流水线指令集的设计" class="headerlink" title="流水线指令集的设计"></a>流水线指令集的设计</h2><ul>
+<li>指令长度一致—利于取指、译码<ul>
+<li>如MIPS指令32位，取下一条指令为PC+4</li>
+</ul>
+</li>
+<li>格式规整，保证源寄存器的位置相同—利于指令未知时候取寄存器操作数。<ul>
+<li>如，寄存器Rs和Rt的位置一定</li>
+</ul>
+</li>
+<li>采用装入/存储型（load/store)指令风格—利于减少操作步骤</li>
+<li>内存中“对齐”存放—利于减少访存次数和流水线的规整<ul>
+<li>地址是信息的整数倍，如MIPS指令为4字节32位，存放按4的倍数，即低2位是00，例如4（0100）和8（1000）</li>
+</ul>
+</li>
+</ul>
+<h2 id="MIPS指令的流水段分析"><a href="#MIPS指令的流水段分析" class="headerlink" title="MIPS指令的流水段分析"></a>MIPS指令的流水段分析</h2><ul>
+<li>R-Type<ul>
+<li>在ALU中对rs和rt内容运算，把运算结果送目的寄存器rd。遇到add和sub指令还要判断是否溢出，不溢出才写到rd</li>
+</ul>
+</li>
+<li>I-Type<ul>
+<li>立即数的运算类指令要对16位立即数进行符号扩展/零扩展，和rs内容运算，送到rt寄存器。</li>
+</ul>
+</li>
+<li>J-Type<ul>
+<li>无条件转移指令，直接将目标地址送PC中。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/10/25/%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF/3.png" alt="3"></p>
+<blockquote>
+<p>OP：操作码<br>rs：第一个源操作数寄存器<br>rt：第二个源操作数寄存器<br>rd：结果寄存器<br>shamt：移位指令的位移量<br>func：R-Type指令的OP字段是特定的“000000”，具体操作由func字段给定。例如：func=“100000”时，表示“加法”运算。<br>immediate：立即数或load/store指令和分支指令的偏移地址<br>target address：无条件转移地址的低26位。将PC高4位拼上26位直接地址，最后添2个“0”就是32位目标地址。</p>
+</blockquote>
+<h1 id="流水线冒险处理"><a href="#流水线冒险处理" class="headerlink" title="流水线冒险处理"></a>流水线冒险处理</h1><h1 id="高级流水线技术"><a href="#高级流水线技术" class="headerlink" title="高级流水线技术"></a>高级流水线技术</h1>]]></content>
+      <categories>
+        <category>课堂笔记</category>
+      </categories>
+      <tags>
+        <tag>计组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BUUCTF-crypto-&lt;50-66&gt;-wp</title>
+    <url>/2021/10/23/BUUCTF-crypto-50-66-wp/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="这是什么"><a href="#这是什么" class="headerlink" title="这是什么"></a>这是什么</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>小明是一个软件专业的高材生，但是老师布置的这次的作业似乎不怎么靠谱，因为他们老师以前是学物理的！喜欢乱七八糟命名文件，还喜欢奇奇怪怪的编码。你快帮小明看一下这题，小明准备好了一箱子辣条。</p>
+<h1 id="MRCTF2020-古典密码知多少"><a href="#MRCTF2020-古典密码知多少" class="headerlink" title="[MRCTF2020]古典密码知多少"></a>[MRCTF2020]古典密码知多少</h1><h1 id="WUSTCTF2020-佛说：只能四天"><a href="#WUSTCTF2020-佛说：只能四天" class="headerlink" title="[WUSTCTF2020]佛说：只能四天"></a>[WUSTCTF2020]佛说：只能四天</h1><h1 id="BJDCTF2020-RSA"><a href="#BJDCTF2020-RSA" class="headerlink" title="[BJDCTF2020]RSA"></a>[BJDCTF2020]RSA</h1><h1 id="BJDCTF2020-rsa-output"><a href="#BJDCTF2020-rsa-output" class="headerlink" title="[BJDCTF2020]rsa_output"></a>[BJDCTF2020]rsa_output</h1><h1 id="MRCTF2020-天干地支-甲子"><a href="#MRCTF2020-天干地支-甲子" class="headerlink" title="[MRCTF2020]天干地支+甲子"></a>[MRCTF2020]天干地支+甲子</h1><h1 id="MRCTF2020-vigenere"><a href="#MRCTF2020-vigenere" class="headerlink" title="[MRCTF2020]vigenere"></a>[MRCTF2020]vigenere</h1><h1 id="BJDCTF2020-signin"><a href="#BJDCTF2020-signin" class="headerlink" title="[BJDCTF2020]signin"></a>[BJDCTF2020]signin</h1><h1 id="ACTF新生赛2020-crypto-rsa0"><a href="#ACTF新生赛2020-crypto-rsa0" class="headerlink" title="[ACTF新生赛2020]crypto-rsa0"></a>[ACTF新生赛2020]crypto-rsa0</h1><h1 id="MRCTF2020-keyboard"><a href="#MRCTF2020-keyboard" class="headerlink" title="[MRCTF2020]keyboard"></a>[MRCTF2020]keyboard</h1><h1 id="WUSTCTF2020-babyrsa"><a href="#WUSTCTF2020-babyrsa" class="headerlink" title="[WUSTCTF2020]babyrsa"></a>[WUSTCTF2020]babyrsa</h1><h1 id="RSA4"><a href="#RSA4" class="headerlink" title="RSA4"></a>RSA4</h1><h1 id="GWCTF-2019-BabyRSA"><a href="#GWCTF-2019-BabyRSA" class="headerlink" title="[GWCTF 2019]BabyRSA"></a>[GWCTF 2019]BabyRSA</h1><h1 id="SameMod"><a href="#SameMod" class="headerlink" title="SameMod"></a>SameMod</h1><h1 id="一张谍报"><a href="#一张谍报" class="headerlink" title="一张谍报"></a>一张谍报</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>国家能源总部经过派出卧底长期刺探，终于找到一个潜伏已久的国外内鬼：三楼能源楼管老王。由于抓捕仓促，老王服毒自尽了。侦查部门搜出老王每日看的报纸原来是特制的情报。聪明的你能从附件的报纸中找出情报么？flag是老王说的暗号。（由于老王的线人曾今做的土匪，所以用的行话）</p>
+<h1 id="yxx"><a href="#yxx" class="headerlink" title="yxx"></a>yxx</h1>]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
 </search>

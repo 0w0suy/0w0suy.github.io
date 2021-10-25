@@ -6,7 +6,7 @@
   <link href="https://0w0suy.github.io/atom.xml" rel="self"/>
   
   <link href="https://0w0suy.github.io/"/>
-  <updated>2021-10-23T15:12:24.745Z</updated>
+  <updated>2021-10-25T13:01:21.958Z</updated>
   <id>https://0w0suy.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>指令流水线</title>
+    <link href="https://0w0suy.github.io/2021/10/25/%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF/"/>
+    <id>https://0w0suy.github.io/2021/10/25/%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF/</id>
+    <published>2021-10-25T11:57:36.000Z</published>
+    <updated>2021-10-25T13:01:21.958Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="课堂笔记" scheme="https://0w0suy.github.io/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="计组" scheme="https://0w0suy.github.io/tags/%E8%AE%A1%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BUUCTF-crypto-&lt;50-66&gt;-wp</title>
+    <link href="https://0w0suy.github.io/2021/10/23/BUUCTF-crypto-50-66-wp/"/>
+    <id>https://0w0suy.github.io/2021/10/23/BUUCTF-crypto-50-66-wp/</id>
+    <published>2021-10-23T15:15:30.000Z</published>
+    <updated>2021-10-23T15:19:36.993Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://0w0suy.github.io/categories/CTF/"/>
+    
+    
+    <category term="密码学" scheme="https://0w0suy.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>BUUCTF-crypto-&lt;33-49&gt;-wp</title>
@@ -463,56 +513,6 @@
     
     
     <category term="密码学" scheme="https://0w0suy.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python之函数</title>
-    <link href="https://0w0suy.github.io/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/"/>
-    <id>https://0w0suy.github.io/2021/07/21/Python%E4%B9%8B%E5%87%BD%E6%95%B0/</id>
-    <published>2021-07-21T13:02:14.000Z</published>
-    <updated>2021-07-21T15:31:17.153Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://0w0suy.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Python" scheme="https://0w0suy.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mysql服务器的基本配置及访问办法</title>
-    <link href="https://0w0suy.github.io/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/"/>
-    <id>https://0w0suy.github.io/2021/07/19/Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AE%BF%E9%97%AE%E5%8A%9E%E6%B3%95/</id>
-    <published>2021-07-19T11:56:20.000Z</published>
-    <updated>2021-07-21T03:39:15.886Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://0w0suy.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="MySQL" scheme="https://0w0suy.github.io/tags/MySQL/"/>
     
   </entry>
   
